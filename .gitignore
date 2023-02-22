@@ -1,25 +1,10 @@
-# LaTeX Workshop temporary files
-**/*.aux
-**/*.bbl
-**/*.bcf
-**/*.blg
-**/*.idx
-**/*.ind
-**/*.lof
-**/*.lot
-**/*.out
-**/*.toc
-**/*.acn
-**/*.acr
-**/*.alg
-**/*.glg
-**/*.glo
-**/*.gls
-**/*.ist
-**/*.fls
-**/*.log
-**/*.nav
-**/*.snm
-**/*.fdb_latexmk
-**/*.synctex.gz
-**/*.run.xml
+# LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.*synctex*
+*.toc
+*.xdv
