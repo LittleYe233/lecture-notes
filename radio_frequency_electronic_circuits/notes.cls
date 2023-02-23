@@ -1,7 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.0.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.1.0]
 
-\LoadClass[fontset=custom]{ctexart}
+\LoadClass[
+    fontset=custom,
+    linespread=1.5
+]{ctexart}
 
 \RequirePackage[svgnames]{xcolor}
 \RequirePackage[
@@ -14,9 +17,17 @@
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
 \RequirePackage{tikz}
+\RequirePackage{pgfplots}
 \RequirePackage{subcaption}
 \RequirePackage[abspath]{currfile}
 \RequirePackage{lastpage}
+\RequirePackage{chngcntr}
+% Try to add some missing math symbols.
+% See: https://tex.stackexchange.com/a/621515
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{unicode-math}
 
 \ctexset{
     today=old,
@@ -53,7 +64,13 @@
     urlcolor=transpink
 }
 \urlstyle{same}
-\usetikzlibrary{shapes, arrows.meta, positioning, circuits, calc}
+\usetikzlibrary{shapes, arrows.meta, positioning, circuits.ee.IEC, calc}
+% Resolve pgfplots compatibility warning.
+\pgfplotsset{compat=1.18}
+% Change figure and equation number counters.
+% See: https://stackoverflow.com/a/44662211/12002560
+\counterwithin{figure}{subsection}
+\counterwithin{equation}{subsection}
 
 \makeatletter
 % See: https://tex.stackexchange.com/a/216121
@@ -69,25 +86,25 @@
             \par
         }
         \vskip 1.5em
-        {
-            \large\lineskip .5em
-            \begin{tabular}[t]{c}
-                \@author
-            \end{tabular}
-            \par
-        }
+            {
+                \large\lineskip .5em
+                \begin{tabular}[t]{c}
+                    \@author
+                \end{tabular}
+                \par
+            }
         \vskip 1em
-        {
-            \large\textsf{Version:}\ \theversion
-        }
+            {
+                \large\textsf{Version:}\ \theversion
+            }
         \vskip .5em
-        {
-            \large\textsf{Last Modified:}\ \selectlanguage{USenglish}\thedatemodified
-        }
+            {
+                \large\textsf{Last Modified:}\ \selectlanguage{USenglish}\thedatemodified
+            }
         \vskip .5em
-        {
-            \large\textsf{Last Compiled:}\ \@date
-        }
+            {
+                \large\textsf{Last Compiled:}\ \@date
+            }
     \end{center}
     \par
     \vskip 1.5em
