@@ -8,3 +8,7 @@
 *.*synctex*
 *.toc
 *.xdv
+*.lof
+*.lot
+*.qst
+*.loep
