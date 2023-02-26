@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.1.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.2.0]
 
 \LoadClass[
     fontset=custom,
@@ -28,6 +28,11 @@
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
 \RequirePackage{unicode-math}
+\RequirePackage{ifthen}
+\RequirePackage{float}
+% Include `subfigure'.
+\RequirePackage{caption}
+\RequirePackage{subcaption}
 
 \ctexset{
     today=old,
@@ -35,9 +40,17 @@
     tablename=Table,
     figurename=Figure
 }
-\definecolor{transpink}{HTML}{F5AAB9}
-\definecolor{transblue}{HTML}{5BCEFA}
+\definecolor{transpink} {HTML}{F5AAB9}
+\definecolor{transblue} {HTML}{5BCEFA}
 \definecolor{transwhite}{HTML}{FFFFFF}
+% See: https://thenode.biologists.com/data-visualization-with-flying-colors/research/
+\definecolor{ochre}     {HTML}{D4A03C}
+\definecolor{babyblue}  {HTML}{7AB1E3}
+\definecolor{tea}       {HTML}{549A76}
+\definecolor{straw}     {HTML}{EAE363}
+\definecolor{flatblue}  {HTML}{4271AB}
+\definecolor{copper}    {HTML}{BD642B}
+\definecolor{lavender}  {HTML}{BA7DA3}
 % Fancyhdr style for the first page
 % See: https://tex.stackexchange.com/a/30229
 \fancypagestyle{firststyle}
@@ -66,7 +79,13 @@
 \urlstyle{same}
 \usetikzlibrary{shapes, arrows.meta, positioning, circuits.ee.IEC, calc}
 % Resolve pgfplots compatibility warning.
-\pgfplotsset{compat=1.18}
+\pgfplotsset{%
+    compat=1.18,
+    samples=300,
+    axis lines=middle,
+    legend pos=north east,
+    every axis plot/.append style={line width=0.9pt}
+}
 % Change figure and equation number counters.
 % See: https://stackoverflow.com/a/44662211/12002560
 \counterwithin{figure}{subsection}
@@ -117,3 +136,54 @@
 \newcommand{\theversion}{0.1.0}
 \newcommand{\datemodified}[1]{\renewcommand{\thedatemodified}{#1}}
 \newcommand{\version}[1]{\renewcommand{\theversion}{#1}}
+
+% See: https://tex.stackexchange.com/a/85115/290833
+\makeatletter
+\newcommand{\xRightarrow}[2][]{\ext@arrow 0359\Rightarrowfill@{#1}{#2}}
+\makeatother
+
+% See: https://tex.stackexchange.com/a/284749/290833
+\makeatletter
+\newcommand{\listofexampleprobs}{\@starttoc{loep}}
+\makeatother
+
+\newcounter{exampleprob}[subsection]
+\counterwithin{exampleprob}{subsection}
+% See: https://www.dickimaw-books.com/latex/novices/html/newenv.html
+\newenvironment{exampleprob}%
+{%
+    \refstepcounter{exampleprob}%
+    \addcontentsline{loep}{subsection}{\theexampleprob\ Example Problem}%
+    \nopagebreak\par\vspace{.5\baselineskip}\noindent\hrulefill \textbf{EXAMPLE PROB \theexampleprob} \noindent\hrulefill
+    \par\nopagebreak
+}%
+{%
+    \par\vspace{.5\baselineskip}\hrule\par\vspace{.5\baselineskip}
+}
+
+% See: https://latex.org/forum/viewtopic.php?t=5976
+\newcommand{\solutionnum}[1]{\ifthenelse{\equal{#1}{}}{}{\ #1}}
+\newenvironment{solution}[1][]
+{%
+    \nopagebreak\par\vspace{.5\baselineskip}\noindent\hrulefill \textbf{SOLUTION\solutionnum{#1}} \noindent\hrulefill
+    \par\nopagebreak
+}%
+{
+    \par\vspace{.5\baselineskip}\hrule\par
+}
+
+% Use `\question' with or without `[<annotation>]' to mark a question.
+% It is not a new environment, and can be collected by `\listofquestions'.
+\newcounter{question}[subsection]
+\counterwithin{question}{subsection}
+\makeatletter
+\newcommand{\listofquestions}{\@starttoc{qst}}
+\makeatother
+
+\newcommand{\questionname}[1]{\ifthenelse{\equal{#1}{}}{Question}{#1}}
+\newcommand{\question}[1][]{%
+    \refstepcounter{question}%
+    % There should be a `\protect' to use `\ifthenelse' here, but it causes `\thequestion' in `\questionname' showing a wrong number.
+    % So we directly removed it.
+    \addcontentsline{qst}{subsection}{\thequestion\ \protect\questionname{#1}}%
+}
