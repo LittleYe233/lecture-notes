@@ -7,7 +7,8 @@ rfcircuits.pdf: rfcircuits.tex notes.cls
 	$(LATEXMK) $(LATEXMK_ARGS) rfcircuits.tex
 
 clean:
+	rm *.synctex.gz *.loep *.qst
 	$(LATEXMK) -c *.pdf
-	rm -f *.pdf *.synctex.gz
+	rm -f *.pdf
 
 all: $(wildcard *.pdf)
