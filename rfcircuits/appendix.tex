@@ -1,0 +1,44 @@
+\section{附录} \label{附录}
+\subsection{图片索引} \label{图片索引}
+% See: https://tex.stackexchange.com/a/55088
+\makeatletter
+\@starttoc{lof}
+\makeatother
+
+\subsection{表格索引} \label{表格索引}
+\makeatletter
+\@starttoc{lot}
+\makeatother
+
+\subsection{例题索引} \label{例题索引}
+\listofexampleprobs
+
+\subsection{疑问索引} \label{疑问索引}
+\listofquestions
+
+\subsection{更新日志} \label{更新日志}
+\subsubsection*{1.2.1 (2023-2-27)}
+\begin{itemize}
+    \item 使用 \texttt{\textbackslash include} 重构文档结构;
+    \item 移除目录中多余的 ``更新日志'' 条目.
+\end{itemize}
+
+\subsubsection*{1.2.0 (2023-2-26)}
+\begin{itemize}
+    \item 增加 \ref{能量关系}, \ref{串联振荡回路的相位特性曲线} 至 \ref{并联谐振回路} 的部分, 及其他内容;
+    \item 增加两道例题;
+    \item 修改图片的位置选项为 \texttt{H};
+    \item 增加 \hyperref[附录]{附录}, 并增加 \hyperref[图片索引]{图片索引}, \hyperref[表格索引]{表格索引}, \hyperref[例题索引]{例题索引}, \hyperref[疑问索引]{疑问索引} 的部分;
+    \item 其他细微改动.
+\end{itemize}
+
+\subsubsection*{1.1.0 (2023-2-23)}
+\begin{itemize}
+    \item 增加 \ref{绪论} 至 \ref{串联振荡回路的谐振曲线和通频带} 的部分;
+    \item 增加 \hyperref[更新日志]{更新日志}.
+\end{itemize}
+
+\subsubsection*{1.0.0 (2023-2-22)}
+\begin{itemize}
+    \item 增加 \hyperref[课程信息]{课程信息} 的部分.
+\end{itemize}
