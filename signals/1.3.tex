@@ -1,0 +1,83 @@
+\subsection{阶跃信号与冲激信号}
+\subsubsection{单位斜变信号}
+
+\rmg
+\begin{equation}
+    f(t-t_0)=\begin{cases}
+        0,\quad t<0, \\
+        t-t_0,\quad t\geq 0.
+    \end{cases}
+\end{equation}
+
+\textbf{"截平" 的斜变信号}
+\begin{equation}
+    f_1(t)=\begin{cases}
+        \dfrac{K}{\tau}f(t),\quad t<\tau, \\
+        K,\quad t\geq\tau.
+    \end{cases}
+\end{equation}
+
+\textbf{三角形脉冲信号}
+\begin{equation}
+    f_2(t)=\begin{cases}
+        \dfrac{K}{\tau}f(t),\quad t<\tau, \\
+        0,\quad t\geq\tau.
+    \end{cases}
+\end{equation}
+
+\subsubsection{单位阶跃信号}
+
+\rmg
+\begin{equation}
+    u(t-t_0)=\begin{cases}
+        0,\quad t<t_0, \\
+        1,\quad t>t_0.
+    \end{cases}
+\end{equation}
+
+单位斜变函数的导数是单位阶跃函数.
+
+\textbf{矩形脉冲信号}
+\begin{gather}
+    R_T(t)=u(t)-u(t-T). \\
+    G_T(t)=u\left(t+\frac{T}{2}\right)-u\left(t-\frac{T}{2}\right).
+\end{gather}
+
+\textbf{符号函数}
+\begin{equation}
+    \mathrm{sgn}\ (t)=2u(t)-1.
+\end{equation}
+
+\subsubsection{单位冲激函数}
+
+\rmg
+\begin{equation}
+    \begin{cases}
+        \displaystyle\int_{-\infty}^{\infty}\delta(t-t_0)\mathrm{d}t=1, \\
+        \delta(t-t_0)=0,\quad t\neq t_0.
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+    \delta(t)=\lim_{\tau\rightarrow 0}\frac{1}{\tau}G_\tau(t).
+\end{equation}
+
+\textbf{性质}
+\begin{gather}
+    \delta(at)=\frac{1}{|a|}\delta(t); \\
+    \int_{-\infty}^{t}u(t-t_0)=\delta(t-t_0); \\
+    \int_{-\infty}^{\infty}\delta(t-t_0)f(t)=f(t_0).
+\end{gather}
+
+\subsubsection{冲激偶信号}
+
+\rmg
+\begin{equation}
+    \delta'(t)=\frac{\mathrm{d}\delta(t)}{\mathrm{d}t}.
+\end{equation}
+
+\textbf{性质}
+\begin{gather}
+    \int_{-\infty}^{\infty}\delta'(t-t_0)f(t)\mathrm{d}t=-f'(t_0); \\
+    \int_{-\infty}^{\infty}\delta'(t)\mathrm{d}t=0.
+\end{gather}

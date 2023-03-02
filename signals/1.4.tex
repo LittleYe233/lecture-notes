@@ -1,0 +1,47 @@
+\subsection{信号的分解}
+
+\subsubsection{直流分量与交流分量}
+
+\rmg
+\begin{gather}
+    f(t)=f_D+f_A(t). \\
+    P=\frac{1}{T}\int_{0}^{T}f^2(t)\mathrm{d}t=f_D^2+\frac{1}{T}\int_{0}^{T}f_A^2(t)\mathrm{d}t.\qquad \left(\int_{0}^{T}f_Df_A(t)\mathrm{d}t=0.\right)
+\end{gather}
+
+一个信号的平均功率等于直流功率与交流功率之和.
+
+\subsubsection{偶分量与奇分量}
+
+\rmg
+\begin{gather}
+    f_e(t)=f_e(-t). \\
+    f_o(t)=-f_o(-t). \\
+    f(t)=f_e(t)+f_o(t)=\frac{1}{2}(f(t)+f(-t))+\frac{1}{2}(f(t)-f(-t)).
+\end{gather}
+
+一个信号的平均功率等于偶分量功率与奇分量功率之和.
+
+\subsubsection{脉冲分量}
+
+\textbf{分解为矩形窄脉冲分量}\quad (极限情况为\textit{冲激信号的叠加}.)
+\begin{equation}
+    f(t)=\int_{-\infty}^{\infty}f(\tau)\delta(t-\tau)\mathrm{d}\tau.
+\end{equation}
+
+\textbf{分解为阶跃信号分量}
+\begin{equation}
+    f(t)=f(0)u(t)+\int_{0}^{\infty}\frac{\mathrm{d}f(\tau)}{\mathrm{d}\tau}u(t-\tau)\mathrm{d}\tau.
+\end{equation}
+
+\subsubsection{实部分量与虚部分量}
+
+\rmg
+\begin{gather}
+    f_r(t)=\frac{1}{2}(f(t)+f^*(t)). \\
+    f_i(t)=\frac{1}{2}(f(t)-f^*(t)). \\
+    f(t)=f_r(t)+\mathrm{j}f_i(t).
+\end{gather}
+
+\subsubsection{正交函数分量}
+
+使用\textit{正交函数集}表示信号, 例如正交的正余弦函数集 (傅里叶变换).

@@ -1,0 +1,64 @@
+\subsection{线性时不变系统 (Linear Time-invariant, LTI)}
+
+\subsubsection{叠加性与齐次性}
+
+\textbf{叠加性}\quad $\begin{cases}
+        x_1(t)\rightarrow y_1(t), \\
+        x_2(t)\rightarrow y_2(t)
+    \end{cases}\Rightarrow x_1(t)+x_2(t)\rightarrow y_1(t)+y_2(t)$.
+
+\textbf{齐次性}\quad $x_i(t)\rightarrow y_i(t)\Rightarrow ax_i(t)\rightarrow ay_i(t)$.
+
+线性系统\textit{零输入}时得到\textit{零输出}.
+
+\subsubsection{时不变性}
+
+$x(t)\rightarrow y(t)\Rightarrow x(t-t_0)\rightarrow y(t-t_0)$.
+
+($-t_0$ 表示对信号的\textit{移位}, 例如 $x(2t)$ 移位 $-t_0$ 后为 $x(2t-t_0)$.)
+
+\begin{exampleprob}
+    判断 $y_1(t)=tx(t)$, $y_2(t)=ax(t)+b$, $y_3(t)=x(2t)$ 是否具有叠加性, 齐次性, 时不变性.
+
+    \begin{solution}
+        因为
+        \srmg
+        \begin{gather*}
+            t(x_a(t)+x_b(t))=tx_a(t)+tx_b(t)=y_{1a}(t)+y_{1b}(t), \\
+            t(ax(t))=a(tx(t))=ay_1(t), \\
+            tx(t-t_0)\neq y_1(t-t_0)=(t-t_0)x(t-t_0),
+        \end{gather*}
+
+        所以 $y_1(t)$ 具有叠加性, 齐次性, 不具有时不变性.
+
+        因为
+        \srmg
+        \begin{gather*}
+            a(x_a(t)+x_b(t))_b\neq y_{2a}(t)+y_{2b}(t)=(ax_a(t)+b)+(ax_b(t)+b), \\
+            a(kx(t))+b\neq ky_2(t)=k(ax(t)+b), \\
+            ax(t-t_0)+b=y_2(t-t_0),
+        \end{gather*}
+
+        所以 $y_2(t)$ 具有时不变性, 不具有叠加性, 齐次性.
+
+        因为
+        \srmg
+        \begin{gather*}
+            x_a(2t)+x_b(2t)=y_{3a}(t)+y_{3b}(t), \\
+            ax(2t)=ay_3(t), \\
+            x(2t-t_0)\neq y_3(t-t_0)=x(2(t-t_0)),
+        \end{gather*}
+
+        所以 $y_3(t)$ 具有叠加性, 齐次性, 不具有时不变性.
+    \end{solution}
+\end{exampleprob}
+
+\subsubsection{微分特性与积分特性}
+
+\textbf{微分特性}\quad $x(t)\rightarrow y(t)\Rightarrow x'(t)\rightarrow y'(t)$.
+
+\textbf{积分特性}\quad $x(t)\rightarrow y(t)\Rightarrow \displaystyle\int_{-\infty}^{t}x(t)\mathrm{d}t\rightarrow\int_{-\infty}^{t}y(t)\mathrm{d}t$.
+
+\subsubsection{因果性}
+
+\textit{因果系统}在 $t=t_0$ 时刻的响应仅与 $t\leq t_0$ 的激励有关.
