@@ -1,5 +1,7 @@
+% Packages may needed manual installation: pgfplots, extarrows, wrapstuff, curve2e, pict2e
+
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.2.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.3.0]
 
 \LoadClass[
     fontset=custom,
@@ -33,6 +35,9 @@
 % Include `subfigure'.
 \RequirePackage{caption}
 \RequirePackage{subcaption}
+\RequirePackage{wrapfig2}
+\RequirePackage{wrapstuff}
+\RequirePackage{extarrows}
 
 \ctexset{
     today=old,
@@ -90,6 +95,8 @@
 % See: https://stackoverflow.com/a/44662211/12002560
 \counterwithin{figure}{subsection}
 \counterwithin{equation}{subsection}
+% Resolve hypcap=true overriden warning.
+\captionsetup{hypcap=false}
 
 \makeatletter
 % See: https://tex.stackexchange.com/a/216121
@@ -187,3 +194,13 @@
     % So we directly removed it.
     \addcontentsline{qst}{subsection}{\thequestion\ \protect\questionname{#1}}%
 }
+
+\AtBeginDocument{
+    \allowdisplaybreaks
+}
+
+% Remove vertical gap before equations and gathers, etc.
+% Line spread is 1.5.
+% See: https://tex.stackexchange.com/a/512867/290833
+\newcommand{\rmg}{\vspace{-1.3\baselineskip}}
+\newcommand{\srmg}{\vspace{-.5\baselineskip}}
