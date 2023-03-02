@@ -56,24 +56,17 @@
 \end{figure}
 
 \textbf{阻抗}
-
 \begin{equation}
     Z=R+\mathrm{j}\left(\omega L-\frac{1}{\omega C}\right)=|Z|e^{\mathrm{j}\varphi}.
 \end{equation}
 
 其中
-
-\begin{equation}
-    X=\left(\omega L-\frac{1}{\omega C}\right).
-\end{equation}
-
-\begin{equation}
-    |Z|=\sqrt{R^2+X^2}=\sqrt{R^2+\left(\omega L-\frac{1}{\omega C}\right)^2}.
-\end{equation}
-
-\begin{equation}
+\srmg
+\begin{gather}
+    X=\left(\omega L-\frac{1}{\omega C}\right). \\
+    |Z|=\sqrt{R^2+X^2}=\sqrt{R^2+\left(\omega L-\frac{1}{\omega C}\right)^2}. \\
     \varphi=\arctan\frac{X}{R}=\arctan\frac{\omega L-\dfrac{1}{\omega C}}{R}.
-\end{equation}
+\end{gather}
 
 \textbf{谐振条件}\quad $\omega=\omega_0=\dfrac{1}{\sqrt{LC}}$. $f_0=\dfrac{1}{2\pi\sqrt{LC}}$.
 
@@ -82,7 +75,6 @@
 
     \begin{solution}
         电容器的可调电容值范围应尽可能宽, 使得回路在指定频段内可以达到串联谐振. 因为 $f=\dfrac{1}{2\pi\sqrt{LC}}$, 所以
-
         \begin{equation*}
             k=\frac{C_m}{C_n}=\left(\frac{f_m}{f_n}\right)^2=9.
         \end{equation*}
@@ -92,6 +84,11 @@
 \end{exampleprob}
 
 \textbf{特性阻抗}\quad 谐振时的感抗或容抗. $\rho=\sqrt{\dfrac{L}{C}}$.
+
+\textbf{品质因数}\quad $Q$ 越高, 回路选择性越好.
+\begin{equation}
+    Q=\frac{\omega_0L}{R}=\frac{1}{\omega_0CR}=\frac{\rho}{R}=\frac{1}{R}\sqrt{\dfrac{L}{C}}.
+\end{equation}
 
 \textbf{非谐振特性}
 
@@ -108,7 +105,7 @@
     \item $X=0$, $Z=R$, 呈纯阻性, $|Z|$ 达到最小值;
     \item $\varphi=0$, 电流与电压同相位;
     \item L 和 C 上的电压 $\dot{V}_{L0}$ 和 $\dot{V}_{C0}$ 大小相等, 相位相差 180°, $\dot{V}_s=\dot{V}_R$;
-    \item $\dot{V}_{L0}=\mathrm{j}Q\dot{V}_s$, $\dot{V}_{C0}=-\mathrm{j}Q\dot{V}_s$, 其中 $Q=\dfrac{\omega_0L}{R}=\dfrac{1}{\omega_0CR}=\dfrac{\rho}{R}=\dfrac{1}{R}\sqrt{\dfrac{L}{C}}$ 为回路的\textbf{品质因数} ($Q$ 越高, 回路选择性越好).
+    \item $\dot{V}_{L0}=\mathrm{j}Q\dot{V}_s$, $\dot{V}_{C0}=-\mathrm{j}Q\dot{V}_s$.
 \end{itemize}
 
 当 $\dot{V}_s$ 保持不变时, $|\dot{I}|$ 达到最大值.
@@ -118,13 +115,11 @@
 串联单振荡回路中, 只有 R \textit{消耗}外加电动势的能量; 电路进入稳定状态后, L 和 C 只\textit{储存和交换}能量.
 
 \textbf{电阻}
-
 \begin{equation}
     \overline{P}_R=\frac{1}{2}RI_{0m}^2.
 \end{equation}
 
 单个周期:
-
 \begin{equation}
     W_R=\overline{P}_T=\frac{1}{2}\frac{RI_{0m}^2}{f_0}.
 \end{equation}
@@ -132,7 +127,6 @@
 \textbf{电容和电感}
 
 设谐振时 $i=I_{0m}\sin\omega t$,
-
 \begin{equation*}
     \begin{gathered}
         v_C=\frac{1}{C}\int i\mathrm{d}t=\frac{I_{0m}}{\omega C}\sin(\omega t-90^\circ)=-V_{Cm}\cos\omega t, \\
@@ -140,26 +134,22 @@
     \end{gathered}
 \end{equation*}
 
-\begin{equation}
-    W_C=\frac{1}{2}Cv_C^2=\frac{1}{2}CV_{Cm}^2\cos^2\omega t.
-\end{equation}
-
-\begin{equation}
+\rmg
+\begin{gather}
+    W_C=\frac{1}{2}Cv_C^2=\frac{1}{2}CV_{Cm}^2\cos^2\omega t. \\
     W_L=\frac{1}{2}Li_L^2=\frac{1}{2}LI_{0m}^2\sin^2\omega t.
-\end{equation}
+\end{gather}
 
 因为 $Q=\dfrac{1}{R}\sqrt{\dfrac{L}{C}}$, 所以 $CV_{Cm}^2=LI_{0m}^2$.
-
-\begin{equation}
-    W=W_L+W_C=\frac{1}{2}LI_{0m}^2.
-\end{equation}
-
-\begin{equation}
+\srmg
+\begin{gather}
+    W=W_L+W_C=\frac{1}{2}LI_{0m}^2. \\
     \frac{W_C+W_L}{W_R}=\frac{f_0L}{R}=\frac{Q}{2\pi}.
-\end{equation}
+\end{gather}
 
 \subsubsection{串联振荡回路的谐振曲线和通频带} \label{串联振荡回路的谐振曲线和通频带}
 
+\rmg
 \begin{equation}
     \frac{\dot{I}}{\dot{I}_0}=\frac{R}{R+\mathrm{j}\left(\dfrac{\omega}{\omega_0}-\dfrac{\omega_0}{\omega}\right)}=\frac{1}{1+\mathrm{j}Q\left(\dfrac{\omega}{\omega_0}-\dfrac{\omega_0}{\omega}\right)}.
 \end{equation}
@@ -171,13 +161,11 @@
 \textbf{失谐 (失调)}\quad $\Delta\omega=\omega-\omega_0$.
 
 当 $\omega\approx\omega_0$ 时, 利用
-
 \begin{equation*}
     \frac{\omega}{\omega_0}-\frac{\omega_0}{\omega}=\frac{\omega^2-\omega_0^2}{\omega_0\omega}=\left(\frac{\omega+\omega_0}{\omega}\right)\left(\frac{\omega-\omega_0}{\omega_0}\right)\approx 2\frac{\Delta\omega}{\omega_0},
 \end{equation*}
 
 \noindent 将 (\ref{eq:2.1 I/I_0}) 改写为\textit{小量失谐}情况下通用形式的\textbf{谐振特性方程式}
-
 \begin{equation} \label{eq:2.1 I/I_0 xi}
     \frac{I}{I_0}\approx\frac{1}{\sqrt{1+\left(Q\dfrac{2\Delta\omega}{\omega_0}\right)^2}}=\frac{1}{\sqrt{1+\xi^2}}.
 \end{equation}
@@ -193,7 +181,6 @@
 $Q$ 越高, 通频带越窄.
 
 \textbf{有载品质因数 (考虑其他内阻)}
-
 \begin{equation}
     Q_L=\frac{\omega_0L}{R+R_s+R_L}.
 \end{equation}
@@ -229,7 +216,6 @@ $Q$ 越高, 通频带越窄.
 \subsubsection{串联振荡回路的相位特性曲线} \label{串联振荡回路的相位特性曲线}
 
 回路电流的\textbf{相位特性曲线表达式} (认为 $\dot{V}_s$ 的相位为零):
-
 \begin{equation} \label{eq:2.1 psi}
     \psi=-\varphi=-\arctan Q\left(\frac{\omega}{\omega_0}-\frac{\omega_0}{\omega}\right)\approx-\arctan Q\frac{2\Delta\omega}{\omega_0}=-\arctan\xi.
 \end{equation}
@@ -297,7 +283,6 @@ $Q$ 越高, 通频带越窄.
     \begin{solution}[1]
         \begin{enumerate}
             \item 根据 (\ref{eq:2.1 psi}),
-
                   \begin{equation*}
                       45^\circ=-\arctan Q_0\left(\frac{f}{f_0}-\frac{f_0}{f}\right),
                   \end{equation*}
@@ -305,14 +290,12 @@ $Q$ 越高, 通频带越窄.
                   解得 $f\approx 990$ kHz.
 
                   根据 (\ref{eq:2.1 I/I_0 xi}),
-
                   \begin{equation*}
                       {\color{red} 20}\lg\left|\frac{I}{I_0}\right|=20\lg\left|\frac{1}{\sqrt{1+(-\tan 45^\circ)^2}}\right|=-3\ \mathrm{dB}.
                   \end{equation*}
 
                   (求解\textit{电流衰减}时, 因为功率和电流呈二次方关系, 用分贝表示能量衰减时的系数为 10, 则相应地转化为电流衰减系数为 20.)
             \item 显然此时回路呈容性, 需要串联一电感 $L^*$ 满足
-
                   \begin{equation*}
                       4\pi^2 f_0(L+L^*)=\frac{1}{f_0 C}.
                   \end{equation*}

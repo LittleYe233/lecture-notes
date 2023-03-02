@@ -19,6 +19,7 @@
     \caption{并联谐振回路}
 \end{figure}
 
+\rmg
 \begin{subequations}
     \begin{align}
                                                 & Z=\frac{(R+\mathrm{j}\omega L)\dfrac{1}{\mathrm{j}\omega C}}{(R+\mathrm{j}\omega L)+\dfrac{1}{\mathrm{j}\omega C}}                                              \\
@@ -26,22 +27,18 @@
     \end{align}
 \end{subequations}
 
-\begin{equation}
-    \dot{V}=\dot{I}_sZ=\frac{\dot{I}_s}{\dfrac{CR}{L}+\mathrm{j}\left(\omega C-\dfrac{1}{\omega L}\right)}.
-\end{equation}
-
-\begin{equation}
+\srmg
+\begin{gather}
+    \dot{V}=\dot{I}_sZ=\frac{\dot{I}_s}{\dfrac{CR}{L}+\mathrm{j}\left(\omega C-\dfrac{1}{\omega L}\right)}. \\
     Y=\frac{1}{Z}=G+\mathrm{j}B=\frac{CR}{L}+\mathrm{j}\left(\omega C-\frac{1}{\omega L}\right).
-\end{equation}
+\end{gather}
 
 \textbf{谐振条件}\quad $B=\omega_pC-\dfrac{1}{\omega_p L}=0$.
-
 \begin{equation}
     \omega_p=\frac{1}{\sqrt{LC}}.
 \end{equation}
 
 不满足 $\omega L>>R$ 时, 谐振频率的精确解:
-
 \begin{equation}
     \omega_p=\sqrt{\frac{1}{LC}-\frac{R^2}{L^2}}.
 \end{equation}
@@ -66,13 +63,11 @@
 \end{itemize}
 
 \textbf{品质因数}
-
 \begin{equation}
     Q_p=\frac{\omega_p}{L}=\frac{1}{\omega_pCR}=\frac{1}{R}\sqrt{\frac{L}{C}}.
 \end{equation}
 
 \textbf{谐振电阻}
-
 \begin{equation}
     R_p=\frac{\dot{V}_0}{\dot{I}_s}=\frac{L}{CR}=\frac{\omega_p^2L^2}{R}=Q_p\omega_pL=Q_p\frac{1}{\omega_pC}=\frac{1}{R\omega_p^2C^2}.
 \end{equation}
@@ -82,7 +77,6 @@
 \subsubsection{并联振荡回路的谐振曲线, 相位特性曲线和通频带}
 
 类比串联振荡回路:
-
 \begin{equation}
     \frac{\dot{V}}{\dot{V}_0}=\frac{1}{1+\mathrm{j}Q_p\left(\dfrac{\omega}{\omega_p}-\dfrac{\omega_p}{\omega}\right)}.
 \end{equation}
@@ -95,7 +89,6 @@
         \frac{V}{V_0}=\frac{1}{\sqrt{1+\xi^2}}.
     \end{equation}
 \end{subequations}
-
 
 \begin{subequations}
     \begin{equation}
@@ -135,7 +128,6 @@
 将 $R_p$ 并联在电路中, 因为谐振状态 $\dot{I}_C+\dot{I}_L=0$.
 
 \textbf{品质因数}
-
 \begin{subequations}
     \begin{equation}
         Q_L=\frac{1}{\omega_pL(G_p+G_s+G_L)}=\frac{1}{\omega_pL\left(\dfrac{1}{R_p}+\dfrac{1}{R_s}+\dfrac{1}{R_L}\right)}.
@@ -221,6 +213,7 @@
 
 \textbf{插入损耗}\quad 回路的一部分功率被回路电导 $G_p$ 损耗, 而不能全部送给负载. $K_l$ 越大, 回路损耗越大.
 
+\rmg
 \begin{gather}
     P_L=\frac{I_s^2}{(G_s+G_L)^2}G_L, \\
     P_L'=\frac{I_s^2}{(G_s+G_L+G_p)^2}G_L. \\
