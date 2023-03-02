@@ -12,3 +12,4 @@
 *.lot
 *.qst
 *.loep
+__pycache__
