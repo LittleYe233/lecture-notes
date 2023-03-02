@@ -112,7 +112,6 @@
 
 \subsubsection{信号源内阻和负载内阻的影响}
 
-\question[并联振荡回路等效电路将 $R_p$ 并联在电路中]
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[%
@@ -130,9 +129,10 @@
         \draw (0, 1) -- (5, 1) (5, 0) -- (0, 0);
     \end{tikzpicture}
     \caption{考虑 $R_s$ 和 $R_L$ 后的并联振荡回路的等效电路}
+    \label{fig:2.2 有载有内阻并联振荡回路}
 \end{figure}
 
-\question[并联谐振的有载品质因数]
+将 $R_p$ 并联在电路中, 因为谐振状态 $\dot{I}_C+\dot{I}_L=0$.
 
 \textbf{品质因数}
 
@@ -198,6 +198,35 @@
 \end{figure}
 
 为获得优良的选择性, 信号源内阻低时, 应采用串联振荡回路; 信号源内阻高时, 应采用并联振荡回路.
+
+\begin{exampleprob}
+    有一并联谐振回路如图 \ref{fig:2.2 有载有内阻并联振荡回路} 所示, $Q_p=80$, $R_p=25\mathrm{k}\Omega$, $f_0=30$MHz, $I_s=0.1$mA. 求:
+
+    \begin{enumerate}
+        \item $R_s=10\mathrm{k}\Omega$, $R_L=0$, $B$ 和谐振输出电压幅值 $V_0$;
+        \item $R_s=6\mathrm{k}\Omega$, $R_L=2\mathrm{k}\Omega$, $B$ 和 $V_0$.
+    \end{enumerate}
+
+    \begin{solution}
+        \begin{enumerate}
+            \item \begin{equation*}
+                      Q_L=\frac{Q_p}{1+\dfrac{R_p}{R_s}}=\frac{160}{7},\quad B=\frac{f_0}{Q_L}\approx 1.3\ \mathrm{MHz},\quad V_0=I_s\frac{R_pR_s}{R_p+R_s}\approx 0.71\ \mathrm{V}.
+                  \end{equation*}
+            \item \begin{equation*}
+                      Q_L\approx 4.5,\quad B\approx 6.7\ \mathrm{MHz},\quad V_0\approx 0.14\ \mathrm{V}.
+                  \end{equation*}
+        \end{enumerate}
+    \end{solution}
+\end{exampleprob}
+
+\textbf{插入损耗}\quad 回路的一部分功率被回路电导 $G_p$ 损耗, 而不能全部送给负载. $K_l$ 越大, 回路损耗越大.
+
+\begin{gather}
+    P_L=\frac{I_s^2}{(G_s+G_L)^2}G_L, \\
+    P_L'=\frac{I_s^2}{(G_s+G_L+G_p)^2}G_L. \\
+    K_l=\frac{P_L}{P_L'}=\left(\frac{1}{1-\dfrac{Q_L}{Q_p}}\right)^2\geq 1. \\
+    K_l(\mathrm{dB})=10\lg K_l=20\lg\frac{1}{1-\dfrac{Q_L}{Q_p}}.
+\end{gather}
 
 \subsubsection{低 Q 值 (Q<10) 的并联谐振回路}
 

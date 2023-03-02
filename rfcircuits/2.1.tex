@@ -1,4 +1,5 @@
 \section{选频网络}
+
 \begin{itemize}
     \item 振荡回路 (由 L, C 组成)
           \begin{itemize}
@@ -16,15 +17,42 @@
 
 \subsection{串联谐振回路}
 \subsubsection{基本原理}
+
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[circuit ee IEC, x=3cm, y=2cm, semithick, every info/.style={font=\normalsize}, large circuit symbols]
-        \draw (0, 0) to [voltage source={info={$\dot{V}_s$}}] (0, 1);
-        \draw (0, 1) to [inductor={info={$L$}}] (1, 1);
-        \draw (1, 1) to [capacitor={info={$C$}}] (1, 0);
-        \draw (1, 0) to [resistor={info={$R$}}] (0, 0);
-    \end{tikzpicture}
-    \caption{串联谐振回路}
+    \begin{minipage}{.3\textwidth}
+        \centering
+        \begin{tikzpicture}[circuit ee IEC, x=3cm, y=2cm, semithick, every info/.style={font=\normalsize}, large circuit symbols]
+            \draw (0, 0) to [voltage source={info={$\dot{V}_s$}}] (0, 1);
+            \draw (0, 1) to [inductor={info={$L$}}] (1, 1);
+            \draw (1, 1) to [capacitor={info={$C$}}] (1, 0);
+            \draw (1, 0) to [resistor={info={$R$}}] (0, 0);
+        \end{tikzpicture}
+        \caption{串联谐振回路}
+    \end{minipage}
+    \qquad
+    \centering
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \begin{tikzpicture}
+            % See: https://tex.stackexchange.com/a/569760
+            \begin{axis}[
+                    domain=0:6.5,
+                    xmin=0, xmax=7,
+                    ymin=0, ymax=7,
+                    ticks=none,
+                    xlabel={$\omega$},
+                    ylabel={$I$}]
+                \addplot [color=flatblue] {3/(sqrt(0.5^2+(\x-1/\x)^2))};
+                \addplot [color=tea] {3/(sqrt(1^2+(\x-1/\x)^2))};
+                \addplot [color=copper] {3/(sqrt(2^2+(\x-1/\x)^2))};
+                \addlegendentry{$Q=4Q^*$};
+                \addlegendentry{$Q=2Q^*$};
+                \addlegendentry{$Q=Q^*$};
+            \end{axis};
+        \end{tikzpicture}
+        \caption{外加电压为常数时, $Q$ (或 $R$) 对 $I$-$\omega$ 曲线的影响 (谐振曲线)}
+    \end{minipage}
 \end{figure}
 
 \textbf{阻抗}
@@ -82,28 +110,6 @@
     \item L 和 C 上的电压 $\dot{V}_{L0}$ 和 $\dot{V}_{C0}$ 大小相等, 相位相差 180°, $\dot{V}_s=\dot{V}_R$;
     \item $\dot{V}_{L0}=\mathrm{j}Q\dot{V}_s$, $\dot{V}_{C0}=-\mathrm{j}Q\dot{V}_s$, 其中 $Q=\dfrac{\omega_0L}{R}=\dfrac{1}{\omega_0CR}=\dfrac{\rho}{R}=\dfrac{1}{R}\sqrt{\dfrac{L}{C}}$ 为回路的\textbf{品质因数} ($Q$ 越高, 回路选择性越好).
 \end{itemize}
-
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        % See: https://tex.stackexchange.com/a/569760
-        \begin{axis}[
-                domain=0:6.5,
-                xmin=0, xmax=7,
-                ymin=0, ymax=7,
-                ticks=none,
-                xlabel={$\omega$},
-                ylabel={$I$}]
-            \addplot [color=flatblue] {3/(sqrt(0.5^2+(\x-1/\x)^2))};
-            \addplot [color=tea] {3/(sqrt(1^2+(\x-1/\x)^2))};
-            \addplot [color=copper] {3/(sqrt(2^2+(\x-1/\x)^2))};
-            \addlegendentry{$Q=4Q^*$};
-            \addlegendentry{$Q=2Q^*$};
-            \addlegendentry{$Q=Q^*$};
-        \end{axis};
-    \end{tikzpicture}
-    \caption{外加电压为常数时, $Q$ (或 $R$) 对 $I$-$\omega$ 曲线的影响 (谐振曲线)}
-\end{figure}
 
 当 $\dot{V}_s$ 保持不变时, $|\dot{I}|$ 达到最大值.
 
@@ -299,10 +305,12 @@ $Q$ 越高, 通频带越窄.
                   解得 $f\approx 990$ kHz.
 
                   根据 (\ref{eq:2.1 I/I_0 xi}),
-                  \question[电流衰减]
+
                   \begin{equation*}
-                      20\lg\left|\frac{I}{I_0}\right|=20\lg\left|\frac{1}{\sqrt{1+(-\tan 45^\circ)^2}}\right|=-3\ \mathrm{dB}.
+                      {\color{red} 20}\lg\left|\frac{I}{I_0}\right|=20\lg\left|\frac{1}{\sqrt{1+(-\tan 45^\circ)^2}}\right|=-3\ \mathrm{dB}.
                   \end{equation*}
+
+                  (求解\textit{电流衰减}时, 因为功率和电流呈二次方关系, 用分贝表示能量衰减时的系数为 10, 则相应地转化为电流衰减系数为 20.)
             \item 显然此时回路呈容性, 需要串联一电感 $L^*$ 满足
 
                   \begin{equation*}
