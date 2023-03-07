@@ -1,0 +1,21 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+            domain=0:6.5,
+            height=2.2in, width=3in,
+            xmin=0, xmax=7,
+            ymin=0, ymax=7,
+            ticks=none,
+            xlabel={$\omega$},
+            ylabel={$I$}]
+        \addplot [color=flatblue] {3/(sqrt(0.5^2+(\x-1/\x)^2))};
+        \addplot [color=tea] {3/(sqrt(1^2+(\x-1/\x)^2))};
+        \addplot [color=copper] {3/(sqrt(2^2+(\x-1/\x)^2))};
+        \addlegendentry{$Q=4Q^*$};
+        \addlegendentry{$Q=2Q^*$};
+        \addlegendentry{$Q=Q^*$};
+    \end{axis};
+\end{tikzpicture}
+\end{document}

@@ -20,37 +20,16 @@
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}{.3\textwidth}
+    \begin{minipage}{.342\textwidth}
         \centering
-        \begin{tikzpicture}[circuit ee IEC, x=3cm, y=2cm, semithick, every info/.style={font=\normalsize}, large circuit symbols]
-            \draw (0, 0) to [voltage source={info={$\dot{V}_s$}}] (0, 1);
-            \draw (0, 1) to [inductor={info={$L$}}] (1, 1);
-            \draw (1, 1) to [capacitor={info={$C$}}] (1, 0);
-            \draw (1, 0) to [resistor={info={$R$}}] (0, 0);
-        \end{tikzpicture}
+        \includegraphics[width=\textwidth]{images/series_resonance_circuit.pdf}
         \caption{串联谐振回路}
     \end{minipage}
     \qquad
     \centering
-    \begin{minipage}{.5\textwidth}
+    \begin{minipage}{.358\textwidth}
         \centering
-        \begin{tikzpicture}
-            % See: https://tex.stackexchange.com/a/569760
-            \begin{axis}[
-                    domain=0:6.5,
-                    xmin=0, xmax=7,
-                    ymin=0, ymax=7,
-                    ticks=none,
-                    xlabel={$\omega$},
-                    ylabel={$I$}]
-                \addplot [color=flatblue] {3/(sqrt(0.5^2+(\x-1/\x)^2))};
-                \addplot [color=tea] {3/(sqrt(1^2+(\x-1/\x)^2))};
-                \addplot [color=copper] {3/(sqrt(2^2+(\x-1/\x)^2))};
-                \addlegendentry{$Q=4Q^*$};
-                \addlegendentry{$Q=2Q^*$};
-                \addlegendentry{$Q=Q^*$};
-            \end{axis};
-        \end{tikzpicture}
+        \includegraphics[width=\textwidth]{images/resonance_curve_constant_voltage.pdf}
         \caption{外加电压为常数时, $Q$ (或 $R$) 对 $I$-$\omega$ 曲线的影响 (谐振曲线)}
     \end{minipage}
 \end{figure}
@@ -67,8 +46,8 @@
     |Z|=\sqrt{R^2+X^2}=\sqrt{R^2+\left(\omega L-\frac{1}{\omega C}\right)^2}. \\
     \varphi=\arctan\frac{X}{R}=\arctan\frac{\omega L-\dfrac{1}{\omega C}}{R}.
 \end{gather}
-
-\textbf{谐振条件}\quad $\omega=\omega_0=\dfrac{1}{\sqrt{LC}}$. $f_0=\dfrac{1}{2\pi\sqrt{LC}}$.
+\rmg
+\phantom{占位}\textbf{谐振条件}\quad $\omega=\omega_0=\dfrac{1}{\sqrt{LC}}$. $f_0=\dfrac{1}{2\pi\sqrt{LC}}$.
 
 \begin{exampleprob}
     有一串联回路在频段 535kHz\textasciitilde 1605kHz 内工作. 现有两个可变电容器 A: 12pF\textasciitilde 100pF, B: 15pF\textasciitilde 450pF. 应该选用何种电容器?
@@ -170,7 +149,7 @@
     \frac{I}{I_0}\approx\frac{1}{\sqrt{1+\left(Q\dfrac{2\Delta\omega}{\omega_0}\right)^2}}=\frac{1}{\sqrt{1+\xi^2}}.
 \end{equation}
 
-\textbf{广义失谐 (一般失谐)}\quad $\xi=\dfrac{X}{R}=Q\dfrac{2\Delta\omega}{\omega_0}$.
+\textbf{广义失谐 (一般失谐)}\quad $\xi=\dfrac{X}{R}=Q\dfrac{2\Delta\omega}{\omega_0}$. \label{eq:2.1 xi}
 
 \textbf{边界角频率 (频率)}\quad $\dfrac{I}{I_0}=\dfrac{1}{\sqrt{2}}$ 时的 $\omega_{1,2}$ ($f_{1,2}$).
 
@@ -189,25 +168,7 @@ $Q$ 越高, 通频带越窄.
 
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}
-        % See: https://tex.stackexchange.com/a/569760
-        \begin{axis}[
-                domain=0:6.5,
-                xmin=0, xmax=7,
-                ymin=0, ymax=7,
-                ticks=none,
-                xlabel={$\omega$},
-                ylabel={$I$}]
-            \addplot [color=flatblue] {3/(sqrt(0.5^2+(\x-1/\x)^2))};
-            \addplot [color=tea] {3/(sqrt(0.75^2+(\x-1/\x)^2))};
-            \addplot [color=copper] {3/(sqrt(1^2+(\x-1/\x)^2))};
-            \addplot [color=lavender] {1};
-            \addlegendentry{$R_s=0$};
-            \addlegendentry{$R_s=0.5R$};
-            \addlegendentry{$R_s=R$};
-            \addlegendentry{恒流源};
-        \end{axis};
-    \end{tikzpicture}
+    \includegraphics[width=.4\textwidth]{images/resonance_curve_source_resistance.pdf}
     \caption{信号源内阻对谐振曲线的影响}
 \end{figure}
 
@@ -221,53 +182,16 @@ $Q$ 越高, 通频带越窄.
 \end{equation}
 
 \begin{figure}[H]
+    \centering
     % See: https://tex.stackexchange.com/a/272262/290833
-    \begin{minipage}{.48\textwidth}
+    \begin{minipage}{.356\textwidth}
         \centering
-        \begin{tikzpicture}
-            \begin{axis}[%
-                    domain=10:30,
-                    xmin=10, xmax=30,
-                    ymin=-2, ymax=2,
-                    xlabel={$\omega$}, ylabel={$\psi$},
-                    % See: https://tex.stackexchange.com/a/406697/290833
-                    x tick label style={xshift=-0.6em},
-                    extra x ticks={20},
-                    extra x tick label={$\omega_0$},
-                    xtick=\empty,
-                    % See: https://tex.stackexchange.com/a/34958/290833
-                    ytick={-0.7853981633974483, -1.5707963267948966, 0.7853981633974483, 1.5707963267948966},
-                    yticklabels={$-\dfrac{\pi}{2}$, $-\dfrac{\pi}{4}$, $\dfrac{\pi}{4}$, $\dfrac{\pi}{2}$},
-                    extra y ticks={0},
-                    extra y tick label={0},
-                    % See: https://tex.stackexchange.com/a/134086/290833
-                    legend style={at={(1, 0.85)}}]
-                \addplot[color=flatblue]{-rad(atan(10*(\x/20-20/\x)))};
-                \addplot[color=copper]{-rad(atan(2.5*(\x/20-20/\x)))};
-                \addplot[black, dashed]{pi/2};
-                \addplot[black, dashed]{-pi/2};
-                \addlegendentry{$Q_1$};
-                \addlegendentry{$Q_2$}
-            \end{axis};
-        \end{tikzpicture}
+        \includegraphics[width=\textwidth]{images/resonance_circuit_phase.pdf}
         \caption{串联振荡回路的相位特性曲线 ($Q_1>Q_2$)}
-    \end{minipage}
-    \begin{minipage}{.48\textwidth}
+    \end{minipage}\qquad
+    \begin{minipage}{.394\textwidth}
         \centering
-        \begin{tikzpicture}
-            \begin{axis}[%
-                    domain=-8:8,
-                    xmin=-8.5, xmax=8.5,
-                    ymin=-2, ymax=2,
-                    xlabel={$\xi$}, ylabel={$\psi$},
-                    % See: https://tex.stackexchange.com/a/34958/290833
-                    ytick={-0.7853981633974483, -1.5707963267948966, 0, 0.7853981633974483, 1.5707963267948966},
-                    yticklabels={$-\dfrac{\pi}{2}$, $-\dfrac{\pi}{4}$, 0, $\dfrac{\pi}{4}$, $\dfrac{\pi}{2}$}]
-                \addplot[black]{-rad(atan(\x))};
-                \addplot[black, dashed]{pi/2};
-                \addplot[black, dashed]{-pi/2};
-            \end{axis};
-        \end{tikzpicture}
+        \includegraphics[width=\textwidth]{images/resonance_circuit_general_phase.pdf}
         \caption{串联振荡回路通用相位特性}
     \end{minipage}
 \end{figure}

@@ -1,0 +1,31 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        circuit ee IEC,
+        x=0.7cm, y=1cm,
+        semithick,
+        every info/.style={font=\normalsize},
+        tiny circuit symbols]
+    \node [contact] (a) at (-4, 3) {};
+    \node [contact] (b) at (-4, 0) {};
+    \node [left=0.05cm of a] {a};
+    \node [left=0.05cm of b] {b};
+    \node at (-3.7, 2.75) {$+$};
+    \node at (-3.7, 0.25) {$-$};
+    \node at (-3.7, 1.5) {$\dot{V}_{ab}$};
+    \draw (-4, 3) -- (-1, 3)
+    to [inductor={info={$L_2$}}] (-1, 4)
+    to node [midway, above] {d} (1, 4)
+    to [capacitor={pos=0.3, info={$C$}},
+        resistor={pos=0.7, info={$R_2$}}] (1, 1) -- (0, 1);
+    \draw (-4, 0) -- (0, 0) -- (0, 1) -- (-1, 1)
+    to [resistor={info={$R_1$}}] (-1, 2)
+    to [inductor={info={$L_1$}}] (-1, 3);
+    \node at (0, 3.75) {$+$};
+    \node at (0, 1.25) {$-$};
+    \node at (0, 2.5) {$\dot{V}_{db}$};
+    \node at (-2.5, 1.3) {$Z_{ab}$};
+    \draw [-latex] (-2.8, 1.7) -- (-2.2, 1.7);
+\end{tikzpicture}
+\end{document}

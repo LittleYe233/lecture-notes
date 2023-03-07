@@ -3,19 +3,7 @@
 
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[%
-            circuit ee IEC,
-            x=2cm, y=4cm,
-            semithick,
-            every info/.style={font=\large},
-            huge circuit symbols]
-        \draw (0, 0) node [above right, xshift=1em] {$-$} to [current source={direction info={info={$\dot{I}_s$}}}] node [right, xshift=1em] {$\dot{V}$} (0, 1) node [below right, xshift=1em] {$+$};
-        \draw (1, 1) to [capacitor={info={$C$}}] (1, 0);
-        \draw (2, 1) to [%
-            inductor={near start, info={$L$}},
-            resistor={near end, info={$R$}}] (2, 0);
-        \draw (0, 1) -- (2, 1) (2, 0) -- (0, 0);
-    \end{tikzpicture}
+    \includegraphics[width=.25\textwidth]{images/parallel_resonance_circuit.pdf}
     \caption{并联谐振回路}
 \end{figure}
 
@@ -107,20 +95,7 @@
 
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[%
-            circuit ee IEC,
-            x=1.6cm, y=2.75cm,
-            semithick,
-            every info/.style={font=\large},
-            huge circuit symbols]
-        \draw (0, 0) node [above right, xshift=1em] {$-$} to [current source={direction info={info={$\dot{I}_s$}}}] node [right, xshift=1em] {$\dot{V}$} (0, 1) node [below right, xshift=1em] {$+$};
-        \draw (1, 1) to [resistor={info={$R_s$}}] (1, 0);
-        \draw (2, 1) to [capacitor={info={$C$}}] (2, 0);
-        \draw (3, 1) to [inductor={info={$L$}}] (3, 0);
-        \draw (4, 1) to [resistor={info={$R_p$}}] (4, 0);
-        \draw (5, 1) to [resistor={info={$R_L$}}] (5, 0);
-        \draw (0, 1) -- (5, 1) (5, 0) -- (0, 0);
-    \end{tikzpicture}
+    \includegraphics[width=.6\textwidth]{images/parallel_resonance_circuit_rs_rl.pdf}
     \caption{考虑 $R_s$ 和 $R_L$ 后的并联振荡回路的等效电路}
     \label{fig:2.2 有载有内阻并联振荡回路}
 \end{figure}
@@ -140,50 +115,15 @@
 并联更多的电阻, 或降低 $R_s$, $R_L$ 的阻值, 回路总电导增大, 品质因数降低, 通频带变宽, 回路选择性更差.
 
 \begin{figure}[H]
-    \begin{subfigure}{.48\textwidth}
+    \centering
+    \begin{subfigure}{.45\textwidth}
         \centering
-        \begin{tikzpicture}
-            \begin{axis}[%
-                    domain=0:2.5,
-                    xmin=0, xmax=2.99,
-                    ymin=0, ymax=1.3,
-                    xlabel={$\omega$/$\mathrm{s}^{-1}$}, ylabel={$V_C$/V},
-                    extra y ticks={0}, extra y tick label={$0$}]
-                \addplot[black]{1/sqrt((1+0.1*0/(x^2+0.01))^2+0^2*x^2*(1-1/(x^2+0.01))^2)};
-                \addplot[color=flatblue]{1/sqrt((1+0.1*2/(x^2+0.01))^2+2^2*x^2*(1-1/(x^2+0.01))^2)};
-                \addplot[color=tea]{1/sqrt((1+0.1*5/(x^2+0.01))^2+5^2*x^2*(1-1/(x^2+0.01))^2)};
-                \addplot[color=copper]{1/sqrt((1+0.1*10/(x^2+0.01))^2+10^2*x^2*(1-1/(x^2+0.01))^2)};
-                \addplot[black, dashed] coordinates {(1, 0) (1, 1.2)};
-                \addlegendentry{$R_s=0$};
-                \addlegendentry{$R_s=2\Omega$};
-                \addlegendentry{$R_s=5\Omega$};
-                \addlegendentry{$R_s=10\Omega$};
-            \end{axis};
-        \end{tikzpicture}
+        \includegraphics[width=\textwidth]{images/parallel_resonance_curve_constant_voltage.pdf}
         \caption{信号源电动势保持不变}
-    \end{subfigure}
-    \begin{subfigure}{.48\textwidth}
+    \end{subfigure}\qquad
+    \begin{subfigure}{.45\textwidth}
         \centering
-        \begin{tikzpicture}
-            \begin{axis}[%
-                    domain=0:2.5,
-                    xmin=0, xmax=2.99,
-                    ymin=0, ymax=1.3,
-                    xlabel={$\omega$/$\mathrm{s}^{-1}$}, ylabel={$V_C$/V},
-                    extra y ticks={0}, extra y tick label={$0$}]
-                \addplot[black]{(1+0.1*0)/sqrt((1+0.1*0/(x^2+0.01))^2+0^2*x^2*(1-1/(x^2+0.01))^2)};
-                \addplot[color=flatblue]{(1+0.1*2)/sqrt((1+0.1*2/(x^2+0.01))^2+2^2*x^2*(1-1/(x^2+0.01))^2)};
-                \addplot[color=tea]{(1+0.1*5)/sqrt((1+0.1*5/(x^2+0.01))^2+5^2*x^2*(1-1/(x^2+0.01))^2)};
-                \addplot[color=copper]{(1+0.1*10)/sqrt((1+0.1*10/(x^2+0.01))^2+10^2*x^2*(1-1/(x^2+0.01))^2)};
-                \addplot[color=lavender]{(1/10.1)/sqrt((0.1/(x^2+0.01))^2+x^2*(1-1/(x^2+0.01))^2)};
-                \addplot[black, dashed] coordinates {(1, 0) (1, 1.2)};
-                \addlegendentry{$R_s=0$};
-                \addlegendentry{$R_s=2\Omega$};
-                \addlegendentry{$R_s=5\Omega$};
-                \addlegendentry{$R_s=10\Omega$};
-                \addlegendentry{$I_s=\dfrac{10}{101}$A};
-            \end{axis};
-        \end{tikzpicture}
+        \includegraphics[width=\textwidth]{images/parallel_resonance_curve_constant_vc.pdf}
         \caption{调整信号源电动势使 $V_C=1\mathrm{V}$}
     \end{subfigure}
     \caption{电源内阻对并联谐振曲线的影响 ($L=1\mathrm{H},R=0.1\Omega,C=1\mathrm{F},V_s=1\mathrm{V}$)}

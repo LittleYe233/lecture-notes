@@ -4,64 +4,24 @@
     \centering
     \begin{minipage}{.53\textwidth}
         \centering
-        \begin{subfigure}{.22\textwidth}
+        \begin{subfigure}{.18\textwidth}
             \centering
-            \begin{tikzpicture}[%
-                    circuit ee IEC,
-                    x=1.8cm, y=1.7cm,
-                    semithick,
-                    every info/.style={font=\normalsize},
-                    large circuit symbols]
-                \node [contact] (A) at (0, 2) {};
-                \node [contact] (B) at (0, 0) {};
-                \node [right=0.1cm of A] {A};
-                \node [right=0.1cm of B] {B};
-                \draw (0, 0) to [%
-                    resistor={pos=0.28, info={$X_s$}},
-                    resistor={pos=0.72, info={$R_s$}}
-                ] (0, 2);
-            \end{tikzpicture}
+            \includegraphics[width=\textwidth]{images/series_resistance.pdf}
         \end{subfigure}
         \begin{subfigure}{.28\textwidth}
             \centering
-            \begin{tikzpicture}[%
-                    circuit ee IEC,
-                    x=1.5cm, y=1.7cm,
-                    semithick,
-                    every info/.style={font=\normalsize},
-                    large circuit symbols]
-                \node [contact] (A) at (0, 2) {};
-                \node [contact] (B) at (0, 0) {};
-                \node [right=0.1cm of A] {A};
-                \node [right=0.1cm of B] {B};
-                \draw (0, 0) -- (0, 0.4) -- (-0.5, 0.4) to [resistor={info={$R_p$}}] (-0.5, 1.6) -- (0, 1.6) -- (0, 2);
-                \draw (0, 0.4) -- (0.5, 0.4) to [resistor={info={$X_p$}}] (0.5, 1.6) -- (0, 1.6);
-            \end{tikzpicture}
+            \includegraphics[width=\textwidth]{images/parallel_resistance.pdf}
         \end{subfigure}
         \caption{串, 并联阻抗的等效互换}
     \end{minipage}
-    \begin{minipage}{.45\textwidth}
+    \begin{minipage}{.40\textwidth}
         \centering
-        \begin{tikzpicture}[%
-                circuit ee IEC,
-                x=1.5cm, y=1.9cm,
-                semithick,
-                every info/.style={font=\normalsize},
-                large circuit symbols]
-            \node [contact] at (-0.7, 0) {};
-            \node [contact] at (-0.7, 2) {};
-            \node at (-0.7, 1) {$Z_p$};
-            \draw [-latex] (-0.5, 1) -- (-0.2, 1);
-            \draw (-0.7, 0) -- (1, 0) -- (1, 0.4) -- (0.5, 0.4) to [resistor={info={$Z_1$}}] (0.5, 1.6) -- (1, 1.6) -- (1, 2) -- (-0.7, 2);
-            \draw (1, 0.4) -- (1.5, 0.4) to [resistor={info={$Z_2$}}] (1.5, 1.6) -- (1, 1.6);
-        \end{tikzpicture}
+        \includegraphics[width=.55\textwidth]{images/parallel_circuit_general.pdf}
         \caption{并联电路的广义形式}
     \end{minipage}
 \end{figure}
 
 \textbf{并联阻抗变换为串联阻抗}
-
-\rmg
 \begin{gather}
     \nonumber R_s+\mathrm{j}X_s=\frac{R_p(\mathrm{j}X_p)}{R_p+\mathrm{j}X_p}. \\
     R_s=\frac{X_p^2}{R_p^2+X_p^2}R_p=\frac{X_p^2}{Z_p^2}R_p. \\
@@ -69,8 +29,6 @@
 \end{gather}
 
 \textbf{串联阻抗变换为并联阻抗}
-
-\rmg
 \begin{gather}
     \nonumber \frac{1}{R_s+\mathrm{j}X_s}=\frac{1}{R_p}+\frac{1}{\mathrm{j}X_p}. \\
     R_p=\frac{R_s^2+X_s^2}{R_s}=\frac{Z_s^2}{R_s}. \\
@@ -78,8 +36,6 @@
 \end{gather}
 
 可以推得, $Q_s=\dfrac{X_s}{R_s}$, $Q_p=\dfrac{R_p}{X_p}$, 且 $Q_s=Q_p$ (记作 $Q_L$). 因此
-
-\rmg
 \begin{gather}
     R_s=\frac{R_p}{1+Q_L^2}. \\
     X_s=\frac{Q_L^2}{1+Q_L^2}X_p. \\
@@ -110,33 +66,7 @@
 
 \begin{wrapfigure}{r}{.38\textwidth}
     \centering
-    \begin{tikzpicture}[%
-            circuit ee IEC,
-            x=0.7cm, y=1cm,
-            semithick,
-            every info/.style={font=\normalsize},
-            tiny circuit symbols]
-        \node [contact] (a) at (-4, 3) {};
-        \node [contact] (b) at (-4, 0) {};
-        \node [left=0.05cm of a] {a};
-        \node [left=0.05cm of b] {b};
-        \node at (-3.7, 2.75) {$+$};
-        \node at (-3.7, 0.25) {$-$};
-        \node at (-3.7, 1.5) {$\dot{V}_{ab}$};
-        \draw (-4, 3) -- (-1, 3)
-        to [inductor={info={$L_2$}}] (-1, 4)
-        to node [midway, above] {d} (1, 4)
-        to [capacitor={pos=0.3, info={$C$}},
-            resistor={pos=0.7, info={$R_2$}}] (1, 1) -- (0, 1);
-        \draw (-4, 0) -- (0, 0) -- (0, 1) -- (-1, 1)
-        to [resistor={info={$R_1$}}] (-1, 2)
-        to [inductor={info={$L_1$}}] (-1, 3);
-        \node at (0, 3.75) {$+$};
-        \node at (0, 1.25) {$-$};
-        \node at (0, 2.5) {$\dot{V}_{db}$};
-        \node at (-2.5, 1.3) {$Z_{ab}$};
-        \draw [-latex] (-2.8, 1.7) -- (-2.2, 1.7);
-    \end{tikzpicture}
+    \includegraphics[width=.3\textwidth]{images/inductor_tapped_parallel_resonance_circuit.pdf}
     \caption{电感抽头式并联谐振回路}
 \end{wrapfigure}
 
@@ -149,7 +79,7 @@
 
 \textit{考虑互感}时, $p=\dfrac{L_1\pm M}{L_1+L_2+2M}$, $L_1$ 与 $L_2$ 线圈绕组方向一致时取正号; 反之取负号.
 
-\textbf{接入系数}\quad $p=\dfrac{1}{n}=\dfrac{L_1}{L_1+L_2}$. ($X_1>>R$)
+\textbf{接入系数}\quad $p=\dfrac{1}{n}=\dfrac{L_1}{L_1+L_2}$. ($|Z_{ab}|\geq \omega_pL_1$.)
 
 \textbf{导纳折合}
 \begin{equation}
@@ -167,42 +97,11 @@
     \centering
     \begin{subfigure}{.3\textwidth}
         \centering
-        \begin{tikzpicture}[%
-                circuit ee IEC,
-                x=1cm, y=1.2cm,
-                semithick,
-                every info/.style={font=\normalsize},
-                every resistor/.style={tiny circuit symbols},
-                every current source/.style={large circuit symbols},
-                small circuit symbols]
-            \draw (0, 0) -- (4, 0)
-            (0, 1) -- (2, 1)
-            (2, 2) -- (4, 2);
-            \draw (0, 0) to [current source={direction info={info={$\dot{I}$}}}] (0, 1);
-            \draw (1, 0) to [resistor={info={$R_i$}}] (1, 1);
-            \draw (2, 0) to [inductor] node [above left] {b} (2, 2);
-            \draw (3, 0) node [below] {c} to [capacitor={info={$C$}}] (3, 2) node [above] {a};
-            \draw (4, 0) to [resistor={info={$R_L$}}] (4, 2);
-        \end{tikzpicture}
+        \includegraphics[width=\textwidth]{images/current_source_conversion_circuit_a.pdf}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \begin{tikzpicture}[%
-                circuit ee IEC,
-                x=1cm, y=1.2cm,
-                semithick,
-                every info/.style={font=\normalsize},
-                every resistor/.style={tiny circuit symbols},
-                every current source/.style={large circuit symbols},
-                small circuit symbols]
-            \draw (0, 0) -- (4, 0)
-            (0, 2) -- (4, 2);
-            \draw (0, 0) to [current source={direction info={info={$\dot{I}'$}}}] (0, 2);
-            \draw (1, 0) to [resistor={info={$R_i'$}}] (1, 2);
-            \draw (2, 0) to [inductor={info={$L$}}] (2, 2);
-            \draw (3, 0) node [below] {c} to [capacitor={info={$C$}}] (3, 2) node [above] {a};
-            \draw (4, 0) to [resistor={info={$R_L$}}] (4, 2);
-        \end{tikzpicture}
+        \includegraphics[width=\textwidth]{images/current_source_conversion_circuit_b.pdf}
     \end{subfigure}
     \caption{电流源折合电路}
 \end{figure}
@@ -219,44 +118,11 @@
     \centering
     \begin{subfigure}{.3\textwidth}
         \centering
-        \begin{tikzpicture}[%
-                circuit ee IEC,
-                x=1cm, y=1.2cm,
-                semithick,
-                every info/.style={font=\normalsize},
-                every resistor/.style={tiny circuit symbols},
-                every current source/.style={large circuit symbols},
-                small circuit symbols]
-            \node [contact] at (0, 0) {};
-            \node [contact] at (0, 2) {};
-            \draw (0, 0) -- (4, 0)
-            (0, 2) -- (2, 2)
-            (2, 1) -- (4, 1);
-            \draw (1, 0) to [capacitor={info={$C$}}] (1, 2);
-            \draw (2, 0) to [inductor={info={$L$}}] (2, 2);
-            \draw (3, 0) to [resistor={info={$R_L$}}] (3, 1);
-            \draw (4, 0) to [capacitor={info={$C_L$}}] (4, 1);
-        \end{tikzpicture}
+        \includegraphics[width=.9\textwidth]{images/load_resistance_conversion_circuit_a.pdf}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \begin{tikzpicture}[%
-                circuit ee IEC,
-                x=1cm, y=1.2cm,
-                semithick,
-                every info/.style={font=\normalsize},
-                every resistor/.style={tiny circuit symbols},
-                every current source/.style={large circuit symbols},
-                small circuit symbols]
-            \node [contact] at (0, 0) {};
-            \node [contact] at (0, 2) {};
-            \draw (0, 0) -- (4, 0)
-            (0, 2) -- (4, 2);
-            \draw (1, 0) to [capacitor={info={$C$}}] (1, 2);
-            \draw (2, 0) to [inductor={info={$L$}}] (2, 2);
-            \draw (3, 0) to [resistor={info={$R_L'$}}] (3, 2);
-            \draw (4, 0) to [capacitor={info={$C_L'$}}] (4, 2);
-        \end{tikzpicture}
+        \includegraphics[width=.9\textwidth]{images/load_resistance_conversion_circuit_b.pdf}
     \end{subfigure}
     \caption{负载阻容网络折合电路}
 \end{figure}
@@ -276,7 +142,7 @@
 
 \textbf{电容抽头}
 \begin{equation}
-    p=\frac{1}{n}=\frac{C}{C_1}=\frac{C_2}{C_1+C_2}.
+    p=\frac{1}{n}=\frac{C}{C_1}=\frac{C_2}{C_1+C_2}.\qquad (|Z_{ab}|\geq\frac{1}{\omega_pC_1}.)
 \end{equation}
 
 \begin{exampleprob}
@@ -286,48 +152,13 @@
         \centering
         \begin{subfigure}{.45\textwidth}
             \centering
-            \begin{tikzpicture}[%
-                    circuit ee IEC,
-                    x=1cm, y=1.2cm,
-                    semithick,
-                    every info/.style={font=\normalsize},
-                    every resistor/.style={tiny circuit symbols},
-                    every current source/.style={large circuit symbols},
-                    small circuit symbols]
-                \draw (0, 0) -- (4, 0)
-                (0, 2) -- (4, 2)
-                (5, 0) -- (6, 0)
-                (5, 2) -- (6, 2);
-                \draw (0, 0) to [current source={direction info={info={$\dot{I}_s$}}}] (0, 2);
-                \draw (1, 0) to [resistor={info={$R_s$}}] (1, 2);
-                \draw (2, 0) to [resistor={info={$R_p$}}] (2, 2);
-                \draw (3, 0) to [capacitor={info={$C$}}] (3, 2);
-                \draw (4, 0) to [inductor={point left}] node [left, yshift=1em] {$L$} node [left, yshift=-1em] {$P_1$} (4, 2);
-                \draw (5, 0) to [inductor={info={$P_2$}}] (5, 2);
-                \draw (6, 0) to [resistor={info={$R_L$}}] (6, 2);
-            \end{tikzpicture}
+            \includegraphics[width=.9\textwidth]{images/exampleprob_2_3_tight_tapped_circuit_a.pdf}
             \caption{}
             \label{fig: 2.3 例题 紧耦合抽头电路}
         \end{subfigure}
         \begin{subfigure}{.45\textwidth}
             \centering
-            \begin{tikzpicture}[%
-                    circuit ee IEC,
-                    x=1cm, y=1.2cm,
-                    semithick,
-                    every info/.style={font=\normalsize},
-                    every resistor/.style={tiny circuit symbols},
-                    every current source/.style={large circuit symbols},
-                    small circuit symbols]
-                \draw (0, 0) -- (5, 0)
-                (0, 2) -- (5, 2);
-                \draw (0, 0) to [current source={direction info={info={$\dot{I}_s'$}}}] (0, 2);
-                \draw (1, 0) to [resistor={info={$R_s'$}}] (1, 2);
-                \draw (2, 0) to [resistor={info={$R_p$}}] (2, 2);
-                \draw (3, 0) to [capacitor={info={$C$}}] (3, 2);
-                \draw (4, 0) to [inductor] (4, 2);
-                \draw (5, 0) to [resistor={info={$R_L'$}}] (5, 2);
-            \end{tikzpicture}
+            \includegraphics[width=.9\textwidth]{images/exampleprob_2_3_tight_tapped_circuit_b.pdf}
             \caption{}
             \label{fig: 2.3 例题 紧耦合抽头电路 解}
         \end{subfigure}
@@ -335,8 +166,6 @@
 
     \begin{solution}
         电路等效为图 \ref{fig: 2.3 例题 紧耦合抽头电路 解}.
-
-        \rmg
         \begin{gather*}
             R_s'=\frac{1}{P_1^2}R_s\approx 344.52\ \mathrm{k}\Omega,\quad R_L'=\frac{1}{P_2^2}R_L\approx 342.65\ \mathrm{k}\Omega. \\
             Q_L=\frac{Q_0}{1+\dfrac{R_p}{R_s'}+\dfrac{R_p}{R_L'}}\approx 50.\quad B=\frac{f_0}{Q_L}\approx 9.3\ \mathrm{kHz}.\quad I_s'=P_1I_s=0.28\ \mathrm{mA}.

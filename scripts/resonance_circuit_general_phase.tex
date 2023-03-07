@@ -1,0 +1,18 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[%
+            domain=-8:8,
+            xmin=-8.5, xmax=8.5,
+            ymin=-2, ymax=2,
+            xlabel={$\xi$}, ylabel={$\psi$},
+            % See: https://tex.stackexchange.com/a/34958/290833
+            ytick={-0.7853981633974483, -1.5707963267948966, 0, 0.7853981633974483, 1.5707963267948966},
+            yticklabels={$-\dfrac{\pi}{2}$, $-\dfrac{\pi}{4}$, 0, $\dfrac{\pi}{4}$, $\dfrac{\pi}{2}$}]
+        \addplot[color=flatblue]{-rad(atan(\x))};
+        \addplot[black, dashed]{pi/2};
+        \addplot[black, dashed]{-pi/2};
+    \end{axis};
+\end{tikzpicture}
+\end{document}

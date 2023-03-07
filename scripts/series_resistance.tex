@@ -1,0 +1,19 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        circuit ee IEC,
+        x=1.8cm, y=1.7cm,
+        semithick,
+        every info/.style={font=\normalsize},
+        large circuit symbols]
+    \node [contact] (A) at (0, 2) {};
+    \node [contact] (B) at (0, 0) {};
+    \node [right=0.1cm of A] {A};
+    \node [right=0.1cm of B] {B};
+    \draw (0, 0) to [%
+        resistor={pos=0.28, info={$X_s$}},
+        resistor={pos=0.72, info={$R_s$}}
+    ] (0, 2);
+\end{tikzpicture}
+\end{document}
