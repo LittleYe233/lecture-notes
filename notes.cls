@@ -1,7 +1,7 @@
 % Packages may needed manual installation: pgfplots, extarrows, wrapstuff, curve2e, pict2e
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.3.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.4.0]
 
 \LoadClass[
     fontset=custom,
@@ -82,7 +82,7 @@
     urlcolor=transpink
 }
 \urlstyle{same}
-\usetikzlibrary{shapes, arrows.meta, positioning, circuits.ee.IEC, calc}
+\usetikzlibrary{shapes, arrows.meta, positioning, circuits.ee.IEC, calc, decorations.pathreplacing}
 % Resolve pgfplots compatibility warning.
 \pgfplotsset{%
     compat=1.18,
