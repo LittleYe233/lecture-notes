@@ -7,28 +7,20 @@ I := images
 PDFS := \
 	rfcircuits.pdf \
 	signals.pdf
-IMGS := \
-	signals.exponentially_decaying_sinusoidal_signal \
-	signals.sampling_signal
 IMGTEXS := $(shell cd scripts && ls *.tex | xargs -n 1 | cut -f 1 -d '.')
 
 %: %.tex notes.cls
 	$(LATEXMK) $(LATEXMK_ARGS) $<
 
 clean:
-	rm *.synctex.gz *.loep *.qst
 	$(LATEXMK) -c *.pdf
 	rm -f *.pdf **/*.pdf
-	rm -rf $I/*
-	rm -f $S/*.{aux,fdb_latexmk,fls,log,synctex*,xdv}
-	rm -f **/*.aux
-	rm -rf $S/**/__pycache__ $S/__pycache__
+	rm -f *.{aux,fdb_latexmk,fls,log,synctex*,xdv,synctex.gz,synctex*,loep,qst}
+	rm -f **/*.{aux,fdb_latexmk,fls,log,synctex*,xdv,synctex.gz,synctex*,loep,qst}
+	rm -f $I/*
 
-rfcircuits.%: $S/rfcircuits/%.py $S/generate_pgf.py
-	python -m $S.$@
-
-signals.%: $S/signals/%.py $S/generate_pgf.py
-	python -m $S.$@
+clean-scripts:
+	rm -f $S/*.{aux,log,synctex.gz}
 
 $I/%: $S/%.tex $S/notefig.cls
 	cd $S && $(LATEX) $(LATEX_ARGS) $(<F) && mv $(@F).pdf ../$I && echo
