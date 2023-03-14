@@ -1,0 +1,103 @@
+\section{部分推导过程及说明} \label{部分推导过程及说明}
+
+\subsection{矩形脉冲卷积形成梯形脉冲 (三角形脉冲)} \label{proofs 矩形脉冲卷积形成梯形脉冲 (三角形脉冲)}
+
+由 \hyperref[2.5 梯形脉冲 (三角形脉冲)]{梯形脉冲 (三角形脉冲)} 小节的说明, 设 $f_1(t)=E_1G_{\tau_1}(t)$, $f_2(t)=E_2G_{\tau_2}(t)$, 并不妨设 $\tau_1>\tau_2$. 显然, $f_1$ 和 $f_2$ 分别表示高度为 $E_1$, 宽度为 $\tau_1$ 和高度为 $E_2$, 宽度为 $\tau_2$ 的矩形脉冲. 根据卷积的数学定义 (\ref{eq:2.5 conv}),
+\begin{equation}
+    [f_1*f_2](t)=\int_{-\infty}^{\infty}E_1E_2G_{\tau_1}(\tau)G_{\tau_2}(t-\tau)\mathrm{d}\tau.
+\end{equation}
+
+先确定 $f_1(\tau)f_2(t-\tau)\neq 0$ 时 $t$ 的取值范围. 显然 $f_1(\tau)$ 和 $f_2(t-\tau)$ 取值非零的充分必要条件分别为
+\begin{gather*}
+    -\frac{\tau_1}{2}<\tau<\frac{\tau_1}{2}, \\
+    -\frac{\tau_2}{2}<t-\tau<\frac{\tau_2}{2}.
+\end{gather*}
+也即
+\begin{gather}
+    -\frac{\tau_1}{2}<\tau<\frac{\tau_1}{2}, \label{eq:proofs conv trapezoid tau 1} \\
+    t-\frac{\tau_2}{2}<\tau<t+\frac{\tau_2}{2}. \label{eq:proofs conv trapezoid tau 2}
+\end{gather}
+
+若要 $f_1(\tau)f_2(t-\tau)\neq 0$, 则需上述两个条件求得的 $t$ 的解集存在交集. 现考虑其反面, 若要使该交集为空集, 仅需满足
+\begin{equation}
+    t-\frac{\tau_2}{2}\geq\frac{\tau_1}{2}
+\end{equation}
+或
+\begin{equation}
+    t+\frac{\tau_2}{2}\leq-\frac{\tau_1}{2}.
+\end{equation}
+则该交集为
+\begin{equation*}
+    \left\{t\left|t-\frac{\tau_2}{2}<\frac{\tau_1}{2}, t+\frac{\tau_2}{2}>-\frac{\tau_1}{2}\right.\right\}.
+\end{equation*}
+也即, $f_1(\tau)f_2(t-\tau)\neq 0$ 时 $t$ 的取值范围为
+\begin{equation}
+    -\frac{\tau_1+\tau_2}{2}<t<\frac{\tau_1+\tau_2}{2}.
+\end{equation}
+这也表示所形成的梯形脉冲 (三角形脉冲) 的下底范围为 $-\dfrac{\tau_1+\tau_2}{2}<t<\dfrac{\tau_1+\tau_2}{2}$, 宽度恰为 $\tau_1+\tau_2$.
+
+再确定卷积积分的上下限. 因为 $\tau_1>\tau_2$, 所以联立 (\ref{eq:proofs conv trapezoid tau 1}) 和 (\ref{eq:proofs conv trapezoid tau 2}) 后 $\tau$ 满足的集合符合如下的分类讨论:
+
+\underline{Case \#1:} 当
+\begin{equation*}
+    \begin{cases}
+        t+\dfrac{\tau_2}{2}>-\dfrac{\tau_1}{2}, \\
+        t-\dfrac{\tau_2}{2}<-\dfrac{\tau_1}{2},
+    \end{cases}
+\end{equation*}
+也即
+\begin{equation}
+    -\frac{\tau_1+\tau_2}{2}<t<-\frac{\tau_1-\tau_2}{2}
+\end{equation}
+时,
+\begin{equation}
+    -\frac{\tau_1}{2}<\tau<t+\frac{\tau_2}{2}.
+\end{equation}
+
+\underline{Case \#2:} 当
+\begin{equation*}
+    \begin{cases}
+        t+\dfrac{\tau_2}{2}<\dfrac{\tau_1}{2}, \\
+        t-\dfrac{\tau_2}{2}>-\dfrac{\tau_1}{2},
+    \end{cases}
+\end{equation*}
+也即
+\begin{equation}
+    -\frac{\tau_1-\tau_2}{2}<t<\frac{\tau_1-\tau_2}{2}
+\end{equation}
+时,
+\begin{equation}
+    t-\frac{\tau_2}{2}<\tau<t+\frac{\tau_2}{2}.
+\end{equation}
+
+\underline{Case \#3:} 当
+\begin{equation*}
+    \begin{cases}
+        t+\dfrac{\tau_2}{2}>\dfrac{\tau_1}{2}, \\
+        t-\dfrac{\tau_2}{2}<\dfrac{\tau_1}{2},
+    \end{cases}
+\end{equation*}
+也即
+\begin{equation}
+    \frac{\tau_1-\tau_2}{2}<t<\frac{\tau_1+\tau_2}{2}
+\end{equation}
+时,
+\begin{equation}
+    t-\frac{\tau_2}{2}<\tau<\frac{\tau_1}{2}.
+\end{equation}
+
+因此, 卷积积分的值, 也即所形成的脉冲的表达式为
+\begin{align}
+    \nonumber [f_1*f_2](t) & =\int_{\tau_\mathrm{min}}^{\tau_\mathrm{max}}E_1E_2\mathrm{d}\tau                                                      \\
+    \nonumber              & =E_1E_2(\tau_\mathrm{max}-\tau_\mathrm{min})                                                                           \\
+                           & =\begin{cases}
+                                  \displaystyle
+                                  E_1E_2\left(t+\frac{\tau_1+\tau_2}{2}\right),\quad & \displaystyle -\frac{\tau_1-\tau_2}{2}<t<\frac{\tau_1-\tau_2}{2} \\
+                                  \displaystyle
+                                  E_1E_2\tau_2,\quad                                 & \displaystyle -\frac{\tau_1-\tau_2}{2}<t<\frac{\tau_1-\tau_2}{2} \\
+                                  \displaystyle
+                                  E_1E_2\left(\frac{\tau_1+\tau_2}{2}-t\right).\quad & \displaystyle \frac{\tau_1-\tau_2}{2}<t<\frac{\tau_1+\tau_2}{2}
+                              \end{cases}
+\end{align}
+
+显然, 表达式上所形成的脉冲符合上文所述的特征.

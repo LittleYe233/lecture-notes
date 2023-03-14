@@ -37,6 +37,11 @@
 
 单位斜变函数的导数是单位阶跃函数.
 
+\textbf{相对单位阶跃信号}\quad 发生 1 个单位跳变, 但不一定从 0 开始.
+\begin{equation}
+    \Delta u(t>0)=1+\Delta u(t<0).
+\end{equation}
+
 \textbf{矩形脉冲信号}
 \begin{gather}
     R_T(t)=u(t)-u(t-T). \\
@@ -66,7 +71,8 @@
 \begin{gather}
     \delta(at)=\frac{1}{|a|}\delta(t); \\
     \int_{-\infty}^{t}u(t-t_0)=\delta(t-t_0); \\
-    \int_{-\infty}^{\infty}\delta(t-t_0)f(t)=f(t_0).
+    \int_{-\infty}^{\infty}\delta(t-t_0)f(t)=f(t_0). \\
+    \delta[f(t)]=\delta[(t-t_1)(t-t_2)\cdots(t-t_n)]=\sum_{i=1}^{n}\frac{1}{|f'(t_i)|}\delta(t-t_i).\qquad (t_1\neq t_2 \neq \cdots \neq t_n.)
 \end{gather}
 
 \subsubsection{冲激偶信号}

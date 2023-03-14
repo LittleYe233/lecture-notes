@@ -1,0 +1,120 @@
+\section{连续时间系统的时域分析} \label{连续时间系统的时域分析}
+\subsection{用时域经典法求解微分方程} \label{用时域经典法求解微分方程}
+
+\textbf{连续时间系统的数学模型}\quad 高阶微分方程表示. $e(t)\rightarrow r(t)$.
+\begin{equation} \label{eq:2.1 lti model}
+    \sum_{i=0}^{n}C_i\frac{\mathrm{d}^{n-i}r(t)}{\mathrm{d}t^{n-i}}=\sum_{i=0}^{n}E_i\frac{\mathrm{d}^{n-i}e(t)}{\mathrm{d}t^{n-i}}.
+\end{equation}
+
+可以认为完全解为 $r(t)=r_h(t)+r_p(t)$.
+
+\subsubsection{齐次解}
+(\ref{eq:2.1 lti model}) 的齐次方程为
+\begin{equation}
+    \sum_{i=0}^{n}C_i\frac{\mathrm{d}^{n-i}r(t)}{\mathrm{d}t^{n-i}}=0,
+\end{equation}
+并记其齐次解为 $r_h(t)$. 其特征方程为
+\begin{equation}
+    \sum_{i=0}^{n}C_i\alpha^{n-i}=0,
+\end{equation}
+并记其 $m$ 个特征根分别为 $\alpha_1,\alpha_2,\cdots,\alpha_m$, 重数分别为 $p_1,p_2,\cdots,p_m$, 则齐次解为
+\begin{equation} \label{eq:2.1 lti model r_h}
+    r_h(t)=\sum_{i=1}^{m}\left(\sum_{j=1}^{p_i}A_{i,j}t^{p_i-j}\right)e^{\alpha_i t}.
+\end{equation}
+
+特别的, 当特征方程\textit{无重根}时, $m=n$, $p_1=p_2=\cdots=p_n=1$, 则
+\begin{equation}
+    r_h(t)=\sum_{i=1}^{m}A_{i,1} e^{\alpha_i t}=\sum_{i=1}^{n}A_i e^{\alpha_i t}.
+\end{equation}
+
+\subsubsection{特解}
+微分方程特解 $r_p(t)$ 的函数形式与激励函数 $e(t)$ 形式有关. $e(t)$ 代入 (\ref{eq:2.1 lti model}) 右侧得到 ``自由项''.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        激励函数 $e(t)$                                                   & 特解 $r_p(t)$                                                                            \\
+        \midrule
+        $E$ (常数)                                                      & $B$                                                                                    \\
+        $t^p$                                                         & $B_1t^p+B_2t^{p-1}+\cdots+B_pt+B_{p+1}$                                                \\
+        $e^{\alpha t}$                                                & $Be^{\alpha t}$                                                                        \\
+        $\cos{\omega t}$ 或 $\sin{\omega t}$                           & $B_1\cos\omega t+B_2\sin\omega t$                                                      \\
+        $t^pe^{\alpha t}\cos\omega t$ 或 $t^pe^{\alpha t}\sin\omega t$ & $(B_0t^p+\cdots+B_p)e^{\alpha t}\cos\omega t+(D_0+\cdots+D_p)e^{\alpha t}\sin\omega t$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{几种激励函数对应的特解}
+\end{table}
+
+\subsubsection{待定系数}
+
+一般在 $t=0$ 加入激励, 可将求解区间定为 $0\leq t<\infty$. 一组边界条件可以给定为此区间内任意时刻 $t_0$ 的状态
+\begin{equation}
+    r^{(k)}(t_0)=\left[r(t_0),\cdots,\frac{\mathrm{d}^{n-1}r(t_0)}{\mathrm{d}t^{n-1}}\right].
+\end{equation}
+
+给定 $t=0$ 时刻状态 $r^{(k)}(0)$, 待定系数 $A_i$ 满足
+\begin{equation} \label{eq:2.1 final equation}
+    \begin{bmatrix}
+        r(0)-r_p(0)                                                               \\
+        \dfrac{\mathrm{d}}{\mathrm{d}t}r(0)-\dfrac{\mathrm{d}}{\mathrm{d}t}r_p(0) \\
+        \vdots                                                                    \\
+        \dfrac{\mathrm{d}^{n-1}}{\mathrm{d}^{n-1}}r(0)-\dfrac{\mathrm{d}^{n-1}}{\mathrm{d}^{n-1}}r_p(0)
+    \end{bmatrix}=
+    \begin{bmatrix}
+        1              & 1              & \cdots & 1              \\
+        \alpha_1       & \alpha_2       & \cdots & \alpha_n       \\
+        \vdots         & \vdots         &        & \vdots         \\
+        \alpha_1^{n-1} & \alpha_2^{n-1} & \cdots & \alpha_n^{n-1}
+    \end{bmatrix}
+    \begin{bmatrix}
+        A_1    \\
+        A_2    \\
+        \cdots \\
+        A_n
+    \end{bmatrix}.
+\end{equation}
+
+\begin{exampleprob}
+    如下图的电路中, 激励为 $x(t)=\cos(2t)u(t)$, 两个电容的初始电压均为零. 求输出信号 $v_2(t)$ 的表达式.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.6\textwidth]{images/signals_eprob_2_1_circuit.pdf}
+        \caption{题图}
+    \end{figure}
+
+    \begin{solution}
+        列写节点电流方程:
+        \begin{gather*}
+            \frac{x(t)-V_1(t)}{R_1}=C_1\frac{\mathrm{d}V_1(t)}{\mathrm{d}t}+\frac{V_1(t)-V_2(t)}{R_2}, \\
+            \frac{V_1(t)-V_2(t)}{R_2}=C_2\frac{\mathrm{d}V_2(t)}{\mathrm{d}t}.
+        \end{gather*}
+        整理得
+        \begin{equation*}
+            C_1C_2R_1R_2V_2''(t)+(C_1R_1+C_2R_1+C_2R_2)V_2'(t)+V_2(t)=x(t).
+        \end{equation*}
+        也即
+        \begin{equation*}
+            V_2''(t)+7V_2'(t)+6V_2(t)=6\cos(2t)u(t).\qquad (\textrm{SI})
+        \end{equation*}
+
+        这是一个微分方程, 其特征方程为
+        \begin{equation*}
+            \alpha^2+7\alpha+6=0.
+        \end{equation*}
+        解得 $\alpha_1=-1$, $\alpha_2=-6$. 因此微分方程齐次解的形式为 $V_{2h}(t)=(A_1e^{-t}+A_2e^{-6t})u(t)$.
+
+        因为该微分方程非齐次, 查表得到特解的形式为 $V_{2p}=[B_1\cos(2t)+B_2\sin(2t)]u(t)$, 代入微分方程, 解得 $B_1=\dfrac{21}{50}$, $B_2=\dfrac{3}{50}$. 也即
+        \begin{gather*}
+            V_{2p}=\left[\frac{21}{50}\cos(2t)+\dfrac{3}{50}\sin(2t)\right]u(t). \\
+            V_{2p}'=\left[\frac{3}{25}\cos(2t)-\dfrac{21}{25}\sin(2t)\right]u(t).
+        \end{gather*}
+        同时可得 $V_{2p}(0)=\dfrac{21}{50}$, $V_{2p}'(0)=\dfrac{3}{25}$.
+
+        根据换路定律 (\ref{eq:2.2 transformation theorem v_C}), 可得 $V_2(0_+)=0$. 因为 $t=0_+$ 时, $C_1$, $R_1$, $R_2$ 两端电压没有突变, 所以 $V_2'(0_+)=0$. 将初始条件代入 (\ref{eq:2.1 final equation}), 解得 $A_1=-\dfrac{6}{25}$, $A_2=\dfrac{9}{50}$. 因此, 输出电压的表达式为
+        \begin{equation*}
+            V_2(t)=\left[-\dfrac{6}{25}e^{-t}+\dfrac{9}{50}e^{-6t}+\dfrac{21}{50}\cos(2t)+\dfrac{3}{50}\sin(2t)\right]u(t).
+        \end{equation*}
+    \end{solution}
+\end{exampleprob}
