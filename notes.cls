@@ -1,7 +1,16 @@
-% Packages may needed manual installation: pgfplots, extarrows, wrapstuff, curve2e, pict2e
+% Packages may needed manual installation: pgfplots, extarrows, wrapstuff, curve2e, pict2e, circuitikz, l3kernel, l3packages
+% Remember to `sudo fmtutil-sys --all'!
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.4.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.5.0]
+
+% Define options
+\newif\if@notes@circuitikz
+% Set it to false
+\@notes@circuitikzfalse
+\DeclareOption{circuitikz}{\@notes@circuitikztrue}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
+\ProcessOptions\relax
 
 \LoadClass[
     fontset=custom,
@@ -18,7 +27,6 @@
 \RequirePackage[useregional]{datetime2}
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
-\RequirePackage{tikz}
 \RequirePackage{pgfplots}
 \RequirePackage{subcaption}
 \RequirePackage[abspath]{currfile}
@@ -38,6 +46,17 @@
 \RequirePackage{wrapfig2}
 \RequirePackage{wrapstuff}
 \RequirePackage{extarrows}
+\RequirePackage{booktabs}
+
+% Choose TikZ or CircuiTikZ
+\if@notes@circuitikz
+    \RequirePackage[siunitx]{circuitikz}
+    \RequirePackage{tikz}
+    \usetikzlibrary{shapes, arrows.meta, positioning, calc, decorations.pathreplacing}
+\else
+    \RequirePackage{tikz}
+    \usetikzlibrary{shapes, arrows.meta, positioning, circuits.ee.IEC, calc, decorations.pathreplacing}
+\fi
 
 \ctexset{
     today=old,
@@ -82,7 +101,6 @@
     urlcolor=transpink
 }
 \urlstyle{same}
-\usetikzlibrary{shapes, arrows.meta, positioning, circuits.ee.IEC, calc, decorations.pathreplacing}
 % Resolve pgfplots compatibility warning.
 \pgfplotsset{%
     compat=1.18,
@@ -94,6 +112,7 @@
 % Change figure and equation number counters.
 % See: https://stackoverflow.com/a/44662211/12002560
 \counterwithin{figure}{subsection}
+\counterwithin{table}{subsection}
 \counterwithin{equation}{subsection}
 % Resolve hypcap=true overriden warning.
 \captionsetup{hypcap=false}
@@ -204,3 +223,6 @@
 % See: https://tex.stackexchange.com/a/512867/290833
 \newcommand{\rmg}{\vspace{-1.3\baselineskip}}
 \newcommand{\srmg}{\vspace{-.5\baselineskip}}
+
+\newcommand{\dd}[2]{\ifthenelse{\equal{#1}{1}}{\frac{\mathrm{d}}{\mathrm{d}{#2}}}{\frac{\mathrm{d}^{#1}}{\mathrm{d}{#2}^{#1}}}}
+\newcommand{\ddd}[2]{\ifthenelse{\equal{#1}{1}}{\dfrac{\mathrm{d}}{\mathrm{d}{#2}}}{\dfrac{\mathrm{d}^{#1}}{\mathrm{d}{#2}^{#1}}}}
