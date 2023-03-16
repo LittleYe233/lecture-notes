@@ -2,7 +2,7 @@
 % Remember to `sudo fmtutil-sys --all'!
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.5.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.6.0]
 
 % Define options
 \newif\if@notes@circuitikz
@@ -226,3 +226,6 @@
 
 \newcommand{\dd}[2]{\ifthenelse{\equal{#1}{1}}{\frac{\mathrm{d}}{\mathrm{d}{#2}}}{\frac{\mathrm{d}^{#1}}{\mathrm{d}{#2}^{#1}}}}
 \newcommand{\ddd}[2]{\ifthenelse{\equal{#1}{1}}{\dfrac{\mathrm{d}}{\mathrm{d}{#2}}}{\dfrac{\mathrm{d}^{#1}}{\mathrm{d}{#2}^{#1}}}}
+
+% See: https://tex.stackexchange.com/a/260414/290833
+\AtBeginEnvironment{cases}{\everymath{\displaystyle}}
