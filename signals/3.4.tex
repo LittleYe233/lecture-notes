@@ -1,0 +1,77 @@
+\subsection{典型非周期信号的傅里叶变换} \label{3 典型非周期信号的傅里叶变换}
+\subsubsection{单边指数信号}
+\rmg\srmg
+\begin{gather}
+    f(t)=e^{-at}u(t).\qquad (a>0) \\
+    \begin{cases}
+        F(\omega)=\frac{1}{a+\mathrm{j}\omega}.    \\
+        |F(\omega)|=\frac{1}{\sqrt{a^2+\omega^2}}. \\
+        \varphi(\omega)=-\arctan\frac{\omega}{a}.
+    \end{cases}
+\end{gather}
+
+\subsubsection{双边指数信号}
+\rmg\srmg
+\begin{gather}
+    f(t)=e^{-a|t|}.\qquad (a>0) \\
+    F(\omega)=\frac{2a}{a^2+\omega^2}.
+\end{gather}
+
+\subsubsection{矩形脉冲信号}
+\rmg\srmg
+\begin{gather}
+    f(t)=EG_\tau(t). \\
+    \begin{cases}
+        F(\omega)=E\tau\mathrm{Sa}\left(\frac{\omega\tau}{2}\right).                \\
+        |F(\omega)|=E\tau\left|\mathrm{Sa}\left(\frac{\omega\tau}{2}\right)\right|. \\
+        \varphi(\omega)=\begin{cases}
+                            0,\quad   & \frac{4n\pi}{\tau}<|\omega|<\frac{(4n+2)\pi}{\tau}     \\
+                            \pi.\quad & \frac{(4n+2)\pi}{\tau}<|\omega|<\frac{4(n+1)\pi}{\tau}
+                        \end{cases}
+    \end{cases}
+\end{gather}
+
+类似 (\ref{eq:3.2 periodic rect signal Bf}), 在允许失真的条件下, 可以认为信号的频带范围为 $0\leq \omega\leq \dfrac{2\pi}{\tau}$.
+
+\subsubsection{钟形脉冲信号}
+\rmg
+\begin{gather}
+    f(t)=E\exp\left[-\left(\frac{t}{\tau}\right)^2\right]. \\
+    F(\omega)=\sqrt{\pi}E\tau\exp\left[-\left(\frac{\omega\tau}{2}\right)^2\right].
+\end{gather}
+
+\subsubsection{符号函数}
+\rmg\srmg
+\begin{gather}
+    f(t)=\mathrm{sgn}(t). \\
+    \begin{cases}
+        F(\omega)=\frac{2}{\mathrm{j}\omega}. \\
+        |F(\omega)|=\frac{2}{|\omega|}.       \\
+        \varphi(\omega)=-\frac{\pi}{2}\mathrm{sgn}(\omega).\qquad (\omega\neq 0)
+    \end{cases}
+\end{gather}
+
+\subsubsection{升余弦脉冲信号}
+\rmg
+\begin{gather}
+    f(t)=\frac{E}{2}\left[1+\cos\left(\frac{\pi}{\tau}t\right)\right].\qquad (-\tau\leq t\leq \tau) \\
+    \begin{cases}
+        F(\omega)=\frac{E\tau\mathrm{Sa}(\omega\tau)}{1-\left(\dfrac{\omega\tau}{\pi}\right)^2}.
+    \end{cases}
+\end{gather}
+
+升余弦脉冲信号的频谱比矩形脉冲的频谱更加集中. 频带宽度可以认为是 $0\leq f\leq \dfrac{1}{\tau}$.
+
+\subsubsection{余弦信号}
+\rmg\srmg
+\begin{gather}
+    f(t)=E\cos(\omega_0 t). \\
+    F(t)=E\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)].
+\end{gather}
+
+\subsubsection{正弦信号}
+\rmg\srmg
+\begin{gather}
+    f(t)=E\sin(\omega_0 t). \\
+    F(t)=\mathrm{j}E\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)].
+\end{gather}
