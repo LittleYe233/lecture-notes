@@ -2,7 +2,7 @@
 % Remember to `sudo fmtutil-sys --all'!
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.6.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.7.0]
 
 % Define options
 \newif\if@notes@circuitikz
@@ -32,21 +32,23 @@
 \RequirePackage[abspath]{currfile}
 \RequirePackage{lastpage}
 \RequirePackage{chngcntr}
+% wrapfig2 must be loaded before amsmath.
+\RequirePackage{wrapfig2}
 % Try to add some missing math symbols.
 % See: https://tex.stackexchange.com/a/621515
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
-\RequirePackage{unicode-math}
 \RequirePackage{ifthen}
 \RequirePackage{float}
 % Include `subfigure'.
 \RequirePackage{caption}
 \RequirePackage{subcaption}
-\RequirePackage{wrapfig2}
 \RequirePackage{wrapstuff}
 \RequirePackage{extarrows}
 \RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{enumitem}
 
 % Choose TikZ or CircuiTikZ
 \if@notes@circuitikz
@@ -116,6 +118,10 @@
 \counterwithin{equation}{subsection}
 % Resolve hypcap=true overriden warning.
 \captionsetup{hypcap=false}
+% Reduce line space between enumerate and itemize items.
+% See: https://tex.stackexchange.com/a/43747
+\setlist[enumerate]{nosep}
+\setlist[itemize]{nosep}
 
 \makeatletter
 % See: https://tex.stackexchange.com/a/216121
