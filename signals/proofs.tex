@@ -101,3 +101,19 @@
 \end{align}
 
 显然, 表达式上所形成的脉冲符合上文所述的特征.
+
+\subsection{符号函数的傅里叶变换} \label{proofs 符号函数的傅里叶变换}
+符号函数本身不满足绝对可积条件, 却存在傅里叶变换. 借助双边指数衰减函数 $f(t)=e^{-a|t|}\ (a>0)$, 令 $f_1(t)=f(t)\mathrm{sgn}(t)$. 则
+\begin{equation}
+    \begin{aligned}
+        F_1(\omega)=\mathcal{F}[f_1(t)] & =\int_{-\infty}^{0}-e^{at}\cdot e^{-\mathrm{j}\omega t}\mathrm{d}t+\int_{0}^{+\infty}e^{-at}\cdot e^{-\mathrm{j}\omega t}\mathrm{d}t                                    \\
+                                        & =\left.-\frac{1}{a-\mathrm{j}\omega}e^{(a-\mathrm{j}\omega)t}\right|_{-\infty}^{0}+\left.\frac{1}{-(a+\mathrm{j}\omega)}e^{-(a+\mathrm{j}\omega)t}\right|_{0}^{+\infty} \\
+                                        & =-\frac{1}{a-\mathrm{j}\omega}+\frac{1}{a+\mathrm{j}\omega}                                                                                                             \\
+                                        & =-\frac{2\mathrm{j}\omega}{a^2+\omega^2}.
+    \end{aligned}
+\end{equation}
+
+因此, 符号函数 $\mathrm{sgn}(t)$ 的频谱 $F(\omega)$ 为
+\begin{equation}
+    F(\omega)=\lim_{a\rightarrow 0}F_1(\omega)=\lim_{a\rightarrow 0}\left(-\frac{2\mathrm{j}\omega}{a^2+\omega^2}\right)=\frac{2}{\mathrm{j}\omega}.
+\end{equation}

@@ -1,0 +1,33 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        declare function = {
+                E = 1;
+                T = 1;
+            }
+    ]
+    \begin{axis}[
+            height=2in, width=4in,
+            ymin=-E/2*1.2, ymax=E/2*1.2,
+            xmin=(-2*T)*1.2, xmax=(2*T)*1.2,
+            xlabel={$t$}, ylabel={$f(t)$},
+            ytick={E/2, -E/2}, yticklabels={$\dfrac{E}{2}$, $-\dfrac{E}{2}$},
+            xtick={-T/2, T/2},
+            xticklabels={$-\dfrac{T}{2}$, $\dfrac{T}{2}$}
+        ]
+        \addplot [color=flatblue] coordinates {%
+                (-2*T, 0)
+                (-1.5*T, E/2)
+                (-1.5*T, -E/2)
+                (-0.5*T, E/2)
+                (-0.5*T, -E/2)
+                (0.5*T, E/2)
+                (0.5*T, -E/2)
+                (1.5*T, E/2)
+                (1.5*T, -E/2)
+                (2*T, 0)
+            };
+    \end{axis};
+\end{tikzpicture}
+\end{document}

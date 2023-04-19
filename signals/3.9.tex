@@ -1,0 +1,52 @@
+\subsection{抽样信号的傅里叶变换} \label{3 抽样信号的傅里叶变换}
+\subsubsection{时域抽样}
+令连续信号 $f(t)$, 抽样脉冲信号 $p(t)$, 抽样后信号 $f_s(t)$ 的傅里叶变换分别为 $F(\omega)$, $P(\omega)$, $F_s(\omega)$, 且抽样周期为 $T_s$, 抽样角频率 $\omega_s=\dfrac{2\pi}{T_s}$. 抽样过程一般表示为
+\begin{equation}
+    f_s(t)=f(t)p(t).
+\end{equation}
+则 $f_s(t)$ 的傅里叶变换为
+\begin{equation}
+    \mathcal{F}[f_s(t)]=\sum_{n=-\infty}^{+\infty}P_nF(\omega-n\omega_s),
+\end{equation}
+其中 $P_n$ 为 $p(t)$ 的傅里叶级数的系数
+\begin{equation}
+    P_n=\frac{1}{T_s}\int_{0}^{T_s}p(t)e^{-\mathrm{j}n\omega_s t}\mathrm{d}t.
+\end{equation}
+
+\textbf{矩形脉冲抽样 (自然抽样)}
+
+设抽样脉冲序列的脉冲幅度为 $E$, 脉冲宽度 $\tau$, 抽样角频率 $\omega_s$. 则
+\begin{equation}
+    P_n=\frac{E\tau}{T_s}\mathrm{Sa}\left(\frac{n\omega_s\tau}{2}\right).
+\end{equation}
+因此
+\begin{equation}
+    F_s(\omega)=\frac{E\tau}{T_s}\sum_{n=-\infty}^{+\infty}\mathrm{Sa}\left(\frac{n\omega_s\tau}{2}\right)F(\omega-n\omega_s).
+\end{equation}
+
+$F(\omega)$ 在以 $\omega_s$ 为周期的重复过程中幅度以 $\mathrm{Sa}\left(\dfrac{n\omega_s\tau}{2}\right)$ 的规律变化.
+
+\textbf{冲激抽样 (理想抽样)}
+
+设抽样脉冲序列为 $p(t)=\delta_{T_s}(t)$, 也即抽样间隔为 $T_s$ 的周期冲激信号序列
+\begin{equation}
+    \delta_{T_s}(t)=\sum_{n=-\infty}^{+\infty}\delta(t-nT_s).
+\end{equation}
+则
+\begin{equation}
+    P_n=\frac{1}{T_s}.
+\end{equation}
+因此
+\begin{equation}
+    F_s(\omega)=\frac{1}{T_s}\sum_{n=\infty}^{+\infty}F(\omega-n\omega_s).
+\end{equation}
+
+$F(\omega)$ 以 $\omega_s$ 为周期等幅重复.
+
+\subsubsection{频域抽样}
+设连续频谱函数 $F(\omega)$ 对应时间函数为 $f(t)$. 若频谱 $F(\omega)$ 在频域中被间隔为 $\omega_0$ 的冲激序列 $\delta_{\omega_0}(\omega)$ 抽样, 则抽样后的频谱函数 $F_0(\omega)$ 所对应的时间函数 $f_0(t)$ 满足
+\begin{equation}
+    f_0(t)=\frac{1}{\omega_0}\sum_{n=-\infty}^{+\infty}f(t-nT_0).
+\end{equation}
+
+若 $f(t)$ 的频谱 $F(\omega)$ 被间隔为 $\omega_0$ 的冲激序列在频域中抽样, 则在时域中等效于 $f(t)$ 以 $T_0\ \left(T_0=\dfrac{2\pi}{\omega_0}\right)$ 为周期重复. \textit{周期函数的频谱是离散的}.

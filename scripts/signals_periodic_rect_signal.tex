@@ -1,0 +1,25 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        declare function = {
+                E = 1;
+                Tau = 0.4;
+                T = 1;
+            }
+    ]
+    \begin{axis}[
+            height=2in, width=4in,
+            ymin=0, ymax=E*1.2,
+            xmin=(-T-Tau/2)*1.2, xmax=(T+Tau/2)*1.2,
+            xlabel={$t$}, ylabel={$f(t)$},
+            ytick={E}, yticklabels={$E$},
+            xtick={-T, -Tau/2, Tau/2, T},
+            xticklabels={$-T$, $-\dfrac{\tau}{2}$, $\dfrac{\tau}{2}$, $T$}
+        ]
+        \addplot [color=flatblue] coordinates {(-T-Tau/2, 0) (-T-Tau/2, E) (-T+Tau/2, E) (-T+Tau/2, 0)};
+        \addplot [color=flatblue] coordinates {(-Tau/2, 0) (-Tau/2, E) (Tau/2, E) (Tau/2, 0)};
+        \addplot [color=flatblue] coordinates {(T-Tau/2, 0) (T-Tau/2, E) (T+Tau/2, E) (T+Tau/2, 0)};
+    \end{axis};
+\end{tikzpicture}
+\end{document}

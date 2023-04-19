@@ -96,7 +96,12 @@ $F_n$ 与上述其他系数有如下关系:
 \textbf{偶谐函数}\quad $f\left(t\pm\dfrac{T}{2}\right)=f(t)$. 只包含偶次谐波分量.
 
 \subsubsection{傅里叶有限级数与最小方均误差}
-取傅里叶级数 $f(t)$ 的前 $(2N+1)$ 项 $S_N(t)$. 则 $S_N(t)$ 逼近 $f(t)$ 引起的误差函数为
+取傅里叶级数 $f(t)$ 的前 $(2N+1)$ 项 $S_N(t)$
+\begin{equation}
+    S_N(t)=a_0+\sum_{n=1}^{N}[a_n\cos(n\omega t)+b_n\sin(n\omega t)].
+\end{equation}
+
+则 $S_N(t)$ 逼近 $f(t)$ 引起的误差函数为
 \begin{equation}
     \epsilon_N(t)=f(t)-S_N(t).
 \end{equation}

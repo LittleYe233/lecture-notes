@@ -1,0 +1,59 @@
+\subsection{抽样定理} \label{3 抽样定理}
+\subsubsection{时域抽样定理}
+一个频谱受限的信号 $f(t)$, 如果频谱只占据 $-\omega_m\sim+\omega_m$ 的范围, 则信号 $f(t)$ 可以用等间隔的抽样值唯一地表示, 而抽样频率不低于 $2f_m\ \left(f_m=\dfrac{2\pi}{\omega}\right)$. 只有保证一定的抽样频率, 才能保证抽样后信号的频谱不混叠.
+
+\textbf{奈奎斯特频率}\quad 最低允许的抽样频率. $f_s=2f_m$.
+
+\textbf{奈奎斯特间隔}\quad 最大允许的抽样间隔. $T_s=\dfrac{\pi}{\omega_m}=\dfrac{1}{2f_m}$.
+
+在满足抽样定律的条件下, 为从频谱 $F_s(\omega)$ 中无失真地选出 $F(\omega)$, 只需将其施加于理想低通滤波器 (系统函数为矩形函数, $H(\omega)=T_s[u(\omega+\omega_m)-u(\omega-\omega_m)]$) 从而取出 $|\omega|<\omega_m$ 的成分, 继而相当于恢复了时间函数 $f(t)$.
+
+\subsubsection{频域抽样定理}
+集中在 $-t_m\sim+t_m$ 的时间范围内的时间受限信号 $f(t)$, 为保证抽样后的频谱 $F_0(\omega)$ 能唯一表示原信号, 则在频域中须以不大于 $\dfrac{1}{2t_m}$ 的频率间隔对 $f(t)$ 的频谱进行抽样.
+
+\begin{exampleprob}
+    已知信号 $f(t)=\mathrm{Sa}(2t)$, 用 $\delta_{T_s}(t)$ 对其进行抽样. 求
+
+    \begin{enumerate}
+        \item 奈奎斯特抽样频率;
+        \item 若取 $\omega_s=6\omega_m$, 抽样信号 $f_s(t)=f(t)\delta_{T_s}(t)$;
+        \item $f_s(t)$ 的频谱;
+        \item 低通滤波器的截止频率 $\omega_c$.
+    \end{enumerate}
+
+    \begin{solution}
+        \begin{enumerate}
+            \item $f(t)$ 的傅里叶变换为 \begin{equation*}
+                      F(\omega)=\mathcal{F}[f(t)]=\frac{\pi}{2}[u(\omega+2)-u(\omega-2)].
+                  \end{equation*}
+                  显然 $\omega_m=2\ \mathrm{rad/s}$. 则奈奎斯特抽样频率为
+                  \begin{equation*}
+                      f_{s\mathrm{min}}=\frac{\omega_m}{\pi}=\frac{2}{\pi}\ \mathrm{Hz}.
+                  \end{equation*}
+            \item 因为抽样间隔为 $\omega_s=6\omega_m=12\ \mathrm{rad/s}$, 所以
+                  \begin{equation*}
+                      T_s=\frac{2\pi}{\omega_s}=\frac{\pi}{6}\ \mathrm{s}.
+                  \end{equation*}
+                  所以
+                  \begin{align*}
+                      f(s) & =f(t)\delta_{T_s}(t)                                                             \\
+                           & =\sum_{n=-\infty}^{+\infty}f(nT_s)\delta(t-nT_s)                                 \\
+                           & =\sum_{n=-\infty}^{+\infty}\mathrm{Sa}(2t)|_{t=nT_s}\delta(t-nT_s)               \\
+                           & =\sum_{n=-\infty}^{+\infty}\mathrm{Sa}\left(\frac{n\pi}{3}\right)\delta(t-nT_s).
+                  \end{align*}
+            \item \begin{align*}
+                      F_s(\mathrm{j}\omega) & =\frac{1}{T_s}\sum_{n=-\infty}^{+\infty}F(\mathrm{j}(\omega-n\omega_s)) \\
+                                            & =\frac{6}{\pi}F(\mathrm{j}(\omega-12n))                                 \\
+                                            & =3\sum_{n=-\infty}^{+\infty}[u(\omega+2-12n)-u(\omega-2-12n)].
+                  \end{align*}
+            \item 低通滤波器的截止频率需要满足
+                  \begin{equation*}
+                      \omega_m<\omega_c<\omega_s-\omega_m
+                  \end{equation*}
+                  也即
+                  \begin{equation*}
+                      2\ \mathrm{rad/s}<\omega_c<10\ \mathrm{rad/s}.
+                  \end{equation*}
+        \end{enumerate}
+    \end{solution}
+\end{exampleprob}

@@ -1,0 +1,33 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        declare function = {
+                E = 1;
+                T = 1;
+                Tau = T/2;
+                Sa(\x) = (\x==0) * 1 + (\x>0) * (sin(deg(\x))/\x);
+                Cn(\n) = E*Sa(\n*pi/2);
+            }
+    ]
+    \begin{axis}[
+            height=2in, width=4in,
+            domain=0:8,
+            ymin=Cn(3)*1.2, ymax=Cn(0)*1.2,
+            xmin=0, xmax=8*1.2,
+            xlabel={$\omega$}, ylabel={$c_n$},
+            ytick={Cn(0)}, yticklabels={$E$},
+            extra y ticks={0}, extra y tick label={$0$},
+            xtick={1,...,8},
+            xticklabels={$\omega$, $2\omega$, $3\omega$, $4\omega$, $5\omega$, $6\omega$, $7\omega$, $8\omega$}
+        ]
+        \addplot [color=flatblue, dashed] {Cn(\x)};
+        \foreach \n in {1,...,8} {%
+                \edef\temp{%
+                    \noexpand\addplot [color=flatblue] coordinates {(\n, 0) (\n, {Cn(\n)})};
+                    \noexpand\node [color=flatblue] at (\n, {Cn(\n)}) {\textbullet};
+                }\temp
+            }
+    \end{axis};
+\end{tikzpicture}
+\end{document}

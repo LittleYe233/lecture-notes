@@ -1,0 +1,34 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        declare function = {
+                E = 1;
+                Tau = 0.4;
+                T = 1;
+                Sa(\t) = (\t==0) * 1 + (\t>0) * (sin(deg(\t)) / \t); % \t should be rad.
+                C(\w) = 2*E*Tau/T * Sa(\w*Tau/2);
+                W(\n) = \n*2*pi/T;
+            }
+    ]
+    \begin{axis}[
+            height=2in, width=4in,
+            domain=0:6*pi/Tau,
+            ymin=C(3*pi/Tau)*1.2, ymax=C(0)*1.2,
+            xmin=0, xmax=(6*pi/Tau)*1.2,
+            xlabel={$\omega$}, ylabel={$c_n$},
+            ytick={C(0)}, yticklabels={$\dfrac{2E\tau}{T}$},
+            extra y ticks={0}, extra y tick label={$0$},
+            xtick={2*pi/Tau, 4*pi/Tau, 6*pi/Tau, W(1), W(2)},
+            xticklabels={$\dfrac{2\pi}{\tau}$, $\dfrac{4\pi}{\tau}$, $\dfrac{6\pi}{\tau}$, $\omega$, $2\omega$}
+        ]
+        \addplot [color=flatblue, dashed] {C(\x)};
+        \foreach \n in {0,...,7} {%
+                \edef\temp{%
+                    \noexpand\addplot [color=flatblue] coordinates {((W(\n)), 0) (W(\n), {C(W(\n))})};
+                    \noexpand\node [color=flatblue] at ({W(\n)}, {C(W(\n))}) {\textbullet};
+                }\temp
+            }
+    \end{axis};
+\end{tikzpicture}
+\end{document}

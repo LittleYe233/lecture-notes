@@ -1,0 +1,23 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        declare function = {
+                E = 1;
+                T = 1;
+            }
+    ]
+    \begin{axis}[
+            height=1.5in, width=4in,
+            domain=-2.7*T:2.7*T,
+            ymin=0, ymax=E*1.2,
+            xmin=(-2.5*T)*1.2, xmax=(2.5*T)*1.2,
+            xlabel={$t$}, ylabel={$f(t)$},
+            ytick={E}, yticklabels={$E$},
+            xtick={-T, -T/2, T/2, T},
+            xticklabels={$-T$, $-\dfrac{T}{2}$, $\dfrac{T}{2}$, $T$}
+        ]
+        \addplot [color=flatblue] {abs(E*cos(deg(pi/T*\x)))};
+    \end{axis};
+\end{tikzpicture}
+\end{document}
