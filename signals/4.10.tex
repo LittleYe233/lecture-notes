@@ -1,0 +1,41 @@
+\subsection{线性系统的稳定性} \label{4 线性系统的稳定性}
+\subsubsection{线性系统的稳定性及其条件}
+\textbf{稳定系统}\quad 幅度有限的输入只能产生幅度有限的输出, 也即输出不能包含\textit{冲激函数及其导数}.
+
+对于 LTI 系统, 不论其\textit{因果性}, 其稳定的另一种定义指单位冲激响应满足绝对可积条件, 也即
+\begin{equation} \label{eq:4.10 lti stable cond}
+    \int_{-\infty}^{\infty}|h(t)|\mathrm{d}t<\infty.
+\end{equation}
+
+对于满足因果性的 LTI 系统, 显然
+\begin{equation}
+    h(t)=h(t)u(t).
+\end{equation}
+因此 (\ref{eq:4.10 lti stable cond}) 即
+\begin{equation}
+    \int_{0_-}^{\infty}|h(t)|\mathrm{d}t<\infty.
+\end{equation}
+
+\textbf{线性因果系统的稳定性及其条件}
+\begin{itemize}
+    \item \underline{系统函数的极点}:
+          \begin{itemize}
+              \item \underline{稳定系统}: 系统函数的极点全部位于 s 平面虚轴左侧;
+              \item \underline{不稳定系统}: 系统函数有位于 s 平面虚轴右侧的极点, 或位于 s 平面虚轴上的二阶及以上的极点;
+              \item \underline{临界稳定系统}: 系统函数有位于 s 平面虚轴上的一阶极点.
+          \end{itemize}
+    \item \underline{系统函数的零极点个数}: 系统函数分子多项式的阶数不高于分母多项式的阶数, 也即系统函数的零点不多于其极点.
+\end{itemize}
+
+其中临界稳定系统产生等幅正弦振荡信号, 所以产生的输出幅度有限, 但其单位冲激响应不满足绝对可积条件.
+
+若系统函数的\textit{零点个数多于其极点}, 该系统函数可以拆分出 $s$ 的多项式或常数, 则该系统的冲激响应包含冲激函数及其导数, 显然该系统不稳定.
+
+\subsubsection{线性稳定系统的瞬态响应和稳定响应} \label{4.10 线性稳定系统的瞬态响应和稳定响应}
+\textbf{瞬态响应}\quad 在激励 (阶跃信号或有始周期信号) 作用下全响应中瞬时出现的成分, 随时间增长逐渐消失.
+
+稳定系统的系统函数极点位于 s 平面左半平面, 自由响应函数呈衰减趋势, 此时瞬态响应即自由响应.
+
+\textbf{稳态响应}\quad $t\rightarrow\infty$ 时, 全响应仍然保留的分量 (通常由阶跃函数或周期函数组成).
+
+若激励的拉普拉斯变换的极点位于 s 平面的虚轴上或右半平面, 此时稳态响应即强迫响应.

@@ -1,0 +1,22 @@
+\documentclass[circuitikz]{notefig}
+
+\begin{document}
+\footnotesize\selectfont
+
+\begin{circuitikz}[%
+        european, american inductors,
+        scale=1, transform shape,
+        x=3.5cm, y=1cm
+    ]
+    \ctikzset{%
+        cpos/.code={\ctikzsetvalof{current/distance}{#1}},
+        bipoles/length=.7cm
+    }
+
+    \draw (0, 0) coordinate (1p) to [short, o-, i=$I_L(s)$] ++(0.2, 0) coordinate (A) -- ++(0, 0.5) to [L=$sL$] ++(0.6, 0) -- ++(0, -0.5) coordinate (B) -- ++(0, -0.5) to [isource, i<_=$\dfrac{i_L(0_-)}{s}$] ++(-0.6, 0) -- (A);
+    \draw (B) to [short, -o] ++(0.2, 0) coordinate (1n);
+    \node [below=3em of 1p] (1pp) {$+$};
+    \node at (1n |- 1pp) (1nn) {$-$};
+    \node at ($(1pp)!0.5!(1nn)$) {$V_L(s)$};
+\end{circuitikz}
+\end{document}

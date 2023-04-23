@@ -1,0 +1,48 @@
+\subsection{双边拉普拉斯变换} \label{4 双边拉普拉斯变换}
+双边拉普拉斯变换的表示式为
+\begin{equation}
+    F_B(s)=\int_{-\infty}^{+\infty}f(t)e^{-st}\mathrm{d}t.
+\end{equation}
+
+\subsubsection{双边拉普拉斯变换的收敛域}
+因为衰减因子 $e^{-\sigma t}$ 在 $t<0$ 范围内变成增长因子, 因此一些信号可能不存在双边拉普拉斯变换. 考虑双边拉普拉斯变换的收敛域时, 可以将信号分解为 $t>0$ (右边信号, 因果信号) 和 $t<0$ (左边信号, 反因果信号) 两个部分, 继而该信号的双边拉普拉斯变换的收敛域即为两部分信号收敛域的公共部分.
+
+\textbf{右边信号}
+
+因为右边信号 $f(t)$ 满足 $f(t)u(t)=f(t)$, 实质上其双边拉普拉斯变换的积分上下限受到 $u(t)$ 限制, 与其单边拉普拉斯变换相同. 因此, 右边信号的双边拉普拉斯变换的收敛域与单边的情况相同.
+
+同时, 数学推导可以得知, 若存在 $\sigma=\sigma_0$ 使得信号在 $\mathbb{R}$ 上绝对可积, 则 $\sigma>\sigma_0$ 时该信号在 $\mathbb{R}$ 上均绝对可积. 因此, 右边信号的双边拉普拉斯变换的收敛域为 $\{s=\sigma+\mathrm{j}\omega|\sigma>\sigma_0\}$, 其中 $\sigma_0$ 为该信号的\textit{最大极点}. 换言之, 信号所有的极点都落在收敛域的边界或左侧.
+
+\textbf{左边信号}
+
+对于左边信号 (例如 $f(t)=-e^{-\alpha t}u(-t)$), 其双边拉普拉斯变换的收敛域为 $\{s=\sigma+\mathrm{j}\omega|\sigma<\sigma_1\}$, 其中 $\sigma_1$ 为该信号的\textit{最小极点}.
+
+\textbf{双边信号}
+
+显然其收敛域为 $\{s=\sigma+\mathrm{j}\omega|\sigma_0<\sigma<\sigma_1\}$. 其双边拉普拉斯变换存在的条件为 $\sigma_0<\sigma_1$.
+
+\textbf{时限信号}\quad 仅在 $t_0<t<t_1$ 范围内有幅度的信号.
+
+此时对于时限信号 $f(t)[u(t-t_0)-u(t-t_1)]$, 只需 $f(t)$ 绝对可积, 该信号就绝对可积, 故其收敛域为 $\mathbb{R}^2$.
+
+\subsubsection{收敛域对双边拉普拉斯逆变换的影响}
+对于相同的象函数, 若双边拉普拉斯变换的收敛域不同, 其对应的原函数也不同. 也即
+\begin{equation}
+    \mathcal{L}^{-1}[F_B(s)]=\begin{cases}
+        f(t)u(t),   & \quad \sigma>\sigma_0 \\
+        -f(t)u(-t). & \quad \sigma<\sigma_0
+    \end{cases}
+\end{equation}
+
+\begin{exampleprob}
+    讨论不同收敛域上 $F(s)=\dfrac{1}{s}+\dfrac{1}{s+\alpha} (\alpha>0)$ 的拉普拉斯逆变换.
+
+    \begin{solution}
+        $\dfrac{1}{s}$ 的拉普拉斯逆变换为 $u(t)$, 其收敛边界为 $\sigma=0$; $\dfrac{1}{s+\alpha}$ 的拉普拉斯逆变换为 $e^{-\alpha t}u(t)$, 其收敛边界为 $\sigma=-\alpha$. 因此 $F(s)$ 的拉普拉斯逆变换有如下三种可能:
+        \begin{itemize}
+            \item $\dfrac{1}{s}$ 和 $\dfrac{1}{s+\alpha}$ 均看作右边信号, 此时收敛域为 $\sigma>0$, 拉普拉斯逆变换为 $[1+e^{-\alpha t}]u(t)$;
+            \item $\dfrac{1}{s}$ 看作左边信号, $\dfrac{1}{s+\alpha}$ 看作右边信号, 此时收敛域为 $-\alpha<\sigma<0$, 拉普拉斯逆变换为 $-u(-t)+e^{-\alpha t}u(t)$;
+            \item $\dfrac{1}{s}$ 和 $\dfrac{1}{s+\alpha}$ 均看作左边信号, 此时收敛域为 $\sigma<-\alpha$, 拉普拉斯逆变换为 $-[1+e^{-\alpha t}]u(-t)$.
+        \end{itemize}
+    \end{solution}
+\end{exampleprob}

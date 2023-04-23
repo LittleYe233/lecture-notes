@@ -1,0 +1,22 @@
+\documentclass[circuitikz]{notefig}
+
+\begin{document}
+\footnotesize\selectfont
+
+\begin{circuitikz}[%
+        european,
+        scale=1, transform shape,
+        x=3.5cm, y=1.5cm
+    ]
+    \ctikzset{%
+        cpos/.code={\ctikzsetvalof{current/distance}{#1}},
+        bipoles/length=.7cm
+    }
+
+    \draw (0, 0) coordinate (1p) node [below] {$+$} to [short, o-] ++(0.2, 0) coordinate (1) to [R=$R$] ++(0, -1) coordinate (2);
+    \draw ($(1)+(0.5,0)$) coordinate (2p) node [below] {$+$} to [short, o-] ++(-0.2, 0) coordinate (3) to [cvsource] (3 |- 2);
+    \draw (1p |- 2) coordinate (1n) node [above] {$-$} to [short, o-o] (2p |- 2) coordinate (2n) node [above] {$-$};
+    \node at ($(1p)!0.5!(1n)$) {$V(s)$};
+    \node at ($(2p)!0.5!(2n)$) {$AV(s)$};
+\end{circuitikz}
+\end{document}

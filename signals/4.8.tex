@@ -1,0 +1,41 @@
+\subsection{二阶谐振系统的 s 平面分析} \label{4 二阶谐振系统的 s 平面分析}
+含有电容, 电感两类储能元件的二阶系统可具有谐振特性. 考虑电路的对偶特性, 现仅分析电流源激励 $I(s)$ 下并联谐振回路 (R, L, C 并联) 的并联网络电压 $V(s)$ 与系统函数 (也即阻抗函数) $Z(s)$.
+\begin{equation}
+    Z(s)=\frac{V(s)}{I(s)}=\frac{1}{G+sC+\dfrac{1}{sL}}=\frac{1}{C}\cdot\frac{s}{(s-p_1)(s-p_2)}.
+\end{equation}
+其中极点为
+\begin{equation}
+    p_{1,2}=-\frac{G}{2C}\pm\sqrt{\left(\frac{G}{2C}\right)^2-\frac{1}{LC}}=-\alpha\pm\mathrm{j}\omega_d.
+\end{equation}
+其他符号为
+\begin{equation}
+    \begin{cases}
+        \alpha=\frac{G}{2C},          & \qquad (\textrm{衰减因数}) \\
+        \omega_0=\frac{1}{\sqrt{LC}}, & \qquad (\textrm{谐振频率}) \\
+        \omega_d=\sqrt{\omega_0^2-\alpha^2}.
+    \end{cases}
+\end{equation}
+
+\subsubsection{\texorpdfstring{$\alpha$}{alpha} 对系统零极点分布的影响}
+\textbf{当 $\alpha=0$ (无损耗) 时}, 此时极点 $p_{1,2}$ 分别位于点 $(0,\pm\omega_0)$.
+
+\textbf{当 $0<\alpha<\omega_0$ 时}, 此时极点 $p_{1,2}$ 落在圆心为原点, 半径为 $\omega_0$ 的圆周左半侧, 其纵坐标恰为 $\pm\omega_d$, 横坐标恰为 $-\alpha$. 随损耗 $\alpha$ 增加, 极点开始向点 $(-\alpha,0)$ 靠拢.
+
+\textbf{当 $\alpha=\omega_0$ 时}, 此时极点 $p_{1,2}=-\alpha$, 形成二阶实极点.
+
+\textbf{当 $\alpha>\omega_0$ 时}, 此时随损耗 $\alpha$ 增加, 极点 $p_{1,2}$ 沿负实轴分别向左右移动, 直至分别趋近于 $0$ 和 $-\infty$.
+
+\subsubsection{\texorpdfstring{$\omega$}{omega} 对系统频响特性的影响}
+考虑频响特性时, 因为 $s=\mathrm{j}\omega$, 此时系统零点矢量的相角恒为 $\dfrac{\pi}{2}$.
+
+随工作频率 $\omega$ 增大, $|Z(\mathrm{j}\omega)|$ 先增长至谐振频率 $\omega_0$ 时的 $R$, 再减小至趋于零.
+
+随工作频率 $\omega$ 增大, $\varphi(\omega)$ 从 $\dfrac{\pi}{2}$ 开始一直下降到谐振频率 $\omega_0$ 时的 $0$, 再继续下降至趋于 $-\dfrac{\pi}{2}$.
+
+\noindent\hrulefill
+
+当系统函数有一对\textit{靠近虚轴}的极点 $p=-\alpha_i\pm\mathrm{j}\omega_i$ ($\alpha_i<<\omega_0$, $\omega_i\approx\omega_0$), 系统的幅频响应在 $\omega=\omega_i$ 附近有一个\textit{峰值}点, 相频响应\textit{负向}变化.
+
+当系统函数有一对\textit{靠近虚轴}的零点 $z=-\alpha_j\pm\mathrm{j}\omega_j$ ($\alpha_j<<\omega_0$, $\omega_j\approx\omega_0$), 系统的幅频响应在 $\omega=\omega_j$ 附近有一个\textit{谷值}点, 相频响应\textit{正向}变化.
+
+当系统函数有远离虚轴的零点和极点, 它们对系统频响曲线的形状影响较小, 只对总频响特性的大小有所影响.

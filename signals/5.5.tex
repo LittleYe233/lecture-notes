@@ -1,0 +1,11 @@
+\subsection{利用希尔伯特变换研究系统函数的约束特性} \label{5 利用希尔伯特变换研究系统函数的约束特性}
+因果系统的系统函数的实部与虚部 (模长与幅角) 之间相互制约. 这种特性需要满足希尔伯特变换对.
+
+\textbf{希尔伯特变换对}
+
+对于因果函数 $f(t)$, 即满足 $f(t)=f(t)u(t)$ 的函数, 设其傅里叶变换为 $F(\omega)=R(\omega)+\mathrm{j}X(\omega)$. 则 $R(\omega)$ 和 $X(\omega)$ 满足如下变换
+\begin{gather}
+    R(\omega)=\frac{1}{\pi}\int_{-\infty}^{+\infty}\frac{X(\lambda)}{\omega-\lambda}\mathrm{d}\lambda, \\
+    X(\omega)=-\frac{1}{\pi}\int_{-\infty}^{+\infty}\frac{R(\lambda)}{\omega-\lambda}\mathrm{d}\lambda.
+\end{gather}
+反之, 实部和虚部组成该变换对的函数是因果函数.

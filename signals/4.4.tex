@@ -1,0 +1,135 @@
+\subsection{用拉普拉斯变换法分析电路, s 域元件模型} \label{4 用拉普拉斯变换法分析电路, s 域元件模型}
+\subsubsection{用拉普拉斯变换解微分方程}
+用拉普拉斯变换解微分方程的通用步骤是:
+\begin{enumerate}
+    \item 对微分方程求拉普拉斯变换 (\textit{微分性质}), 将其转化为代数方程;
+    \item 解 s 域的代数方程, 求出解的拉普拉斯变换;
+    \item 反求其拉普拉斯逆变换, 即可得到解的表达式.
+\end{enumerate}
+
+\begin{exampleprob}
+    求 $r''(t)+3r'(t)+2r(t)=e'(t)+4e(t)$ 在 $e(t)=e^{-3t}u(t)$ 及初始条件 $r'(0_-)=r(0_-)=1$ 下的解 $r(t)$.
+
+    \begin{solution}[1]
+        设 $\mathcal{L}[r(t)]=R(s)$. 则
+        \begin{gather*}
+            \mathcal{L}[r'(t)]=sR(s)-r(0_-)=sR(s)-1, \\
+            \mathcal{L}[r''(t)]=s^2R(s)-sr(0_-)-r'(0_-)=s^2R(s)-s-1, \\
+            \mathcal{L}[e(t)]=\frac{1}{s+3}, \\
+            \mathcal{L}[e'(t)]=s\mathcal{L}[e(t)]-e(0_-)=\frac{s}{s+3}.
+        \end{gather*}
+
+        对题设微分方程两边作拉普拉斯变换, 并整理得
+        \begin{equation*}
+            R(s)=\frac{s+4}{s^2+3s+2}+\frac{s+4}{(s^2+3s+2)(s+3)}.
+        \end{equation*}
+        对其部分分式展开, 得到
+        \begin{equation*}
+            \begin{aligned}
+                R(s) & =\frac{3}{2(s+1)}-\frac{2}{s+2}+\frac{1}{2(s+3)}+\frac{3}{s+1}-\frac{2}{s+2} \\
+                     & =\frac{9}{2(s+1)}-\frac{4}{s+2}+\frac{1}{2(s+3)}.
+            \end{aligned}
+        \end{equation*}
+        也即
+        \begin{equation*}
+            r(t)=\left(\frac{9}{2}e^{-t}-4e^{-2t}+\frac{1}{2}e^{-3t}\right)u(t).
+        \end{equation*}
+    \end{solution}
+
+    \begin{solution}[2]
+        考虑到拉普拉斯变换的微分性质包含起始条件易错, 现分别求解零状态响应和零输入响应.
+
+        求解零状态响应时, 使用微分性质无需考虑起始条件. 因此对题设微分方程两边作拉普拉斯变换, 得到
+        \begin{equation*}
+            (s^2+3s+2)R_{zs}(s)=\frac{s+4}{s+3}.
+        \end{equation*}
+        也即
+        \begin{equation*}
+            r_{zs}(t)=\left(\frac{3}{2}e^{-t}-2e^{-2t}+\frac{1}{2}e^{-3t}\right)u(t).
+        \end{equation*}
+
+        求解零输入响应时, 使用时域分析法. 题设微分方程的特征方程为 $\alpha^2+3\alpha+2=0$, 其根为 $\alpha_1=-1$, $\alpha_2=-2$. 设 $r_{zi}(t)=A_1e^{-t}+A_2e^{-2t}$. 对于零输入响应, 根据 (\ref{eq:2.3 r_zi 0+}), 微分方程约束为 $r_{zi}(0_+)=r(0_-)=1$, $r_{zi}'(0_+)=r'(0_+)=1$. 待定系数得到 $A_1=3$, $A_2=-2$. 因此
+        \begin{equation*}
+            r_{zi}(t)=(3e^{-t}-2e^{-2t})u(t).
+        \end{equation*}
+
+        最终结果与前述解法相同.
+    \end{solution}
+\end{exampleprob}
+
+\subsubsection{s 域元件模型}
+\textbf{电源}
+
+对于恒流电源, 将 $E$, $I$ 改为对应的 $\dfrac{E}{s}$, $\dfrac{I}{s}$ 即可.
+
+\textbf{电阻, 电感, 电容}
+
+以阻抗表示时, R, L, C 元件的复频域关系为
+\begin{gather*}
+    V_R(s)=RI_R(s), \\
+    V_L(s)=sLI_L(s)-Li_L(0_-), \\
+    V_C(s)=\frac{1}{sC}I_C(s)+\frac{v_C(0_-)}{s}.
+\end{gather*}
+
+R, L, C 元件的 s 域元件模型如下图所示:
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/signals_s_model_z_r.pdf}
+    \end{minipage}
+    \begin{minipage}{.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/signals_s_model_z_l.pdf}
+    \end{minipage}
+    \begin{minipage}{.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/signals_s_model_z_c.pdf}
+    \end{minipage}
+    \caption{s 域元件模型 (阻抗形式)}
+\end{figure}
+
+以导纳表示时, R, L, C 元件的复频域关系为
+\begin{gather*}
+    I_R(s)=\frac{1}{R}V_R(s), \\
+    I_L(s)=\frac{1}{sL}V_L(s)+\frac{1}{s}i_L(0_-), \\
+    I_C(s)=sCV_C(s)-Cv_C(0_-).
+\end{gather*}
+
+R, L, C 元件的 s 域元件模型如下图所示:
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/signals_s_model_z_r.pdf}
+    \end{minipage}
+    \begin{minipage}{.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/signals_s_model_y_l.pdf}
+    \end{minipage}
+    \begin{minipage}{.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/signals_s_model_y_c.pdf}
+    \end{minipage}
+    \caption{s 域元件模型 (导纳形式)}
+\end{figure}
+
+\textbf{运算放大器}
+
+运算放大器将输入电压等比例放大并输出. 其 s 域元件模型主要受其自身电路特性影响, s 域对其仅仅是对相关的量作拉普拉斯变换.
+
+对于输入阻抗无穷大, 输出阻抗为零, 放大系数为 $A$ 的运算放大器, 其 s 域元件模型如下图所示:
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.419\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/signals_s_model_a_before.pdf}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{.481\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/signals_s_model_a_after.pdf}
+        \caption{}
+    \end{subfigure}
+    \caption{运算放大器的 s 域元件模型}
+\end{figure}

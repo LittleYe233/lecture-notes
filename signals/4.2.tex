@@ -1,0 +1,88 @@
+\subsection{拉普拉斯变换的基本性质} \label{4 拉普拉斯变换的基本性质}
+\subsubsection{线性}
+若记 $\mathcal{L}[f_1(t)]=F_1(s)$, $\mathcal{L}[f_2]=F_2(s)$, 则
+\begin{equation}
+    \mathcal{L}[af_1(t)+bf_2(t)]=aF_1(s)+bF_2(s).
+\end{equation}
+
+\subsubsection{时域微分性质}
+若记 $\mathcal{L}[f(t)]=F(s)$, 则
+\begin{equation} \label{eq:4.2 diff t}
+    \mathcal{L}[f^{(n)}(t)]=s^nF(s)-\sum_{r=0}^{n-1}s^{n-r-1}f^{(r)}({\color{red} 0_-}).
+\end{equation}
+特别的,
+\begin{gather}
+    \mathcal{L}[f'(t)]=sF(s)-f({\color{red} 0_-}), \\
+    \mathcal{L}[f''(t)]=s^2F(s)-sf({\color{red} 0_-})-f'({\color{red} 0_-}).
+\end{gather}
+
+\subsubsection{时域积分性质}
+若记 $\mathcal{L}[f(t)]=F(s)$, 则
+\begin{equation}
+    \mathcal{L}\left[\int_{-\infty}^{t}f(\tau)\mathrm{d}\tau\right]=\frac{F(s)}{s}+\frac{f^{(-1)}({\color{red} 0_-})}{s},
+\end{equation}
+其中
+\begin{equation*}
+    f^{(-1)}(0_-)=\int_{-\infty}^{0_-}f(\tau)\mathrm{d}\tau.
+\end{equation*}
+
+\subsubsection{复频域微分性质}
+若记 $\mathcal{L}[f(t)]=F(s)$, 则
+\begin{equation}
+    \mathcal{L}[tf(t)]=-F'(s).
+\end{equation}
+
+\subsubsection{复频域积分性质}
+若记 $\mathcal{L}[f(t)]=F(s)$, 则
+\begin{equation}
+    \mathcal{L}\left[\frac{f(t)}{t}\right]=\int_{s}^{\infty}F(\lambda)\mathrm{d}\lambda.
+\end{equation}
+
+\subsubsection{延时性质} \label{4.2 延时性质}
+若记 $\mathcal{L}[f(t)]=F(s)$, 则
+\begin{equation}
+    \mathcal{L}[f(t-t_0)u(t-t_0)]=e^{-st_0}F(s).\qquad ({\color{red} t_0\geq 0})
+\end{equation}
+考虑到信号的因果性, 一般规定 $t_0\geq 0$.
+
+\subsubsection{频移性质}
+若记 $\mathcal{L}[f(t)]=F(s)$, 则
+\begin{equation}
+    \mathcal{L}[f(t)e^{-at}]=F(s+a).
+\end{equation}
+
+\subsubsection{尺度变换}
+若记 $\mathcal{L}[f(t)]=F(s)$, 则
+\begin{equation}
+    \mathcal{L}[f(at)]=\frac{1}{a}F\left(\frac{s}{a}\right).\qquad ({\color{red} a>0})
+\end{equation}
+
+若同时进行延时和尺度变换, 例如 $\mathcal{L}[f(at-b)u(at-b)]$, 可以先延时再尺度变换, 反之亦然. 以前者为例:
+\begin{gather}
+    \nonumber \mathcal{L}[f(t)u(t)]=F(s). \\
+    \nonumber \mathcal{L}[f(t-b)u(t-b)]=F(s)e^{-bs}. \\
+    \mathcal{L}[f(at-b)u(at-b)]=\frac{1}{a}F\left(\frac{s}{a}\right)e^{-\frac{b}{a}s}.\qquad (a>0,b>0)
+\end{gather}
+
+\subsubsection{初值定理}
+若记 $\mathcal{L}[f(t)]=F(s)$, $f'(t)$ 也可以进行拉普拉斯变换, 则
+\begin{equation}
+    \lim_{t\rightarrow 0_+}f(t)=f(0_+)=\lim_{s\rightarrow\infty}sF(s).
+\end{equation}
+若 $f(t)$ 包含冲激函数分量 $k\delta(t)$, 则
+\begin{equation}
+    \lim_{t\rightarrow 0_+}f(t)=\lim_{s\rightarrow\infty}[sF(s)-ks].
+\end{equation}
+
+\subsubsection{终值定理}
+若记 $\mathcal{L}[f(t)]=F(s)$, $f'(t)$ 也可以进行拉普拉斯变换, 则
+\begin{equation}
+    \lim_{t\rightarrow\infty}f(t)=\lim_{s\rightarrow 0}sF(s).
+\end{equation}
+
+\subsubsection{卷积定理}
+若记 $\mathcal{L}[f_1(t)]=F_1(s)$, $\mathcal{L}[f_2(t)]=F_2(s)$, 则
+\begin{gather}
+    \mathcal{L}[f_1(t)*f_2(t)]=F_1(s)F_2(s), \label{eq:4.2 conv t} \\
+    \mathcal{L}[f_1(t)f_2(t)]=\frac{1}{2\pi\mathrm{j}}[F_1(s)*F_2(s)]. \label{eq:4.2 conv s}
+\end{gather}

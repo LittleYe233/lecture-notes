@@ -1,0 +1,12 @@
+\section{傅里叶变换应用于通信系统 - 滤波, 调制与抽样} \label{傅里叶变换应用于通信系统 - 滤波, 调制与抽样}
+\subsection{利用系统函数 \texorpdfstring{$H(\mathrm{j}\omega)$}{H(j omega)} 求响应} \label{5 利用系统函数 H(j omega) 求响应}
+由 \ref{4 由系统函数零, 极点分布决定频响特性} 小节可知, $H(s)|_{s=\mathrm{j}\omega}$ 表示正弦稳态响应 (也即 $s$ 在虚轴上移动时) 的系统频响特性. 类似的, 引入\textbf{频率响应函数}为 $H(\omega)$, 其可以对激励与系统零状态响应的卷积 (\ref{eq:2.5 r zs conv})
+\begin{equation}
+    r(t)=h(t)*e(t)
+\end{equation}
+两边作傅里叶变换, 得
+\begin{equation}
+    R(\omega)=H(\omega)E(\omega).
+\end{equation}
+
+对于稳定系统 (参见 \ref{4 线性系统的稳定性} 小节), 根据拉普拉斯变换与傅里叶变换的关系 (参见 \ref{4 拉普拉斯变换与傅里叶变换的关系} 小节), 易知此时 $H(\mathrm{j}\omega)=H(\omega)$. 因此, 可以借助频域系统函数使用类似复频域系统函数的方法 (参见 \ref{4 用拉普拉斯变换法分析电路, s 域元件模型} 小节) 求解响应. 使用这种方法, 物理概念比较清晰, 但求解不如 s 域分析方便.
