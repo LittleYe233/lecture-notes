@@ -2,7 +2,7 @@
 % Remember to `sudo fmtutil-sys --all'!
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.7.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.8.0]
 
 % Define options
 \newif\if@notes@circuitikz
@@ -48,7 +48,11 @@
 \RequirePackage{extarrows}
 \RequirePackage{booktabs}
 \RequirePackage{longtable}
-\RequirePackage{enumitem}
+\RequirePackage[shortlabels]{enumitem}
+\RequirePackage{tabularx}
+\RequirePackage{xltabular}
+% See: https://tex.stackexchange.com/a/31956
+\RequirePackage{cases}
 
 % Choose TikZ or CircuiTikZ
 \if@notes@circuitikz
@@ -58,6 +62,7 @@
 \else
     \RequirePackage{tikz}
     \usetikzlibrary{shapes, arrows.meta, positioning, circuits.ee.IEC, calc, decorations.pathreplacing}
+    \RequirePackage{siunitx}
 \fi
 
 \ctexset{
