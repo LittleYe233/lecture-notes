@@ -1,0 +1,28 @@
+\subsection{平稳随机过程}
+\subsubsection{平稳性和遍历性}
+\textbf{广义平稳}\quad 统计特性与时间起点无关.
+\begin{itemize}
+    \item $a(t)$ 与 $t$ 无关;
+    \item $R(t,t+\tau)$ 仅与 $\tau$ 有关.
+\end{itemize}
+
+\textbf{各态历经性}\quad 任何一个样本函数都经历了所有可能状态.
+\begin{itemize}
+    \item $\overline{a(t)}=a$;
+    \item $\overline{R(\tau)}=R(\tau)$.
+\end{itemize}
+
+\subsubsection{自相关函数的性质}
+\begin{itemize}
+    \item 偶函数;
+    \item \underline{平均功率}\quad $S=R(0)$;
+    \item \underline{直流功率}\quad $a^2=R(\infty)$;
+    \item \underline{交流功率}\quad $\sigma^2=R(0)-R(\infty)$;
+    \item $R(0)\geq|R(\tau)|$.
+\end{itemize}
+
+\subsubsection{功率谱密度}
+\textbf{维纳-辛钦定理}
+\begin{equation}
+    P_X(\omega)=\mathcal{F}[R(\tau)].
+\end{equation}

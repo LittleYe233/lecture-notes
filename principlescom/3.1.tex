@@ -1,0 +1,33 @@
+\section{随机过程}
+\subsection{随机过程的基本概念}
+\subsubsection{分布函数}
+\textbf{分布函数}
+\begin{equation}
+    F_X(x;t)=P[X(t)\leq x].
+\end{equation}
+
+\textbf{概率密度函数}
+\begin{equation}
+    f_X(x;t)=\frac{\partial F_X(x;t)}{\partial x}.
+\end{equation}
+
+\subsubsection{数字特征}
+\textbf{数学期望}
+\begin{equation}
+    a(t)=E[X(t)]=\int_{-\infty}^{\infty}xf_X(x;t)\mathrm{d}x.
+\end{equation}
+
+\textbf{方差}
+\begin{equation}
+    \sigma^2(t)=D[X(t)]=E[X^2(t)]-a^2(t).
+\end{equation}
+
+\textbf{自相关函数}
+\begin{equation}
+    R(t,t+\tau)=E[X(t)X(t+\tau)].
+\end{equation}
+
+\textbf{互相关函数}
+\begin{equation}
+    R_{XY}(t,t+\tau)=E[X(t)Y(t+\tau)].
+\end{equation}
