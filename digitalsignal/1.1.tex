@@ -1,0 +1,138 @@
+\section{离散时间信号与系统}
+\subsection{离散时间信号-序列}
+\textbf{序列的表示}\quad $x(n)$ 中 $n$ 必须为整数. 作为序列解析式自变量的表达式必须都为整数.
+
+\subsubsection{典型序列}
+\textbf{单位冲激序列}
+
+\textbf{单位阶跃序列}
+
+\textbf{矩形序列}
+\begin{equation}
+    R_N(n)=\begin{cases}
+        1, & \quad 0\leq n\leq N-1;  \\
+        0, & \quad \text{otherwise}.
+    \end{cases}
+\end{equation}
+
+\textbf{实指数序列}
+\begin{equation}
+    x(n)=a^n.
+\end{equation}
+
+考虑如下序列的有界性:
+\begin{itemize}
+    \item 对于 $a^nu(n)$, $|a|<1$;
+    \item 对于 $a^nu(-n)$, $|a|>1$;
+    \item 对于 $a^n$, $|a|=1$.
+\end{itemize}
+
+\subsubsection{数字域频率和模拟角频率}
+若将序列 $x(n)=A\sin(\omega_0t+\varphi)$ 看作对模拟正弦信号 $x_a(t)=A\sin(\Omega_0nT+\varphi)$ 的等间隔采样, 间隔为 $T$. 这里将 $\omega_0$ \textit{(单位 \unit{rad})} 称作数字域频率 (一个时间间隔内模拟正弦信号产生的\textit{相位差}), $\Omega_0$ \textit{(单位 \unit{rad/s})} 称作模拟角频率.
+\begin{equation}
+    \omega_0=\Omega_0T=\frac{\Omega_0}{f_s}.
+\end{equation}
+其中 $f_s$ 是采样频率.
+
+\subsubsection{序列的周期性}
+若 $N\in\mathbb{Z}\backslash\{0\}$, 则满足 $x(n)=x(n+N)$ 的序列为周期序列.
+
+对于\textit{正弦序列}, 若其满足周期性, 则应该有 $2\pi/\omega_0\in\mathbb{Q}$, 且其\textit{分子}为序列的周期.
+
+显然, 对于同一个周期模拟信号, 采样率不同, 其序列未必是周期的.
+
+\subsubsection{序列的运算}
+\textbf{加法}
+
+\textbf{乘法}
+
+\textbf{累加}
+
+\textbf{绝对和}
+\begin{equation}
+    S=\sum_{n=-\infty}^{\infty}|x(n)|.
+\end{equation}
+
+\textbf{能量}
+\begin{equation}
+    E=\sum_{-\infty}^{\infty}|x(n)|^2.
+\end{equation}
+
+\textbf{能量序列}\quad 满足 $E<\infty$.
+
+一般来说有限长度或绝对可和序列都为能量序列.
+
+\textbf{平均功率}
+\begin{equation}
+    P=\lim_{N\rightarrow\infty}\frac{1}{\color{red}{2N+1}}\sum_{n={\color{red}-N}}^{{\color{red}N}}|x(n)|^2.
+\end{equation}
+
+\textbf{功率序列}\quad 满足 $P<\infty$.
+
+一般来说周期序列和随机序列是功率序列.
+
+\textbf{翻褶}\quad $x(n)\rightarrow x(-n)$.
+
+\textbf{移位}\quad $x(n)\rightarrow x(n-m)$.
+
+当 $m>0$ 时, 序列右移, 为原序列的延时序列; 当 $m<0$ 时, 序列左移, 为原序列的超前序列.
+
+\textbf{时间尺度变换-抽取和插值}\quad 改变对模拟信号的采样率.
+
+抽取 (下抽样): $x(n)\rightarrow x(Mn)$. 减小采样频率, 每 $M$ 个点取一个点.
+
+插值 (上抽样): $x(n)\rightarrow x(n/I)$. 增大采样频率, 每相邻两点间插入 $(I-1)$ 个点. 一般插入的值是零.
+
+\textbf{卷积}
+\begin{equation}
+    y(n)=x(n)*h(n)=\sum_{m=-\infty}^{\infty}x(m)h(n-m).
+\end{equation}
+
+对于卷积和序列的起始位置, 其起点为两个序列的起点位置之和, 其终点为两个序列的终点位置之和. 对于卷积和序列的长度, 其长度为两个序列的长度之和减一.
+
+用矩阵乘法进行有限长度的卷积计算见例题 \ref{eprob 1.1: convolution matrix}.
+
+\begin{exampleprob} \label{eprob 1.1: convolution matrix}
+    计算 $x(n)=\{\underline{3},7,5,-1,2\}$ 与 $h(n)=\{\underline{4},-1,2,3\}$ 的卷积.
+
+    \begin{solution}
+        $x(n)$ 的长度为 5, $h(n)$ 的长度为 4, 则 $y(n)$ 的长度为 $5+4-1=8$.
+
+        令
+        \begin{gather*}
+            \mathbf{x}=\begin{bmatrix}
+                3 & 7 & 5 & -1 & 2
+            \end{bmatrix}, \\
+            \mathbf{H}=\begin{bmatrix}
+                4 & -1 & 2  & 3  & 0  & 0  & 0 & 0 \\
+                0 & 4  & -1 & 2  & 3  & 0  & 0 & 0 \\
+                0 & 0  & 4  & -1 & 2  & 3  & 0 & 0 \\
+                0 & 0  & 0  & 4  & -1 & 2  & 3 & 0 \\
+                0 & 0  & 0  & 0  & 4  & -1 & 2 & 3
+            \end{bmatrix},
+        \end{gather*}
+        所以,
+        \begin{equation*}
+            \mathbf{y}=\mathbf{xH}=\begin{bmatrix}
+                12 & 25 & 19 & 14 & 40 & 11 & 1 & 6
+            \end{bmatrix}.
+        \end{equation*}
+
+        也即, $x(n)$ 与 $h(n)$ 的卷积序列为 $\{\underline{12},25,19,14,40,11,1,6\}$.
+    \end{solution}
+\end{exampleprob}
+
+\textbf{相关函数}
+\begin{gather}
+    r_x(n)=\sum_{m=-\infty}^{\infty}x(m)x(m-n). \\
+    r_{xy}(n)=\sum_{m=-\infty}^{\infty}x(m)y(m-n).
+\end{gather}
+
+容易得到
+\begin{itemize}
+    \item $r_x(n)=x(n)*x(-n)$;
+    \item $r_{xy}(n)=x(n)*y(-n)$;
+    \item $r_x(n)=r_x(-n)$;
+    \item $r_{xy}(n)=r_{yx}(-n)$;
+    \item $r_x(0)=\displaystyle\sum_{n=-\infty}^{\infty}x^2(n)\geq|r_x(n)|$.
+\end{itemize}

@@ -1,0 +1,28 @@
+\subsection{线性移不变系统}
+\subsubsection{线性系统}
+线性系统应当满足叠加原理: 可加性和齐次性.
+
+\textbf{增量线性系统}\quad 对于诸如 $y=4x+6$ 的增量线性系统系统, 其不满足叠加原理, 但\textit{任意两个响应信号之差}与其对应的\textit{输入信号之差}满足叠加原理.
+
+\subsubsection{移不变系统}
+\begin{exampleprob}
+    判断 $y(n)=x(n^2)$ 是否为移不变系统.
+
+    \begin{solution}
+        因为 $y(n-m)=x((n-m)^2)\neq x(n^2-m)$, 所以该系统是移变系统.
+
+        {\color{red} (前者的计算中, 对所有的 $n$ 都变为 $n-m$; 而后者只会对 $x(n)$ 中的 $n$ 作变化.)}
+    \end{solution}
+\end{exampleprob}
+
+\subsubsection{离散时间线性移不变系统}
+系统的输出满足
+\begin{equation}
+    y(n)=x(n)*h(n).
+\end{equation}
+
+\subsubsection{系统的因果性}
+LSI 系统是因果的充分必要条件为: 其单位冲激响应 $h(n)$ 是因果序列, 也即对任意 $n<0$, $h(n)=0$.
+
+\subsubsection{系统的稳定性}
+LSI 系统是稳定的充分必要条件为: 其单位冲激响应 $h(n)$ 绝对可和.
