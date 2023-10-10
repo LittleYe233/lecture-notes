@@ -1,0 +1,17 @@
+\subsection{连续时间信号的抽样}
+\subsubsection{模拟信号的抽样}
+\textbf{采样信号}\quad $\delta_T(t)=\displaystyle\sum_{m=-\infty}^{\infty}\delta(t-mT)$.
+
+\textbf{理想抽样信号}\quad $\hat{x}_a(t)=x_a(t)\delta_T(t)$.
+
+傅里叶变换后, 得到采样信号和理想抽样信号的频谱:
+\begin{gather}
+    \Delta_T(\mathrm{j}\Omega)=\Omega_s\delta_{\Omega_s}(\Omega), \\
+    \hat{X}_a(\mathrm{j}\Omega)=\frac{1}{T}\sum_{m=-\infty}^{\infty}X_a\left(\mathrm{j}\left(\Omega-m\Omega_s\right)\right).
+\end{gather}
+以上的\textbf{延拓周期}均为模拟角频率, 即 $\Omega_s=\dfrac{2\pi}{T}$.
+
+\subsubsection{时域抽样定理}
+\textit{带限信号}满足奈奎斯特抽样定理.
+
+\textbf{折叠频率}\quad 抽样频率的一半 ($f_s/2$).

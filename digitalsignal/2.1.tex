@@ -1,0 +1,107 @@
+\section{z 变换与离散时间傅里叶变换}
+\subsection{序列的 z 变换}
+z 变换和 z 反变换的定义为
+\begin{gather}
+    X(z)=\sum_{n=-\infty}^{\infty}x(n)z^{-n}, \\
+    x(n)=\frac{1}{2\pi\mathrm{j}}\oint_c\frac{X(z)}{z}z^n\mathrm{d}z.
+\end{gather}
+
+\subsubsection{z 变换的收敛域}
+有限长序列的收敛域必然包含 $\{z|0<|z|<\infty\}$. 对于所有的序列, 其在 $z\in\{0,\infty\}$ 处发散的一个\textit{充分条件}为:
+\begin{itemize}
+    \item 若 $n>0$ 有值, 则 $z=0$ 处发散;
+    \item 若 $n<0$ 有值, 则 $z=\infty$ 处发散.
+\end{itemize}
+
+右边序列的收敛域为 $\{z|R_{x-}<|z|<\infty\}$. 特别的, 当该序列为因果序列时, $z=\infty$ 也收敛.
+
+左边序列的收敛域为 $\{z|0<|z|<R_{x+}\}$. 特别的, 当该序列为反因果序列时, $z=0$ 也收敛.
+
+将双边序列看成一个左边序列和一个右边序列的组合. 其中, 双边序列的内边界为其中的右边序列的最大极点, 外边界为其中的左边序列的最小极点. 双边序列的收敛域是连通的圆环.
+
+\subsubsection{z 变换的性质}
+\textbf{线性}
+
+对于两个序列的 z 变换
+\begin{gather}
+    \mathcal{Z}[x(n)]=X(z), \qquad R_{x-}<|z|<R_{x+} \\
+    \mathcal{Z}[y(n)]=Y(z), \qquad R_{y-}<|z|<R_{y+}
+\end{gather}
+则
+\begin{equation}
+    \mathcal{Z}[ax(n)+by(n)]=aX(z)+bY(z).
+\end{equation}
+该 z 变换的收敛域\textit{一般}为上述二序列的 z 变换收敛域重合部分, 也即
+\begin{equation}
+    R_{-}=\max\{R_{x-},R_{y-}\}, R_{+}=\min\{R_{x+},R_{y+}\}.
+\end{equation}
+在一些情况下, 若发生零极点相消, 可能导致收敛域发生变化.
+
+\textbf{移位}
+
+对于双边 z 变换, 其形式上满足
+\begin{equation}
+    \mathcal{Z}[x(n-m)]=z^{-m}X(z).
+\end{equation}
+$m$ 取正值时表示右移, 反之为左移.
+
+对于其收敛域:
+\begin{itemize}
+    \item 对双边序列, 收敛域不变;
+    \item 对单边序列和有限长序列, 需要另外考虑 $n$ 的范围改变是否会影响 $z=0$ 或 $z=\infty$ 处的敛散性, 其他范围的 $z$ 不受影响.
+\end{itemize}
+
+对于单边 z 变换, 且仅考虑因果序列, 其形式上满足
+\begin{equation}
+    \mathcal{Z}^+[x(n-m)]=\begin{cases}
+        z^{-m}X(z),                                          & \quad m>0; \\
+        z^{-m}\left[X(z)-\sum_{i=0}^{-m-1}x(i)z^{-i}\right], & \quad m<0.
+    \end{cases}
+\end{equation}
+
+\textbf{z 域尺度变换}
+
+\begin{equation}
+    \mathcal{Z}[a^nx(n)]=X\left(\frac{z}{a}\right), \qquad |a|R_{x-}<|z|<|a|R_{x+}.
+\end{equation}
+
+\textbf{线性加权}
+
+\begin{equation}
+    \mathcal{Z}[nx(n)]=-z\frac{\mathrm{d}}{\mathrm{d}z}X(z), \qquad R_{x-}<|z|<R_{x+}.
+\end{equation}
+
+\textbf{翻褶}
+
+\begin{equation}
+    \mathcal{Z}[x(-n)]=X\left(\frac{1}{z}\right), \qquad \frac{1}{R_{x+}}<|z|<\frac{1}{R_{x-}}.
+\end{equation}
+
+\textbf{初值定理}
+
+因果序列 $x(n)$ 满足
+\begin{equation}
+    \lim_{z\rightarrow\infty}X(z)=x(0).
+\end{equation}
+
+\textbf{终值定理}
+
+因果序列 $x(n)$ 且 $X(z)$ 的极点位于单位圆 $|z|=1$ 以内 (至多仅在 $z=1$ 处存在一阶极点), 满足
+\begin{equation}
+    \lim_{n\rightarrow\infty}x(n)=\lim_{z\rightarrow 1}[(z-1)X(z)].
+\end{equation}
+
+\textbf{时域卷积定理}
+
+对于两个序列的 z 变换
+\begin{gather}
+    \mathcal{Z}[x(n)]=X(z), \qquad R_{x-}<|z|<R_{x+} \\
+    \mathcal{Z}[y(n)]=Y(z), \qquad R_{y-}<|z|<R_{y+}
+\end{gather}
+则
+\begin{equation}
+    \mathcal{Z}[x(n)*y(n)]=X(z)Y(z).
+\end{equation}
+其收敛域为上述二序列的 z 变换收敛域重合部分.
+
+\subsubsection{z 反变换的求解: 部分分式法}
