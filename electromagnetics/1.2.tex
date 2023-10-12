@@ -1,0 +1,88 @@
+\subsection{矢量的代数运算}
+\subsubsection{矢量的加减}
+矢量的加减法定义为
+\begin{equation}
+    \begin{aligned}
+        \bm{C} & =\bm{A}\pm\bm{B}       \\
+               & =\bm{e_i}(A_i\pm B_i).
+    \end{aligned}
+\end{equation}
+
+矢量加法满足交换律和结合律.
+
+矢量减法可以用位矢表示:
+\begin{equation}
+    \overrightarrow{PQ}=\overrightarrow{OQ}-\overrightarrow{OP}.
+\end{equation}
+
+\subsubsection{矢量的点乘}
+基矢的点乘满足
+\begin{equation}
+    \bm{e_i}\cdot\bm{e_j}=\delta_{ij}=\begin{cases}
+        1, & \quad i=j;     \\
+        0, & \quad i\neq j.
+    \end{cases}
+\end{equation}
+
+矢量的点乘定义为
+\begin{equation}
+    \bm{A}\cdot\bm{B}=\sum_{i}^{}\sum_{j}^{}\delta_{ij}A_iB_j.
+\end{equation}
+
+\subsubsection{矢量的叉乘}
+基矢的叉乘满足
+\begin{equation}
+    \bm{e_j}\times\bm{e_k}=\epsilon_{ijk}\bm{e_i}.
+\end{equation}
+其中
+\begin{equation}
+    \epsilon_{ijk}=\begin{cases}
+        1,  & \quad i, j, k \text{是偶排列};   \\
+        -1, & \quad i, j, k \text{是奇排列};   \\
+        0,  & \quad i, j, k \text{任意二者相等}.
+    \end{cases}
+\end{equation}
+
+容易得到
+\begin{equation}
+    \epsilon_{ijk}=-\epsilon_{jik}=\epsilon_{jki}=-\epsilon_{kji}.
+\end{equation}
+
+默认三维直角坐标系为右手系, 因此
+\begin{equation}
+    \bm{e_x}\times\bm{e_y}=\bm{e_z}, \qquad \bm{e_y}\times\bm{e_x}=-\bm{e_z}.
+\end{equation}
+
+矢量的叉乘定义为
+\begin{equation}
+    \bm{A}\times\bm{B}=\bm{e_i}\epsilon_{ijk}A_jB_k.
+\end{equation}
+
+在三维直角坐标系中, 显然有
+\begin{equation}
+    \begin{aligned}
+        \bm{A}\times\bm{B} & =\bm{e_x}(A_yB_z-A_zB_y)+\bm{e_y}(A_zB_i-A_iB_z)+\bm{e_z}(A_xB_y-A_yB_x) \\
+                           & =\begin{vmatrix}
+                                  \bm{e_x} & \bm{e_y} & \bm{e_z} \\
+                                  A_x      & A_y      & A_z      \\
+                                  B_x      & B_y      & B_z
+                              \end{vmatrix}.
+    \end{aligned}
+\end{equation}
+
+矢量的叉乘满足\textit{反}交换律和分配律, 但\textit{不满足结合律}.
+
+对于多个矢量的叉乘, 涉及到
+\begin{equation}
+    \epsilon_{ijk}\epsilon_{mnk}=\delta_{im}\delta_{jn}-\delta_{in}\delta_{jm}.
+\end{equation}
+
+\textbf{标量三重积}
+\begin{equation}
+    \bm{A}\cdot(\bm{B}\times\bm{C})=\bm{B}\cdot(\bm{C}\times\bm{A})=\bm{C}\cdot(\bm{A}\times\bm{B}).
+\end{equation}
+
+\textbf{矢量三重积 (back-cab 法则)}
+\begin{equation}
+    \bm{A}\times(\bm{B}\times\bm{C})=\bm{B}\cdot(\bm{A}\cdot\bm{C})-\bm{C}\cdot(\bm{A}\cdot\bm{B}).
+\end{equation}

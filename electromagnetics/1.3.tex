@@ -1,0 +1,31 @@
+\subsection{矢量的微分}
+\textbf{$\nabla$ 算子}
+\begin{equation}
+    \begin{aligned}
+        \nabla & =\bm{e_x}\frac{\partial}{\partial x}+\bm{e_y}\frac{\partial}{\partial y}+\bm{e_z}\frac{\partial}{\partial z} \\
+               & =\bm{e_i}\partial_i=\bm{e_i}\nabla_i.
+    \end{aligned}
+\end{equation}
+
+\textbf{标量的梯度}
+\begin{equation}
+    \nabla A=\bm{e_i}\partial_iA_i.
+\end{equation}
+
+\textbf{散度}
+\begin{equation}
+    \nabla\cdot\bm{A}=\partial_iA_i.
+\end{equation}
+
+\textbf{旋度}
+\begin{equation}
+    \begin{aligned}
+        \nabla\times\bm{A} & =\bm{e_i}\epsilon_{ijk}\partial_jA_k                                                                               \\
+                           & =\bm{e_x}(\partial_yA_z-\partial_zA_y)+\bm{e_y}(\partial_zA_x-\partial_xA_z)+\bm{e_z}(\partial_xA_y-\partial_yA_x) \\
+                           & =\begin{vmatrix}
+                                  \bm{e_x}   & \bm{e_y}   & \bm{e_z}   \\
+                                  \partial_x & \partial_y & \partial_z \\
+                                  A_x        & A_y        & A_z
+                              \end{vmatrix}.
+    \end{aligned}
+\end{equation}
