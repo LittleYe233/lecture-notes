@@ -2,7 +2,7 @@
 % Remember to `sudo fmtutil-sys --all'!
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.8.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.9.0]
 
 % Define options
 \newif\if@notes@circuitikz
@@ -53,6 +53,8 @@
 \RequirePackage{xltabular}
 % See: https://tex.stackexchange.com/a/31956
 \RequirePackage{cases}
+% for `\bm' command
+\RequirePackage{bm}
 
 % Choose TikZ or CircuiTikZ
 \if@notes@circuitikz
