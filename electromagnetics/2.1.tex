@@ -1,0 +1,35 @@
+\section{电磁学基本理论}
+\subsection{电荷与静电场}
+\subsubsection{库仑定律}
+\textit{真空}中一\textit{静止}点电荷, 对其他电荷产生的库仑力满足
+\begin{equation}
+    \bm{F}_{12}=\frac{1}{4\pi\epsilon_0}\frac{q_1q_2}{r_{12}^2}\bm{e}_{12}.
+\end{equation}
+
+\subsubsection{静电场}
+静止电荷可以产生静电场, 其强度为
+\begin{equation}
+    \bm{E}=\frac{1}{4\pi\epsilon_0}\frac{q_1}{r_{12}^2}\bm{e}_{12}.
+\end{equation}
+
+静电场和库仑力满足如下关系
+\begin{equation}
+    \bm{F}_{12}=\bm{E}q_2.
+\end{equation}
+
+\subsubsection{高斯定理}
+可以证明
+\begin{equation}
+    \nabla\cdot\bm{E}=\frac{\rho(\bm{r})}{\epsilon_0}.
+\end{equation}
+其中 $\rho(\bm{r})$ 表示 $\bm{r}$ 处的体电荷密度.
+
+静电场和库仑力满足 ``平方反比'' 关系. 这意味着它们满足公式 (\ref{eq:1.4 nabla 2 r r'}) 及如下重要结论
+\begin{equation}
+    \nabla\frac{1}{|\bm{r}-\bm{r}'|}=-\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3}.
+\end{equation}
+
+积分形式的高斯定理表为
+\begin{equation}
+    \int_V\nabla\cdot\bm{E}\mathrm{d}v=\frac{Q}{\epsilon_0}.
+\end{equation}

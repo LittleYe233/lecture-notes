@@ -1,0 +1,176 @@
+\subsection{曲线坐标系}
+\subsubsection{二维极坐标系}
+\textbf{坐标表示}\quad $(\rho, \varphi)$.
+
+\textbf{坐标变换}
+\begin{equation}
+    \begin{cases}
+        \rho=\sqrt{x^2+y^2}; \\
+        \varphi=\arctan\frac{y}{x}.
+    \end{cases}
+\end{equation}
+
+\textbf{坐标逆变换}
+\begin{equation}
+    \begin{cases}
+        x=\rho\cos\varphi; \\
+        y=\rho\sin\varphi.
+    \end{cases}
+\end{equation}
+
+\subsubsection{柱坐标系}
+\textbf{坐标表示}\quad $(\rho, \varphi, z)$.
+
+\textbf{坐标变换}
+\begin{equation}
+    \begin{cases}
+        \rho=\sqrt{x^2+y^2};        \\
+        \varphi=\arctan\frac{y}{x}; \\
+        z=z.
+    \end{cases}
+\end{equation}
+
+\textbf{基矢变换}
+\begin{equation}
+    \bm{e_z}\times\bm{e_\rho}=\bm{e_\varphi}.
+\end{equation}
+
+\begin{equation}
+    \begin{cases}
+        \bm{e_\rho}=\bm{e_x}\cos\varphi+\bm{e_y}\sin\varphi;     \\
+        \bm{e_\varphi}=-\bm{e_x}\sin\varphi+\bm{e_y}\cos\varphi; \\
+        \bm{e_z}=\bm{e_z}.
+    \end{cases}
+\end{equation}
+或
+\begin{equation}
+    \begin{bmatrix}
+        \bm{e_\rho}    \\
+        \bm{e_\varphi} \\
+        \bm{e_z}
+    \end{bmatrix}=\begin{bmatrix}
+        \cos\varphi  & \sin\varphi & 0 \\
+        -\sin\varphi & \cos\varphi & 0 \\
+        0            & 0           & 1
+    \end{bmatrix}\begin{bmatrix}
+        \bm{e_x} \\
+        \bm{e_y} \\
+        \bm{e_z}
+    \end{bmatrix}.
+\end{equation}
+
+\textbf{矢量表示}
+\begin{gather}
+    \bm{A}(\rho, \varphi, z)=\bm{e_\rho}A_\rho+\bm{e_\varphi}A_\varphi+\bm{e_z}A_z. \\
+    \overrightarrow{OP}=\rho\bm{e_\rho}+z\bm{e_z}.
+\end{gather}
+
+\textbf{线微元}
+\begin{equation}
+    \mathrm{d}\bm{r}=\bm{e_\rho}\mathrm{d}\rho+\bm{e_\varphi}\rho\mathrm{d}\varphi+\bm{e_z}\mathrm{d}z.
+\end{equation}
+
+\textbf{面微元}
+\begin{equation}
+    \begin{cases}
+        \mathrm{d}\bm{S_\rho}=\bm{e_\rho}\rho\mathrm{d}\varphi\mathrm{d}z; \\
+        \mathrm{d}\bm{S_\varphi}=\bm{e_\varphi}\mathrm{d}\rho\mathrm{d}z;  \\
+        \mathrm{d}\bm{S_z}=\bm{e_z}\rho\mathrm{d}\rho\mathrm{d}\varphi.
+    \end{cases}
+\end{equation}
+
+\textbf{体微元}
+\begin{equation}
+    \mathrm{d}v=\rho\mathrm{d}\rho\mathrm{d}\varphi\mathrm{d}z.
+\end{equation}
+
+\subsubsection{球坐标系}
+\textbf{坐标表示}\quad $(r, \theta, \varphi)$.
+
+\textbf{坐标变换}
+\begin{equation}
+    \begin{cases}
+        \rho=r\sin\theta;          \\
+        \theta=\arccos\frac{z}{r}; \\
+        \varphi=\arctan\frac{y}{x}.
+    \end{cases}
+\end{equation}
+
+\textbf{坐标逆变换}
+\begin{equation}
+    \begin{cases}
+        x=r\sin\theta\cos\varphi; \\
+        y=r\sin\theta\sin\varphi; \\
+        z=r\cos\theta.
+    \end{cases}
+\end{equation}
+
+\textbf{基矢变换}
+\begin{equation}
+    \bm{e_\varphi}\times\bm{e_r}=\bm{e_\theta}.
+\end{equation}
+
+\begin{equation}
+    \begin{bmatrix}
+        \bm{e_r}      \\
+        \bm{e_\theta} \\
+        \bm{e_\varphi}
+    \end{bmatrix}=\begin{bmatrix}
+        \sin\theta\cos\varphi & \sin\theta\sin\varphi & \cos\theta  \\
+        \cos\theta\cos\varphi & \cos\theta\sin\varphi & -\sin\theta \\
+        -\sin\varphi          & \cos\varphi           & 0
+    \end{bmatrix}\begin{bmatrix}
+        \bm{e_x} \\
+        \bm{e_y} \\
+        \bm{e_z}
+    \end{bmatrix}.
+\end{equation}
+
+\textbf{矢量表示}
+\begin{gather}
+    \bm{A}(r,\theta,\varphi)=\bm{e_r}A_r+\bm{e_\theta}A_\theta+\bm{e_\varphi}A_\varphi. \\
+    \overrightarrow{OP}=r\bm{e_r}.
+\end{gather}
+
+需要注意的是, 两个矢量的 $\bm{e_r}$ 可能不相等, 所以最好转化为直角坐标系再处理矢量代数运算的问题.
+
+\textbf{线微元}
+\begin{equation}
+    \mathrm{d}\bm{r}=\mathrm{e_r}\mathrm{d}r+\bm{e_\theta}r\mathrm{d}\theta+\bm{e_\varphi}r\sin\theta\mathrm{d}\varphi.
+\end{equation}
+
+\textbf{面微元}
+\begin{equation}
+    \begin{cases}
+        \mathrm{d}\bm{S_r}=\bm{e_r}r^2\sin\theta\mathrm{d}\theta\mathrm{d}\varphi;         \\
+        \mathrm{d}\bm{S_\theta}=\bm{e_\theta}r\sin\theta\mathrm{d}\theta\mathrm{d}\varphi; \\
+        \mathrm{d}\bm{S_\varphi}=\bm{e_\varphi}r\mathrm{d}r\mathrm{d}\theta.
+    \end{cases}
+\end{equation}
+
+\textbf{体微元}
+\begin{equation}
+    \mathrm{d}v=r^2\sin\theta\mathrm{d}r\mathrm{d}\theta\mathrm{d}\varphi.
+\end{equation}
+
+\textbf{拉梅系数}
+
+\begin{table}[H]
+    \centering
+    \caption{三种常见坐标系的拉梅系数}
+    \begin{tabular}{cccc} \toprule
+        \textbf{坐标系} & $h_1$ & $h_2$  & $h_3$         \\\midrule
+        直角坐标系        & 1     & 1      & 1             \\
+        柱坐标系         & 1     & $\rho$ & 1             \\
+        球坐标系         & 1     & $r$    & $r\sin\theta$ \\\bottomrule
+    \end{tabular}
+\end{table}
+
+可以用拉梅系数统一表示不同坐标系下的微元:
+\begin{equation}
+    \begin{cases}
+        \mathrm{d}\bm{r}=\bm{e_i}h_i\mathrm{d}x_i;                                                   \\
+        \mathrm{d}\bm{S_i}=\bm{e_i}h_jh_k\mathrm{d}x_j\mathrm{d}x_k; & \text{($i,j,k$ 取 1,2,3 的排列.)} \\
+        \mathrm{d}v=h_1h_2h_3\mathrm{d}x_1\mathrm{d}x_2\mathrm{d}x_3.
+    \end{cases}
+\end{equation}

@@ -1,0 +1,133 @@
+\subsection{场论}
+
+\textbf{场}\quad 场是一个物理量, 表示一个标量, 矢量或张量在时空内任一点的值.
+
+场是一种物质存在形式, 具有其能量, 质量和动量等. 场在分类上有标量场, 矢量场, 张量场.
+
+\subsubsection{标量场的梯度}
+假设在标量场中, 存在一个变化量 $\bm{\Delta l}$. 其可以表示为
+\begin{equation}
+    \begin{aligned}
+        \bm{\Delta l} & =\Delta l\bm{e_l}                                    \\
+                      & =\Delta x\bm{e_x}+\Delta y\bm{e_y}+\Delta z\bm{e_z}.
+    \end{aligned}
+\end{equation}
+
+由此可得
+\begin{equation}
+    \bm{e_l}=\frac{\Delta x}{\Delta l}\bm{e_x}+\frac{\Delta y}{\Delta l}\bm{e_y}+\frac{\Delta z}{\Delta l}\bm{e_z}.
+\end{equation}
+其中, 将 $\dfrac{\Delta x}{\Delta l}$ 等项称之为 $\bm{e_l}$ 分别在 $x,y,z$ 轴上的\textbf{方向余弦}.
+
+\textbf{方向导数}
+\begin{equation}
+    \left.\frac{\partial u}{\partial l}\right|_{M_0}=\lim_{\Delta l\rightarrow 0}\frac{u(M)-u(M_0)}{\Delta l}.
+\end{equation}
+
+标量场的梯度由一点的方向导数定义:
+\begin{equation}
+    \left.\frac{\partial u}{\partial l}\right|_{M_0}\stackrel{def}{=}(\textbf{grad}\ u(\bm{r}))\cdot\bm{e_l}.
+\end{equation}
+其中
+\begin{equation}
+    \textbf{grad}\ u(\bm{r})=\nabla\bm{A}.
+\end{equation}
+
+标量场的梯度的大小为标量的空间最大变化率, 方向为标量增加率最大的方向.
+
+\subsubsection{矢量场的散度}
+\textbf{通量}
+\begin{equation}
+    \begin{aligned}
+        \Phi & =\oint_{\Sigma}\bm{F}\cdot\mathrm{d}\bm{S}     \\
+             & =\oint_{\Sigma}\bm{F}\cdot\bm{e_n}\mathrm{d}S.
+    \end{aligned}
+\end{equation}
+其中 $\bm{e_n}$ 表示面矢量 $\bm{S}$ 的单位矢量, 其指向垂直于表面向\textit{外}.
+
+则矢量场的散度定义为
+\begin{equation} \label{eq:1.4 div}
+    \mathrm{div}\ \bm{A}\stackrel{def}{=}\lim_{\Delta v\rightarrow 0}\frac{\Delta\Phi}{\Delta v}=\nabla\cdot\bm{A}.
+\end{equation}
+
+由 (\ref{eq:1.4 div}) 容易得到\textbf{高斯定理}:
+\begin{equation}
+    \oint_\Sigma\bm{F}\cdot\mathrm{d}\bm{S}=\int_{v}(\mathrm{div}\ \bm{F})\mathrm{d}v.
+\end{equation}
+
+\subsubsection{矢量场的旋度}
+矢量场通过一个闭合路径的\textbf{环流 (环量)}被定义为该矢量沿闭合路径的标量线积分, 也即
+\begin{equation}
+    \Gamma\stackrel{def}{=}\oint_C\bm{A}\cdot\mathrm{d}\bm{l}.
+\end{equation}
+
+则矢量场的旋度表示, 也即
+\begin{equation}
+    \mathrm{rot}\ \bm{A}\stackrel{def}{=}\lim_{\Delta s\rightarrow 0}\frac{1}{\Delta s}\max\left\{\bm{a_n}\Gamma\right\}=\nabla\times\bm{A}.
+\end{equation}
+
+矢量场的旋度的大小为趋于 0 的极小面积上矢量的最大环流 (\textbf{环量面密度}), 其指向该面积取向使环流最大时的法线方向 (\textit{满足右手定则}).
+
+\textbf{斯托克斯定理}
+\begin{equation}
+    \int_\Sigma(\mathrm{rot}\ \bm{A})\cdot\mathrm{d}\bm{S}=\oint_C\bm{A}\cdot\mathrm{d}\bm{l}.
+\end{equation}
+
+\subsubsection{特殊场}
+\textbf{势场}
+
+例如, 静电场 $\bm{E}$ 与电势场 $U(\bm{r})$ 满足如下关系:
+\begin{equation}
+    \bm{E}=-\nabla U(\bm{r}).
+\end{equation}
+
+可以证明:
+\begin{gather}
+    \nabla\times(\nabla U(\bm{r}))\equiv 0; \\
+    \nabla\times\bm{E}=0. \label{eq:1.4 nabla times E}
+\end{gather}
+
+利用斯托克斯定理, (\ref{eq:1.4 nabla times E}) 可以推出
+\begin{equation}
+    \oint_C\bm{E}\cdot\mathrm{d}\bm{l}=0.
+\end{equation}
+也即, 静电场力是保守力, 其在闭合环路上做功为零.
+
+\textbf{无散场}
+
+若一个场满足
+\begin{equation}
+    \bm{F}=\nabla\times\bm{A},
+\end{equation}
+则其等价于
+\begin{equation}
+    \nabla\cdot\bm{F}\equiv 0.
+\end{equation}
+
+根据高斯定理, 这可以推出
+\begin{equation}
+    \oint_\Sigma\bm{F}\cdot\mathrm{d}\bm{S}=0.
+\end{equation}
+
+\subsubsection{泊松方程与格林公式}
+已知
+\begin{equation} \label{eq:1.4 nabla 2 r r'}
+    \nabla^2\frac{1}{|\bm{r}-\bm{r}'|}=-4\pi G(\bm{r}-\bm{r}').
+\end{equation}
+
+格林函数表为
+\begin{equation}
+    G(\bm{r},\bm{r}')=-\frac{1}{4\pi}\frac{1}{|\bm{r}-\bm{r}'|}.
+\end{equation}
+
+对于泊松方程
+\begin{equation}
+    \nabla^2 u(\bm{r})=v(\bm{r}),
+\end{equation}
+其解即
+\begin{equation}
+    \begin{aligned}
+        u(\bm{r}) & =\int G(\bm{r},\bm{r}')v(\bm{r})\mathrm{d}v                        \\
+                  & =-\frac{1}{4\pi}\int\frac{v(\bm{r})}{|\bm{r}-\bm{r}'|}\mathrm{d}v.
+    \end{aligned}
+\end{equation}

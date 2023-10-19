@@ -29,3 +29,20 @@
                               \end{vmatrix}.
     \end{aligned}
 \end{equation}
+
+\begin{exampleprob}
+    计算 $\nabla\times(\bm{F}\times\bm{G})$.
+
+    \begin{solution}
+        \vskip -2em
+        \begin{align*}
+              & \nabla\times(\bm{F}\times\bm{G})                                                                                             \\
+            = & \nabla\times(\bm{e_k}\epsilon_{mnk}F_mG_n)                                                                                   \\
+            = & \bm{e_i}\epsilon_{ijk}\epsilon_{mnk}\partial_j(F_mG_n)                                                                       \\
+            = & \bm{e_i}(\delta_{im}\delta_{jn}-\delta_{in}\delta_{jm})\partial_j(F_mG_n)                                                    \\
+            = & \bm{e_i}\partial_j(F_iG_j)-\bm{e_i}\partial_j(F_jG_i) \qquad \text{\color{red} (当且仅当两个下标相同时 $\delta=1$.)}                    \\
+            = & \bm{e_i}F_i\partial_jG_j+\bm{e_i}G_j\partial_jF_i-\bm{e_i}F_j\partial_jG_i-\bm{e_i}G_i\partial_jF_j                          \\
+            = & \bm{F}\cdot(\nabla\cdot\bm{G})+(\bm{G}\cdot\nabla)\cdot\bm{F}-(\bm{F}\cdot\nabla)\cdot\bm{G}-\bm{G}\cdot(\nabla\cdot\bm{F}).
+        \end{align*}
+    \end{solution}
+\end{exampleprob}
