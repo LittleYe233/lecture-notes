@@ -1,0 +1,78 @@
+\subsection{电介质}
+\subsubsection{洛伦兹力}
+运动于电磁场中的带电粒子所受的作用力满足\textbf{洛伦兹力方程}:
+\begin{equation}
+    \bm{F}=q(\bm{E}+\bm{v}\times\bm{B}).
+\end{equation}
+
+\subsubsection{电极化}
+当给电介质施加电场时, 由于电介质内部正负电荷的相对位移, 会产生电偶极子. 这种现象称作\textbf{电极化}.
+
+\textbf{电偶极矩}\quad 在电偶极子模型中, 电偶极矩的大小为电荷量与距离的乘积, 方向由负电荷指向正电荷, 即
+\begin{equation}
+    \bm{p}=q\bm{l}.
+\end{equation}
+
+\textbf{电极化强度}\quad 电介质单位体积内的电偶极矩密度. 即
+\begin{equation}
+    \bm{P}=n\bm{p}=nq\bm{l}.
+\end{equation}
+
+对于\textit{各向同性}电介质, 电极化强度与电场强度成正比, 比例与\textbf{电极化率}有关:
+\begin{equation}
+    \bm{P}=\epsilon_0\chi_e\bm{E}_0.
+\end{equation}
+
+\subsubsection{位移电流假说}
+\textbf{位移电流}是电位移对于时间的变化率, 其单位与电流单位相同. 其也能产生伴随的磁场.
+
+位移电流假说修正了安培环路定理 (见公式 (\ref{eq:2.3 ampere's circuital law})), 将其更改为
+\begin{equation}
+    \nabla\times\bm{B}=\mu_0(\bm{J}+\bm{J_D}).
+\end{equation}
+其中 $\bm{J_D}$ 即为\textbf{位移电流密度}, 其表示为
+\begin{equation}
+    \bm{J_D}\stackrel{def}{=}\frac{\partial\bm{D}}{\partial t}.
+\end{equation}
+其中 $\bm{D}$ 表示\textbf{电位移}, 其表为
+\begin{equation}
+    \bm{D}=\epsilon_0\bm{E}+\bm{P}.
+\end{equation}
+
+在\textit{真空}中, 电极化强度 $\bm{P}=0$. 因此
+\begin{equation}
+    \bm{J_D}=\epsilon_0\frac{\partial\bm{E}}{\partial t}.
+\end{equation}
+修正后的安培环路定理为
+\begin{equation}
+    \nabla\times\bm{B}=\mu_0\left(\bm{J}+\epsilon_0\frac{\partial\bm{E}}{\partial t}\right).
+\end{equation}
+
+\subsubsection{介质的磁化}
+对于抗磁性和顺磁性物质, \textbf{磁化强度} $\bm{M}$, \textbf{磁场强度} $\bm{H}$ 和磁感应强度可以认为满足如下关系
+\begin{gather}
+    \bm{H}\stackrel{def}{=}\frac{1}{\mu_0}\bm{B}-\bm{M}; \\
+    \bm{M}=\chi_m\bm{H}.
+\end{gather}
+
+在磁性物质中, 存在\textbf{束缚电流} (磁化电流), 满足
+\begin{equation}
+    \bm{J_m}=\nabla\times\bm{M}.
+\end{equation}
+
+考虑电介质与磁化时, 总电流密度可以认为是
+\begin{equation}
+    \bm{J}=\bm{J}_0+\bm{J_D}+\bm{J_m}.
+\end{equation}
+
+\subsubsection{导体的欧姆定律}
+宏观条件下, 导体的欧姆定律表示为
+\begin{equation}
+    R=\frac{U}{I}.
+\end{equation}
+
+其微分形式为
+\begin{equation}
+    \bm{J}=\sigma\bm{E}.
+\end{equation}
+其中 $\sigma$ 为\textbf{电导率密度}.
