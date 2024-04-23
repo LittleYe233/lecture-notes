@@ -1,0 +1,63 @@
+\section{电磁场问题的求解}
+\subsection{静电场}
+静电场问题的基本方程为
+\begin{equation} \label{eq:3.1 1}
+    \nabla\times\bm{E}=0.
+\end{equation}
+
+容易得到 (\ref{eq:3.1 1}) 可以化为
+\begin{equation} \label{eq:3.1 2}
+    \bm{E}=-\nabla\varphi(\bm{r}).
+\end{equation}
+
+注意到在电介质中
+\begin{equation}
+    \nabla\cdot\bm{D}=\rho
+\end{equation}
+也即
+\begin{equation} \label{eq:3.1 3}
+    \nabla\cdot\epsilon\bm{E}=\rho.
+\end{equation}
+
+将 (\ref{eq:3.1 2}) 代入 (\ref{eq:3.1 3}), 得到
+\begin{equation} \label{eq:3.1 4}
+    \nabla^2\varphi(\bm{r})=-\frac{\rho}{\epsilon}.
+\end{equation}
+
+上式 (\ref{eq:3.1 4}) 是一个泊松方程. 给定边界条件之后, 即可得到唯一解.
+
+\subsection{稳磁场}
+稳磁场问题的基本方程为
+\begin{equation}
+    \nabla\cdot\bm{B}=0.
+\end{equation}
+
+容易得到 $\bm{B}$ 可以表示为
+\begin{equation}
+    \bm{B}=\nabla\times\bm{A}.
+\end{equation}
+
+而
+\begin{equation}
+    \nabla\times\bm{H}=\frac{1}{\mu}[\nabla(\nabla\cdot\bm{A})-\nabla^2\bm{A}].
+\end{equation}
+令 $\nabla\cdot\bm{A}=0$, 则
+\begin{equation}
+    \nabla\times\bm{H}=-\frac{1}{\mu}\nabla^2\bm{A}=\bm{J}.
+\end{equation}
+
+因此
+\begin{equation}
+    \nabla^2\bm{A}=-\mu_0\bm{J}.
+\end{equation}
+
+这是三个方向上的泊松方程. 给定边界条件之后, 即可得到唯一解.
+
+\subsection{时变磁场}
+时变磁场条件下, 基本方程如下
+\begin{equation}
+    \begin{cases}
+        \nabla^2\varphi=\frac{1}{\mu\epsilon}\frac{\partial^2\varphi}{\partial t^2}-\frac{\rho}{\epsilon}; \\
+        \nabla^2\bm{A}=\frac{1}{\mu\epsilon}\frac{\partial^2 A}{\partial t^2}-\mu\bm{J}.
+    \end{cases}
+\end{equation}
