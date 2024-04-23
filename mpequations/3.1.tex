@@ -1,0 +1,206 @@
+\section{行波法与积分变换法} \label{行波法与积分变换法}
+\subsection{一维波动方程的达朗贝尔公式} \label{3 一维波动方程的达朗贝尔公式}
+考虑一维\textit{无界}弦的自由振动的定解问题:
+\begin{numcases}{}
+    \frac{\partial^2u}{\partial t^2}=a^2\frac{\partial^2u}{\partial x^2}, & \quad \color{red} $-\infty<x<+\infty,t>0$ \label{eq:3.1 eq} \\
+    u|_{t=0}=\varphi(x),u_t|_{t=0}=\psi(x). & \quad \color{red} $-\infty<x<+\infty$ \label{eq:3.1 cond}
+\end{numcases}
+
+作如下变换:
+\begin{equation} \label{eq:3.1 xi eta}
+    \begin{cases}
+        \xi=x+at, \\
+        \eta=x-at.
+    \end{cases}
+\end{equation}
+
+将 (\ref{eq:3.1 xi eta}) 代入 (\ref{eq:3.1 eq}), 得
+\begin{align}
+     & \begin{aligned}
+           \frac{\partial u}{\partial x}
+            & =\frac{\partial u}{\partial\xi}\frac{\partial\xi}{\partial x}+\frac{\partial u}{\partial\eta}\frac{\partial\eta}{\partial x} \\
+            & =\frac{\partial u}{\partial\xi}+\frac{\partial u}{\partial\eta};
+       \end{aligned}                                                                                                                                                                               \\
+     & \begin{aligned}
+           \frac{\partial u}{\partial t}
+            & =\frac{\partial u}{\partial\xi}\frac{\partial\xi}{\partial t}+\frac{\partial u}{\partial\eta}\frac{\partial\eta}{\partial t} \\
+            & =a\left(\frac{\partial u}{\partial\xi}-\frac{\partial u}{\partial\eta}\right);
+       \end{aligned}                                                                                                                                                                               \\
+     & \begin{aligned}
+           \frac{\partial^2u}{\partial x^2}
+            & =\frac{\partial}{\partial\xi}\left(\frac{\partial u}{\partial\xi}+\frac{\partial u}{\partial\eta}\right)\frac{\partial\xi}{\partial x}+\frac{\partial}{\partial\eta}\left(\frac{\partial u}{\partial\xi}+\frac{\partial u}{\partial\eta}\right)\frac{\partial\eta}{\partial x} \\
+            & =\frac{\partial^2u}{\partial\xi^2}+2\frac{\partial^2u}{\partial\xi\partial\eta}+\frac{\partial^2u}{\partial\eta^2};
+       \end{aligned} \label{eq:3.1 u_xx}                             \\
+     & \begin{aligned}
+           \frac{\partial^2u}{\partial t^2}
+            & =\frac{\partial}{\partial\xi}\left[a\left(\frac{\partial u}{\partial\xi}-\frac{\partial u}{\partial\eta}\right)\right]\frac{\partial\xi}{\partial t}+\frac{\partial}{\partial\eta}\left[a\left(\frac{\partial u}{\partial\xi}-\frac{\partial u}{\partial\eta}\right)\right]\frac{\partial\eta}{\partial t} \\
+            & =a^2\left[\frac{\partial}{\partial\xi}\left(\frac{\partial u}{\partial\xi}-\frac{\partial u}{\partial\eta}\right)-\frac{\partial}{\partial\eta}\left(\frac{\partial u}{\partial\xi}-\frac{\partial u}{\partial\eta}\right)\right]                                                                          \\
+            & =a^2\left(\frac{\partial^2u}{\partial\xi^2}-2\frac{\partial^2u}{\partial\xi\partial\eta}+\frac{\partial^2u}{\partial\eta^2}\right).
+       \end{aligned} \label{eq:3.1 u_tt}
+\end{align}
+上述推导利用了 (\ref{eq:3.1 xi eta}):
+\begin{equation}
+    \begin{cases}
+        \frac{\partial\xi}{\partial x}=\frac{\partial\xi}{\partial y}=1, \\
+        \frac{\partial\xi}{\partial t}=a,                                \\
+        \frac{\partial\eta}{\partial t}=-a.
+    \end{cases}
+\end{equation}
+
+结合 (\ref{eq:3.1 u_xx}) 和 (\ref{eq:3.1 u_tt}), 得
+\begin{equation}
+    \frac{\partial^2 u}{\partial\xi\partial\eta}=0.
+\end{equation}
+上式依次对 $\eta$, $\xi$ 积分:
+\begin{gather}
+    \frac{\partial u}{\partial\xi}=f_1'(\xi); \\
+    u=\int f_1'(\xi)\mathrm{d}\xi+f_2(y)=f_1(\xi)+f_2(\eta). \label{eq:3.1 u}
+\end{gather}
+
+将 (\ref{eq:3.1 xi eta}) 代入 (\ref{eq:3.1 u}), 得
+\begin{equation} \label{eq:3.1 u x,t}
+    u(x,t)=f_1(x+at)+f_2(x-at).
+\end{equation}
+再将 (\ref{eq:3.1 cond}) 代入上式, 得
+\begin{gather}
+    f_1(x)+f_2(x)=\varphi(x); \label{eq:3.1 f_1 f_2} \\
+    af_1'(x)-af_2'(x)=\psi(x). \label{eq:3.1 af_1 af_2}
+\end{gather}
+
+对 (\ref{eq:3.1 af_1 af_2}) 积分:
+\begin{equation}
+    f_1(x)-f_2(x)=\frac{1}{a}\int_{0}^{x}\psi(x)\mathrm{d}x+C.
+\end{equation}
+结合上式和 (\ref{eq:3.1 f_1 f_2}), 得
+\begin{equation}
+    \begin{cases}
+        f_1(x)=\frac{1}{2}\left[\varphi(x)+\frac{1}{a}\int_{0}^{x}\psi(x)\mathrm{d}x+C\right], \\
+        f_2(x)=\frac{1}{2}\left[\varphi(x)-\frac{1}{a}\int_{0}^{x}\psi(x)\mathrm{d}x-C\right].
+    \end{cases}
+\end{equation}
+上式代入 (\ref{eq:3.1 u x,t}), 得
+\begin{equation} \label{eq:3.1 d'Alembert}
+    u(x,t)=\frac{1}{2}[\varphi(x+at)+\varphi(x-at)]+\frac{1}{2a}\int_{x-at}^{x+at}\psi(x)\mathrm{d}x.
+\end{equation}
+
+式 (\ref{eq:3.1 d'Alembert}) 被称为无限长弦自由振动的达朗贝尔公式.
+
+\subsubsection{达朗贝尔公式的物理意义}
+\textbf{左行波}\quad $f_1(x+at)$.
+
+\textbf{右行波}\quad $f_2(x-at)$.
+
+\textbf{依赖区间}\quad $[x-at,x+at]$. 解在 $(x,t)$ 的数值仅依赖该区间内的初值条件, 而与该区间之外的无关.
+
+\textbf{决定区域}\quad 对于初始轴 $t=0$ 上的一个区间 $[x_1,x_2]$, 绘出一个等腰三角形区域 (两腰直线方程 $x=x_1+at$, $x=x_2-at$), 该区域内任何一点 $(x,t)$ 的依赖区间都落在 $[x_1,x_2]$ 的内部, 因此解在此三角形区域中的数值完全由 $[x_1,x_2]$ 上的初值条件决定. 换言之, 给定 $[x_1,x_2]$ 的初值条件, 即可推得决定区域中初值问题的解.
+
+\textbf{影响区域}\quad $\{(x,t)|x_1-at\leq x\leq x_2+at\}$ ($t>0$). 经过 $t$ 时间后受到区间 $[x_1,x_2]$ 初始扰动影响的区域. 在此区域之外的波动不受 $[x_1,x_2]$ 初始扰动影响.
+
+\textbf{特征线}\quad $x\pm at=C$ (两族直线).
+
+\subsubsection{数理方程的分类}
+考虑如下的一般二阶线性偏微分方程
+\begin{equation}
+    A\frac{\partial^2u}{\partial x^2}+2B\frac{\partial^2u}{\partial x\partial y}+C\frac{\partial^2u}{\partial y^2}+D\frac{\partial u}{\partial x}+E\frac{\partial u}{\partial y}+Fu=0.
+\end{equation}
+其\textbf{特征方程}为
+\begin{equation}
+    A(\mathrm{d}y)^2{\color{red} -}2B\mathrm{d}x\mathrm{d}y+C(\mathrm{d}x)^2=0.
+\end{equation}
+
+该偏微分方程的特征线即上述特征方程的积分曲线, 而其仅与偏微分方程的二阶导数项的系数有关. 令 $\Delta=B^2-AC$. 具体的微分方程系数和特征线的关系见表 \ref{tab:3.1 eq feat}.
+\begin{table}[H]
+    \caption{二阶偏微分方程的其中三种类型与其特征线的关系} \label{tab:3.1 eq feat}
+    \centering
+    \begin{tabular}{ccc} \hline
+        \bfseries 微分方程类型 & \bfseries 过某 $xt$ 区域内的 $\Delta$ & \bfseries 过该区域每一点的实特征线数量 \\ \hline
+        椭圆型              & $\Delta<0$                      & 不存在                      \\ \hline
+        抛物型              & $\Delta=0$                      & 仅有一条                     \\ \hline
+        双曲型              & $\Delta>0$                      & 两条相异                     \\ \hline
+    \end{tabular}
+\end{table}
+
+具体来说:
+\begin{itemize}
+    \item 拉普拉斯方程与泊松方程属于椭圆型;
+    \item 热传导方程属于抛物型;
+    \item 波动方程属于双曲型 (\textit{可以使用行波法}).
+\end{itemize}
+
+对于特征线方程, 将 $\mathrm{d}y$, $\mathrm{d}x$ 分别替换为 $y$, $x$, 再对其因式分解即可得到特征线方程; 注意得到的方程常数端需要对应替换为待定常数 $C_1$, $C_2$.
+
+对于双曲型方程的通解, 其可以表为 $u(x,t)=f_1(px+qy)+f_2(ux+wy)$, 其中 $\begin{cases}
+        px+qy=C_1, \\
+        ux+wy=C_2
+    \end{cases}$ 为特征线方程.
+
+\subsubsection{非齐次方程的情形}
+若需要解如下定解问题:
+\begin{numcases}{}
+    \frac{\partial^2u}{\partial t^2}=a^2\frac{\partial^2u}{\partial x^2}{\color{red} +f(x,t)}, & \qquad $-\infty<x<+\infty,t>0$ \label{eq:3.1 non 1} \\
+    u|_{t=0}=\varphi(x),u_t|_{t=0}=\psi(x). & \qquad $-\infty<x<+\infty$
+\end{numcases}
+
+将方程 (\ref{eq:3.1 non 1}) 中 $u(x,t)$ 分解为 $v(x,t)+w(x,t)$. 其中自由振动 $v(x,t)$ 满足
+\begin{equation}
+    \begin{cases}
+        \frac{\partial^2v}{\partial t^2}=a^2\frac{\partial^2v}{\partial x^2}, \\
+        v|_{t=0}=\varphi(x),                                                  \\
+        v_t|_{t=0}=\psi(x).
+    \end{cases}
+\end{equation}
+强迫振动 $w(x,t)$ 满足
+\begin{numcases}{}
+    \frac{\partial^2w}{\partial t^2}=a^2\frac{\partial^2w}{\partial x^2}+f(x,t), \label{eq:3.1 non 2} \\
+    w|_{t=0}=w_t|_{t=0}=0.
+\end{numcases}
+
+显然 $v(x,t)$ 满足达朗贝尔公式. 对于 $w(x,t)$, 在 $[\tau,\tau+\mathrm{d}\tau]$ 时间范围内, (\ref{eq:3.1 non 2}) 可以分别写成
+\begin{gather}
+    \frac{\partial^2w(\tau)}{\partial t^2}=a^2\frac{\partial^2w(\tau)}{\partial x^2}+f(x,\tau), \\
+    \frac{\partial^2w(\tau+\mathrm{d}\tau)}{\partial t^2}=a^2\frac{\partial^2w(\tau+\mathrm{d}\tau)}{\partial x^2}+f(x,\tau+\mathrm{d}\tau).
+\end{gather}
+
+因为 $f(x,\tau+\mathrm{d}\tau)=f(x,\tau)$, 所以, 上两式相减得
+\begin{equation}
+    \frac{\partial^2}{\partial t^2}\left[\frac{w(\tau+\mathrm{d}\tau)-w(\tau)}{\mathrm{d}\tau}\right]=a^2\frac{\partial^2}{\partial x^2}\left[\frac{w(\tau+\mathrm{d}\tau)-w(\tau)}{\mathrm{d}\tau}\right].
+\end{equation}
+
+令 $\overline{w}=\dfrac{\partial w}{\partial t}$, 则上式可以写成
+\begin{equation}
+    \frac{\partial^2\overline{w}}{\partial t^2}=a^2\frac{\partial^2\overline{w}}{\partial x^2}.
+\end{equation}
+
+在 $[\tau,\tau+\mathrm{d}\tau]$ 时间范围内, 位移变化应为 0, 也即
+\begin{equation}
+    \begin{aligned}
+                    & w(\tau+\mathrm{d}\tau)-w(\tau)=0                \\
+        \Rightarrow & \overline{w}|_{t=\tau}=\frac{0}{\mathrm{d}t}=0.
+    \end{aligned}
+\end{equation}
+而速度应满足\textit{冲量定理}, 也即
+\begin{equation}
+    \begin{aligned}
+                    & \frac{\partial w(\tau+\mathrm{d}\tau)}{\partial t}-\frac{\partial w(\tau)}{\partial t}=f(x,\tau)\mathrm{d}\tau \\
+        \Rightarrow & \overline{w}_{t}|_{t=\tau}=f(x,\tau).
+    \end{aligned}
+\end{equation}
+
+此时, 联立以上三式, 即得关于 $\overline{w}$ 的定解问题 (取值范围略)
+\begin{equation}
+    \begin{cases}
+        \frac{\partial^2\overline{w}}{\partial t^2}=a^2\frac{\partial^2\overline{w}}{\partial x^2}, \\
+        \overline{w}|_{t=\tau}=0,\overline{w}_{t}|_{t=\tau}=f(x,\tau).
+    \end{cases}
+\end{equation}
+对上述定解问题, 令 $T=t-\tau$, 对该定解问题则可以使用达朗贝尔公式, 解得
+\begin{equation}
+    \overline{w}=\frac{1}{2a}\int_{x-aT}^{x+aT}f(x,t)\mathrm{d}x.
+\end{equation}
+
+又因为 $\overline{w}=\dfrac{\partial w}{\partial t}$, 所以
+\begin{equation}
+    w(x,t)=\int_{0}^{t}\frac{1}{2a}\int_{x-a(t-\tau)}^{x+a(t-\tau)}f(x,t)\mathrm{d}x\mathrm{d}t.
+\end{equation}
+
+由此, 即可解得 $u(x,t)$ 的解.

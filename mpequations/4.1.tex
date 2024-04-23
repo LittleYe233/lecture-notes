@@ -1,0 +1,40 @@
+\section{拉普拉斯方程的格林函数法} \label{拉普拉斯方程的格林函数法}
+\subsection{拉普拉斯方程边值问题的提法} \label{4 拉普拉斯方程边值问题的提法}
+三维拉普拉斯方程是
+\begin{equation}
+    \nabla^2u=\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}=0.
+\end{equation}
+其主要有如下两类 (内问题, 外问题) 四种边值问题:
+\begin{enumerate}[(1)]
+    \item 第一边值问题 (狄利克雷问题):
+
+          在某光滑闭曲面 $\Gamma$ 上给出连续函数 $f$, 要求这样的函数 $u(x,y,z)$ 在闭域 $\Omega+\Gamma$ 上连续, 在 $\Gamma$ 内部的区域 $\Omega$ 中是调和函数 (有二阶连续偏导数 (函数的\textbf{光滑性假设}) 且满足拉普拉斯方程), 且
+          \begin{equation}
+              u|_\Gamma=f.
+          \end{equation}
+    \item 第二边值问题 (诺伊曼问题):
+
+          在某光滑闭曲面 $\Gamma$ 上给出连续函数 $f$, 要求这样的函数 $u(x,y,z)$ 在闭域 $\Omega+\Gamma$ 上连续, 在 $\Gamma$ 内部的区域 $\Omega$ 中是调和函数, 在 $\Gamma$ 上任一点处的法向导数 $\dfrac{\partial u}{\partial\boldsymbol{n}}$ 存在, 且
+          \begin{equation}
+              \left.\frac{\partial u}{\partial\boldsymbol{n}}\right|_\Gamma=f,
+          \end{equation}
+          其中 $\boldsymbol{n}$ 是 $\Gamma$ 的外法向量.
+    \item 狄利克雷外问题:
+
+          在某光滑闭曲面 $\Gamma$ 上给出连续函数 $f$, 要求这样的函数 $u(x,y,z)$ 在 $\Omega'+\Gamma$ 上连续, 在 $\Gamma$ 外部的区域 $\Omega'$ 中是调和函数, $u(x,y,z)$ 满足条件 (\ref{eq:4.1 infinte far}), 且
+          \begin{equation}
+              u|_\Gamma=f.
+          \end{equation}
+    \item 诺伊曼外问题:
+
+          在某光滑闭曲面 $\Gamma$ 上给出连续函数 $f$, 要求这样的函数 $u(x,y,z)$ 在 $\Omega'+\Gamma$ 上连续, 在 $\Gamma$ 外部的区域 $\Omega'$ 中是调和函数, $u(x,y,z)$ 满足条件 (\ref{eq:4.1 infinte far}), 在 $\Gamma$ 上任一点处的法向导数 $\dfrac{\partial u}{\partial\boldsymbol{n}'}$ 存在, 且
+          \begin{equation}
+              \left.\frac{\partial u}{\partial\boldsymbol{n}'}\right|_\Gamma=f,
+          \end{equation}
+          其中 $\boldsymbol{n}'$ 是 $\Gamma$ 的内法向量.
+\end{enumerate}
+
+对于电学的外问题, 因常假定在无穷远处的电位为零, 所以常有如下附加条件:
+\begin{equation} \label{eq:4.1 infinte far}
+    \lim_{r\rightarrow\infty}u(x,y,z)=0.
+\end{equation}

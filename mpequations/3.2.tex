@@ -1,0 +1,129 @@
+\subsection{三维波动方程的泊松公式} \label{3 三维波动方程的泊松公式}
+三维无限空间中的波动问题可以归结于如下定解问题:
+\begin{numcases}{}
+    \frac{\partial^2u}{\partial t^2}=a^2\left(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}\right), & \qquad $-\infty<x,y,z<+\infty,t>0$ \label{eq:3.2 1 1} \\
+    u|_{t=0}=\varphi(x,y,z),u_t|_{t=0}=\psi(x,y,z). & \qquad $-\infty<x,y,z<+\infty$
+\end{numcases}
+
+\subsubsection{三维波动方程的球对称解}
+球对称时, 可以将坐标 $(x,y,z)$ 转为 $(r,\theta,\varphi)$ ($\theta$ 为经度, $\varphi$ 为纬度). 这种转换的关系式如下:
+\begin{equation*}
+    \begin{cases}
+        x=r\sin\theta\cos\varphi, \\
+        y=r\sin\theta\sin\varphi, \\
+        z=r\cos\theta.
+    \end{cases}
+\end{equation*}
+
+可以得到关于 $ru$ 的一维波动方程
+\begin{equation} \label{eq:3.2 ru eq}
+    \frac{\partial^2(ru)}{\partial r^2}=\frac{1}{a^2}\frac{\partial^2(ru)}{\partial t^2}.
+\end{equation}
+其通解为
+\begin{equation} \label{eq:3.2 ru eq sol}
+    u(r,t)=\frac{f_1(r+at)+f_2(r-at)}{r}.
+\end{equation}
+其推导参见 \ref{proofs 3 三维波动方程的球对称解} 小节.
+
+\subsubsection{三维波动方程的泊松公式}
+假设一平均值函数 $\overline{u}(r,t)$ 表示函数 $u(x,y,z,t)$ 在以点 $M(x,y,z)$ 为球心, 以 $r$ 为半径的球面 $S_r^M$ 上的平均值:
+\begin{equation} \label{eq:3.2 ave u}
+    \overline{u}(r,t)=\frac{1}{4\pi r^2}\iint_{S_r^M}u(M,t)\mathrm{d}S.
+\end{equation}
+
+总立体角 $\Omega$ (单位球面的面积) 为
+\begin{equation}
+    \int_{0}^{\pi}\int_{0}^{2\pi}1^2\sin\theta\mathrm{d}\theta\mathrm{d}\varphi=4\pi.
+\end{equation}
+
+因为 $\mathrm{d}S=r^2\mathrm{d}\Omega$, 所以
+\begin{equation}
+    u(M_0,t_0)=\lim_{r\rightarrow 0}\frac{1}{4\pi}\iint_{S_r^{M_0}}u(M,t_0)\mathrm{d}\Omega.
+\end{equation}
+
+对于波动方程 (\ref{eq:3.2 1 1}), 两边施加于平均值函数, 得到
+\begin{equation}
+    \frac{1}{4\pi}\iint_{S_r^{M_0}}\frac{\partial^2u}{\partial t^2}\mathrm{d}\Omega=\frac{1}{4\pi}\iint_{S_r^{M_0}}\nabla^2u\mathrm{d}\Omega\cdot a^2.
+\end{equation}
+注意\textit{此时 $r$ 未趋于 0.}
+
+将上式的积分和微分调换顺序, 得到
+\begin{equation}
+    \frac{\partial^2}{\partial t^2}\frac{1}{4\pi}\iint_{S_r^{M_0}}u\mathrm{d}\Omega=a^2\nabla^2\frac{1}{4\pi}\iint_{S_r^{M_0}}u\mathrm{d}\Omega.
+\end{equation}
+上式可以写成
+\begin{equation}
+    \frac{\partial^2}{\partial t^2}\overline{u}(r,t)=a^2\nabla^2\overline{u}(r,t).
+\end{equation}
+
+显然 $\overline{u}(r,t)$ 满足一维波动方程, 因此
+\begin{equation}
+    \overline{u}(r,t)=\frac{f_1(r+at)+f_2(r-at)}{r}.
+\end{equation}
+
+因为
+\begin{equation}
+    \nabla^2\overline{u}(r,t)=\frac{1}{r^2}\frac{\partial}{\partial t}\left(r^2\frac{\partial u}{\partial t}\right)=\frac{1}{r}\frac{\partial^2(r\overline{u})}{\partial r^2},
+\end{equation}
+令 $v(r,t)=r\overline{u}(r,t)$, 此时 $v|_{r=0}=0$, 从而得
+\begin{equation} \label{eq:3.2 1 star 1}
+    f_1(at)+f_2(-at)=0.
+\end{equation}
+根据 $v(r,t)$ 的定义式, 得到
+\begin{equation} \label{eq:3.2 1 star 2}
+    \begin{aligned}
+                    & v_{tt}-a^2v_{rr}=0          \\
+        \Rightarrow & v(r,t)=f_1(r+at)+f_2(r-at).
+    \end{aligned}
+\end{equation}
+
+结合 (\ref{eq:3.2 1 star 1}) 和 (\ref{eq:3.2 1 star 2}), 可得
+\begin{equation}
+    \frac{[f_1(r+at)+f_2(r-at)]-[f_1(at)+f_2(-at)]}{r-0}=u(r,t).
+\end{equation}
+
+令 $r\rightarrow 0$, $t=t_0$, 则
+\begin{equation} \label{eq:3.2 1 star 3}
+    u(M_0,t_0)=f_1'(r+at)+f_2'(r-at)|_{r=0,t=t_0}=f_1'(at_0)+f_2'(-at_0).
+\end{equation}
+
+对 (\ref{eq:3.2 1 star 1}) 求导, 得到
+\begin{equation} \label{eq:3.2 1 star 4}
+    af_1'(at)-af_2'(-at)=0.
+\end{equation}
+
+结合 (\ref{eq:3.2 1 star 3}) 和 (\ref{eq:3.2 1 star 4}), 可得
+\begin{equation}
+    u(M_0,t_0)=2f_1'(at_0).
+\end{equation}
+
+对 (\ref{eq:3.2 1 star 2}) 中 $r$, $t$ 分别求偏导, 得到
+\begin{gather}
+    \frac{\partial[r\overline{u}(r,t)]}{\partial r}=f_1'(r+at)+f_2'(r-at), \\
+    \frac{1}{a}\frac{\partial[r\overline{u}(r,t)]}{\partial t}=f_1'(r+at)-f_2'(r-at).
+\end{gather}
+
+上述两式相加, 得到
+\begin{equation}
+    \frac{\partial(r\overline{u})}{\partial r}+\frac{1}{a}\frac{\partial(r\overline{u})}{\partial t}=2f_1'(r+at).
+\end{equation}
+令 $r=0$, $t=t_0$, 上式得到
+\begin{equation}
+    \frac{\partial(r\overline{u})}{\partial r}+\frac{1}{a}\frac{\partial(r\overline{u})}{\partial t}=2f_1'(at_0).
+\end{equation}
+
+因此
+\begin{equation}
+    \begin{aligned}
+          & u(M_0,t_0)                                                                                                                                                                                                            \\
+        = & \left.\frac{\partial(r\overline{u})}{\partial r}+\frac{1}{a}\frac{\partial(r\overline{u})}{\partial t}\right|_{r=0,t=t_0}                                                                                             \\
+        = & \frac{1}{a}\frac{\partial}{\partial t_0}\left[at_0\frac{1}{4\pi(at_0)^2}\iint_{S_{at_0}^{M_0}}\varphi(M)\mathrm{d}S\right]+\frac{1}{a}\left[at_0\frac{1}{4\pi(at_0)^2}\iint_{S_{at_0}^{M_0}}\psi(M)\mathrm{d}S\right] \\
+        = & \frac{1}{4\pi a}\left[\frac{\partial}{\partial t_0}\iint_{S_{at_0}^{M_0}}\frac{\varphi(M)}{at_0}\mathrm{d}S+\iint_{S_{at_0}^{M_0}}\frac{\psi(M)}{at_0}\mathrm{d}S\right].
+    \end{aligned}
+\end{equation}
+
+一般化, 得
+\begin{equation}
+    u(M,t)=\frac{1}{4\pi a}\left[\frac{\partial}{\partial t_0}\iint_{S_{at}^M}\frac{\varphi(M')}{at}\mathrm{d}S+\iint_{S_{at}^M}\frac{\psi(M')}{at}\mathrm{d}S\right].
+\end{equation}
+其中 $M'$ 为以 $M$ 为球心, $at$ 为半径的球面 $S_{at}^M$ 上的点. 此即三维波动方程的泊松公式.

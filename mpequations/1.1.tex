@@ -1,0 +1,66 @@
+\section{一些典型方程和定解条件的推导} \label{一些典型方程和定解条件的推导}
+\subsection{基本方程的建立} \label{1 基本方程的建立}
+\subsubsection{弦振动问题}
+\textbf{物理模型}
+
+设有一根均匀柔软的细弦, 平衡时沿直线方向拉近, 除受不随时间而变的张力以及弦自身重力外, 不受其他外力影响. 研究弦的微小横向振动的规律.
+
+\textbf{分析模型}
+\begin{enumerate}
+    \item 理想性假设:
+          \begin{enumerate}
+              \item 均匀性假设 (物性均匀, 密度是常数);
+              \item 弦是柔软的 (张力在弦方向上, 且满足胡克定律);
+              \item 弦是细的 (仅考虑一维波动问题, 线密度是常数);
+              \item 弦作微小横向振动 (相对位移的高阶小量不计, 弦在任意位置切线方向上的倾角很小);
+                    \begin{equation*}
+                        \cos\theta\approx 1,\qquad \sin\theta\approx\tan\theta=\frac{\partial u}{\partial x}.
+                    \end{equation*}
+              \item 弦不受外力作用 (自由振动).
+          \end{enumerate}
+    \item 分析问题: 弦上任意一点 $x$ 在 $t$ 时刻的位移 $u(x,t)$;
+    \item 选择坐标系: 笛卡尔坐标系;
+    \item 分析方法: 微元分析法: 分析 $[x,x+\mathrm{d}x]$ 小段弦的受力情况.
+\end{enumerate}
+
+\textbf{建立方程}
+
+首先证明弦上点的张力不随时间而变. 根据弧长公式,
+\begin{equation}
+    \mathrm{d}s=\int_{x}^{x+\mathrm{d}x}\sqrt{1+(u')^2}\mathrm{d}x.
+\end{equation}
+根据理想性假设 (d), $u'\approx 0$, 因此 $\mathrm{d}s\approx\mathrm{d}x$. 根据胡克定律, 张力与变形量成正比, 因此可以认为 $x$ 处的张力 $T(x)$ 是不随时间 $t$ 变化的量.
+
+取 $[x,x+\mathrm{d}t]$ 范围内的小段弦, 设弦的线密度为 $\rho$. 考虑其两端受沿弦方向的张力 $T(x)$ 和 $[T(x)]'$ 及重力 $\rho g\mathrm{d}s$. 则该弦段在 $x$ 和 $u$ 方向受力满足
+\begin{gather}
+    F_x=[T(x)]'\cos\theta'-T(x)\cos\theta, \\
+    F_u=[T(x)]'\sin\theta'-T(x)\sin\theta-\rho g\mathrm{d}s.
+\end{gather}
+
+显然 $F_x=0$, 而根据理想性假设 (d), $\cos\theta=\cos\theta'\approx 1$, 因此
+\begin{equation}
+    T(x)=[T(x)]'=T.
+\end{equation}
+
+对 $u$ 方向使用牛顿第二定律,
+\begin{equation}
+    F_u=[T(x)]'\sin\theta'-T(x)\sin\theta-\rho g\mathrm{d}x=\rho\mathrm{d}x\frac{\partial^2u}{\partial t^2}.
+\end{equation}
+也即
+\begin{equation} \label{eq:1.1 1 1}
+    T\left(\left.\frac{\partial u}{\partial x}\right|_{x=x+\mathrm{d}x}-\left.\frac{\partial u}{\partial x}\right|_{x=x}\right)-\rho g\mathrm{d}x=\rho\mathrm{d}x\frac{\partial^2 u}{\partial t^2}.
+\end{equation}
+
+根据导数的定义,
+\begin{equation}
+    \lim_{\mathrm{d}x\rightarrow 0}\frac{\displaystyle \left.\frac{\partial u}{\partial x}\right|_{x=x+\mathrm{d}x}-\left.\frac{\partial u}{\partial x}\right|_{x=x}}{\mathrm{d}x}=\frac{\partial^2 u}{\partial x^2}.
+\end{equation}
+因此, 式 (\ref{eq:1.1 1 1}) 可以化为
+\begin{equation}
+    \frac{\partial^2u}{\partial x^2}=\frac{\rho}{T}\left(g+\frac{\partial^2u}{\partial t^2}\right).
+\end{equation}
+
+实际振动过程中, 一般弦上点的加速度都远大于 $g$, 故可以将该项忽略, 继而得到\textbf{弦的一维波动方程}
+\begin{equation}
+    \frac{\partial^2u}{\partial t^2}=\frac{T}{\rho}\frac{\partial^2u}{\partial x^2}=a^2\frac{\partial^2u}{\partial x^2}.
+\end{equation}

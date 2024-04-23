@@ -1,0 +1,61 @@
+\subsection{非齐次边界条件的处理} \label{2 非齐次边界条件的处理}
+\begin{exampleprob}
+    用分离变量法求解以下定解问题, 其中 $A,B$ 为常数:
+    \begin{subnumcases}{}
+        \frac{\partial^2u}{\partial t^2}=a^2\frac{\partial^2u}{\partial x^2}+A, & \qquad $0<x<l,t>0$ \label{eq:2.5 eprob 1 a} \\
+        u|_{x=0}=0,u|_{x=l}=B, & \qquad $t>0$ \label{eq:2.5 eprob 1 b} \\
+        u|_{t=0}=u_t|_{t=0}=0. & \qquad $0\leq x\leq l$ \label{eq:2.5 eprob 1 c}
+    \end{subnumcases}
+
+    \begin{solution}
+        该定解问题的物理模型可以是弦振动问题. 令方程 (\ref{eq:2.5 eprob 1 a}) 的解可以分解为
+        \begin{equation}
+            u(x,t)=v(x,t)+w(x), \label{eq:2.5 eprob 1 d}
+        \end{equation}
+        其中 $v(x,t)$ 为弦微元在平衡位置的振动情况, $w(x)$ 为弦微元的平衡位置 (边界条件+静载荷).
+
+        $w(x)$ 应该满足如下定解问题 (将 (\ref{eq:2.5 eprob 1 d}) 代入 (\ref{eq:2.5 eprob 1 a}) 和 (\ref{eq:2.5 eprob 1 b})):
+        \begin{align}
+             & v_{tt}=a^2(v_{xx}+w_{xx})+A, \\
+             & w|_{x=0}=0,w|_{x=l}=B.
+        \end{align}
+        由上式可解得,
+        \begin{equation}
+            w(x)=-\frac{A}{2a^2}x^2+\left(\frac{Al}{2a^2}+\frac{B}{l}\right)x.
+        \end{equation}
+
+        $v(x,t)$ 应满足如下定解问题:
+        \begin{alignat}{2}
+             & \frac{\partial^2 v}{\partial t^2}=a^2\frac{\partial^2 v}{\partial x^2}, &  & \qquad 0<x<l,t>0                               \\
+             & v|_{x=0}=v|_{x=l}=0,                                                    &  & \qquad t>0 \qquad \text{(第一类边界条件)}             \\
+             & v|_{t=0}=-w(x),v_t|_{t=0}=0,                                            &  & \qquad 0\leq x\leq l. \label{eq:2.5 eprob 1 j}
+        \end{alignat}
+
+        直接用分离变量法, 求上述定解问题的解, 得到
+        \begin{equation}
+            v(x,t)=\sum_{n=1}^{\infty}\left(C_n\cos\frac{n\pi a}{l}t+D_n\sin\frac{n\pi a}{l}t\right)\sin\frac{n\pi}{l}x.
+        \end{equation}
+        基于 (\ref{eq:2.5 eprob 1 j}), 得到
+        \begin{equation*}
+            C_n=\cdots,D_n=0.
+        \end{equation*}
+
+        因此, 原问题的解为
+        \begin{equation*}
+            u(x,t)=-\frac{A}{2a^2}x^2+\left(\frac{Al}{2a^2}+\frac{B}{l}\right)x+\sum_{n=1}^{\infty}\left(C_n\cos\frac{n\pi a}{l}t+D_n\sin\frac{n\pi a}{l}t\right)\sin\frac{n\pi}{l}x.
+        \end{equation*}
+    \end{solution}
+\end{exampleprob}
+
+\begin{exampleprob}
+    一个长度为 $l$ 的均匀棒, 在 $x=l$ 一端通稳定热流 $q_0$, $x=0$ 一端温度稳定为 $u_0$, 热传导系数 $k$. 求解该定解问题.
+
+    \begin{solution}
+        上述物理模型等价于如下定解问题:
+        \begin{alignat}{2}
+             & \frac{\partial u}{\partial t}=a^2\frac{\partial^2 u}{\partial x^2},          &  & \qquad 0<x<l,t>0      \\
+             & u|_{x=0}=u_0,\left.\frac{\partial u}{\partial x}\right|_{x=l}=\frac{q_0}{k}, &  & \qquad t>0            \\
+             & u|_{t=0}=u_0,                                                                &  & \qquad 0\leq x\leq l.
+        \end{alignat}
+    \end{solution}
+\end{exampleprob}

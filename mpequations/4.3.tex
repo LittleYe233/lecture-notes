@@ -1,0 +1,32 @@
+\subsection{格林函数} \label{4 格林函数}
+在格林第二公式 (\ref{eq:4.2 green 2}) 中, 取 $u$ 为 $\Omega$ 内的调和函数, 选取 $v$ 满足
+\begin{equation}
+    v|_\Gamma=\left.\frac{1}{4\pi r_{MM_0}}\right|_\Gamma,
+\end{equation}
+且在 $\overline{\Omega}$ 上有连续的一阶偏导数, 则得
+\begin{equation} \label{eq:4.3 laplace u M_0}
+    u(M_0)=-\iint_\Gamma u\frac{\partial G}{\partial\boldsymbol{n}}\mathrm{d}S,
+\end{equation}
+其中
+\begin{equation} \label{eq:4.3 green func}
+    G(M,M_0)=\frac{1}{4\pi r_{MM_0}}-v
+\end{equation}
+称为\textbf{格林函数}. (\ref{eq:4.3 laplace u M_0}) 为拉普拉斯方程的狄利克雷问题的解. 而对于如下的拉普拉斯方程和边值条件 (泊松方程的狄利克雷问题)
+\begin{equation}
+    \begin{cases}
+        \nabla^2u=F, & \qquad \text{在 $\Omega$ 内}, \\
+        u|_\Gamma=f,
+    \end{cases}
+\end{equation}
+有如下的通解
+\begin{equation}
+    u(M_0)=-\iint_{\Gamma}f\frac{\partial G}{\partial n}\mathrm{d}S-\iiint_{\Omega}GF\mathrm{d}V.
+\end{equation}
+
+一旦求出 $G(M,M_0)$ 中的调和函数 $v$ (相当于求得了 $G(M,M_0)$ 本身), 即可求得如上拉普拉斯 (泊松) 方程的狄利克雷问题的解. 确定 $G(M,M_0)$ 归结于解如下狄利克雷问题:
+\begin{equation}  \label{eq:4.3 v eq}
+    \begin{cases}
+        \Delta v=0, & \text{在 $\Omega$ 内} \\
+        v|_\Gamma=\left.\frac{1}{4\pi r_{MM_0}}\right|_\Gamma.
+    \end{cases}
+\end{equation}

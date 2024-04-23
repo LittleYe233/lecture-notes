@@ -1,0 +1,47 @@
+\subsection{格林公式} \label{4 格林公式}
+\textbf{高斯公式}
+
+设 $\Omega$ 是以足够光滑的曲面 $\Gamma$ 为边界的有界区域, $P(x,y,z)$, $Q(x,y,z)$, $R(x,y,z)$ 是在 $\Omega+\Gamma$ 上连续的, 在 $\Omega$ 内具有一阶连续偏导数的任意函数, 则成立如下高斯公式:
+\begin{equation}
+    \iiint_{\Omega}\left(\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}\right)\mathrm{d}V=\iint_{\Gamma}[P\cos(\boldsymbol{n},x)+Q\cos(\boldsymbol{n},y)+R\cos(\boldsymbol{n},z)]\mathrm{d}S,
+\end{equation}
+或写为
+\begin{equation}
+    \iiint_{\Omega}\mathrm{div}\boldsymbol{A}\mathrm{d}V=\iint_{\Gamma}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S,
+\end{equation}
+其中 $\mathrm{d}V$ 是 $\Omega$ 上的体积元素, $\cos(\boldsymbol{n}, x/y/z)$ 是三个方向的方向余弦, $\mathrm{d}S$ 是 $\Gamma$ 上的面积元素, $\boldsymbol{n}$ 是 $\Gamma$ 的外法向量; $\boldsymbol{A}=(P,Q,R)=P\boldsymbol{i}+Q\boldsymbol{j}+R\boldsymbol{k}$.
+
+\textbf{格林第一公式}
+\begin{equation}
+    \iiint_{\Omega}(u\Delta v)\mathrm{d}V=\iint_{\Gamma}u\frac{\partial v}{\partial\boldsymbol{n}}\mathrm{d}S-\iiint_{\Omega}\nabla u\nabla v\mathrm{d}V.
+\end{equation}
+其中 $\Delta=\nabla^2=\dfrac{\partial^2}{\partial x^2}+\dfrac{\partial^2}{\partial y^2}+\dfrac{\partial^2}{\partial z^2}$ 为拉普拉斯算子.
+
+\textbf{格林第二公式}
+\begin{equation} \label{eq:4.2 green 2}
+    \iiint_{\Omega}(u\Delta v-v\Delta u)\mathrm{d}V=\iint_{\Gamma}\left(u\frac{\partial v}{\partial\boldsymbol{n}}-v\frac{\partial u}{\partial\boldsymbol{n}}\right)\mathrm{d}S.
+\end{equation}
+
+\subsubsection{调和函数的一些性质}
+\textbf{调和函数的积分表达式}\quad 用调和函数及其在区域边界 $\Gamma$ 上的法向导数沿 $\Gamma$ 的积分表达调和函数在 $\Omega$ 内任一点的值.
+\begin{equation} \label{eq:4.2 u M_0}
+    u(M_0)=-\frac{1}{4\pi}\iint_{\Gamma}\left[u(M)\frac{\partial}{\partial\boldsymbol{n}}\left(\frac{1}{r_{MM_0}}\right)-\frac{1}{r_{MM_0}}\frac{\partial u(M)}{\partial\boldsymbol{n}}\right]\mathrm{d}S.
+\end{equation}
+
+对其的证明见 \ref{proofs 4 调和函数的积分表达式} 小节.
+
+\textbf{诺伊曼内问题有解的充要条件}
+
+仅证明必要性. 对格林第二公式 (\ref{eq:4.2 green 2}), 取 $u$ 为调和函数, $v\equiv 1$, 则得到
+\begin{equation}
+    \iint_\Gamma\frac{\partial u}{\partial\boldsymbol{n}}\mathrm{d}S=\iint_\Gamma f\mathrm{d}S=0.
+\end{equation}
+
+\textbf{平均值公式}
+
+设 $u(M)$ 在 $\Omega$ 内调和, $M_0$ 是 $\Omega$ 内任意一点, $K_a$ 为以 $M_0$ 为球心, 以 $a$ 为半径且完全落在 $\Omega$ 内部的球面, 则
+\begin{equation}
+    u(M_0)=\frac{1}{4\pi a^2}\iint_{\Gamma_a}u\mathrm{d}S.
+\end{equation}
+
+\textbf{拉普拉斯方程解的唯一性问题}\quad 若考虑在区域 $\Omega$ 内满足光滑性假设 (二阶偏导数连续) 的解, 则狄利克雷问题的解唯一确定, 诺伊曼问题除相差常数外解唯一确定.
