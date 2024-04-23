@@ -1,0 +1,19 @@
+\documentclass[circuitikz]{notefig}
+
+\begin{document}
+\footnotesize\selectfont
+
+\begin{circuitikz}[%
+        european,
+        scale=1, transform shape,
+        x=1cm, y=1cm
+    ]
+    \ctikzset{cpos/.code={\ctikzsetvalof{current/distance}{#1}}}
+
+    \draw (0, 0) coordinate (1p) node [left] (1pp) {$+$} to [short, o-, i_=$\dot{I}_1$] ++(0.6, 0) node [npn, anchor=B] (T) {};
+    \draw (T.C) to [short, -o, i_<=$\dot{I}_2$] ++(1, 0) coordinate (2p) node [right] (2pp) {$+$};
+    \draw (T.E -| 1p) node [left] (1nn) {$-$} to [short, o-o] (T.E -| 2p) node [right] (2nn) {$-$};
+    \node at ($(1pp)!0.5!(1nn)$) {$\dot{V}_1$};
+    \node at ($(2pp)!0.5!(2nn)$) {$\dot{V}_2$};
+\end{circuitikz}
+\end{document}

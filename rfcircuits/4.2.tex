@@ -1,0 +1,21 @@
+\subsection{非线性电路分析法}
+\subsubsection{幂级数分析法}
+
+根据近似条件不同选取不同的项:
+\begin{gather}
+    i=\sum_{k=0}^{\infty}b_k(v-v_0)^k=\sum_{k=0}^{\infty}\frac{1}{k!}\left.\frac{\mathrm{d}^k i}{\mathrm{d}v^k}\right|_{v=V_0}(v-V_0)^k. \label{eq:4.2 current power sum} \\
+    i\approx I_0+g(v-V_0). \\
+    i\approx I_0+g(v-v_0)+b_2(v-V_0)^2.
+\end{gather}
+
+阶数 $k>1$ 的项的系数可以在曲线上选取其他数据点并待定系数求解方程 (组) 得到.
+
+\subsubsection{折线分析法}
+
+以晶体管的输出特性曲线为例:
+\begin{equation}
+    i_C=\begin{cases}
+        0,               & \quad v_B\leq V_{BZ}, \\
+        g_c(v_B-V_{BZ}), & \quad v_B>V_{BZ}.
+    \end{cases}
+\end{equation}

@@ -1,0 +1,18 @@
+\documentclass[circuitikz]{notefig}
+
+\begin{document}
+\footnotesize\selectfont
+
+\begin{tikzpicture}[%
+        european, american voltages,
+        x=1cm, y=2cm
+    ]
+    \ctikzset{bipoles/length=.7cm}
+
+    \draw (0, 0) to [I, i<=$p_1y_{fe}\dot{V}_1$] ++(0, 1) -- ++(1, 0) coordinate (a)
+    to [R=$p_1^2g_{oe}$] ++(0, -1)
+    (a) -- ++(1, 0) coordinate (b)
+    to [R=$g_p$] +(0, -1)
+    (b) -- ++(1, 0) to [R=$p_2^2g_{ie2}$] ++(0, -1) -- (0, 0);
+\end{tikzpicture}
+\end{document}

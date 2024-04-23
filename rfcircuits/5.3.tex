@@ -1,0 +1,38 @@
+\subsection{高频功率放大器的电路组成} \label{5 高频功率放大器的功率组成}
+\subsubsection{馈电线路}
+馈电线路可以分为集电极馈电线路和基极馈电线路, 其又可进一步分为串联馈电线路和并联馈电线路. 四种馈电线路的设计均应考虑如下的原则:
+\begin{itemize}
+    \item 对\underline{直流分量} $I_{C0}$: 由 $V_{CC}$ 输至集电极, 除晶体管内阻外, 没有其他电阻耗能;
+    \item 对\underline{高频基波分量} $I_{Cm1}$: 仅在负载回路产生电压降, 其他部分短路;
+    \item 对\underline{高频高次谐波分量} $I_{Cmn}$: 在任何电路部分短路.
+\end{itemize}
+
+\textbf{集电极串馈电路}\quad 直流电源 $V_{CC}$, 负载回路 $LC$, 晶体管首尾相接.
+
+\underline{附属元件}\quad 高频扼流圈 $L'$, 高频旁路电容 $C'$ (\textit{低通滤波}, 阻止高频电流通过公用电源内阻耗能.)
+
+\underline{附属元件参数}\quad $\omega L'>10R_p$, $\omega C'>10G_p$.
+
+\textbf{集电极并馈电路}\quad 直流电源, 负载回路, 晶体管相互并联.
+
+\underline{附属元件}\quad 高频扼流圈 $L'$, 高频旁路电容 $C'$ (\textit{低通滤波}, 阻止高频电流通过公用电源内阻耗能.); 隔直电容 $C''$ (\textit{高通滤波}.)
+
+\underline{附属元件参数}\quad $\omega L'>10R_p$, $\omega C'>10G_p$.
+
+\textbf{集电极馈电线路的外部回路方程}
+\begin{equation}
+    v_{CE}=V_{CC}-V_{cm}\cos\omega t.
+\end{equation}
+
+\textbf{基极串馈电路}
+
+\textbf{基极并馈电路}
+
+\textbf{集电极馈电线路的外部回路方程}
+\begin{equation}
+    v_{BE}=-V_{BB}+V_{bm}\cos\omega t.
+\end{equation}
+
+\textbf{产生自生反偏压 $V_{BB}$}
+
+\subsubsection{输出, 输入与级间耦合回路}

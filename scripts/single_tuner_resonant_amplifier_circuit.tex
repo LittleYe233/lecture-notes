@@ -1,0 +1,16 @@
+\documentclass[circuitikz]{notefig}
+
+\begin{document}
+\footnotesize\selectfont
+
+\begin{circuitikz}[%
+        european,
+        scale=1, transform shape,
+        x=2cm, y=2cm
+    ]
+    \ctikzset{%
+        cpos/.code={\ctikzsetvalof{current/distance}{#1}},
+        bipoles/length=.7cm
+    }
+\end{circuitikz}
+\end{document}

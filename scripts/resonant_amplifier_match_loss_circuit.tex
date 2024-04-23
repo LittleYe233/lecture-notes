@@ -1,0 +1,26 @@
+\documentclass[circuitikz]{notefig}
+
+\begin{document}
+\footnotesize\selectfont
+
+\makeatletter
+\newcommand{\curpoint}{\the\tikz@lastxsaved,\the\tikz@lastysaved}
+\makeatother
+
+\begin{tikzpicture}[%
+        european, american voltages, american inductors,
+        x=1cm, y=1.5cm
+    ]
+    \ctikzset{bipoles/length=1cm}
+
+    \draw (0, 0) coordinate (a) -- ++(0, 0.25) coordinate (a1) -- ++(-0.5, 0) to [C] ++(0, 1) -- ++(0.5, 0) -- ++(0, 0.25) to [short, -o] ++(-0.5, 0) coordinate (a2)
+    (a1) -- ++(0.5, 0) to [L, mirror, name=L1] ++(0, 1) -- ++(-0.5, 0);
+    \draw (L1.midtap) -- ++(0.5, 0) node [npn, anchor=B] (T1) {}
+    (T1.E) -- (a -| \curpoint);
+    \draw (T1.C) -- (a2 -| \curpoint) -- ++(0.5, 0) node [pnp, anchor=E, rotate=90] (T2) {}
+    (T2.B) -- (a -| \curpoint);
+    \draw (a) -- ++(4, 0) -- ++(0, 0.25) coordinate (b1) -- ++(-0.5, 0) to [C] ++(0, 1) -- ++(0.5, 0) -- ++(0, 0.25) -- (T2.C) coordinate (b2)
+    (b1) -- ++(0.5, 0) to [L, mirror, name=L2] ++(0, 1) -- ++(-0.5, 0)
+    (L2.midtap) to [short, -o] ++(0.5, 0);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,88 @@
+\subsection{谐振放大器的稳定性与稳定措施} \label{3 谐振放大器的稳定性与稳定措施}
+\subsubsection{谐振放大器的稳定性}
+\textbf{自激的产生原因}
+
+实际晶体管谐振放大器存在反向传输导纳 $y_{re}$, 从而产生反馈作用. 晶体管 y 参数实际放大电路的输入导纳 $Y_i$ (\ref{eq:3.2 y Yi}) 可以表示为
+\begin{equation} \label{eq:3.5 Y i}
+    Y_i=y_{ie}-\frac{y_{re}y_{fe}}{y_{oe}+Y_L}=y_{ie}+Y_F.
+\end{equation}
+
+记 $Y_F=g_F+\mathrm{j}b_F$. $g_F$ 和 $b_F$ 都为频率的函数, 对于不同频率可正可负. 前者改变回路的品质因数, 后者会导致回路失谐. 若 $g_F<0$, 此时负电导会供给回路能量, 使回路增益增加 (正反馈); 极端情况若 $|g_F|=g_s+g_{ie}$, 则放大器输入回路的总电导为零, 使放大器处于\textit{自激振荡}状态.
+
+\textbf{自激条件}\quad 输入回路总电导为零, 且电纳部分相互抵消.
+\begin{equation}
+    Y_s+Y_i=0 \Rightarrow \frac{(Y_s+y_{ie})(y_{oe}+Y_L')}{y_{ie}y_{re}}=1.
+\end{equation}
+
+上式左边 (也即\textbf{稳定系数}) 可以作为衡量放大器稳定与否的标准. $y_{re}$ 越大, 稳定系数越小 (越接近 1), 反馈效果越强, 回路越不稳定; 反之则反.
+
+放大器的输入回路和输出回路相同时, 稳定系数还可以表示为
+\begin{equation} \label{eq:3.5 S}
+    S=\frac{(g_s+g_{ie})(g_{oe}+G_L')(1+\xi^2)}{|y_{re}y_{fe}|}.
+\end{equation}
+其中 $G_L'$ 为式 (\ref{eq:3.3 Y L'}) $Y_L'$ 的电导部分, 也即 $G_L'=\dfrac{g_p}{p_1^2}$.
+
+放大器若要自激, 除了满足式 $(\ref{eq:3.5 S})=1$ 外, 还需满足相位条件
+\begin{equation}
+    \xi=\tan\frac{\varphi_{re}+\varphi_{fe}}{2}.
+\end{equation}
+
+实际电路中认为 $f<<f_T$ ($y_{fe}=|y_{fe}|$, $\varphi_{fe}=0$), $y_{re}$ 中电纳占主导作用 ($y_{re}\approx-\mathrm{j}\omega_0C_{re}$, $\varphi_{re}\approx -90^\circ$). 此时放大器自激的相位条件为: 工作频率为谐振频率 $f_0$ 之下某个值 ($\xi=-1$).
+
+令 $g_s+g_{ie}=g_1$, $g_{oe}+G_L'=g_2$, 则
+\begin{equation}
+    S=\frac{g_1g_2(1+\xi^2)}{\omega_0C_{re}|y_{fe}|}\xlongequal{\color{red} \xi=-1}\frac{2g_1g_2}{\omega_0C_{re}|y_{fe}|}.
+\end{equation}
+
+当接入系数 $p_1=p_2=1$ 时,
+\begin{equation}
+    A_{v0}=\frac{|y_{fe}|}{g_2}.
+\end{equation}
+若同时有 $g_1=g_2$, 则
+\begin{equation}
+    A_{v0}=\sqrt{\frac{2|y_{fe}|}{S\omega_0C_{re}}}.
+\end{equation}
+取 $S=5$, 则\textbf{稳定电压增益}为
+\begin{equation}
+    A_{v0s}=\sqrt{\frac{|y_{fe}|}{2.5\omega_0C_{re}}}.
+\end{equation}
+
+\noindent\hrulefill
+
+因此, 判断放大器不能稳定工作 (自激) 的条件有如下三种:
+\begin{itemize}
+    \item $Y_s+Y_i=0$ (一定自激);
+    \item 式 $(\ref{eq:3.5 S})=1$ 且 $\xi=-1$ (一定自激);
+    \item $A_{v0}>A_{v0s}$ (可能不能稳定工作).
+\end{itemize}
+
+\subsubsection{单向化}
+单向化指的是, 将具有反馈作用的 ``双向元件'' $y_{re}$ 通过一些手段消除其反馈作用, 使之变为 ``单向元件''.
+
+\textbf{中和法}\quad 外加电容消除 $y_{re}$ 的反馈作用.
+考虑在晶体管基极和集电极间接入电容 $C_{b'c}$, 基极和 LC 谐振回路靠近地一侧接入电容 $C_N$. 继而, $C_{b'c}$, $C_N$, $L_1$, $L_2$ 形成电桥结构. 完全中和时, CD 两端的回路电压应为零. 此时
+\begin{equation}
+    \frac{\mathrm{j}\omega L_1}{\mathrm{j}\omega L_2}=\frac{\dfrac{1}{\mathrm{j}\omega C_{b'c}}}{\dfrac{1}{\mathrm{j}\omega C_N}}.
+\end{equation}
+也即
+\begin{equation}
+    C_N=\frac{L_1}{L_2}C_{b'c}\approx\frac{N_1}{N_2}C_{b'c}.
+\end{equation}
+
+\textbf{失配法}\quad 增大 $G_L$ 或 $g_s$ 使输入或输出回路与晶体管失去匹配.
+
+\begin{wrapfigure}{.45\textwidth}
+    \centering
+    \includegraphics[width=.42\textwidth]{images/resonant_amplifier_match_loss_circuit.pdf}
+    \caption{共射-共基级联放大器的交流等效电路}
+\end{wrapfigure}
+
+设法使 $Y_i$ 接近 $y_{ie}$, 则由式 (\ref{eq:3.5 Y i}) 可知 $Y_F$ 极小, 正反馈作用很小. 一种方式是使用共射-共基级联放大器, 使 $Y_L'$ 很大.
+
+此时级联晶体管的相关参数如下:
+\begin{gather}
+    y_i'\approx y_{ie}, \\
+    y_o'\approx y_{oe}-\frac{y_{fe}y_{re}}{y_{ie}}\approx -y_{re}, \\
+    y_f'\approx y_{fe}, \\
+    y_r'\approx \frac{y_{re}}{y_{fe}}(y_{re}+y_{oe}) \qquad (\textrm{小于单管三个数量级})
+\end{gather}

@@ -1,0 +1,50 @@
+\section{高频功率放大器} \label{高频功率放大器}
+\subsection{谐振功率放大器的工作原理} \label{5 谐振功率放大器的工作原理}
+\subsubsection{电压和电流关系}
+设信号源电压为 $\dot{v}_b=V_{bm}\cos(\omega t)$.
+
+外部电路关系式和晶体管内部特性方程:
+\begin{gather}
+    v_{BE}=-V_{BB}+V_{bm}\cos(\omega t). \label{eq:5.1 v BE} \\
+    v_{CE}=V_{CC}-V_{cm}\cos(\omega t). \label{eq:5.1 v CE} \\
+    i_C=g_c(v_{BE}-V_{BZ}).
+\end{gather}
+
+晶体管起开关控制作用. 基极外接直流电源反向 (相较于晶体管低频小信号放大电路), 使信号源 $\dot{v}_b$ 产生较大的正向电压时才可能让晶体管工作在放大区; 其他状态下晶体管截止, 提高工作效率. (丙类放大器.)
+
+因为晶体管部分时刻截止, 得到的集电极电流 $i_C$ 本身是脉冲状, 由傅里叶变换可以得到除基波之外的其他谐波. 但由于集电极电路中存在并联谐振回路, 谐波几乎被滤除, 可以认为 $i_C$ 的实际波形仍呈正弦图样.
+
+\textbf{通角}\quad $\theta_c$. 电流被截止时的信号源相位. 一个周期 $-\dfrac{T}{2}\sim\dfrac{T}{2}$ 内, 集电极电流 $i_C$ 存在的范围为 $-\theta_c\sim\theta_c$.
+\begin{align}
+    \nonumber   & V_{bm}\cos\theta_c=|V_{BB}|+V_{BZ}                                      \\
+    \Rightarrow & \cos\theta_c=\frac{|V_{BB}|+V_{BZ}}{V_{bm}}. \label{eq:5.1 cos theta c}
+\end{align}
+
+\textbf{基波电压}
+
+集电极电流 $i_C$ 经过并联谐振回路时, 此回路滤出基波电流 $i_{C1}$. 则基波电压
+\begin{equation}
+    v_{C1}=i_{C1}R_p=I_{C1m}R_p\cos(\omega t)=V_{cm}\cos(\omega t).
+\end{equation}
+
+\subsubsection{功率关系和效率}
+设直流电源供给的直流功率为 $P_=$, 交流输出功率为 $P_o$, 集电极耗散功率为 $P_c$. 则
+\begin{gather}
+    P_==P_o+P_c, \\
+    \eta_c=\frac{P_o}{P_=}=\frac{P_o}{P_o+P_c}, \\
+    P_o=\frac{\eta_c}{1-\eta_c}P_c.
+\end{gather}
+
+根据电路关系, 设 $I_{C0}$, $I_{C1}$ 分别为 $i_C$ 作傅里叶级数展开 (\ref{eq:5.2 i C fourier}) 时的直流分量和基波分量系数. 则
+\begin{gather}
+    P_==V_{CC}I_{C0}, \\
+    P_o=\frac{1}{2}V_{cm}I_{C1}=\frac{V_{cm}^2}{2R_p}=\frac{1}{2}I_{C1}^2R_p, \\
+    \eta_c=\frac{V_{cm}I_{C1}}{2V_{CC}I_{C0}}=\frac{1}{2}\xi g_1(\theta_c).
+\end{gather}
+其中
+
+\textbf{集电极电压利用系数}\quad $\xi=\dfrac{V_{cm}}{V_{CC}}$.
+
+\textbf{波形系数}\quad $g_1(\theta_c)=\dfrac{I_{C1}}{I_{C0}}$.
+
+波形系数关于 $\theta_c$ 的图象参见后文图 .

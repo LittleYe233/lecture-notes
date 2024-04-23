@@ -1,0 +1,11 @@
+\subsection{多级单调谐谐振放大器} \label{3 多级单调谐谐振放大器}
+
+假设多个参数相同的单调谐谐振放大器级联, 整个放大器的总增益, 谐振曲线, 通频带, 矩形系数分别为
+\begin{gather}
+    A_m=A_{v1}^m, \\
+    \frac{A_m}{A_{m0}}=\frac{1}{\left[1+\left(Q_L\dfrac{2\Delta f}{f_0}\right)^2\right]^\frac{m}{2}}, \\
+    B_m=\sqrt{2^\frac{1}{m}-1}\frac{f_0}{Q_L}, \qquad \left(\frac{A_m}{A_{m0}}=\frac{1}{\sqrt{2}}\right) \\
+    K_{r0.1}=\sqrt{\dfrac{100^\frac{1}{m}-1}{2^\frac{1}{m}-1}}.
+\end{gather}
+
+若要保持多级通频带与单级的相同, 单级放大器的负载 $Q_L'$ 需从 $Q_L$ 降低为原来的 $\sqrt{2^{\frac{1}{m}}-1}$, 单级带宽增加到原来的 $\dfrac{1}{\sqrt{2^{\frac{1}{m}}-1}}$, 单级增益降低为原来的 $\sqrt{2^{\frac{1}{m}}-1}$, 矩形系数下降.

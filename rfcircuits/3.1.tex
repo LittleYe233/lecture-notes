@@ -1,0 +1,49 @@
+\section{高频小信号放大器} \label{高频小信号放大器}
+\subsection{概述} \label{3 概述}
+\subsubsection{特点}
+
+\begin{itemize}
+    \item 放大高频小信号 ($f_0\sim 100\mathrm{kHz}-100\mathrm{MHz}$, $B\sim 1\mathrm{kHz}-10\mathrm{MHz}$);
+    \item 甲类放大器, 工作在线性区.
+\end{itemize}
+
+\subsubsection{分类}
+\begin{itemize}
+    \item \underline{器件}: 晶体管, 场效应管, 集成电路;
+    \item \underline{电路形式}: 单级放大器, 级联放大器;
+    \item \underline{频谱宽度}: 窄带放大器, 宽带放大器;
+    \item \underline{负载性质}:
+          \begin{itemize}
+              \item \underline{谐振放大器 (窄带)}: 单振荡回路, 耦合振荡回路;
+              \item \underline{非谐振放大器 (宽带)}: LC 集中滤波器, 石英晶体滤波器, 陶瓷滤波器, 声表面滤波器.
+          \end{itemize}
+\end{itemize}
+
+\subsubsection{质量指标}
+
+\textbf{增益 (放大系数)}
+\begin{gather}
+    A_v=\frac{V_o}{V_i}=20\lg\frac{V_o}{V_i}(\mathrm{dB}). \\
+    A_p=\frac{P_o}{P_i}=10\lg\frac{P_o}{P_i}(\mathrm{dB}).
+\end{gather}
+
+\textbf{通频带}
+
+\underline{3dB 带宽}\quad 对于电压增益, $2\Delta f_{0.7}$ (等效为功率增益大于 0.5 时的带宽).
+
+\underline{6dB 带宽}\quad 对于电压增益, $2\Delta f_{0.5}$.
+
+\textbf{选择性}
+
+\underline{矩形系数}\quad 邻近波道选择性的优劣. 越小 (接近 1), 实际频率特性曲线越接近矩形, 滤除邻近波道干扰信号的能力越强.
+\begin{gather}
+    K_{r0.1}=\frac{\Delta f_{0.1}}{\Delta f_{0.7}}. \\
+    K_{r0.01}=\frac{\Delta f_{0.01}}{\Delta f_{0.7}}.
+\end{gather}
+
+\underline{抑制比}\quad 某些特定频率 (增益 $A_{vn}$) 的选择性好坏. 越大, 抑制效果越好. (记 $A_{v0}$ 为谐振频率增益.)
+\begin{equation}
+    d=\frac{A_{v0}}{A_{vn}}=20\lg\frac{A_{v0}}{A_{vn}}(\mathrm{dB}).
+\end{equation}
+
+\textbf{工作稳定性}\quad 放大器的工作状态 (直流偏置), 晶体管系数, 电路元件参数等发生可能变化时, 放大器的主要特性的稳定程度. 一般不稳定现象是增益变化, 中心频率偏移, 通频带变窄, 谐振曲线变形, \textit{放大器自激}等.

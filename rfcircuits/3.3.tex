@@ -1,0 +1,205 @@
+\subsection{单调谐回路谐振放大器} \label{3 单调谐回路谐振放大器}
+
+如图的单调谐回路谐振放大器中, 显然这是实际负载电路, 根据式 (\ref{eq:3.2 y Yi}),
+\begin{equation}
+    Y_i=\frac{\dot{I}_1}{\dot{V}_1}=y_{ie}-\frac{y_{re}y_{fe}}{y_{oe}+Y_L'}.
+\end{equation}
+其中 $Y_L'$ 是诸如下级放大器输入导纳 ($y_{ie2}$) 及其电感抽头 ($p_2$), LC 谐振回路 ($L$, $C$, $g_p$) 及其电感抽头 ($p_1$) 全部等效到晶体管集电极 (ce 侧) 的等效导纳, 也即从集电极向右看去的等效导纳.
+
+集电极相对于 LC 谐振回路位于低抽头 ($p_1$), 下级放大器输入导纳同样位于低抽头 ($p_2$), 因此
+\begin{equation} \label{eq:3.3 Y L'}
+    Y_L'=\frac{1}{p_1^2}\left(g_p+\mathrm{j}\omega C+\frac{1}{\mathrm{j}\omega L}+p_2^2y_{ie2}\right).
+\end{equation}
+
+\subsubsection{电压增益}
+此处的电压增益为下级放大器两端\textit{实际}电压与第一级放大器输入电压之比.
+
+将 $y_{ie2}$ 两端电压 $\dot{V_o}$ 和集电极一侧两端电压 $\dot{V}_{2}$ 等效到 LC 谐振回路两侧 $\dot{V}_{LC}$
+\begin{gather}
+    \dot{V}_o=p_2\dot{V}_{LC}, \\
+    \dot{V}_2=p_1\dot{V}_{LC}.
+\end{gather}
+
+因此
+\begin{equation}
+    A_v=\frac{\dot{V}_o}{\dot{V}_1}=-\frac{p_1p_2y_{fe}}{p_1^2y_{oe}+Y_L}.
+\end{equation}
+其中 $Y_L=p_1^2Y_L'$ 为 $Y_L'$ 各元件等效到 LC 谐振回路两侧 (而不是集电极一侧) 时的等效导纳.
+
+\textbf{拆分电导和电纳}
+
+展开 $y_{oe}$, $Y_L$, 记 $g_{oe}$, $C_{oe}$ 分别为第一级放大器的输出电导和输出电容, $g_{ie2}$, $C_{ie2}$ 分别为下一级放大器的输入电导和输入电容, 则
+\begin{equation}
+    A_v=-\frac{p_1p_2y_{fe}}{g_\Sigma+\mathrm{j}\omega C_\Sigma+\dfrac{1}{\mathrm{j}\omega L}}.
+\end{equation}
+其中
+\begin{gather}
+    g_\Sigma=g_p+p_1^2g_{oe}+p_2^2g_{ie2}, \\
+    C_\Sigma=C+p_1^2C_{oe}+p_2^2C_{ie2}.
+\end{gather}
+
+\textbf{广义失谐}
+
+将分母电纳部分表为广义失谐 ($\omega$ 接近 $\omega_0$):
+\begin{equation}
+    A_v=-\frac{p_1p_2y_{fe}}{g_\Sigma\left(1+\mathrm{j}Q_L\dfrac{2\Delta f}{f_0}\right)}\approx -\frac{p_1p_2y_{fe}}{g_\Sigma\left(1+\mathrm{j}\xi\right)}.
+\end{equation}
+
+\textbf{谐振频率}
+\begin{equation}
+    f_0=\frac{1}{2\pi\sqrt{LC_\Sigma}}.
+\end{equation}
+
+\textbf{(有载) 品质因数}
+\begin{equation}
+    Q_L=\frac{\omega_0 C_\Sigma}{g_\Sigma}.
+\end{equation}
+
+\textbf{谐振电压增益}
+
+谐振时,
+\begin{equation}
+    A_{v0}=-\frac{p_1p_2y_{fe}}{g_\Sigma}=-\frac{p_1p_2y_{fe}}{g_p+p_1^2g_{oe}+p_2^2g_{ie2}}.
+\end{equation}
+
+因 $y_{fe}$ 是复数, 输出与输入电压之间的相位差为 $\pi+\arg y_{fe}$. 低频工作状态下, 可以认为 $y_{fe}$ 是实数.
+
+$A_{v0}$ 与 $y_{fe}$ 成正比, 与 $g_\Sigma$ 成反比.
+
+\textbf{前后级匹配条件}
+\begin{equation}
+    p_2^2g_{ie2}=p_1^2g_{oe}+g_p.
+\end{equation}
+
+若认为 $g_p$ 很小可以忽略, 则
+\begin{equation}
+    p_2^2g_{ie2}\approx p_1^2g_{oe}=\frac{g_\Sigma}{2}.
+\end{equation}
+
+此时可以求出匹配需要满足的接入系数
+\begin{equation}
+    \begin{cases}
+        p_1=\sqrt{\frac{g_\Sigma}{2g_{oe}}}, \\
+        p_2=\sqrt{\frac{g_\Sigma}{2g_{ie2}}}.
+    \end{cases}
+\end{equation}
+匹配时的电压增益为
+\begin{equation}
+    A_{v0max}=\frac{|y_{fe}|}{2\sqrt{g_{oe}g_{ie2}}}.
+\end{equation}
+
+\subsubsection{谐振功率增益}
+\begin{wrapfigure}{r}{.45\textwidth}
+    \centering
+    \includegraphics[width=.42\textwidth]{images/single_tuner_resonant_amplifier_power_gain.pdf}
+    \caption{谐振时的简化等效电路}
+\end{wrapfigure}
+
+谐振点功率增益定义为 $g_{ie2}$ 上获得的功率 $P_o$ 与放大器输入功率 $P_i$ 之比.
+
+将信号源 $y_{fe}\dot{V}_1$ 和下级放大器电导 $g_{ie2}$ 等效到 LC 谐振回路两端. 显然
+\begin{gather}
+    P_i=V_1^2g_{ie}, \\
+    P_o=\left(\frac{p_1|y_{fe}|\dot{V}_1}{g_p}\right)^2p_2^2g_{ie2}.
+\end{gather}
+
+则谐振时的功率增益为
+\begin{equation}
+    A_{p0}=\frac{P_o}{P_i}=A_{v0}^2\frac{g_ie2}{g_ie}.
+\end{equation}
+
+对于功率增益, 其分贝形式的系数应为 10.
+
+对于晶体管相同的两级放大电路,
+\begin{equation}
+    A_{p0}=A_{v0}^2.
+\end{equation}
+
+忽略回路小损耗 $g_p$ 且两级电路匹配时, 功率增益最大为
+\begin{equation}
+    A_{p0max}=\frac{|y_{fe}|^2}{4g_{oe}g_{ie2}}.
+\end{equation}
+
+若 $g_p$ 不可忽略, 考虑引入前文提及的插入阻抗 (\ref{eq:2.2 insertion loss})
+\begin{equation}
+    K_l=\frac{1}{\left(1-\dfrac{Q_L}{Q_0}\right)^2}>1.
+\end{equation}
+其中, 回路的空载和有载品质因数分别为
+\begin{gather}
+    Q_L=\frac{1}{\omega_0Lg_\Sigma}, \\
+    Q_0=\frac{1}{\omega_0Lg_p}.
+\end{gather}
+
+考虑 $g_p$ 后, 功率增益下降, 变为
+\begin{equation}
+    A_{p0}'=\frac{A_{p0}}{K_l}=\frac{|y_{fe}|^2}{4g_{oe}g_{ie2}}\left(1-\frac{g_p}{g_\Sigma}\right)^2.
+\end{equation}
+
+相应地, 电压增益下降到
+\begin{equation}
+    A_{v0}'=\frac{|y_{fe}|}{2\sqrt{g_{oe}g_{ie2}}}\left(1-\frac{g_p}{g_\Sigma}\right)^2.
+\end{equation}
+
+\subsubsection{通频带与选择性}
+\rmg
+\begin{gather}
+    \frac{A_v}{A_{v0}}=\frac{1}{\sqrt{1+\left(Q_L\dfrac{2\Delta f}{f_0}\right)^2}}. \\
+    B=2\Delta f_{0.7}=\frac{f_0}{Q_L}. \qquad \left(\frac{A_v}{A_{v0}}=\frac{1}{\sqrt{2}}\right) \\
+    2\Delta f_{0.1}=\sqrt{10^2-1}\frac{f_0}{Q_L}. \qquad \left(\frac{A_v}{A_{v0}}=0.1\right) \\
+    k_{r0.1}=\frac{2\Delta f_{0.1}}{2\Delta f_{0.7}}=\sqrt{99}>>1.
+\end{gather}
+
+单调谐回路谐振放大器的选择性很差, 实际一般需要多级单调谐回路或双调谐回路等.
+
+因为
+\begin{gather*}
+    Q_L=\frac{\omega_0C_\Sigma}{g_\Sigma}, \\
+    2\Delta f_{0.7}=\frac{f_0}{Q_L}, \\
+    \omega_0=2\pi f_0,
+\end{gather*}
+所以, 可以求得谐振电压增益与通频带的乘积为一常数:
+\begin{equation}
+    |A_{v0}\cdot B|=\frac{|y_{fe}|}{2\pi C_\Sigma}.
+\end{equation}
+
+\noindent\hrulefill
+
+当 $y_{fe}$ 和接入系数不变时, $A_{v0}$ 只与回路总电容 $C_\Sigma$ 和通频带 $2\Delta f_{0.7}$, 前者与后二者各自成反比.
+
+为获得高增益和宽频带, 可以考虑选用 $y_{fe}$ 较大的晶体管, 并尽量减小谐振回路的总电容 $C_\Sigma$. 但一味降低后者会导致回路稳定性变差.
+
+对于宽频带放大器, 应尽可能提高增益 $A_v$, 因为频带较宽时谐振曲线稳定性是次要考虑因素; 对于窄频带放大器, 应尽可能增大 $C_\Sigma$, 使谐振曲线稳定.
+
+\begin{exampleprob}
+    已知一单调谐回路谐振放大器, 工作频率 $f=\qty{30}{MHz}$, 晶体管正向传输导纳 $y_{fe}=\qty{58.3}{mS}$, $g_{ie}=\qty{1.2}{mS}$, $C_{ie}=\qty{12}{pF}$, $g_{oe}=\qty{400}{\micro S}$, $C_{oe}=\qty{9.5}{pF}$, 回路电感 $L=\qty{1.4}{\micro H}$, 接入系数 $p_1=1$, $p_2=0.3$, 空载品质因数 $Q_0=100$. 假设 $y_{re}=0$. 求
+    % See: https://tex.stackexchange.com/a/2292
+    \begin{enumerate}[label=(\arabic*)]
+        \item 单级放大器谐振时的电压增益 $A_{v0}$;
+        \item 通频带 $2\Delta f_{0.7}$;
+        \item 谐振时的回路外接电容 $C$;
+        \item 若 $R_4=\qty{10}{k\ohm}$, 试计算回路并 $R_4$ 后的通频带和增益.
+    \end{enumerate}
+
+    \begin{solution}
+        若未特别说明, 均认为\textit{前后级使用相同参数的晶体管}. 也即 $g_{ie2}=g_{ie}$, $C_{ie2}=C_{ie}$.
+
+        \begin{enumerate}[label=(\arabic*)]
+            \item \begin{gather*}
+                      g_\Sigma=\frac{1}{Q_0\omega_0L} \approx \qty{0.55}{mS}. \\
+                      A_{v0}=-\frac{p_1p_2|y_{fe}|}{g_\Sigma}\approx 32.
+                  \end{gather*}
+            \item \begin{gather*}
+                      C_\Sigma=\frac{1}{(2\pi f_0)^2L}\approx\qty{20}{pF}. \\
+                      C=C_\Sigma-p_1^2C_{oe}-p_2^2C_{ie2}\approx\qty{9.4}{pF}.
+                  \end{gather*}
+            \item \begin{equation*}
+                      2\Delta f_{0.7}=\frac{f_0}{Q_L}=\frac{f_0g_\Sigma}{Q_0g_p}\approx\qty{4.35}{MHz}.
+                  \end{equation*}
+            \item \begin{gather*}
+                      g_\Sigma'=g_\Sigma+\frac{1}{R_4}. \\
+                      A_{v0}'=-\frac{p_1p_2|y_{fe}|}{g_\Sigma'}\approx 26.9. \qquad (\textrm{变小}) \\
+                      2\Delta f_{0.7}'=\frac{A_{v0}\cdot 2\Delta f_{0.7}}{A_{v0}'}\approx\qty{5.17}{MHz}. \qquad (\textrm{变大})
+                  \end{gather*}
+        \end{enumerate}
+    \end{solution}
+\end{exampleprob}

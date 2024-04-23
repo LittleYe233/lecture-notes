@@ -1,0 +1,70 @@
+\subsection{晶体管谐振功率放大器的折线近似分析法} \label{5 晶体管谐振功率放大器的折线近似分析法}
+\subsubsection{晶体管特性曲线的理想化及其解析式}
+\textbf{转移特性方程}
+\begin{equation} \label{eq:5.2 transfer}
+    i_C=\begin{cases}
+        0,                  & \quad v_{BE}<V_{BZ}     \\
+        g_C(v_{BE}-V_{BZ}). & \quad v_{BE}\geq V_{BZ}
+    \end{cases}
+\end{equation}
+
+\textbf{输出特性曲线的临界线方程}
+\begin{equation} \label{eq:5.2 output limit}
+    i_C=g_{cr}v_{CE}.
+\end{equation}
+
+\textbf{放大器的工作状态}
+
+\subsubsection{集电极余弦电流脉冲的分解}
+集电极余弦电流的单个脉冲为范围 $-\theta_c\sim\theta_c$, 高度 $I_{Cm}$ 的正弦半波形. 只需确定 $\theta_c$ 和 $I_{Cm}$ 即可确定集电极电流. 可以得知相关参数 $g_c$, $V_{BB}$, $V_{BZ}$, $V_{bm}$ 的值.
+
+前文已推出通角 $\theta_c$ 的表达式 (\ref{eq:5.1 cos theta c}). 对于 $I_{Cm}$, 显然当 $\omega t=0$ 时 $i_C=I_{Cm}$. 可以推得
+\begin{gather}
+    i_C=g_cV_{bm}(\cos(\omega t)-\cos\theta_c), \\
+    I_{Cm}=g_cV_{bm}(1-\cos\theta_c), \label{eq:5.2 I Cm} \\
+    i_C=I_{Cm}\frac{\cos(\omega t)-\cos\theta_c}{1-\cos\theta_c}. \label{eq:5.2 i C}
+\end{gather}
+
+将 $i_C$ 分解为傅里叶级数, 并记各项系数为 $I_{Cm}\alpha_0(\theta_c),\ I_{Cm}\alpha_1(\theta_c),\ I_{Cm}\alpha_2(\theta_c),\ \cdots$ (其中 $\alpha$ 各项称为\textbf{分解系数}). 则
+\begin{equation} \label{eq:5.2 i C fourier}
+    i_C=I_{Cm}[\alpha_0(\theta_c)+\alpha_1(\theta_c)\cos(\omega t)+\alpha_2(\theta_c)\cos(2\omega t)+\cdots+\alpha_n(\theta_c)\cos(n\omega t)+\cdots].
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.6\textwidth]{images/power_amp_i_c_alpha.pdf}
+    \caption{尖顶脉冲的分解系数}
+    \label{fig:5.2 i C alpha}
+\end{figure}
+
+根据傅里叶级数的系数关系, 为兼顾功率 ($P_o$) 和效率 ($\eta_c$ 或 $g_1(\theta_c)$), 最佳通角为 $\theta_c\approx 70^\circ$. 当 $\theta_c=60^\circ$ 时, $\alpha_2$ 达到最大值; 当 $\theta_c=40^\circ$ 时, $\alpha_3$ 达到最大值. 这些数据可以用于设计倍频器 (见 \ref{5.4 丙类倍频器}).
+
+\subsubsection{高频功率放大器的动态特性与负载特性}
+前文已经求得集电极电路中无负载阻抗时的静态特性 (例如 (\ref{eq:5.2 transfer})). 当同时考虑到 $v_{BE}$ 和 $v_{CE}$ 的变化时, $i_C$ 的表达式则为放大器的动态特性. 当晶体管的静态特性曲线近似为折线时, 其动态特性曲线也将是直线:
+\begin{equation}
+    i_C=g_d(v_{CE}-V_0).
+\end{equation}
+其中
+\begin{gather}
+    g_d=-g_c\frac{V_{bm}}{V_{cm}}, \\
+    V_0=\frac{V_{bm}V_{CC}-V_{BZ}V_{cm}-V_{BB}V_{cm}}{V_{bm}}.
+\end{gather}
+
+\begin{itemize}
+    \item $R_p$ 较小, 放大器工作在\textbf{欠压}工作状态时,
+    \item $R_p$ 增大, 放大器工作在\textbf{临界}工作状态时,
+    \item $R_p$ 继续增大, 放大器工作在\textbf{过压}工作状态时,
+\end{itemize}
+
+\subsubsection{各级电压对工作状态的影响}
+\textbf{改变 $V_{CC}$}
+
+当 $V_{CC}$ 增加时, Q 点右移, 放大器工作状态向欠压区移动; 反之, $Q$ 点左移, 放大器工作状态向过压区移动. 因为 $P_==V_{CC}I_{C0}$, $P_o\propto I_{C1}^2$, $P_c=P_=-P_o$, 可以作出工作状态, 电流, 功率随 $V_{CC}$ 变化的大致图象.
+
+集电极调幅是通过改变 $V_{CC}$ 从而改变 $P_o$ 实现的, 故此时放大器必须工作在\textit{过压区}, 才能保证集电极电流的大幅度变化.
+
+\textbf{改变 $V_{bm}$ 或 $V_{BB}$}
+
+当 $V_{bm}$ 增加时, 静态特性曲线 ($v_{BE}$ 为定值时的 $i_C-v_{CE}$ 曲线) 上移, 放大器工作状态向过压区移动; 反之, 静态特性曲线下移, 放大器工作状态向欠压区移动.
+
+因为 $v_{BE\mathrm{max}}=-V_{BB}+V_{bm}$, 由 $V_{bm}$ 对工作状态, 电流, 功率的影响可以反推 $V_{BB}$ 对后者的影响. 基极调幅 (改变 $V_{BB}$) 和已调波放大 (改变 $V_{bm}$) 时, 放大器必须工作在\textit{欠压区}, 才能保证集电极电流的大幅度变化.

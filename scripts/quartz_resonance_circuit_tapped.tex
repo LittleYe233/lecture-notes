@@ -1,0 +1,16 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        circuit ee IEC,
+        x=1cm, y=1cm,
+        semithick,
+        every info/.style={font=\footnotesize},
+        tiny circuit symbols]
+    \draw (0, 0) to [capacitor={info={$C_0$}}] (0, 1.75);
+    \draw (0, 1.75) to [capacitor={info={$C_q$}}] (0, 3.5);
+    \draw (1, 3.5) to [inductor={info={$L_q$}}] (1, 1.75);
+    \draw (1, 1.75) to [resistor={info={$r_q$}}] (1, 0);
+    \draw (0, 3.5) -- (1, 3.5) (1, 0) -- (-0.5, 0) node [contact] {} node [left] {\footnotesize b} (0, 1.75) -- (-0.5, 1.75) node [contact] {} node [left] {\footnotesize a};
+\end{tikzpicture}
+\end{document}

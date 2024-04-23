@@ -1,0 +1,24 @@
+\section{非线性电路, 时变参量电路和变频器} \label{非线性电路, 时变参量电路和变频器}
+\subsection{非线性元件的特性} \label{非线性元件的特性}
+\subsubsection{非线性元件的工作特性}
+
+非线性元件的工作特性是非线性的.
+
+元器件的线性还是非线性是相对的. 线性和非线性的划分, 很大程度上决定于器件静态工作点 ($R$) 及动态工作范围 ($r$).
+\begin{gather}
+    R=\frac{V}{I}. \\
+    r=\frac{\mathrm{d}V}{\mathrm{d}I}.
+\end{gather}
+
+\subsubsection{非线性元件的频率变换作用}
+
+对非线性元件外加正弦信号激励时, 利用傅里叶级数等三角函数变换, 可以将响应拆分成\textit{多种频率} (合频, 差频, 倍频, 直流等) 的分量 (可用于频率搬移).
+
+将两个频率的余弦激励信号 $v=V_0+V_1\cos\omega_1 t+V_2\cos\omega_2 t$ 作用于元件转移特性的幂级数展开式 (\ref{eq:4.2 current power sum}), 产生的形如 $a_{p,q}\cos(p\omega_1 t\pm q\omega_2 t)$ 满足:
+\begin{itemize}
+    \item 直流响应与激励信号振幅的平方正相关; $p+q$ 为偶数的频率成分的振幅仅与阶数不小于 $p+q$ 的偶次序系数 $b_k$ 有关; $p+q$ 为奇数的频率成分的振幅仅与阶数不小于 $p+q$ 的奇次序系数 $b_k$ 有关;
+    \item 设幂级数最高阶数为 $n$, 一般 $p+q\leq n$;
+    \item 所有组合分量存在其共轭 (存在 $p+q$ 则存在 $p-q$, 反之亦然).
+\end{itemize}
+
+\subsubsection{非线性电路不满足叠加原理}

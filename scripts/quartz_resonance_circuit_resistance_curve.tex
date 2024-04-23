@@ -1,0 +1,24 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        /pgf/declare function={
+                P = 0.1;
+                Wq = 0.1;
+                Wp = Wq * sqrt(1 + P);
+                C0 = 1;
+            }
+    ]
+    \begin{axis}[%
+            xmin=0.03,
+            ticks=none,
+            xlabel={$\omega$}, ylabel={$Z_{ab}$}]
+        \addplot[color=flatblue, domain=0.04:Wp-0.002]{-1/(\x*C0)*(\x^2-Wq^2)/(\x^2-Wp^2)};
+        \addplot[color=flatblue, domain=Wp+0.004:0.2]{-1/(\x*C0)*(\x^2-Wq^2)/(\x^2-Wp^2)};
+        \draw [black, dashed] (Wq, -25) -- (Wq, 15);
+        \draw [black, dashed] (Wp, -25) -- (Wp, 15);
+        \node at (Wq-0.01, -2) {$\omega_q$};
+        \node at (Wp+0.01, -2) {$\omega_p$};
+    \end{axis};
+\end{tikzpicture}
+\end{document}

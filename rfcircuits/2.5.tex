@@ -1,0 +1,119 @@
+\subsection{滤波器的其他形式} \label{滤波器的其他形式}
+\subsubsection{LC 集中选择性滤波器}
+
+常用的\textit{带通} LC 集中选择性滤波器由 5 节单节滤波器组成, 共 6 个调谐电路.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/lc_filter_singal.pdf}
+        \caption{单级 LC 集中选择性滤波器}
+    \end{minipage}\quad
+    \begin{minipage}{.358\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/lc_filter_singal_resistance_curve.pdf}
+        \caption{单级滤波器的阻抗曲线}
+    \end{minipage}
+\end{figure}
+
+\textbf{传通条件}\quad $Z_1$ 与 $Z_2$ 异号, 且 $|4Z_2|>|Z_1|$
+\begin{equation}
+    0>\frac{Z_1}{4Z_2}>-1.
+\end{equation}
+
+\textbf{频率特性}
+
+整个滤波器电路谐振的频率设为 $f_1$, LC 子回路并联谐振的频率设为 $f_2$, 且 $f_1<f_2$.
+
+\begin{itemize}
+    \item 当 $f>f_2$ 时, $Z_1$ 和 $4Z_2$ 都呈容性, 滤波器工作在阻带;
+    \item 当 $f_1<f<f_2$ 时, $4Z_2$ 呈感性, 且更占优势, 滤波器工作在通带.
+    \item 当 $f<f_1$ 时, $4Z_2$ 呈感性, 但 $Z_1$ 更占优势, 滤波器工作在阻带.
+\end{itemize}
+
+\textbf{中心频率}\quad $f_0=\sqrt{f_1f_2}$.
+
+\textbf{通频带}\quad $\Delta f=f_2-f_1.$
+
+\subsubsection{石英晶体滤波器} \label{石英晶体滤波器}
+
+石英谐振器的基频等效电路可以看作静电容 ($C_0\sim 1-10\mathrm{pF}$) 和晶体自身串联谐振电路 ($r_q\sim 1-100\Omega,L_q\sim 0.1-1\mathrm{H},C_q\sim 0.01\mathrm{pF}$) 的并联, 也可以看作电容抽头的并联电路.
+\begin{gather}
+    C_0=\frac{\epsilon S}{d}. \\
+    p=\frac{C_q}{C_0+C_q}\approx\frac{C_q}{C_0}.
+\end{gather}
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{.51\textwidth}
+        \centering
+        \begin{subfigure}{.47\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/quartz_resonance_circuit_equivalent.pdf}
+            \caption{}
+        \end{subfigure}
+        \begin{subfigure}{.47\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/quartz_resonance_circuit_tapped.pdf}
+            \caption{}
+        \end{subfigure}
+        \caption{石英谐振器的等效电路及电容抽头电路}
+    \end{minipage}
+    \begin{minipage}{.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/quartz_resonance_circuit_resistance_curve.pdf}
+        \caption{石英谐振器等效电路的电抗曲线}
+    \end{minipage}
+\end{figure}
+
+\textbf{特点}
+\begin{itemize}
+    \item 品质因数 $Q_q$ 极高 ($\sim 10^2-10^4$), 选择性很好, 通频带很窄;
+    \item 接入系数非常小, 晶体与外电路耦合很弱, 谐振频率稳定.
+\end{itemize}
+
+\textbf{频率特性}
+
+整个滤波器电路谐振的频率设为 $\omega_p$, 石英晶体自身谐振的频率设为 $\omega_q$.
+\begin{gather}
+    \omega_q=\frac{1}{\sqrt{L_qC_q}}. \\
+    \omega_p=\frac{1}{\sqrt{L_q\dfrac{C_qC_0}{C_q+C_0}}}. \\
+    \frac{\omega_p}{\omega_q}=\sqrt{1+p}. \label{eq:2.5 quartz omega_p omega_q} \\
+    B=\frac{\Delta\omega}{2\pi}\approx\frac{\omega_qp}{4\pi}. \label{eq:2.5 quartz B} \\
+    Z_{ab}\xlongequal{r_q=0}-\mathrm{j}\frac{1}{\omega C_0}\frac{\omega^2-\omega_q^2}{\omega^2-\omega_p^2}.
+\end{gather}
+
+\begin{itemize}
+    \item 当 $\omega>\omega_p$ 或 $\omega<\omega_q$ 时, 呈容性;
+    \item 当 $\omega_q<\omega<\omega_p$ 时, 呈感性.
+\end{itemize}
+
+为扩展通频带, 可以与石英谐振器串联 (降低 $\omega_q$) 或并联 (增大 $\omega_p$) 电感.
+
+\subsubsection{陶瓷滤波器}
+
+\begin{wrapfigure}{r}{.3\textwidth}
+    \centering
+    \includegraphics[width=.28\textwidth]{images/ceramic_resonance_circuit_5.pdf}
+    \caption{四端陶瓷滤波器}
+\end{wrapfigure}
+
+等效电路与石英晶体滤波器 (\ref{石英晶体滤波器}) 类似. 品质因数数量级一般为 $10^2$.
+
+\textbf{频率特性}
+
+当串臂的串联谐振频率 $f_{sq}$ 等于并臂的并联谐振频率 $f_{pp}$ 时, 整个滤波器的导通频率范围为 $f_{pq}<f<f_{sp}$.
+
+\begin{itemize}
+    \item 当 $f=f_{pq}$ 时, 并臂达到串联谐振, 阻抗最小, 使激励信号旁路;
+    \item 当 $f=f_{sp}$ 时, 串臂达到并联谐振, 阻抗最大, 阻断激励信号.
+\end{itemize}
+
+\begin{exampleprob}
+    设计一个陶瓷滤波器, 使得导通频率范围为 $(465\pm5)$Hz.
+
+    \begin{solution}
+        例如, 串臂的导通频率范围为 465\textasciitilde 470Hz, 并臂的导通频率范围为 460\textasciitilde 465Hz.
+    \end{solution}
+\end{exampleprob}

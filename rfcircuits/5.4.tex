@@ -1,0 +1,26 @@
+\subsection{晶体管倍频器} \label{5 晶体管倍频器}
+考虑到电路的稳定性 (主振频率越高, 稳定性越差) 和石英晶体稳频限制 (频率过高, 晶体过薄, 易损坏), 需要引入倍频器. 倍频器利用了晶体管放大电路的集电极能产生高次谐波分量的原理, 只需要在集电极滤波时只滤出指定频率 (例如二倍频, 三倍频) 的分量, 即可实现倍频效果.
+
+\subsubsection{丙类倍频器} \label{5.4 丙类倍频器}
+\textbf{导通角}\quad 因为倍频器通常不过分考虑工作效率, 导通角取理论最高功率时的值即可. 见图 \ref{fig:5.2 i C alpha}. 二倍频器的最佳通角为 $60^\circ$, 三倍频器的最佳通角为 $40^\circ$.
+
+\textbf{输出功率和效率}\quad 假设 $I_{cm}$ 和 $v_{CE\mathrm{min}}$ 相同, 比较倍频器和放大器的输出功率和效率. 倍频器的输出功率和效率分别为
+\begin{gather}
+    P_{on}=\frac{1}{2}V_{cm}I_{cmn}=\frac{1}{2}(\xi V_{CC})I_{cm}\alpha_n(\theta_c). \\
+    \eta_n=\frac{P_{on}}{P_=}=\frac{1}{2}\xi g_n(\theta_c).
+\end{gather}
+
+输出功率与放大器理论最大输出功率比较:
+\begin{gather}
+    \frac{P_{o2}}{P_{o1}}=\frac{\alpha_2(60^\circ)}{\alpha_1(120^\circ)}\approx 0.52. \\
+    \frac{P_{o3}}{P_{o1}}=\frac{\alpha_3(40^\circ)}{\alpha_1(120^\circ)}\approx 0.35.
+\end{gather}
+
+\subsubsection{负载回路的滤波作用}
+倍频器的负载回路需要滤出振幅较低的高频分量, 需要设法提高其滤波作用:
+\begin{itemize}
+    \item 提高品质因数 ($n$ 倍频器可以考虑 $Q>10n\pi$);
+    \item 并接吸收回路 (调谐基频和其他高频分量);
+    \item 使用选择性好的带通滤波器;
+    \item 使用推挽倍频电路.
+\end{itemize}

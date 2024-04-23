@@ -1,0 +1,48 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        /pgf/declare function={
+                Alpha0(\x) = (sin(\x)-rad(\x)*cos(\x))/(pi*(1-cos(\x)));
+                Alpha1(\x) = (rad(\x)-sin(\x)*cos(\x))/(pi*(1-cos(\x)));
+                Alpha(\n,\x) = 2/pi*(sin(\n*\x)*cos(\x)-\n*cos(\n*\x)*sin(\x))/(\n*(\n^2-1)*(1-cos(\x)));
+            }
+    ]
+    \pgfplotsset{set layers}
+    \begin{axis}[%
+            width=3.5in, height=3.5in,
+            domain=2.5:179.9,
+            xmin=0, xmax=180,
+            ymin=-0.1, ymax=0.6,
+            samples=500,
+            axis lines=box,
+            scale only axis,
+            grid=major,
+            legend pos=north west,
+            xtick distance=30, ytick distance=0.1,
+            xlabel={$\theta_c$},
+            ylabel={$\alpha_n$}]
+        \addplot [color=flatblue] {Alpha0(\x)};
+        \addplot [color=copper] {Alpha1(\x)};
+        \addplot [color=tea] {Alpha(2,\x)};
+        \addplot [color=lavender] {Alpha(3,\x)};
+        \legend{$\alpha_0$, $\alpha_1$, $\alpha_2$, $\alpha_3$};
+    \end{axis};
+    \begin{axis}[%
+            width=3.5in, height=3.5in,
+            domain=10:179.9,
+            xmin=0, xmax=180,
+            ymin=-0.5, ymax=3,
+            samples=500,
+            axis y line=right,
+            axis x line=none,
+            scale only axis,
+            grid=major,
+            legend pos=north west,
+            xtick distance=30, ytick distance=0.5,
+            xlabel={$\theta_c$},
+            ylabel={$g_n$}]
+        \addplot [color=ochre] {Alpha1(\x)/Alpha0(\x)};
+    \end{axis};
+\end{tikzpicture}
+\end{document}

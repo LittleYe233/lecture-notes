@@ -1,0 +1,22 @@
+\documentclass{notefig}
+
+% Just an unstable workaround!
+\usepackage{circuitikz}
+
+\begin{document}
+\ctikzset{capacitors/scale=.5}
+
+\begin{tikzpicture}[%
+        circuit ee IEC,
+        x=1.5cm, y=1.5cm,
+        semithick,
+        every info/.style={font=\footnotesize},
+        tiny circuit symbols]
+    \draw (0, 1) node [contact] {} to [piezoelectric] (1, 1)
+    to [piezoelectric] (2, 1)
+    to [piezoelectric] (3, 1) node [contact] {};
+    \draw (0, 0) node [contact] {} -- (3, 0) node [contact] {};
+    \draw (1, 0) to [piezoelectric] (1, 1);
+    \draw (2, 0) to [piezoelectric] (2, 1);
+\end{tikzpicture}
+\end{document}

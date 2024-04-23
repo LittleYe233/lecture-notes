@@ -1,0 +1,122 @@
+\subsection{晶体管高频小信号等效电路与参数} \label{3 晶体管高频小信号等效电路与参数}
+
+以\textit{共射}晶体管放大电路为例.
+
+\subsubsection{形式等效电路 (网络参数等效电路)}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{.288\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/transistor_common_emitter_circuit.pdf}
+        \caption{晶体管共射电路}
+    \end{minipage}
+    \begin{minipage}{.512\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/transistor_y_param.pdf}
+        \caption{晶体管 y 参数等效模型}
+        \label{fig:3.2 transistor y param}
+    \end{minipage}
+\end{figure}
+
+\textbf{y 参数等效电路}\quad $\dot{V}_1$, $\dot{V}_2$ 作为自变量, $\dot{I}_1$, $\dot{I}_2$ 作为参变量:
+\begin{equation} \label{eq:3.2 y param}
+    \begin{bmatrix}
+        \dot{I}_1 \\
+        \dot{I}_2
+    \end{bmatrix}=
+    \begin{bmatrix}
+        y_i & y_r \\
+        y_f & y_o
+    \end{bmatrix}
+    \begin{bmatrix}
+        \dot{V}_1 \\
+        \dot{V}_2.
+    \end{bmatrix}
+\end{equation}
+
+若分别已知输入短路时的 $\dot{I}_1, \dot{I}_2, \dot{V}_2$ 及输出短路时的 $\dot{I}_1, \dot{I}_2, \dot{V}_1$, 则可以求出 4 个 y 参数:
+
+\underline{输出短路时的输入导纳}\quad $y_i=\left.\dfrac{\dot{I}_1}{\dot{V}_1}\right|_{V_2=0}$.
+
+\underline{输入短路时的反向传输导纳}\quad $y_r=\left.\dfrac{\dot{I}_1}{\dot{V}_2}\right|_{V_1=0}$.
+
+\underline{输出短路时的正向传输导纳}\quad $y_f=\left.\dfrac{\dot{I}_2}{\dot{V}_1}\right|_{V_2=0}$.
+
+\underline{输入短路时的输出导纳}\quad $y_o=\left.\dfrac{\dot{I}_2}{\dot{V}_2}\right|_{V_1=0}$.
+
+\textbf{实际负载电路}
+
+考虑在晶体管的基极-地侧并联接入电流源 ($\dot{I}_s$) 与其等效导纳 ($Y_s$), 集电极-地侧并联接入负载导纳 ($Y_L$).
+\begin{gather}
+    Y_i=\frac{\dot{I}_1}{\dot{V}_1}=y_{ie}-\frac{y_{re}y_{fe}}{y_{oe}+Y_L}. \label{eq:3.2 y Yi} \\
+    Y_o=\frac{\dot{I}_2}{\dot{V}_2}=y_{oe}-\frac{y_{re}y_{fe}}{y_{ie}+Y_s}. \label{eq:3.2 y Yo}
+\end{gather}
+具体推导见 \ref{proofs:高频小信号放大器含源含负载回路的 y 参数}.
+
+实际负载电路的电压增益为
+\begin{equation}
+    \dot{A}_v=\frac{\dot{V}_2}{\dot{V}_1}=-\frac{y_{fe}}{y_{oe}+Y_L}.
+\end{equation}
+
+\subsubsection{混合 \texorpdfstring{$\pi$}{pi} 参数等效电路 (物理模拟等效电路)}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{.504\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/transistor_mixed_pi.pdf}
+        \caption{晶体管混合 \texorpdfstring{$\pi$}{pi} 模型}
+    \end{minipage}
+    \begin{minipage}{.396\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/transistor_mixed_pi_simplified.pdf}
+        \caption{晶体管简化的混合 \texorpdfstring{$\pi$}{pi} 模型}
+        \label{fig:3.2 transistor mixed pi simplified}
+    \end{minipage}
+\end{figure}
+
+\textbf{基极电阻}\quad $r_{bb'}$, 在共集电极电路中引起高频反馈, 降低晶体管电流放大系数. \par
+\textbf{发射结电导}\quad $g_{b'e}$. \par
+\textbf{集电结电导}\quad $g_{b'c}$. \par
+\textbf{集射极电导}\quad $g_{ce}$. \par
+\textbf{发射结电容}\quad $C_{b'e}$. \par
+\textbf{集电结电容}\quad $C_{b'c}$. \par
+\textbf{跨导}\quad $g_m=\beta_0 g_{b'e}=\dfrac{I_2(\mathrm{mA})}{26(\mathrm{mV})}={\color{red} -\mathrm{j}Y_{b'e}|_{\dot{V}_2=0}}$. \par
+\textbf{等效电流发生器}\quad $g_m\dot{V}_{b'e}$, 表示晶体管的放大作用. \par
+\textbf{反馈电容}\quad $C_{b'c}$, 可能引起\textit{自激}.
+
+\textit{高频}工作条件下, $g_{b'e}$, $g_{b'c}$, $g_{ce}$ 阻抗相较于并联电容或回路负载过小, 可以忽略.
+
+\subsubsection{混合 \texorpdfstring{$\pi$}{pi} 等效电路参数与形式等效电路 y 参数的转换}
+
+已知\textit{共射}晶体管放大电路的简化的混合 $\pi$ 等效电路参数, 分别短路输入端和输出端, 求出将其看作四端口网络时对应的 y 参数 $y_{ie}$, $y_{re}$, $y_{fe}$, $y_{oe}$:
+\begin{gather}
+    y_{ie}=\frac{Y_{b'e}}{1+r_{bb'}Y_{b'e}}. \label{eq:3.2 pi y_ie} \\
+    y_{fe}=\frac{g_m}{1+r_{bb'}Y_{b'e}}. \label{eq:3.2 pi y_fe} \\
+    y_{re}=-\frac{\mathrm{j}\omega C_{b'c}}{1+r_{bb'}Y_{b'e}}. \label{eq:3.2 pi y_re} \\
+    y_{oe}=-\mathrm{j}\omega C_{b'c}\left(1+\frac{g_mr_{bb'}}{1+r_{bb'}Y_{b'e}}\right). \label{eq:3.2 pi y_oe}
+\end{gather}
+具体推导见 \ref{proofs 混合 pi 等效电路参数与形式等效电路 y 参数的转换}.
+
+$Y_{b'e}$ 可看作从 $b'e$ 向输出端或输入端看去, 电容形成的导纳. 对于 (\ref{eq:3.2 pi y_ie}) 和 (\ref{eq:3.2 pi y_fe}), 向输出端看, $Y_{b'e}=\mathrm{j}\omega(C_{b'e}+C_{b'c})$; 对于 (\ref{eq:3.2 pi y_re}) 和 (\ref{eq:3.2 pi y_oe}), 向输入端看, $Y_{b'e}=\mathrm{j}\omega C_{b'e}$. 因为一般 $C_{b'e}>>C_{b'c}$, $Y_{b'e}$ 可认为均为 $\mathrm{j}\omega C_{b'e}$.
+
+\subsubsection{晶体管的高频参数}
+
+\textbf{截止频率}\quad $f_\beta$. 电流放大倍数 $\beta$ 降至低频 $\beta_0$ 的 $\dfrac{1}{\sqrt{2}}$ 时的频率.
+\begin{equation}
+    \beta=\frac{\beta_0}{1+\mathrm{j}\dfrac{f}{f_\beta}}.
+\end{equation}
+
+\textbf{特征频率}\quad $f_T$. 电流放大倍数 $\beta=1$ 时的频率. (此时仍然有一定功率增益.)
+\begin{gather}
+    f_T=f_\beta\sqrt{\beta_0^2-1}=\beta_0 f_\beta.\qquad (\beta_0>>1.) \label{eq:3.2 f_T} \\
+    |\beta|\approx\frac{f_T}{f}.\qquad (f>>f_\beta.) \label{eq:3.2 f_T beta}
+\end{gather}
+
+\textbf{最高振荡频率}\quad $f_\mathrm{max}$. 功率增益 $A_p=1$ 时的频率.
+\begin{equation}
+    f_\mathrm{max}=\frac{1}{2\pi}\sqrt{\frac{g_m}{4r_{bb'}C_{b'e}C_{b'c}}}.
+\end{equation}
+
+显然 $f_\beta<f_T<f_\mathrm{max}$.

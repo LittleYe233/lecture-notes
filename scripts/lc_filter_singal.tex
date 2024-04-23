@@ -1,0 +1,23 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        circuit ee IEC,
+        x=1.5cm, y=2cm,
+        semithick,
+        every info/.style={font=\small},
+        every voltage source/.style={large circuit symbols},
+        tiny circuit symbols]
+    \draw (0.3, 0) to [%
+        voltage source={near start, direction info={info={$V_s$}}},
+        resistor={near end, info={$R_s$}}
+    ] (0.3, 1);
+    \draw (0.3, 1) to [capacitor={info={$C_0(Z_1)$}}] (2.8, 1);
+    \draw (2.8, 1) node [right=0.1cm] {\small $+$} to [resistor={info={below:$R_0$}}] node [right=0.1cm] {\small $V_o$} (2.8, 0) node [right=0.1cm] {\small $-$};
+    \draw (2.8, 0) -- (2, 0) node [xshift=0.3cm, yshift=0.18cm] {\small $2Z_2$} -- (1, 0) node [xshift=0.3cm, yshift=0.18cm] {\small $2Z_2$} -- (0.3, 0);
+    \draw (1, 0) -- (1, 0.2) -- (0.8, 0.2) to [inductor={info={$L$}}] (0.8, 0.8) -- (1, 0.8);
+    \draw (1, 1) -- (1, 0.8) -- (1.2, 0.8) to [capacitor={info={below:$C$}}] (1.2, 0.2) -- (1, 0.2);
+    \draw (2, 0) -- (2, 0.2) -- (1.8, 0.2) to [inductor={info={$L$}}] (1.8, 0.8) -- (2, 0.8);
+    \draw (2, 1) -- (2, 0.8) -- (2.2, 0.8) to [capacitor={info={below:$C$}}] (2.2, 0.2) -- (2, 0.2);
+\end{tikzpicture}
+\end{document}

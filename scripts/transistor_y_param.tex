@@ -1,0 +1,28 @@
+\documentclass[circuitikz]{notefig}
+
+\begin{document}
+\footnotesize\selectfont
+
+\begin{circuitikz}[%
+        european,
+        scale=1, transform shape,
+        x=1cm, y=1.5cm
+    ]
+    \ctikzset{%
+        cpos/.code={\ctikzsetvalof{current/distance}{#1}},
+        % See: https://tex.stackexchange.com/a/417313/290833
+        % default=1.4cm
+        bipoles/length=.7cm
+    }
+
+    \draw (0, 0) node [left] (1nn) {$-$} to [short, o-o] (5, 0) node [right] (2nn) {$-$};
+    \draw (0, 1) node [left] (1pp) {$+$} to [short, o-, cpos=.25, i_=$\dot{I}_1$] (2, 1);
+    \draw (5, 1) node [right] (2pp) {$+$} to [short, o-, cpos=.25, i=$\dot{I}_2$] (3, 1);
+    \draw (1, 1) to [european resistor=$y_i$] (1, 0);
+    \draw (2, 1) to [cisource, i_=$y_r\dot{V}_2$] (2, 0);
+    \draw (4, 1) to [european resistor, a=$y_o$] (4, 0);
+    \draw (3, 1) to [cisource=$y_f\dot{V}_1$] (3, 0);
+    \node at ($(1pp)!0.5!(1nn)$) {$\dot{V}_1$};
+    \node at ($(2pp)!0.5!(2nn)$) {$\dot{V}_2$};
+\end{circuitikz}
+\end{document}

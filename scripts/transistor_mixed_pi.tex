@@ -1,0 +1,29 @@
+\documentclass[circuitikz]{notefig}
+
+\begin{document}
+\footnotesize\selectfont
+
+\begin{circuitikz}[%
+        european,
+        scale=1, transform shape,
+        x=2cm, y=2cm
+    ]
+    \ctikzset{%
+        cpos/.code={\ctikzsetvalof{current/distance}{#1}},
+        bipoles/length=.7cm
+    }
+
+    \draw (0, 0) coordinate (e1) node [below] {e} node [above] {$-$} to [short, o-o] +(3.5, 0) coordinate (e2) node [below] {e} node [above] {$-$}
+    ++(0, 1) coordinate (b) node [above] {b} node [below] {$+$} to [short, o-*, R=$r_{bb'}$, f>^=$\dot{I}_1$] ++(1, 0) coordinate (b') node [above] {b'}
+    to [short, *-*] ++(0.5, 0) coordinate (1)
+    to [short, *-*, R=$g_{b'c}$] ++(1, 0) coordinate (2)
+    to [short, -o, f<=$\dot{I}_2$] ++(1, 0) coordinate (c) node [above] {c} node [below] {$+$};
+    \draw (b') to [C, a=$C_{b'e}$] (b' |- e1);
+    \draw (1) to [R, a=$g_{b'e}$] (1 |- e1);
+    \draw (2) to [cisource, i_=$g_m\dot{V}_{b'e}$] (2 |- e1);
+    \draw (2)++(0.5, 0) coordinate (3) to [R, a=$g_{ce}$] (3 |- e1);
+    \draw (1) -- ++(0, 0.3) coordinate (4) to [C=$C_{b'c}$] (4 -| 2) -- (2);
+    \node at ($(b)!0.5!(e1)$) {$\dot{V}_1$};
+    \node at ($(c)!0.5!(e2)$) {$\dot{V}_2$};
+\end{circuitikz}
+\end{document}

@@ -1,0 +1,32 @@
+\documentclass{notefig}
+
+\begin{document}
+\begin{tikzpicture}[%
+        /pgf/declare function={
+                L = 1;
+                C = 1;
+                C0 = 1;
+                Z2(\x) = -(L/C)/(2*(\x*L-1/(\x*C)));
+                Z1(\x) = -1/(\x*C0);
+                W2 = 1/sqrt(L*C);
+                W1 = 1/sqrt(L*(C+2*C0));
+            }
+    ]
+    \begin{axis}[
+            domain=0.01:1.5,
+            xmin=0, xmax=1.6,
+            ymin=-20, ymax=20,
+            ticks=none,
+            xlabel={$\omega$},
+            ylabel={$Z$}]
+        \addplot [color=flatblue, domain=0.01:0.99] {4*Z2(\x)};
+        \addplot [color=flatblue, domain=1.01:1.5, forget plot] {4*Z2(\x)};
+        \addplot [color=copper] {Z1(\x)};
+        \draw [dashed] (W1, -20) -- (W1, 20);
+        \draw [dashed] (W2, -20) -- (W2, 20);
+        \node at (W1+0.07, -4) {$\omega_1$};
+        \node at (W2+0.07, -4) {$\omega_2$};
+        \legend{$4Z_2$, $Z_1$};
+    \end{axis};
+\end{tikzpicture}
+\end{document}
