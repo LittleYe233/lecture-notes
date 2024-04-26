@@ -1,24 +1,66 @@
 \subsection{静磁场}
+\subsubsection{磁感应强度的定义与安培力定律}
 \textbf{毕奥-萨伐尔定律}\quad 源位置 $\bm{r}'$ 处的微小电流元 $I\mathrm{d}\bm{l}$ 作用于场位置 $\bm{r}$ 的静磁场为
 \begin{equation}
     \mathrm{d}\bm{B}=\frac{\mu_0 I}{4\pi}\mathrm{d}\bm{l}\times\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3}.
 \end{equation}
-其积分形式为
+其体积分形式为
 \begin{equation}
-    \bm{B}(\bm{r})=\frac{\mu_0}{4\pi}\int_V\bm{J}(\bm{r}')\times\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3}\mathrm{d}V.
+    \bm{B}(\bm{r})=\frac{\mu_0}{4\pi}\int_V\bm{J}(\bm{r}')\times\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3}\mathrm{d}v.
 \end{equation}
+线积分形式为
+\begin{equation}
+    \bm{B}(\bm{r})=\frac{\mu_0}{4\pi}\oint_C\frac{I\mathrm{d}\bm{l}\times(\bm{r}-\bm{r'})}{|\bm{r}-\bm{r'}|^3}.
+\end{equation}
+
+\textbf{安培力定律}\quad 微小电流元 $I\mathrm{d}\bm{l}$ 在静磁场 $\bm{B}$ 处受到的安培力表示为
+\begin{equation}
+    \mathrm{d}\bm{F}=I\mathrm{d}\bm{l}\times\bm{B}.
+\end{equation}
+
+\subsubsection{散度, 旋度与环路定理}
+可以证明恒定磁场的散度为
+\begin{equation}
+    \nabla\cdot\bm{B}=\oint_S\bm{B}\cdot\mathrm{d}\bm{S}=0.
+\end{equation}
+这说明恒定磁场是无源场, 磁感应线是闭合曲线.
 
 \textbf{安培环路定理}\quad 在真空中载流导线所载有的稳恒电流, 与磁感应强度沿着环绕导线的任意闭合回路的路径积分之间的关系为
 \begin{equation} \label{eq:2.3 ampere's circuital law}
-    \oint_C\bm{B}\cdot\mathrm{d}\bm{l}=\mu_0\int_\Sigma\bm{J}\cdot\mathrm{d}\bm{S}.
+    \oint_C\bm{B}\cdot\mathrm{d}\bm{l}=\mu_0\int_\Sigma\bm{J}\cdot\mathrm{d}\bm{S}\xlongequal{\text{恒定电流}}\mu_0I.
 \end{equation}
-
-可以推得
+其微分形式为
 \begin{equation}
     \nabla\times\bm{B}=\mu_0\bm{J}.
 \end{equation}
 
-静磁场是无源场, 因为
-\begin{equation}
-    \nabla\cdot\bm{B}=0.
-\end{equation}
+\begin{exampleprob}[均匀电流圆环的磁感应强度]
+    设带电圆环半径为 $R$, 均匀流过电流 $I$. 计算圆环轴线上任意一点的磁感应强度.
+
+    \begin{solution}
+        设轴线一点位置为 $(0,0,z)$, 圆环上有电流元 $I\mathrm{d}\bm{l}=I\mathrm{d}l\bm{e_l}$, 并设坐标原点到轴线该点的矢量为 $\bm{r}=z\bm{e_z}$, 坐标原点到电流元的矢量为 $\bm{r'}=R\bm{e_r}$. 显然有关系
+        \begin{gather*}
+            \bm{e_l}\times\bm{e_z}=\bm{e_r}, \\
+            \bm{e_l}\times\bm{e_r}=-\bm{e_z}.
+        \end{gather*}
+
+        则
+        \begin{align*}
+            \mathrm{d}\bm{B} & =\frac{\mu_0I}{4\pi}\mathrm{d}\bm{l}\times\frac{\bm{r}-\bm{r'}}{|\bm{r}-\bm{r'}|^3}      \\
+                             & =\frac{\mu_0I\mathrm{d}l\bm{e_l}}{4\pi}\times\frac{z\bm{e_z}-R\bm{e_r}}{(z^2+R^2)^{3/2}} \\
+                             & =\frac{\mu_0I\mathrm{d}l}{4\pi}\frac{z\bm{e_r}+R\bm{e_z}}{(z^2+R^2)^{3/2}}.
+        \end{align*}
+
+        类似地,
+        \begin{equation*}
+            \int_C\bm{e_r}\mathrm{d}l=0.
+        \end{equation*}
+        因此,
+        \begin{align*}
+            \bm{B}=\int_C\mathrm{d}\bm{B} & =\int_C\frac{\mu_0IR\bm{e_z}\mathrm{d}l}{4\pi(z^2+r^2)^{3/2}} \\
+                                          & =\frac{\mu_0IR^2\bm{e_z}}{2(z^2+R^2)^{3/2}}.
+        \end{align*}
+
+        在圆环圆心处, 磁感应强度最大, 为 $\dfrac{\mu_0I}{2R}\bm{e_z}$. 在远离圆环处 ($(z^2+R^2)^{3/2}\approx z^3$), 磁感应强度为 $\dfrac{\mu_0IR^2}{2z^3}\bm{e_z}$.
+    \end{solution}
+\end{exampleprob}

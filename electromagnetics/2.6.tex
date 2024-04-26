@@ -1,0 +1,51 @@
+\subsection{麦克斯韦方程组}
+\textbf{麦克斯韦方程组}的微分形式表为
+\begin{equation}
+    \begin{cases}
+        \nabla\times\bm{H}=\bm{J}+\frac{\partial\bm{D}}{\partial t}, & \quad \text{(传导电流和时变电场产生磁场)} \\
+        \nabla\times\bm{E}=-\frac{\partial\bm{B}}{\partial t},       & \quad \text{(时变磁场产生电场)}      \\
+        \nabla\times\bm{B}=0,                                        & \quad \text{(磁场是无散场)}        \\
+        \nabla\times\bm{D}=\rho.                                     & \quad \text{(静电荷和极化电荷产生电场)}
+    \end{cases}
+\end{equation}
+其积分形式表为
+\begin{equation}
+    \begin{cases}
+        \oint_C\bm{H}\cdot\mathrm{d}\bm{l}=\int_S\left(\bm{J}+\frac{\partial\bm{D}}{\partial t}\right)\cdot\mathrm{d}\bm{S}, \\
+        \oint_C\bm{E}\cdot\mathrm{d}\bm{l}=-\int_S\frac{\partial\bm{B}}{\partial t}\cdot\mathrm{d}\bm{S},                    \\
+        \oint_S\bm{B}\cdot\mathrm{d}\bm{S}=0,                                                                                \\
+        \oint_S\bm{D}\cdot\mathrm{d}\bm{S}=\int_V\rho\mathrm{d}V.
+    \end{cases}
+\end{equation}
+
+\subsubsection{媒质的本构关系}
+\textit{各向同性}媒质的本构关系为
+\begin{equation}
+    \bm{D}=\epsilon\bm{E}, \qquad \bm{B}=\mu\bm{H}, \qquad \bm{J}=\sigma\bm{E}.
+\end{equation}
+
+此时, 麦克斯韦方程组的微分形式为
+\begin{equation}
+    \begin{cases}
+        \nabla\times\bm{H}=\sigma\bm{E}+\epsilon\frac{\partial\bm{E}}{\partial t}, \\
+        \nabla\times\bm{E}=-\mu\frac{\partial\bm{H}}{\partial t},                  \\
+        \nabla\cdot\bm{H}=0,                                                       \\
+        \nabla\cdot\bm{E}=\frac{\rho}{\epsilon}.
+    \end{cases}
+\end{equation}
+
+\begin{exampleprob}[自由空间的电学参数]
+    自由空间的磁场强度为 $\bm{H}=H_m\cos(\omega t-kz)\bm{e_x}$, $k$ 为常数. 求位移电流密度和电场强度.
+
+    \begin{solution}
+        自由空间满足 $\epsilon_r=1$, $\bm{J}=0$ (传导电流为零). 则由式 (\ref{eq:2.5 nabla times H}),
+        \begin{equation}
+            \bm{J_D}=\nabla\times\bm{H}=kH_m\sin(\omega t-kz)\bm{e_y}.
+        \end{equation}
+
+        因为 $\epsilon_r=1$, 所以
+        \begin{equation}
+            \bm{E}=\frac{\bm{D}}{\epsilon_0}=\frac{1}{\epsilon_0}\int\frac{\partial\bm{D}}{\partial t}\mathrm{d}t=-\frac{kH_m}{\epsilon_0\omega}\cos(\omega t-kz)\bm{e_y}.
+        \end{equation}
+    \end{solution}
+\end{exampleprob}

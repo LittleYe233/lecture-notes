@@ -1,0 +1,32 @@
+\section{部分公式的证明}
+\subsection{静电场的旋度与环路定理}
+关注公式 (\ref{eq:2.1 E v}) 和 (\ref{eq:2.1 nabla 2 r r'}), 对于任意体积元 $v$, $\nabla\dfrac{1}{|\bm{r}-\bm{r'}|}$ 仅与 $\bm{r}$ 有关, 因此微分算子可以移出被积函数之外:
+\begin{equation}
+    \bm{E}(\bm{r})=-\frac{1}{4\pi\epsilon_0}\int_V\rho(\bm{r'})\nabla\frac{1}{|\bm{r}-\bm{r'}|}\mathrm{d}v=-\nabla\left[\frac{1}{4\pi\epsilon_0}\int_V\frac{\rho(\bm{r'})}{|\bm{r}-\bm{r'}|}\mathrm{d}v\right].
+\end{equation}
+
+上式两边取旋度, 得
+\begin{equation}
+    \nabla\times\bm{E}(\bm{r})=-\nabla\times\nabla\left[\frac{1}{4\pi\epsilon_0}\int_V\frac{\rho(\bm{r'})}{|\bm{r}-\bm{r'}|}\mathrm{d}v\right].
+\end{equation}
+
+显然 $\nabla\left[\dfrac{1}{4\pi\epsilon_0}\displaystyle\int_V\dfrac{\rho(\bm{r'})}{|\bm{r}-\bm{r'}|}\mathrm{d}v\right]$ 是梯度, 结果为标量. 标量的旋度应为 0. 所以
+\begin{equation}
+    \nabla\times\bm{E}=0.
+\end{equation}
+此为公式 (\ref{eq:2.1 rot}).
+
+上式两边对任意曲面 $\bm{S}$ 求积分:
+\begin{equation}
+    \int_S\nabla\times\bm{E}\cdot\mathrm{d}\bm{S}=0.
+\end{equation}
+
+根据斯托克斯定理 (\ref{eq:1.4 stokes}),
+\begin{equation}
+    \int_S\nabla\times\bm{E}\cdot\mathrm{d}\bm{S}=\oint_C\bm{E}\cdot\mathrm{d}l.
+\end{equation}
+所以,
+\begin{equation}
+    \oint_C\bm{E}\cdot\mathrm{d}l=0.
+\end{equation}
+此为公式 (\ref{eq:2.1 rot int}).

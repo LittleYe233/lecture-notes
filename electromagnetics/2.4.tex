@@ -1,15 +1,54 @@
 \subsection{法拉第电磁感应定律}
 运动的电流切割磁感线产生的\textbf{感应电动势}满足
 \begin{equation}
-    \mathcal{E}=-\frac{\mathrm{d}\int\bm{B}\cdot\mathrm{d}\bm{S}}{\mathrm{d}t}=-\int\frac{\mathrm{d}\bm{B}}{\mathrm{d}t}\cdot\mathrm{d}\bm{S}.
+    \mathcal{E}=-\frac{\mathrm{d}}{\mathrm{d}t}\int\bm{B}\cdot\mathrm{d}\bm{S}.
 \end{equation}
 
-可以推得
+导体回路中存在感应电流, 则存在\textbf{感应电场}:
+\begin{equation}
+    \mathcal{E}=\oint_C\bm{E}\cdot\mathrm{d}\bm{l}.
+\end{equation}
+即, 对空间中的任意回路, 都满足
+\begin{equation}
+    \oint_C\bm{E}\cdot\mathrm{d}\bm{l}=-\frac{\mathrm{d}}{\mathrm{d}t}\int\bm{B}\cdot\mathrm{d}\bm{S}.
+\end{equation}
+因为静电荷产生的电场是无旋场, 因此其对 $C$ 的线积分为 0, 所以 $\bm{E}$ 可表示感应电场和静电场的\textit{总和}.
+
+\subsubsection{引起回路磁通量变化的分类}
+\textbf{回路静止, 磁场时变}
+
+此时
+\begin{equation}
+    \mathcal{E}=-\int\frac{\partial\bm{B}}{\partial t}\cdot\mathrm{d}\bm{S}.
+\end{equation}
+也即
+\begin{equation}
+    \oint_C\bm{E}\cdot\mathrm{d}\bm{l}=-\int\frac{\partial\bm{B}}{\partial t}\mathrm{d}\bm{S}.
+\end{equation}
+
+根据斯托克斯定理 (\ref{eq:1.4 stokes}), 可以推得
 \begin{equation}
     \nabla\times\bm{E}=-\frac{\partial\bm{B}}{\partial t}.
 \end{equation}
 
-\textbf{磁通量}的微分形式可以表为
+\textbf{回路在恒定磁场中运动}
+
+磁通量的微分形式可以表为
 \begin{equation}
-    \mathrm{d}\Phi=-(\bm{v}\times\bm{B})\cdot\mathrm{d}\bm{l}\mathrm{d}t.
+    \bm{B}\cdot\mathrm{d}\bm{S}=-(\bm{v}\times\bm{B})\cdot\mathrm{d}\bm{l}\mathrm{d}t.
+\end{equation}
+则
+\begin{equation}
+    \mathcal{E}=\oint_C(\bm{v}\times\bm{B})\cdot\mathrm{d}\bm{l}.
+\end{equation}
+
+\textbf{回路在时变磁场中运动}
+
+感应电动势为
+\begin{equation}
+    \mathcal{E}=\oint_C\bm{E}\cdot\mathrm{d}\bm{l}=\oint_C(\bm{v}\times\bm{B})\cdot\mathrm{d}\bm{l}-\int_S\frac{\partial\bm{B}}{\partial t}\mathrm{d}\bm{S}.
+\end{equation}
+其微分形式为
+\begin{equation}
+    \nabla\times\bm{E}=\nabla\times(\bm{v}\times\bm{B})-\frac{\partial\bm{B}}{\partial t}.
 \end{equation}

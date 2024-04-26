@@ -17,12 +17,32 @@
     \bm{F}_{12}=\bm{E}q_2.
 \end{equation}
 
+对于体密度为 $\rho(\bm{r'})$ 的体分布电荷, 其在 $\bm{r}$ 处产生的电场强度为
+\begin{equation} \label{eq:2.1 E v}
+    \bm{E}(\bm{r})=\frac{1}{4\pi\epsilon_0}\int_V\frac{\rho(\bm{r'})(\bm{r}-\bm{r'})}{|\bm{r}-\bm{r'}|^3}\mathrm{d}v.
+\end{equation}
+其中 $\rho(\bm{r'})$ 表示体积元 $v$ 处的电荷体密度. 对于面分布电荷和线分布电荷, 公式类似.
+
 \subsubsection{高斯定理}
 可以证明
 \begin{equation}
     \nabla\cdot\bm{E}=\frac{\rho(\bm{r})}{\epsilon_0}.
 \end{equation}
 其中 $\rho(\bm{r})$ 表示 $\bm{r}$ 处的体电荷密度.
+
+高斯定理表明, 静电场是\textit{有源场}, 电力线从正电荷指向负电荷.
+
+证明从略. 证明需要利用如下公式 (证明亦从略):
+\begin{equation} \label{eq:2.1 nabla 2 r r'}
+    \nabla^2\frac{1}{|\bm{r}-\bm{r'}|}=-4\pi\delta(\bm{r}-\bm{r'}).
+\end{equation}
+其中
+\begin{equation}
+    \delta(\bm{r}-\bm{r'})=\begin{cases}
+        0,      & \quad \bm{r}\neq\bm{r'}; \\
+        \infty, & \quad \bm{r}=\bm{r'}.
+    \end{cases}
+\end{equation}
 
 静电场和库仑力满足 ``平方反比'' 关系. 这意味着它们满足公式 (\ref{eq:1.4 nabla 2 r r'}) 及如下重要结论
 \begin{equation}
@@ -33,3 +53,93 @@
 \begin{equation}
     \int_V\nabla\cdot\bm{E}\mathrm{d}v=\frac{Q}{\epsilon_0}.
 \end{equation}
+
+根据散度的高斯定理 (\ref{eq:1.4 gauss}), 同时得到
+\begin{equation} \label{eq:2.1 gauss}
+    \oint_S\bm{E}\cdot\mathrm{d}\bm{S}=\int_{V}\nabla\cdot\bm{E}\mathrm{d}v.
+\end{equation}
+也即, 高斯面上电场强度的通量等于高斯面内总电荷量与 $\epsilon_0$ 的比值.
+
+\subsubsection{旋度与环路定理}
+可以证明, 静电场的旋度为
+\begin{equation} \label{eq:2.1 rot}
+    \nabla\times\bm{E}(\bm{r})=0.
+\end{equation}
+也即, 静电场为无旋场.
+
+上述公式的积分形式即是静电场的环路定理:
+\begin{equation} \label{eq:2.1 rot int}
+    \oint_C\bm{E}(\bm{r})\cdot\mathrm{d}\bm{l}=0.
+\end{equation}
+也即, 静电场是保守场, 电场力做功与路径无关.
+
+\begin{exampleprob}[均匀带电环形薄圆盘的场强]
+    一环形薄圆盘的内半径为 $a$, 外半径为 $b$, 电荷面密度为 $\rho_S$. 计算该圆盘轴线上任意点的电场强度.
+
+    \begin{solution}[1 直接使用公式]
+        在圆盘上半径 $\rho$ 处取一圆心角 $\mathrm{d}\varphi$, 径长 $\mathrm{d}\rho$ 的微小扇形 $\mathrm{d}S$. 则
+        \begin{equation*}
+            \mathrm{d}S=\frac{\mathrm{d}\varphi}{2\pi}\cdot\pi[(\rho+\mathrm{d}\rho)^2-\rho^2]=\rho\mathrm{d}\rho\mathrm{d}\varphi.
+        \end{equation*}
+
+        设轴线上一点 $A(0,0,z)$, 且有 $\overrightarrow{OA}=\bm{r}$; 同时设坐标原点指向微小扇形的矢量为 $\bm{r'}=\rho\bm{e_\rho}$. 根据 (\ref{eq:2.1 E v}) 的说明, 整个薄圆盘在 $A$ 点产生的电场强度为
+        \begin{align*}
+            \bm{E} & =\frac{1}{4\pi\epsilon_0}\int_S\frac{\rho_S(\bm{r}-\bm{r'})}{|\bm{r}-\bm{r'}|^3}\mathrm{d}S                                               \\
+                   & =\frac{1}{4\pi\epsilon_0}\int_S\frac{\rho_S(z\bm{e_z}-\rho\bm{e_\rho})}{(z^2+\rho^2)^{3/2}}\cdot\rho\mathrm{d}\rho\mathrm{d}\varphi       \\
+                   & =\frac{1}{4\pi\epsilon_0}\int_{a}^{b}\int_{0}^{2\pi}\frac{\rho_Sz\bm{e_z}}{(z^2+\rho^2)^{3/2}}\rho\mathrm{d}\rho\mathrm{d}\varphi \tag{*} \\
+                   & =\frac{\rho_Sz\bm{e_z}}{4\pi\epsilon_0}\int_{a}^{b}\frac{\rho\mathrm{d}\rho}{(z^2+\rho^2)^{3/2}}\int_{0}^{2\pi}\mathrm{d}\varphi          \\
+                   & =\frac{\rho_Sz}{2\epsilon_0}\left[\frac{1}{\sqrt{z^2+a^2}}-\frac{1}{\sqrt{z^2+b^2}}\right]\bm{e_z}.
+        \end{align*}
+        其中, (*) 式的转化是因为
+        \begin{equation*}
+            \int_{0}^{2\pi}\bm{e_\rho}\mathrm{d}\varphi=0.
+        \end{equation*}
+    \end{solution}
+
+    \begin{solution}[2 先计算分场强]
+        微小扇形可以看作是点电荷, 其在 $A$ 点产生的分场强可以表示为
+        \begin{equation*}
+            \mathrm{d}E=\frac{1}{4\pi\epsilon_0}\frac{\rho_S\mathrm{d}S}{z^2+\rho^2}=\frac{\rho_S\rho\mathrm{d}\rho\mathrm{d}\varphi}{4\pi\epsilon_0(z^2+\rho^2)}.
+        \end{equation*}
+
+        \textit{显然} (这里的显然在前一个解法中得到了证明!) 分场强的积分在垂直轴线方向为零. 单一分场强在轴线方向的值需要乘以方向余弦
+        \begin{equation*}
+            \cos\theta=\frac{z}{\sqrt{z^2+\rho^2}}.
+        \end{equation*}
+
+        因此, 薄圆盘对 $A$ 点产生的总场强为
+        \begin{equation*}
+            \bm{E}=\int_{a}^{b}\int_{0}^{2\pi}\mathrm{d}E\cdot\cos\theta.
+        \end{equation*}
+
+        最后结果与前一个解法相同.
+    \end{solution}
+\end{exampleprob}
+
+\begin{exampleprob}[均匀带电球体的场强]
+    求真空中半径 $R$, 体电荷密度 $\rho_0$ 的均匀带电球体的电场强度分布.
+
+    \begin{solution}
+        以球体为球心作一半径为 $r$ 的高斯面. 显然高斯面上各点的场强值相等. 则
+        \begin{equation*}
+            \oint_S\bm{E}\cdot\mathrm{d}\bm{S}=4\pi r^2E(r).
+        \end{equation*}
+
+        根据式 (\ref{eq:2.1 gauss}), 得到
+        \begin{equation*}
+            \oint_S\bm{E}\cdot\mathrm{d}\bm{S}=4\pi r^2E(r)=\begin{cases}
+                \frac{\dfrac{4}{3}\pi r^3\rho_0}{\epsilon_0}, & \quad r<R; \\
+                \frac{\dfrac{4}{3}\pi R^3\rho_0}{\epsilon_0}, & \quad r>R
+            \end{cases}.
+        \end{equation*}
+        也即
+        \begin{equation*}
+            E=\begin{cases}
+                \frac{\rho_0 r}{3\epsilon_0},     & \quad r<R; \\
+                \frac{\rho_0 R^3}{3\epsilon r^2}, & \quad r>R.
+            \end{cases}
+        \end{equation*}
+
+        这里注意到, \textit{均匀带电球壳对内部一点的场强为零}.
+    \end{solution}
+\end{exampleprob}
