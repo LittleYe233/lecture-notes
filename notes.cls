@@ -2,7 +2,7 @@
 % Remember to `sudo fmtutil-sys --all'!
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.9.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.10.0]
 
 % Define options
 \newif\if@notes@circuitikz
@@ -225,6 +225,7 @@
     % There should be a `\protect' to use `\ifthenelse' here, but it causes `\thequestion' in `\questionname' showing a wrong number.
     % So we directly removed it.
     \addcontentsline{qst}{subsection}{\thequestion\ \protect\questionname{#1}}%
+    \questionname{#1}%
 }
 
 \AtBeginDocument{
