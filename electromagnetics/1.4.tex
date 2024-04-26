@@ -33,6 +33,27 @@
     \textbf{grad}\ u(\bm{r})=\nabla\bm{A}.
 \end{equation}
 
+\textbf{单位矢量}
+\begin{equation}
+    \bm{e_l}=\frac{\nabla A}{|\nabla A|}.
+\end{equation}
+
+\begin{exampleprob}
+    设一标量函数 $\varphi(x,y,z)=x^2+y^2-z$. 试求该函数在点 $P(1,1,1)$ 处的梯度, 以及表示该梯度方向的单位矢量.
+
+    \begin{solution}
+        $P$ 点的梯度为
+        \begin{equation*}
+            \nabla\varphi|_P=\bm{e_i}\partial_i\varphi|_P=(2x\bm{e_i}+2y\bm{e_j}-\bm{e_k})|_P=2\bm{e_i}+2\bm{e_j}-\bm{e_k}.
+        \end{equation*}
+
+        $P$ 点梯度方向的单位矢量为
+        \begin{equation*}
+            \bm{e_l}|_P=\left.\frac{\nabla\varphi}{|\nabla\varphi|}\right|_P=\frac{2}{3}\bm{e_i}+\frac{2}{3}\bm{e_j}-\frac{1}{3}\bm{e_k}.
+        \end{equation*}
+    \end{solution}
+\end{exampleprob}
+
 标量场的梯度的大小为标量的空间最大变化率, 方向为标量增加率最大的方向.
 
 \subsubsection{矢量场的散度}
