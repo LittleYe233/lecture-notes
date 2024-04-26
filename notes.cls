@@ -2,7 +2,7 @@
 % Remember to `sudo fmtutil-sys --all'!
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.10.1]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.11.0]
 
 % Define options
 \newif\if@notes@circuitikz
@@ -46,7 +46,6 @@
 \RequirePackage{float}
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
-\RequirePackage{ifthen}
 \RequirePackage{lastpage}
 \RequirePackage{longtable}
 % Include `subfigure'.
@@ -55,6 +54,8 @@
 \RequirePackage{tabularx}
 \RequirePackage{wrapstuff}
 \RequirePackage[svgnames]{xcolor}
+% See: https://stackoverflow.com/a/2145321/12002560
+\RequirePackage{xifthen}
 \RequirePackage{xltabular}
 
 % Choose TikZ or CircuiTikZ
@@ -190,11 +191,16 @@
 \newcounter{exampleprob}[subsection]
 \counterwithin{exampleprob}{subsection}
 % See: https://www.dickimaw-books.com/latex/novices/html/newenv.html
-\newenvironment{exampleprob}%
+\newcommand{\exampleprobnum}[1]{\ifthenelse{\isempty{#1}}{}{\ #1}}
+% See: https://latex.org/forum/viewtopic.php?t=5976
+\newcommand{\exampleprobnumcontent}[1]{\ifx&#1&Example Problem\else#1\fi}
+\newenvironment{exampleprob}[1][]%
 {%
     \refstepcounter{exampleprob}%
-    \addcontentsline{loep}{subsection}{\theexampleprob\ Example Problem}%
-    \nopagebreak\par\vspace{.5\baselineskip}\noindent\hrulefill \textbf{EXAMPLE PROB \theexampleprob} \noindent\hrulefill
+    % `\addcontentsline' does not fit with complex macros.
+    % See: https://tex.stackexchange.com/q/586591
+    \addcontentsline{loep}{subsection}{\theexampleprob\ \exampleprobnumcontent{#1}}%
+    \nopagebreak\par\vspace{.5\baselineskip}\noindent\hrulefill \textbf{EXAMPLE PROB \theexampleprob\exampleprobnum{#1}} \noindent\hrulefill
     \par\nopagebreak
 }%
 {%
@@ -202,7 +208,7 @@
 }
 
 % See: https://latex.org/forum/viewtopic.php?t=5976
-\newcommand{\solutionnum}[1]{\ifthenelse{\equal{#1}{}}{}{\ #1}}
+\newcommand{\solutionnum}[1]{\ifthenelse{\isempty{#1}}{}{\ #1}}
 \newenvironment{solution}[1][]
 {%
     \nopagebreak\par\vspace{.5\baselineskip}\noindent\hrulefill \textbf{SOLUTION\solutionnum{#1}} \noindent\hrulefill
@@ -220,7 +226,7 @@
 \newcommand{\listofquestions}{\@starttoc{qst}}
 \makeatother
 
-\newcommand{\questionname}[1]{\ifthenelse{\equal{#1}{}}{Question}{#1}}
+\newcommand{\questionname}[1]{\ifthenelse{\isempty{#1}}{Question}{#1}}
 \newcommand{\question}[1][]{%
     \refstepcounter{question}%
     % There should be a `\protect' to use `\ifthenelse' here, but it causes `\thequestion' in `\questionname' showing a wrong number.
