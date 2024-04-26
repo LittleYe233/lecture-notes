@@ -2,7 +2,7 @@
 % Remember to `sudo fmtutil-sys --all'!
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{notes}[LaTeX template for notes ver. 1.10.0]
+\ProvidesClass{notes}[LaTeX template for notes ver. 1.10.1]
 
 % Define options
 \newif\if@notes@circuitikz
@@ -17,44 +17,45 @@
     linespread=1.5
 ]{ctexart}
 
-\RequirePackage[svgnames]{xcolor}
-\RequirePackage[
-    a4paper,
-    top=1in, bottom=1in, left=.75in, right=.75in
-]{geometry}
-\RequirePackage{fancyhdr}
-\RequirePackage[USenglish]{babel}
-\RequirePackage[useregional]{datetime2}
-\RequirePackage{graphicx}
-\RequirePackage{hyperref}
-\RequirePackage{pgfplots}
-\RequirePackage{subcaption}
-\RequirePackage[abspath]{currfile}
-\RequirePackage{lastpage}
-\RequirePackage{chngcntr}
 % wrapfig2 must be loaded before amsmath.
 \RequirePackage{wrapfig2}
 % Try to add some missing math symbols.
 % See: https://tex.stackexchange.com/a/621515
-\RequirePackage{amsmath}
 \RequirePackage{amsfonts}
+\RequirePackage{amsmath}
 \RequirePackage{amssymb}
-\RequirePackage{ifthen}
-\RequirePackage{float}
-% Include `subfigure'.
-\RequirePackage{caption}
-\RequirePackage{subcaption}
-\RequirePackage{wrapstuff}
-\RequirePackage{extarrows}
-\RequirePackage{booktabs}
-\RequirePackage{longtable}
-\RequirePackage[shortlabels]{enumitem}
-\RequirePackage{tabularx}
-\RequirePackage{xltabular}
-% See: https://tex.stackexchange.com/a/31956
-\RequirePackage{cases}
+\RequirePackage[USenglish]{babel}
 % for `\bm' command
 \RequirePackage{bm}
+\RequirePackage{booktabs}
+\RequirePackage{caption}
+% See: https://tex.stackexchange.com/a/31956
+\RequirePackage{cases}
+\RequirePackage{chngcntr}
+\RequirePackage[abspath]{currfile}
+\RequirePackage[useregional]{datetime2}
+\RequirePackage[shortlabels]{enumitem}
+% for long equal signs
+% See: https://tex.stackexchange.com/a/5157
+\RequirePackage{extarrows}
+\RequirePackage{fancyhdr}
+\RequirePackage[
+    a4paper,
+    top=1in, bottom=1in, left=.75in, right=.75in
+]{geometry}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\RequirePackage{hyperref}
+\RequirePackage{ifthen}
+\RequirePackage{lastpage}
+\RequirePackage{longtable}
+% Include `subfigure'.
+\RequirePackage{subcaption}
+\RequirePackage{pgfplots}
+\RequirePackage{tabularx}
+\RequirePackage{wrapstuff}
+\RequirePackage[svgnames]{xcolor}
+\RequirePackage{xltabular}
 
 % Choose TikZ or CircuiTikZ
 \if@notes@circuitikz
