@@ -1,0 +1,26 @@
+\subsection{稳磁场}
+稳磁场问题的基本方程为
+\begin{equation}
+    \nabla\cdot\bm{B}=0.
+\end{equation}
+
+容易得到 $\bm{B}$ 可以表示为
+\begin{equation}
+    \bm{B}=\nabla\times\bm{A}.
+\end{equation}
+
+而
+\begin{equation}
+    \nabla\times\bm{H}=\frac{1}{\mu}[\nabla(\nabla\cdot\bm{A})-\nabla^2\bm{A}].
+\end{equation}
+令 $\nabla\cdot\bm{A}=0$ {\color{blue} (\question[为什么可以如此假设?])}, 则
+\begin{equation}
+    \nabla\times\bm{H}=-\frac{1}{\mu}\nabla^2\bm{A}=\bm{J}.
+\end{equation}
+
+因此
+\begin{equation}
+    \nabla^2\bm{A}=-\mu_0\bm{J}.
+\end{equation}
+
+这是三个方向上的泊松方程. 给定边界条件之后, 即可得到唯一解.
