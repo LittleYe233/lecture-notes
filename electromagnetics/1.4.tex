@@ -24,13 +24,13 @@
     \left.\frac{\partial u}{\partial l}\right|_{M_0}=\lim_{\Delta l\rightarrow 0}\frac{u(M)-u(M_0)}{\Delta l}.
 \end{equation}
 
-标量场的梯度由一点的方向导数定义:
+标量场的梯度由一点的方向导数表示 \textit{(这是一个矢量)}:
 \begin{equation}
-    \left.\frac{\partial u}{\partial l}\right|_{M_0}\stackrel{def}{=}(\textbf{grad}\ u(\bm{r}))\cdot\bm{e_l}.
+    \left.\frac{\partial u}{\partial l}\right|_{M_0}=(\textbf{grad}\ u(\bm{r}))\cdot\bm{e_l}.
 \end{equation}
-其中
+其中梯度被如下定义
 \begin{equation}
-    \textbf{grad}\ u(\bm{r})=\nabla\bm{A}.
+    \textbf{grad}\ u(\bm{r})\stackrel{def}{=}\nabla\bm{A}.
 \end{equation}
 
 \textbf{单位矢量}
@@ -66,7 +66,7 @@
 \end{equation}
 其中 $\bm{e_n}$ 表示面矢量 $\bm{S}$ 的单位矢量, 其指向垂直于表面向\textit{外}.
 
-则矢量场的散度定义为
+则矢量场的散度定义为 \textit{(这是一个标量)}
 \begin{equation} \label{eq:1.4 div}
     \mathrm{div}\ \bm{A}\stackrel{def}{=}\lim_{\Delta v\rightarrow 0}\frac{\Delta\Phi}{\Delta v}=\nabla\cdot\bm{A}.
 \end{equation}
@@ -104,7 +104,7 @@
 
 可以证明:
 \begin{gather}
-    \nabla\times(\nabla U(\bm{r}))\equiv 0; \\
+    \nabla\times(\nabla U(\bm{r}))\equiv 0; \qquad (\text{参见问题 \ref{eprob:1.3 common equation}.}) \\
     \nabla\times\bm{E}=0. \label{eq:1.4 nabla times E}
 \end{gather}
 
