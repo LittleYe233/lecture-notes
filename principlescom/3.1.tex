@@ -1,12 +1,19 @@
 \section{随机过程}
 \subsection{随机过程的基本概念}
+\subsubsection{定义}
+\textbf{随机函数}
+\begin{itemize}
+    \item 随机变量的集合;
+    \item 所有样本函数的集合.
+\end{itemize}
+
 \subsubsection{分布函数}
-\textbf{分布函数}
+\textbf{一维分布函数}
 \begin{equation}
     F_X(x;t)=P[X(t)\leq x].
 \end{equation}
 
-\textbf{概率密度函数}
+\textbf{一维概率密度函数}
 \begin{equation}
     f_X(x;t)=\frac{\partial F_X(x;t)}{\partial x}.
 \end{equation}
@@ -24,7 +31,10 @@
 
 \textbf{自相关函数}
 \begin{equation}
-    R(t,t+\tau)=E[X(t)X(t+\tau)].
+    \begin{aligned}
+        R(t,t+\tau) & =E[X(t)X(t+\tau)]                                                                                     \\
+                    & =\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x_1x_2f_X(x_1,x_2;t,t+\tau)\mathrm{d}x_1\mathrm{d}x_2.
+    \end{aligned}
 \end{equation}
 
 \textbf{互相关函数}

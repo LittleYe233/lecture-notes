@@ -3,6 +3,7 @@
 
 \subsubsection{性质}
 \begin{itemize}
+    \item 若广义平稳, 则狭义平稳;
     \item 分布仅依赖各个随机变量的均值, 方差和归一化协方差 (相关系数);
     \item 若不同时刻取值不相关, 则也统计独立;
     \item 经过线性变换仍是高斯过程;
@@ -19,3 +20,9 @@
 \begin{equation}
     F(x)=\frac{1}{2}+\frac{1}{2}\mathrm{erf}\left(\frac{x-a}{\sqrt{2}\sigma}\right).
 \end{equation}
+其中, 误差函数及其\textbf{补误差函数}分别表示为 (可以查表):
+\begin{align}
+    \mathrm{erf}(x)=\frac{2}{\sqrt{\pi}}\int_{0}^{x}e^{-t^2}\mathrm{d}t, \\
+    \mathrm{erfc}(x)=\frac{2}{\sqrt{\pi}}\int_{x}^{\infty}e^{-t^2}\mathrm{d}t.
+\end{align}
+误差函数是单调\textit{递增}函数 ($\mathrm{erf}(0)=0$, $\mathrm{erf}(\infty)=1$), 补误差函数是单调\textit{递减}函数 ($\mathrm{erfc}(0)=1$, $\mathrm{erfc}(\infty)=0$).
