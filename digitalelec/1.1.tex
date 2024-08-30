@@ -1,0 +1,56 @@
+\section{数制和码制}
+\subsection{进制及其转换}
+\subsubsection{进制表示}
+具有 $n$ 位整数部分, $m$ 位小数部分的 $N$ 进制数可以表示为
+\begin{equation} \label{eq:1.1 representation}
+    (D)_N=\sum_{i=-m}^{n-1}k_iN^i.
+\end{equation}
+其中 $N$ 表示\textbf{基数}, $k_i$ 表示第 $i$ 位的\textbf{系数}, $N^i$ 表示第 $i$ 位的\textbf{权值}.
+
+使用公式 (\ref{eq:1.1 representation}) 可以将任意进制数转换为十进制数.
+
+\subsubsection{十进制数转换为其他进制数}
+以十进制数转换为二进制数为例.
+
+\textbf{整数部分}\quad 将整数部分不断除以基数 2, 保留每次得到的余数, 直到结果为 0 时停止. 此时每次得到的余数即为从低位到高位的二进制数整数部分的值.
+
+\textbf{小数部分}\quad 将小数部分不断乘以基数 2, 保留每次得到的整数部分, 直到小数部分结果为 0 或达到指定的精度为止. 此时每次得到的整数即为从高位到低位的二进制数小数部分的值.
+
+\begin{exampleprob}[十进制数转换为二进制数]
+    将 $(173.39)_D$ 转换为二进制数, 精度为 1\%.
+
+    \begin{solution}
+        设达到精度所需二进制数小数部分的位数为 $m$, 则有 $2^{-m}\leq1\%$, 得到 $\lceil m\rceil\geq 7$ (即最小整数 $m$ 为 7).
+
+        因为
+        \begin{equation*}
+            \begin{aligned}
+                173 & =2\times86+1, \\
+                86  & =2\times43+0, \\
+                43  & =2\times21+1, \\
+                21  & =2\times10+1, \\
+                10  & =2\times5+0,  \\
+                5   & =2\times2+1,  \\
+                2   & =2\times1+0,  \\
+                1   & =2\times0+1,
+            \end{aligned}
+        \end{equation*}
+        所以整数部分为 $(1010\ 1101)_2$.
+
+        因为
+        \begin{equation*}
+            \begin{aligned}
+                0.39\times2 & =0.78, \\
+                0.78\times2 & =1.56, \\
+                0.56\times2 & =1.12, \\
+                0.12\times2 & =0.24, \\
+                0.24\times2 & =0.48, \\
+                0.48\times2 & =0.96, \\
+                0.96\times2 & =1.92,
+            \end{aligned}
+        \end{equation*}
+        所以小数部分为 $(0.0110\ 001)_2$.
+
+        综上所述, 指定精度下, $(173.39)_D\approx(1010\ 1101.0110\ 001)_2$.
+    \end{solution}
+\end{exampleprob}

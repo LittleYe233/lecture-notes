@@ -1,0 +1,98 @@
+\section{逻辑代数基础}
+\subsection{逻辑运算}
+\subsubsection{三种基本运算}
+\textbf{与 (AND) 运算}\quad $Y=AB$.
+
+\textbf{或 (OR) 运算}\quad $Y=A+B$.
+
+\textbf{非 (NOT) 运算}\quad $Y=A'$ 或 $Y=\overline{A}$ 或 $Y=\sim A$.
+
+\underline{性质 (布尔恒等式)}
+\begin{itemize}
+    \item 变量与常数关系
+          \begin{itemize}
+              \item $A\cdot 0=0$, $A+0=A$;
+              \item $A\cdot 1=A$, $A+1=1$.
+          \end{itemize}
+    \item 类似算术运算的性质
+          \begin{itemize}
+              \item 交换律\quad $AB=BA$, $A+B=B+A$;
+              \item 结合律\quad $A(BC)=(AB)C$, $A+(B+C)=(A+B)+C$;
+              \item 分配律\quad $A(B+C)=AB+AC$, {\color{red} $A+BC=(A+B)(A+C)$}.
+          \end{itemize}
+    \item 逻辑运算特有的性质
+          \begin{itemize}
+              \item 互补律\quad $AA'=0$, $AA'=1$;
+              \item 重叠律\quad $AA=A+A=A$;
+              \item 还原律\quad $(A')'=A$;
+              \item 反演律 (德摩根定律)\quad {\color{red} $(AB)'=A'+B'$, $(A+B)'=A'B'$}.
+          \end{itemize}
+    \item 其他常用推导式
+          \begin{itemize}
+              \item $A+{\color{red} AB}=A$;
+              \item $A+{\color{red} A'}B=A+B$;
+              \item $A{\color{red} B}+A{\color{red} B'}=A$;
+              \item $A{\color{red} (A+B)}=A$;
+              \item $AB+A'C+{\color{red} BCD}=AB+A'C$;
+              \item $A({\color{red} A}B)'=AB'$, $A'{\color{red} (AB)'}=A'$.
+          \end{itemize}
+\end{itemize}
+
+\subsubsection{其他衍生运算}
+\textbf{与非 (NAND) 运算}\quad $Y=(AB)'$.
+
+\textbf{或非 (NOR) 运算}\quad $Y=(A+B)'$.
+
+\textbf{与或非 (AND-NOR) 运算}\quad $Y=(AB+CD)'$.
+
+\textbf{异或 (XOR) 运算}\quad $Y=A\oplus B=AB'+A'B$.
+
+\underline{性质}
+\begin{itemize}
+    \item 交换律: $A\oplus B=B\oplus A$;
+    \item 结合律: $(A\oplus B)\oplus C=A\oplus(B\oplus C)$;
+    \item 分配律: $A(B\oplus C)=AB\oplus AC$;
+    \item $A\oplus A'=1$, $A\oplus A=0$;
+    \item $A\oplus 1=A'$, $A\oplus 0=A$;
+    \item 多个变量作异或运算, 若其中有\textit{奇数}个 1, 结果为 1, 反之为 0.
+\end{itemize}
+
+\textbf{同或 (XNOR) 运算}\quad $Y=A\odot B=(A\oplus B)'=AB+A'B'$.
+
+\subsubsection{基本定理}
+\textbf{代入定理}\quad 任何一个含有变量 $A$ 的等式, 如果将所有出现 $A$ 的位置都用同一个逻辑函数 $G$ 来替换, 则等式仍然成立.
+
+代入定理可以将双变量恒等式推广到多变量.
+
+\textbf{反演定理}\quad 若已知 $Y$, 只需要将 $Y$ 中\textit{所有}的
+\begin{itemize}
+    \item $\cdot$ 与 $+$ 互换;
+    \item $0$ 与 $1$ 互换;
+    \item 所有\textit{单一}变量或其反变量取反 (\textit{但不属于单一变量的取反保持不变}),
+\end{itemize}
+由此即可得到反函数 $Y'$.
+
+\begin{exampleprob}[反演定理的应用]
+    求 $Y=[(A'B){\color{red} '}+C+D]{\color{red} '}+C$ 的反函数.
+
+    \begin{solution}
+        标红的取反符号需要保留.
+        \begin{equation*}
+            \begin{aligned}
+                Y' & =[(A+B')'C'D']'C' \qquad \text{(反演定理)} \\
+                   & =[(A+B')+C+D]C' \qquad \text{(德摩根定律)}  \\
+                   & =(A+B')C'+C'D                          \\
+                   & =AC'+B'C'+C'D.
+            \end{aligned}
+        \end{equation*}
+    \end{solution}
+\end{exampleprob}
+
+\textbf{对偶定理}\quad 若已知 $Y$, 则将 $Y$ 中\textit{所有}的
+\begin{itemize}
+    \item $\cdot$ 与 $+$ 互换;
+    \item $0$ 与 $1$ 互换,
+\end{itemize}
+(\textit{变量保持不变}), 则所得逻辑式 $Y^D$ 称为 $Y$ 的\textbf{对偶式}.
+
+\underline{对偶规则}\quad $Y=G\Leftrightarrow Y^D=G^D$.

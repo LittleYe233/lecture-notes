@@ -1,0 +1,26 @@
+\subsection{二进制算术运算}
+\subsubsection{反码和补码}
+\textbf{原码}\quad 含符号位的二进制数.
+
+\begin{table}[H]
+    \caption{有符号二进制数的原码, 反码, 补码表示}
+    \centering
+    \begin{tabular}{cccc} \toprule
+        \bfseries 符号 & \bfseries 原码 & \bfseries 反码 & \bfseries 补码 \\\midrule
+        正数           & 符号位取 0       & 与原码相同        & 与原码相同        \\
+        负数           & 符号位取 1       & 符号位不变, 其他位取反 & 反码加 1        \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+正零 ($(0000\ 0000)_2$) 和负零 ($(1000\ 0000)_2$) 的补码表示相同.
+
+负数 $N$ 的补码具有如下性质:
+\begin{equation}
+    (N_{COMP})_{COMP}=N.
+\end{equation}
+
+\subsubsection{使用补码进行二进制加法}
+使用补码进行加法时, 需要提前计算保存结果所需的位数, 避免溢出. 计算到符号位, 若仍有进位, 应当舍去.
+
+补码加法运算的结果是实际结果的补码.
