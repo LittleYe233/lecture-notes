@@ -12,7 +12,7 @@
     \item $R(t,t+\tau)$ 仅与 $\tau$ 有关.
 \end{itemize}
 
-\textbf{各态历经性 (遍历性)}\quad 任何一个样本函数 $x(t)$ 都经历了所有可能状态.
+\textbf{各态历经性 (遍历性)}\quad (对于\textit{平稳过程}而言) 任何一个样本函数 $x(t)$ 都经历了所有可能状态, 即其相关指标的时间均值与统计均值相等.
 \begin{itemize}
     \item $\overline{a(t)}=\displaystyle\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-T/2}^{T/2}x(t)\mathrm{d}t=a$;
     \item $\overline{R(\tau)}=\displaystyle\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-T/2}^{T/2}x(t)x(t+\tau)\mathrm{d}t=R(\tau)$.
@@ -22,7 +22,63 @@
     设相位随机的正弦随机过程为 $X(t)=A\cos(\omega_ct+\theta)$, 其中 $A$ 和 $\omega_c$ 为常数, $\theta$ 是在 $(0,2\pi)$ 内均匀分布的随机变量. 判断 $X(t)$ 是否具有各态历经性.
 
     \begin{solution}
+        因为 $X(t)=A(\cos\omega_ct\cos\theta-\sin\omega_ct\sin\theta)$, 所以
+        \begin{equation} \label{eq:3.2 eprob 1}
+            \begin{aligned}
+                a(t) & =E[A(\cos\omega_ct\cos\theta-\sin\omega_ct\sin\theta)]   \\
+                     & =A\cos\omega_ctE[\cos\theta]-A\sin\omega_ctE[\sin\theta] \\
+                     & =0,
+            \end{aligned}
+        \end{equation}
+        其中利用了
+        \begin{equation*}
+            E[\cos\theta]=\int_{-\infty}^{+\infty}\cos\theta\cdot\frac{1}{2\pi}\mathrm{d}\theta=0.
+        \end{equation*}
+        同理可得 $E[\sin\theta]=0$.
 
+        因为
+        \begin{equation*}
+            \begin{aligned}
+                X(t)X(t+\tau) & =A\cos(\omega_ct+\theta)\cdot A\cos(\omega_c(t+\tau)+\theta)                                            \\
+                              & =\frac{A^2}{2}[\cos(\omega_c(2t+\tau)+2\theta)+\cos\omega_c\tau]                                        \\
+                              & =\frac{A^2}{2}[\cos(\omega_c(2t+\tau))\cos2\theta-\sin(\omega_c(2t+\tau))\sin2\theta+\cos\omega_c\tau],
+            \end{aligned}
+        \end{equation*}
+        且容易得到 $E[\cos2\theta]=E[\sin2\theta]=0$, 所以
+        \begin{equation} \label{eq:3.2 eprob 2}
+            R_X(t,t+\tau)=E[X(t)X(t+\tau)]=\frac{A^2}{2}\cos\omega_c\tau.
+        \end{equation}
+
+        根据式 (\ref{eq:3.2 eprob 1}) 和 (\ref{eq:3.2 eprob 2}), $X(t)$ 是平稳过程.
+
+        因为
+        \begin{equation*}
+            \begin{aligned}
+                  & \int_{-T/2}^{T/2}A\cos(\omega_ct+\theta)\mathrm{d}t                                                                                                                    \\
+                = & \left.\frac{A}{\omega_c}\sin(\omega_ct+\theta)\right|_{-T/2}^{T/2}                                                                                                     \\
+                = & \frac{A}{\omega_c}\left[\sin\left(\frac{\omega_cT}{2}+\theta\right)-\sin\left(\frac{\omega_cT}{2}+\theta\right)\right]                                                 \\
+                = & \frac{A}{\omega_c}\left(\sin\frac{\omega_cT}{2}\cos\theta+\cos\frac{\omega_cT}{2}\sin\theta+\sin\frac{\omega_cT}{2}\cos\theta-\cos\frac{\omega_cT}{2}\sin\theta\right) \\
+                = & \frac{2A}{\omega_c}\sin\frac{\omega_cT}{2}\cos\theta,
+            \end{aligned}
+        \end{equation*}
+        所以
+        \begin{equation} \label{eq:3.2 eprob 3}
+            \begin{aligned}
+                \overline{a(t)} & =\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-T/2}^{T/2}X(t)\mathrm{d}t           \\
+                                & =\lim_{T\rightarrow\infty}\frac{2A}{\omega_cT}\sin\frac{\omega_cT}{2}\cos\theta \\
+                                & =0.
+            \end{aligned}
+        \end{equation}
+
+        因为
+        \begin{equation*}
+            \begin{aligned}
+                \overline{R(t,t+\tau)} & =\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-T/2}^{T/2}A\cos(\omega_ct+\theta)\cdot A\cos(\omega_c(t+\tau)+\theta)\mathrm{d}t            \\
+                                       & =\lim_{T\rightarrow\infty}\frac{A^2}{2T}\int_{-T/2}^{T/2}[\cos\omega_c\tau\mathrm{d}t+\cos(2\omega_ct+\omega_c\tau+2\theta)]\mathrm{d}t \\
+                                       & =\frac{A^2}{2}\cos\omega_c\tau,
+            \end{aligned}
+        \end{equation*}
+        以及式 (\ref{eq:3.2 eprob 3}), 所以 $X(t)$ 是各态历经过程.
     \end{solution}
 \end{exampleprob}
 
