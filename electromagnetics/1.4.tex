@@ -84,14 +84,14 @@
 
 则矢量场的旋度表示, 也即
 \begin{equation}
-    \mathrm{rot}\ \bm{A}\stackrel{def}{=}\lim_{\Delta s\rightarrow 0}\frac{1}{\Delta s}\max\left\{\bm{a_n}\Gamma\right\}=\nabla\times\bm{A}.
+    \mathrm{rot}\ \bm{A}\stackrel{def}{=}\max\left\{\lim_{\Delta s\rightarrow 0}\frac{\bm{e_n}\Gamma}{\Delta s}\right\}=\nabla\times\bm{A}.
 \end{equation}
 
 矢量场的旋度的大小为趋于 0 的极小面积上矢量的最大环流 (\textbf{环量面密度}), 其指向该面积取向使环流最大时的法线方向 (\textit{满足右手定则}).
 
 \textbf{斯托克斯定理}
 \begin{equation} \label{eq:1.4 stokes}
-    \int_\Sigma(\mathrm{rot}\ \bm{A})\cdot\mathrm{d}\bm{S}=\oint_C\bm{A}\cdot\mathrm{d}\bm{l}.
+    \oint_C\bm{A}\cdot\mathrm{d}\bm{l}=\int_\Sigma(\mathrm{rot}\ \bm{A})\cdot\mathrm{d}\bm{S}.
 \end{equation}
 
 \subsubsection{特殊场}
@@ -107,6 +107,7 @@
     \nabla\times(\nabla U(\bm{r}))\equiv 0; \qquad (\text{参见问题 \ref{eprob:1.3 common equation}.}) \\
     \nabla\times\bm{E}=0. \label{eq:1.4 nabla times E}
 \end{gather}
+也即, 静电场是\textbf{无旋场}.
 
 利用斯托克斯定理, (\ref{eq:1.4 nabla times E}) 可以推出
 \begin{equation}
@@ -152,3 +153,15 @@
                   & =-\frac{1}{4\pi}\int\frac{v(\bm{r})}{|\bm{r}-\bm{r}'|}\mathrm{d}v.
     \end{aligned}
 \end{equation}
+
+\subsubsection{亥姆霍兹定理}
+在有限区域 $V$ 内, 已知矢量场 $\bm{F}$ 的散度, 旋度及其边界, 则可以唯一确定一种分解, 将 $\bm{F}$ 分为无旋场和无散场两个部分, 也即:
+\begin{equation}
+    \bm{F}=-\nabla U(\bm{r})+\nabla\times\bm{A}(\bm{r}),
+\end{equation}
+其中
+\begin{gather}
+    U(\bm{r})=\frac{1}{4\pi}\int_V\frac{\nabla'\cdot\bm{F}(\bm{r'})}{|\bm{r}-\bm{r'}|}\mathrm{d}v'-\frac{1}{4\pi}\oint_S\frac{\bm{F}(\bm{r'})\cdot\bm{e_n}}{|\bm{r}-\bm{r'}|}\mathrm{d}s', \\
+    \bm{A}(\bm{r})=\frac{1}{4\pi}\int_V\frac{\nabla'\times\bm{F}(\bm{r'})}{|\bm{r}-\bm{r'}|}\mathrm{d}v'-\frac{1}{4\pi}\oint_S\frac{\bm{e_n}\times\bm{F}(\bm{r'})}{|\bm{r}-\bm{r'}|}\mathrm{d}s',
+\end{gather}
+以及 $\nabla'$ 表示对 $\bm{r'}$ 作微分操作.
