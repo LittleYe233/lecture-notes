@@ -1,0 +1,61 @@
+\subsection{逻辑函数的化简}
+\subsubsection{卡诺图}
+以 4 变量为例:
+\begin{table}[H]
+    \caption{4 变量卡诺图与其对应的最小项}
+    \centering
+    \begin{tabular}{|c|c|c|c|c|} \hline
+        \bfseries AB \textbackslash CD & \bfseries 00 & \bfseries 01 & \bfseries 11 & \bfseries 10 \\\hline
+        \bfseries 00                   & $m_0$        & $m_1$        & $m_3$        & $m_2$        \\\hline
+        \bfseries 01                   & $m_4$        & $m_5$        & $m_7$        & $m_6$        \\\hline
+        \bfseries 11                   & $m_{12}$     & $m_{13}$     & $m_{15}$     & $m_{14}$     \\\hline
+        \bfseries 10                   & $m_8$        & $m_9$        & $m_{11}$     & $m_{10}$     \\\hline
+    \end{tabular}
+\end{table}
+
+\underline{性质}
+\begin{itemize}
+    \item 纵轴从真值表中最高位变量 (例如 $A$) 开始表示, 横轴以真值表中最低位变量 (例如 $D$) 结束表示;
+    \item 相邻性:
+          \begin{itemize}
+              \item 几何相邻即为最小项逻辑相邻;
+              \item 具有对称轴, 对称位置满足逻辑相邻;
+              \item $n$ 变量卡诺图的最小项具有 $n$ 个逻辑相邻的最小项.
+          \end{itemize}
+    \item 横纵轴的二进制编码采用\textit{格雷码};
+    \item 出现在函数式中的最小项应填 1, 其他默认为 0.
+\end{itemize}
+
+\subsubsection{一般的逻辑函数的化简}
+\begin{enumerate}
+    \item 作出卡诺图;
+    \item 圈 1:
+          \begin{itemize}
+              \item 以矩形圈出仅含 1 的\textit{逻辑相邻}最小项;
+              \item 面积为 2, 4, 8, ...
+              \item 圈 1 时要求可以圈已经被圈过的 1, 但后一次圈要包含先前没被圈过的 1;
+              \item \textit{矩形面积尽可能大, 且矩形数量尽可能少};
+              \item 要圈完所有的 1;
+          \end{itemize}
+    \item 将这些被圈出的最小项合并, 去除其中发生变化的因子, 保留不变的因子;
+    \item 整理, 得出最终结果 (与或式).
+\end{enumerate}
+
+可以根据观察, 判断取反函数是否更容易计算. 取反后将圈 0 而不是 1.
+
+\subsubsection{含无关项的逻辑函数的化简}
+\textbf{约束项}\quad 恒为 0 的最小项, 通常有如下表示:
+\begin{equation*}
+    m_{k_1}+m_{k_2}+\cdots+m_{k_p}=0.
+\end{equation*}
+
+\textbf{任意项}\quad 取值对函数输出无关的最小项, 通常有如下表示 ($d(\cdot)$):
+\begin{equation*}
+    Y=\sum m(\cdot)+d(\cdot).
+\end{equation*}
+
+约束项和任意项统称\textbf{无关项}.
+
+在卡诺图中, 无关项被记作 ``X'', 在实际圈 1 或 0 时, 可以被任意看作 1 或者 0.
+
+``X'' 的优先级高于 1.
