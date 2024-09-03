@@ -1,1 +1,35 @@
 \subsection{正弦波加窄带高斯过程}
+记相位 $\theta\sim U(0,2\pi)$ 的正弦波叠加窄带高斯噪声的信号表达式为
+\begin{equation} \label{eq:3.6 1}
+    r(t)=A\cos(\omega_ct+\theta)+n(t).
+\end{equation}
+其中 $n\sim N(0,\sigma_n)$, 且
+\begin{equation}
+    n(t)=n_c(t)\cos\omega_ct-n_s(t)\sin\omega_ct.
+\end{equation}
+
+展开式 (\ref{eq:3.6 1}), 得到
+\begin{equation}
+    \begin{aligned}
+        r(t) & =[A\cos\theta+n_c(t)]\cos\omega_ct-[A\sin\theta+n_s(t)]\sin\omega_ct \\
+             & =z_c(t)\cos\omega_ct-z_s(t)\sin\omega_ct                             \\
+             & =z(t)\cos(\omega_ct+\varphi(t)).
+    \end{aligned}
+\end{equation}
+
+容易得到
+\begin{equation*}
+    E[z_c]=A\cos\theta, E[z_s]=A\sin\theta, \sigma_c^2=\sigma_s^2=\sigma_n^2.
+\end{equation*}
+
+$f(z)$ 的概率密度函数为
+\begin{equation}
+    f(z)=\frac{z}{\sigma^2}\exp\left[-\frac{1}{2\sigma^2}(z^2+A^2)\right]I_0\left(\frac{Az}{\sigma^2}\right). \qquad (z\geq 0)
+\end{equation}
+其中 $I_0(\cdot)$ 为第一类零阶修正贝塞尔函数. 此时认为 $z$ 满足\textbf{莱斯分布}.
+
+两种极端情况:
+\begin{itemize}
+    \item 信号很小, $A\rightarrow0$, $z$ 退化为瑞利分布;
+    \item 信噪比很大, $\displaystyle\gamma=\frac{A^2}{2\sigma_n^2}$, $z$ 退化为高斯分布.
+\end{itemize}

@@ -1,0 +1,29 @@
+\subsection{信道的数学模型}
+\subsubsection{调制信号}
+调制信号可以看作是叠加有噪声 $n(t)$ 的线性\textit{时变或时不变}网络 $C(\omega)$, 也即
+\begin{equation}
+    r(t)=f_C(s_i(t))+n(t).
+\end{equation}
+显然, 根据线性系统的性质, 有
+\begin{gather}
+    s_o(t)=f_C(s_i(t))=c(t)*s_i(t), \\
+    S_o(\omega)=C(\omega)S_i(\omega).
+\end{gather}
+
+不同的物理信道具有不同的特性 $C(\omega)$:
+\begin{itemize}
+    \item \textbf{恒参信道}: 特性基本不随时间变化 (可取 $C(\omega)=1$);
+    \item \textbf{随参信道}: 特性随时间变化.
+\end{itemize}
+
+\subsubsection{编码信道}
+编码信道的模型可以用\textbf{转移概率}描述.
+\begin{table}[H]
+    \caption{二进制\textit{无记忆}编码信道模型示例}
+    \centering
+    \begin{tabular}{|c|c|c|} \hline
+        \bfseries 发送 \textbackslash\ 接收 & \bfseries 0 & \bfseries 1 \\\hline
+        \bfseries 0                     & $P(0|0)$    & $P(1|0)$    \\\hline
+        \bfseries 1                     & $P(0|1)$    & $P(1|1)$    \\\hline
+    \end{tabular}
+\end{table}

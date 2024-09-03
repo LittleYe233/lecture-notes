@@ -13,12 +13,16 @@
 \end{equation}
 
 两者满足三角函数关系:
-\begin{equation}
+\begin{gather}
     \begin{cases}
         \xi_c(t)=a_\xi(t)\cos\varphi_\xi(t), \\
-        \xi_s(t)=a_\xi(t)\sin\varphi_\xi(t).
+        \xi_s(t)=a_\xi(t)\sin\varphi_\xi(t);
+    \end{cases} \\
+    \begin{cases}
+        a_\xi(t)=\sqrt{\xi_c(t)^2+\xi_s(t)^2}, \\
+        \varphi_\xi(t)=\arctan\frac{\xi_s(t)}{\xi_c(t)}.
     \end{cases}
-\end{equation}
+\end{gather}
 
 \subsubsection{包络和相位的统计特性}
 一个均值为零, 方差为 $\sigma^2$ 的窄带平稳高斯过程 $\xi(t)$, 其包络 $a_\xi(t)$ 的一维分布是瑞利分布, 相位 $\varphi_\xi(t)$ 的一维分布是均匀分布, 且两个分量统计独立.
