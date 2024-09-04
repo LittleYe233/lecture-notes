@@ -134,7 +134,18 @@
 \subsubsection{泊松方程与格林公式}
 已知
 \begin{equation} \label{eq:1.4 nabla 2 r r'}
-    \nabla^2\frac{1}{|\bm{r}-\bm{r}'|}=-4\pi G(\bm{r}-\bm{r}').
+    \nabla^2\frac{1}{|\bm{r}-\bm{r'}|}=-4\pi\delta(\bm{r}-\bm{r'}).
+\end{equation}
+其中
+\begin{equation}
+    \delta(\bm{r}-\bm{r'})=\begin{cases}
+        0,      & \quad \bm{r}\neq\bm{r'}; \\
+        \infty, & \quad \bm{r}=\bm{r'},
+    \end{cases}
+\end{equation}
+且
+\begin{equation}
+    \int\delta(\bm{r}-\bm{r'})f(\bm{r'})\mathrm{d}\bm{r'}=f(\bm{r}).
 \end{equation}
 
 格林函数表为
@@ -149,8 +160,8 @@
 其解即
 \begin{equation}
     \begin{aligned}
-        u(\bm{r}) & =\int G(\bm{r},\bm{r}')v(\bm{r})\mathrm{d}v                        \\
-                  & =-\frac{1}{4\pi}\int\frac{v(\bm{r})}{|\bm{r}-\bm{r}'|}\mathrm{d}v.
+        u(\bm{r}) & =\int G(\bm{r},\bm{r}')v(\bm{r'})\mathrm{d}v'                        \\
+                  & =-\frac{1}{4\pi}\int\frac{v(\bm{r'})}{|\bm{r}-\bm{r}'|}\mathrm{d}v'.
     \end{aligned}
 \end{equation}
 
