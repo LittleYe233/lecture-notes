@@ -1,0 +1,163 @@
+\section{离散时间信号与系统}
+\subsection{离散信号的时域分析}
+\textbf{离散时间信号 (序列)}\quad 时间离散, 幅度连续.
+\begin{equation}
+    x[n]=x_a(nT). \qquad -\infty<n<+\infty
+\end{equation}
+
+用列举法表示时, 常标下划线表示 $x[0]$.
+
+\subsubsection{常见序列}
+\textbf{单位冲激序列}
+\begin{equation}
+    \delta[n]=\begin{cases}
+        1, & \qquad n=0;    \\
+        0, & \qquad \neq 0.
+    \end{cases}
+\end{equation}
+
+单位冲激序列可以表示任意序列:
+\begin{equation}
+    x[n]=\sum_{i=-\infty}^{+\infty}x[i]\delta[n-i].
+\end{equation}
+
+\textbf{单位阶跃序列}
+\begin{equation}
+    u[n]=\begin{cases}
+        1, & \qquad n\geq 0; \\
+        0, & \qquad n<0.
+    \end{cases}
+\end{equation}
+
+\textbf{矩形序列}
+\begin{equation}
+    R_N[n]=\begin{cases}
+        1, & \qquad 0\neq n<N;        \\
+        0, & \qquad \text{otherwise}.
+    \end{cases}
+\end{equation}
+也即
+\begin{equation}
+    R_N[n]=u[n]-u[n-N].
+\end{equation}
+
+\textbf{正弦序列}
+\begin{equation}
+    x[n]=A\sin(\omega n+\varphi).
+\end{equation}
+
+\textbf{复指数序列}
+\begin{equation}
+    x[n]=e^{j\omega n}.
+\end{equation}
+
+\subsubsection{数字域频率和模拟角频率}
+若将正弦序列 $x[n]=\sin(\omega_0 n)$ 看作模拟正弦信号 $x_a(t)=\sin(\Omega_0 t)$ 的采样, 则称 $\omega_0$ 为\textbf{数字域频率}, $\Omega_0$ 为\textbf{模拟角频率}. 这二者的关系如下
+\begin{equation}
+    \omega_0=\Omega_0T=\frac{\Omega_0}{f_s}.
+\end{equation}
+
+\subsubsection{序列的周期性}
+以正弦序列为例, 该序列具周期性的充要条件是
+\begin{equation}
+    \frac{2\pi}{\omega_0}=\frac{N}{k}\in\mathbb{N}.
+\end{equation}
+其中, 若 $\mathrm{gcd}(N,k)=1$, 则序列周期为 $N$.
+
+\subsubsection{序列的计算}
+\textbf{加法和乘法}
+
+\textbf{累加}
+\begin{equation}
+    y[n]=\sum_{i=-\infty}^{n}x[i].
+\end{equation}
+
+\textbf{绝对可和}
+\begin{equation}
+    S=\sum_{n=-\infty}^{+\infty}|x[n]|.
+\end{equation}
+
+序列的绝对可和性被用于判断序列的傅里叶变换是否存在, 以及判断系统是否稳定.
+
+\textbf{能量}
+\begin{equation}
+    E=\sum_{n=-\infty}^{+\infty}|x[n]|^2.
+\end{equation}
+
+$E<\infty$ 的信号为\textbf{能量信号}.
+
+\textbf{平均功率}
+\begin{equation}
+    P=\lim_{N\rightarrow\infty}\frac{1}{2N+1}\sum_{n=-N}^{N}|x[n]|^2.
+\end{equation}
+
+$P<\infty$ 的信号为\textbf{功率信号}. 一般周期信号和随机信号虽然存在时间无限 (不是能量信号), 但是为功率信号. 对于周期信号只需要取一个周期计算平均功率即可.
+
+\textbf{反褶}\quad $x[n]\rightarrow x[-n]$.
+
+\textbf{移位}\quad $x[n]\rightarrow x[n-m]$
+
+\textbf{抽取 (下采样变换)}\quad $x[Mn]$. 降低采样频率, 每 $M$ 个点抽取一点.
+
+\textbf{插值 (上采样变换)}
+\begin{equation}
+    x_I[n]=\begin{cases}
+        x\left[\frac{n}{I}\right], & \qquad \frac{n}{I}\in\mathbb{N}; \\
+        0,                         & \qquad \text{otherwise}.
+    \end{cases}
+\end{equation}
+
+先移位, 再抽取/插值, 最后反褶.
+
+\textbf{卷积}
+\begin{equation}
+    y[m]=x[m]*h[m]=\sum_{m=-\infty}^{+\infty}x[m]h[n-m].
+\end{equation}
+
+两个长度分别为 $L_x$ 和 $L_h$ 的信号, 卷积的长度为 $L_x+L_h-1$.
+
+卷积的自变量未必要相同. 例如, 若将 $h[m]\rightarrow h[-m]$, 则卷积和式中 $h[n-m]\rightarrow h[m-n]$.
+
+\underline{使用 Toeplitz 矩阵计算卷积}
+\begin{exampleprob}
+    计算 $x[n]=\{\underline{3},7,5,-1,2\}$ 与 $h[n]=\{\underline{4},-1,2,3\}$ 的卷积.
+
+    \begin{solution}
+        因为 $L_x=5,L_h=4$, 可以计算 Toeplitz 矩阵为
+        \begin{equation}
+            \bm{H}_{L_x\times(L_x+L_h-1)}=\begin{bmatrix}
+                4 & -1 & 2  & 3  & 0  & 0  & 0 & 0 \\
+                0 & 4  & -1 & 2  & 3  & 0  & 0 & 0 \\
+                0 & 0  & 4  & -1 & 2  & 3  & 0 & 0 \\
+                0 & 0  & 0  & 4  & -1 & 2  & 3 & 0 \\
+                0 & 0  & 0  & 0  & 4  & -1 & 2 & 3
+            \end{bmatrix}.
+        \end{equation}
+        因此,
+        \begin{equation}
+            \bm{y}=\bm{xH}=[12,25,19,14,40,11,1,6].
+        \end{equation}
+        也即
+        \begin{equation}
+            x[n]*h[n]=\{\underline{12},25,19,14,40,11,1,6\}.
+        \end{equation}
+    \end{solution}
+\end{exampleprob}
+
+\subsubsection{序列的相关性}
+\textbf{自相关函数}
+\begin{equation}
+    r_x[m]=\sum_{n=-\infty}^{+\infty}x[n]x[n-m].
+\end{equation}
+
+观察得到
+\begin{equation}
+    r_x[m]=x[m]*x[-m].
+\end{equation}
+
+自相关函数与互相关函数有性质如下
+\begin{itemize}
+    \item $r_x[m]=r_x[-m], \quad r_{xy}[m]=r_{yx}[-m]$;
+    \item $r_x[0]\geq |r_x[n]|$;
+    \item \textit{能量信号}的自相关函数与能量谱密度互为傅里叶变换对, \textit{功率信号}的自相关函数与功率谱密度互为傅里叶变换对.
+\end{itemize}
