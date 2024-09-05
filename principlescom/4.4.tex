@@ -1,0 +1,36 @@
+\subsection{信道噪声}
+\textbf{热噪声}\quad 高斯白噪声的一种. 其有效值与温度, 电阻性元件阻值和带宽有关:
+\begin{equation}
+    \overline{V}=\sqrt{4kTRB}.
+\end{equation}
+
+\textbf{白噪声}\quad 理想化噪声模型, 功率谱密度在整个频率范围均匀分布.
+\begin{equation}
+    P_n(\omega)=\frac{n_0}{2}.
+\end{equation}
+其自相关函数为
+\begin{equation}
+    R_n(\tau)=\frac{n_0}{2}\delta(\tau).
+\end{equation}
+
+\textbf{高斯白噪声}\quad 概率分布服从高斯分布的白噪声.
+
+\textbf{带限白噪声}\quad 白噪声通过带宽有限信道或滤波器.
+
+\textbf{低通白噪声}
+\begin{gather}
+    P_n(\omega)=\begin{cases}
+        \frac{n_0}{2}, & \quad |f|\leq f_H;      \\
+        0,             & \quad \text{otherwise}.
+    \end{cases} \\
+    R_n(\tau)=n_0f_H\frac{\sin2\pi f_H\tau}{2\pi f_H\tau}.
+\end{gather}
+
+\textbf{带通白噪声}
+\begin{gather}
+    P_n(\omega)=\begin{cases}
+        \frac{n_0}{2}, & \quad f_c-\frac{B}{2}\leq|\omega|\leq f_c+\frac{B}{2}; \\
+        0,             & \quad \text{otherwise}.
+    \end{cases} \\
+    R_n(\tau)=n_0B\frac{\sin\pi B\tau}{\pi B\tau}\cos2\pi f_c\tau.
+\end{gather}

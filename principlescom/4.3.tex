@@ -2,14 +2,76 @@
 \subsubsection{恒参信道}
 恒参信道是\textit{线性时不变系统}, 其传输特性可以表示为
 \begin{equation}
-    H(\omega)=|H(\omega)|e^{j\varphi(\omega)}.
+    H(\omega)=|H(\omega)|e^{-j\varphi(\omega)}.
 \end{equation}
 
 \textbf{理想恒参信道}\quad $H(\omega)=Ke^{-j\omega t_d}$.
 \begin{equation}
     \begin{cases}
-        |H(\omega)|=K, \\
-        \varphi(\omega)=\omega t_d.
+        |H(\omega)|=K,              \\
+        \varphi(\omega)=\omega t_d, \\
+        \tau(\omega)=\frac{\mathrm{d}\varphi(\omega)}{\mathrm{d}\omega}=t_d. \qquad (\text{群时延特性})
     \end{cases}
 \end{equation}
 
+理想恒参信道的冲激响应如下
+\begin{equation}
+    h(t)=K\delta(t-t_d).
+\end{equation}
+则其输出为
+\begin{equation}
+    s_o(t)=Ks(t-t_d).
+\end{equation}
+这被称为\textbf{无失真传输}.
+
+对于多理想恒参信道下复杂信号 $f(t)$ 的传输, 设两条信道传输衰减 $K$, 传输时延分别为 $\tau_1$ 和 $\tau_1+\tau$, 则
+\begin{equation}
+    f_o(t)=Kf(t-\tau_1)+Kf(t-\tau_1-\tau).
+\end{equation}
+其频谱为
+\begin{equation}
+    F_o(\omega)=KF(\omega)e^{-j\omega\tau_1}+KF(\omega)e^{-j\omega(\tau_1{\color{red} +}\tau)}.
+\end{equation}
+则此时的信道传输函数为
+\begin{equation}
+    H(\omega)=\frac{F_o(\omega)}{F(\omega)}=Ke^{-j\omega\tau_1}(1+e^{-j\omega\tau}).
+\end{equation}
+信道幅频特性
+\begin{equation}
+    |H(\omega)|=2K\left|\cos\frac{\omega\tau}{2}\right|.
+\end{equation}
+
+\textbf{频率选择性衰落}\quad 信道对信号不同频率部分有不同衰减.
+
+减小频率选择性衰落影响的方法: 降低信号带宽
+\begin{equation}
+    \frac{1}{3}\Delta f\leq B\geq\frac{1}{5}\Delta f.
+\end{equation}
+
+\subsubsection{随参信道}
+\textbf{特点}
+\begin{itemize}
+    \item 衰减和时延随时间变化;
+    \item 多径传播.
+\end{itemize}
+
+\textbf{多径效应}
+
+对于发送信号 $s(t)=A\cos\omega_ct$, 经过 $n$ 条路径传播, 结果为
+\begin{equation}
+    \begin{aligned}
+        r(t) & =\sum_{i=1}^{n}A_i(t)\cos\omega_c(t-\tau_i(t))     \\
+             & =\sum_{i=1}^{n}A_i(t)\cos(\omega_ct+\varphi_i(t)).
+    \end{aligned}
+\end{equation}
+
+展开之后, 得到
+\begin{equation}
+    \begin{aligned}
+        r(t) & =\sum_{i=1}^{n}A_i(t)\cos\varphi_i\cos\omega_ct-\sum_{i=1}^{n}A_i(t)\sin\varphi_i\sin\omega_ct \\
+             & =X(t)\cos\omega_ct-Y(t)\sin\omega_ct.
+    \end{aligned}
+\end{equation}
+显然, 这满足\textit{窄带随机过程}的形式.
+
+多径传播使信号产生\textbf{瑞利衰落}, 引起\textbf{频率弥散}.
