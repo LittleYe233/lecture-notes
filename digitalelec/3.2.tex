@@ -1,0 +1,181 @@
+\subsection{CMOS 门电路}
+CMOS 集成电路以 MOS 管 (金属-氧化物-半导体场效应晶体管) 作为开关器件.
+
+以 N 沟道增强型 MOS 管为例
+\begin{itemize}
+    \item \textbf{源极 (Source)}: 高掺杂浓度 N 型区;
+    \item \textbf{漏级 (Drain)}: 高掺杂浓度 N 型区;
+    \item \textbf{栅极 (Gate)}: 通常用二氧化硅绝缘与衬底之间绝缘处理, 形成电容器;
+    \item \textbf{衬底 (Body)}: P 型区.
+\end{itemize}
+
+\subsubsection{MOS 管的开关特性}
+以增强型 NMOS \textit{共源}接法电路为例, Source 和 Body 相连并接地, 在 Source 和 Gate 之间施加电压 (Gate 处为正极).
+
+\begin{figure}[H]
+    \centering
+
+    \caption{NMOS 管共源接法电路}
+\end{figure}
+
+\textbf{基本原理}
+
+Source 和 Body 施加电压, 负电荷聚集在 P 型半导体表面 Source 和 Drain 之间, 形成\textbf{导电沟道} (S, D 连通). 若再在 Drain 施加电压, 负电荷得以流动, 生成 Drain 指向 Source 的电流.
+
+Source 和 Gate 之间外加的电压 $v_{GS}$ 大小控制负电荷数量, 也决定了可以通过的最大电流.
+
+\textbf{MOS 管的状态}
+
+认为导电沟道的形成需要超过\textbf{开启电压}, 也即
+\begin{equation}
+    v_{GS}>V_{GS(th)}.
+\end{equation}
+此时 Source 和 Drain 之间的内阻 $R_{ON}<1 \mathrm{k}\Omega$. 认为此时 Drain 指向 Source 的电流 (\textbf{转移特性}) 满足
+\begin{equation}
+    i_D\varpropto v_{GS}^2.
+\end{equation}
+
+若导电沟道未形成 (MOS 管截止), 此时 Source 和 Drain 之间内阻很大 $R_{OFF}>10^9 \mathrm{k}\Omega$. 显然 $i_D\approx 0$.
+
+因为 Gate 的 ``电容器'' 性质, 认为\textit{直流}下输入回路无电流, \textbf{输入回路特性}不考虑.
+
+对于\textbf{输出回路特性}, 其是一族曲线, 每一条曲线为 $v_{GS}$ 为某一特定值时, $i_D$ 与 $v_{DS}$ 之间的关系. $v_{DS}$ 决定实际能够提供的电流大小 (对负电荷的驱动力).
+
+\begin{figure}[H]
+    \begin{minipage}{.48\textwidth}
+        \centering
+
+        \caption{NMOS 管共源接法的转移特性曲线}
+    \end{minipage} \hfill
+    \begin{minipage}{.48\textwidth}
+        \centering
+
+        \caption{NMOS 管共源接法的输出特性曲线}
+    \end{minipage}
+\end{figure}
+
+\begin{itemize}
+    \item \underline{可变电阻区}: 负电荷充足, 动力不足;
+    \item \underline{恒流区}: 动力充足, 负电荷不足;
+    \item \underline{截止区}: 无负电荷聚集.
+\end{itemize}
+
+\underline{转移特性曲线和输出特性曲线的关系}
+
+取 $v_{DS}$ 为定值, 在输出特性曲线中得到每个 $v_{GS}$ 对应的 $i_D$, 由此即可得到转移特性曲线.
+
+\textbf{P 沟道增强型 MOS 管}
+
+仍然以共源接法为例, 此时 $v_{GS}$ 和 $v_{DS}$ 方向反向, 导电沟道为正电荷组成, 导电沟道的形成需要低于开启电压 (此时 $v_{GS}<v_{GS(th)}<0$).
+
+\textbf{NMOS 管的单开关电路}
+
+当 $v_i$ ($v_{GS}$) 较低 (低电平) 时, NMOS 截止, Source 和 Drain 之间等效电阻为 $R_{off}$ 非常大, 分得几乎全部 $V_{CC}$ 电压, 也即输出电压 $v_o$ 为高电平.
+
+当 $v_i$ 较高 (高电平) 时, NMOS 导通, Source 和 Drain 之间等效电阻为 $R_{on}$ 较小, 相对于 $R$ 分得较低电压, 也即 $v_o$ 为低电平.
+
+NMOS 管的单开关电路构成\textit{反向器}.
+
+$R$ 应当粗略满足
+\begin{equation}
+    R_{on}<<R<<R_{off}.
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+
+    \caption{NMOS 管的单开关等效电路 (截止, 导通)}
+\end{figure}
+
+\subsubsection{CMOS 反向器的电路结构和工作原理}
+CMOS 反向器由一个 NMOS 和 PMOS 组成, 构成互补对称电路. 两管 Gate 相连并施加 $v_i$, Drain 相连并输出 $v_o$, PMOS 的 Source 和 Body 相连并施加高电平基准电压 $V_{CC}$, NMOS 的 Source 和 Body 相连并施加低电平基准电压 (接地). 此时输出回路电流 $i_D$ 由 PMOS 指向 NMOS.
+
+\textbf{工作状态}
+
+设 $V_{CC}>V_{GS(th)N}+|V_{GS(th)P}|$.
+
+对于 PMOS, 导通条件为
+\begin{equation*}
+    v_i-v_{CC}<V_{GS(th)P}<0,
+\end{equation*}
+也即
+\begin{equation}
+    v_i<V_{CC}-|V_{GS(th)P}|.
+\end{equation}
+
+对于 NMOS, 导通条件为
+\begin{equation}
+    v_i>V_{GS(th)N}.
+\end{equation}
+
+当 PMOS 和 NMOS 其中一个截止, 其中一个导通时, 满足反向器的工作状态. 因此反向器正常工作的条件是
+\begin{equation}
+    \begin{aligned}
+                   & 0\leq v_i<V_{GS(th)N}, \qquad \text{(NMOS 截止, 输出高电平)}           \\
+        \text{或}\  & V_{CC}-|V_{GS(th)P}|<v_i<V_{CC}. \qquad \text{(PMOS 截止, 输出低电平)}
+    \end{aligned}
+\end{equation}
+
+\textbf{特点}
+\begin{itemize}
+    \item 互补电路 (即为 ``CMOS'' 中的 ``C'' (Complementary));
+    \item 截止的 MOS 管截止电阻很高, 流过 MOS 管的静态电流很小, 损耗小.
+\end{itemize}
+
+\textbf{电压传输特性和电流传输特性}
+
+假设 $V_{GS(th)N}=|V_{GS(th)P}|$.
+\begin{figure}[H]
+    \begin{minipage}{.48\textwidth}
+        \centering
+
+        \caption{CMOS 反向器的电压传输特性}
+    \end{minipage} \hfill
+    \begin{minipage}{.48\textwidth}
+        \centering
+
+        \caption{CMOS 反向器的电流传输特性}
+    \end{minipage}
+\end{figure}
+
+当 $v_i=\dfrac{1}{2}V_{CC}$ 时, $v_o=\dfrac{1}{2}V_{CC}$, $i_D$ 最大.
+
+\textbf{输入端噪声容限}
+\begin{gather}
+    V_{NH}=V_{OHn}-V_{IHn}, \\
+    V_{NL}=V_{OLm}-V_{OLm}.
+\end{gather}
+实际使用时, 取较小值.
+
+\subsubsection{CMOS 反向器的静态输入和输出特性}
+MOS 管组成的 CMOS 电路, 必须采用保护电路. 二极管正向导通压降 $V_{DF}\approx0.7 V$, $R_S$ 一般在 1.5\textasciitilde2.5 千欧之间. $C_1,C_2$ 为 MOS 管 Gate 等效电容 (实际包含在 MOS 管中).
+
+\begin{figure}[H]
+    \centering
+
+    \caption{一种含保护电路的 CMOS 反向器}
+\end{figure}
+
+\textbf{输入特性 (输入保护电路的特性)}
+\begin{itemize}
+    \item $-V_{DF}<v_i<V_{DD}+V_{DF}$: 正常工作, 保护电路无效;
+    \item $v_i<-V_{DF}$: $D_2$ 导通, 将 $v_{GS}$ 钳位在 $-V_{DF}$, $C_1$ 电压不会超过 $V_{DD}+V_{DF}$;
+    \item $v_i>V_{DD}+V_{DF}$: $D_1$ 导通, 将 $v_{GS}$ 钳位在 $V_{DD}+V_{DF}$, $C_2$ 电压不会超过 $V_{DD}+V_{DF}$.
+\end{itemize}
+
+\textbf{输出特性}
+
+\underline{低电平输出特性}
+\begin{itemize}
+    \item 负载电流 $I_{OL}=i_D$ 从负载电路注入 NMOS, 输出电压 $v_o=V_{DS}$ 与其\textit{正相关};
+    \item 这一输出特性曲线即 NMOS 在可变电阻区的 Drain 特性曲线.
+\end{itemize}
+
+\underline{高电平输出特性}
+\begin{itemize}
+    \item 负载电流 $I_{OH}$ 从 PMOS 注入负载电路 (认为此时方向是\textit{反向}), 输出电压 $v_o=V_{DD}-V_{OH}$ 与其\textit{负相关};
+    \item 这一输出特性曲线即 PMOS 在可变电阻区的 Drain 特性曲线.
+\end{itemize}
+
+\subsubsection{CMOS 反向器的动态特性}
+
