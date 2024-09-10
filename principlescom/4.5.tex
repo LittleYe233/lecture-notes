@@ -38,3 +38,34 @@
 \begin{equation}
     C=B\log_2\left(1+\frac{S}{n_0B}\right). \qquad \text{(b/s)}
 \end{equation}
+
+当 $B\rightarrow\infty$ 时, 有
+\begin{equation}
+    \lim_{B\rightarrow\infty}C\approx1.44\frac{S}{n_0}.
+\end{equation}
+
+\begin{exampleprob}[信道容量的应用]
+    一幅需要传输的图片, 含有 $2.25\times10^6$ 个像素, 每个像素点具有 12 个亮度电平, 等概率独立出现. \textit{带限高斯白噪声}背景下的传输线路带宽 $3\mathrm{kHz}$, 信噪比 $S/N=30\mathrm{dB}$. 求传输最小时间.
+
+    \begin{solution}
+        每个像素的信息量为
+        \begin{equation*}
+            I_i=-\log_2\frac{1}{12}\approx3.58\ \mathrm{b}.
+        \end{equation*}
+
+        一幅图片的信息量为
+        \begin{equation*}
+            I=2.25\times10^6I_i=8.055\ \mathrm{Mb}.
+        \end{equation*}
+
+        信道容量为
+        \begin{equation*}
+            C=B\log_2(1+S/N)=3\times10^3\times\log_2(1+30\mathrm{dB})\approx29902\ \mathrm{b/s}.
+        \end{equation*}
+
+        最小时间为
+        \begin{equation*}
+            t=\frac{I}{C}\approx269.4\ \mathrm{s}.
+        \end{equation*}
+    \end{solution}
+\end{exampleprob}

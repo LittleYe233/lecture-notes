@@ -1,0 +1,58 @@
+\section{模拟调制系统}
+\subsection{幅度调制原理}
+载波以正弦波 $c(t)=A\cos(\omega_ct+\varphi)$ 为例.
+
+\textbf{幅度调制的一般模型}
+\begin{equation}
+    s_m(t)=[m(t)\cos\omega_ct]*h(t).
+\end{equation}
+其中 $m(t)$ 是调制信号, $h(t)$ 是边带滤波器. 其频域表示是
+\begin{equation}
+    S_m(\omega)=\frac{1}{2}[M(\omega+\omega_c)+M(\omega-\omega_c)]H(\omega).
+\end{equation}
+
+\subsubsection{常规调幅 (AM)}
+常规调幅是经过直流偏置的调制信号与载波信号直接相乘的结果.
+\begin{gather}
+    s_{AM}(t)=[A_0+m(t)]\cos\omega_ct. \\
+    S_{AM}(\omega)=\pi A_0[\delta(\omega+\omega_c)+\delta(\omega-\omega_c)]+\frac{1}{2}[M(\omega+\omega_c)+M(\omega-\omega_c)].
+\end{gather}
+要求 $\overline{m(t)}=0$ 和 $\max\{|m(t)|\}\leq A_0$.
+
+\textbf{解调方式}\quad 包络检波.
+
+\textbf{带宽}\quad AM 带宽是调制信号带宽的两倍.
+
+\textbf{缺点}\quad 调制效率低.
+
+\subsubsection{双边带调幅 (DSB)}
+双边带调制在常规调幅的基础上去除了直流偏置.
+\begin{gather}
+    s_{DSB}(t)=m(t)\cos\omega_ct. \\
+    S_{DSB}(\omega)=\frac{1}{2}[M(\omega+\omega_c)+M(\omega-\omega_c)].
+\end{gather}
+
+\textbf{解调方式}\quad 只能使用相干解调.
+
+\textbf{带宽}\quad AM 带宽是调制信号带宽的两倍.
+
+\subsubsection{单边带调制 (SSB)}
+单边带调制在双边带调制的基础上增加了边带滤波.
+
+\textbf{调制方式}
+\begin{itemize}
+    \item 滤波法 (需要陡峭的截止特性);
+    \item 相移法 (对调制信号所有频率分量精确相移 $\dfrac{\pi}{2}$).
+\end{itemize}
+
+\textbf{相移法的原理}
+
+以下边带为例 (对于上边带, 将加减号替换即可):
+\begin{equation}
+    \begin{aligned}
+        s_{LSB}(t) & =\frac{1}{2}A_m\cos(\omega_c-\omega_m)t                                            \\
+                   & =\frac{1}{2}A_m\cos\omega_mt\cos\omega_ct+\frac{1}{2}A_m\sin\omega_mt\sin\omega_ct \\
+                   & =\frac{1}{2}m(t)\cos\omega_ct+\frac{1}{2}\hat{m}(t)\sin\omega_ct.
+    \end{aligned}
+\end{equation}
+其中 $\hat{m}(t)$ 是 $m(t)$ 的\textit{希尔伯特变换}, 前者是后者相移 $+\dfrac{\pi}{2}$ 的结果.
