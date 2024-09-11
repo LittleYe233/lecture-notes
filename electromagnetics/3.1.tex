@@ -14,13 +14,59 @@
 \end{equation}
 其中存在本构关系 $\bm{D}=\epsilon\bm{E}$.
 
-静电场问题的边界条件 (无需考虑初始条件) 为
-\begin{equation} \label{eq:3.1 0}
-    \begin{cases}
-        \bm{e_n}\cdot(\bm{D_1}-\bm{D_2})=\rho_S, \qquad \text{\color{blue} (\question[为什么要如此表示?])} \\
-        \bm{e_n}\times(\bm{E_1}-\bm{E_2})=0.
-    \end{cases}
+在边界曲面的上下各取一面积 $\Delta S$ 的面, 法向量分别取向上或向下. 二者可形成一个封闭体, 并假设其高度 $d$ 无限趋近 0. 根据麦克斯韦方程组的积分形式 (\ref{eq:2.6 m int}), 可以得到
+\begin{equation} \label{eq:3.1 basic 1}
+    \begin{aligned}
+                    & \oint_\Sigma\bm{B}\cdot\mathrm{d}S=0                             \\
+        \Rightarrow & \bm{B_1}\cdot\bm{e_n}\Delta S+\bm{B_2}\cdot(-\bm{e_n})\Delta S=0 \\
+        \Rightarrow & B_{1n}=B_{2n}.
+    \end{aligned}
 \end{equation}
+
+同理,
+\begin{equation} \label{eq:3.1 basic 2}
+    \begin{aligned}
+                    & \oint_\Sigma\mathrm{D}\cdot\mathrm{d}\bm{S}=Q \\
+        \Rightarrow & \bm{e_n}\cdot(\bm{D_1}-\bm{D_2})=\rho_S.
+    \end{aligned}
+\end{equation}
+其中, 对于一般物质, $\rho_S=0$; 对于导体, 电介质或 $\sigma_1=\sigma_2$ 时, $\rho_S\neq0$. 此时, 也即
+\begin{equation}
+    \epsilon_1E_{1n}=\epsilon_2E_{2n}.
+\end{equation}
+
+类似地, 在边界一处取一垂直的 (以看向纸面内部的角度而言) 逆时针闭合回路. 取垂直边界向上为 $\bm{e_n}$, 纸面角度沿边界向右为 $\bm{e_t}$, 指向纸面内的基矢 $\bm{e_p}$. 闭合环路中垂直边界高度 $h$ 且不用考虑, 水平边界长度设为 $l$, 则得到
+\begin{equation*}
+    \begin{aligned}
+                    & \oint_C\bm{E}\cdot\mathrm{d}\bm{l}=-\frac{\mathrm{d}}{\mathrm{d}t}\int\bm{B}\cdot\mathrm{d}\bm{S}=0 \\
+        \Rightarrow & -\bm{E_1}\cdot l\bm{e_t}+\bm{E_2}\cdot l\bm{e_t}=0                                                  \\
+        \Rightarrow & (\bm{E_1}-\bm{E_2})\cdot\bm{e_t}=0.
+    \end{aligned}
+\end{equation*}
+也即
+\begin{equation} \label{eq:3.1 basic 3}
+    \bm{e_n}\times(\bm{E_1}-\bm{E_2})=0.
+\end{equation}
+
+对于磁场强度, 有
+\begin{gather}
+    \begin{aligned}
+          & \oint_C\bm{H}\cdot\mathrm{d}\bm{l}                  \\
+        = & (-\bm{H_1}+\bm{H_2})\cdot l\bm{e_t}                 \\
+        = & \bm{e_p}\cdot(\bm{e_n}\times(-\bm{H_1}+\bm{H_2}))l,
+    \end{aligned} \\
+    \begin{aligned} \label{eq:3.1 6}
+          & \int_\Sigma\left(\bm{J}+\frac{\partial\bm{D}}{\partial t}\right)\cdot\mathrm{d}\bm{S}                                                          \\
+        = & \bm{J}lh\cdot(-\bm{e_p})+\frac{\mathrm{d}}{\mathrm{d}t}\left(\bm{D_1}\cdot\frac{lh}{2}(-\bm{e_p})+\bm{D_2}\cdot\frac{lh}{2}(-\bm{e_p})\right).
+    \end{aligned}
+\end{gather}
+
+对于式 (\ref{eq:3.1 6}), 对 $t$ 求导为零. 考虑\textit{理想导体模型}, $\bm{J}h=\bm{J_S}$. 所以有
+\begin{equation} \label{eq:3.1 basic 4}
+    \bm{e_n}\times(\bm{H_1}-\bm{H_2})=\bm{J_S}.
+\end{equation}
+
+由此, 得到静电场问题的边界条件 (无需考虑初始条件) 为式 (\ref{eq:3.1 basic 1}), (\ref{eq:3.1 basic 2}), (\ref{eq:3.1 basic 3}), (\ref{eq:3.1 basic 4}).
 
 容易得到 (\ref{eq:3.1 1}) 可以化为
 \begin{equation} \label{eq:3.1 2}
@@ -55,7 +101,7 @@
     \Rightarrow & \varphi_1            =\varphi_2.
 \end{align*}
 
-同时, 由 (\ref{eq:3.1 0}),
+同时,
 \begin{equation} \label{eq:3.1 5}
     \bm{e_n}(-\epsilon_1\nabla\varphi_1+\epsilon_2\nabla\varphi_2)=\epsilon_2\frac{\partial\varphi_2}{\partial n}-\epsilon_1\frac{\partial\varphi_1}{\partial n}=\rho_S.
 \end{equation}
