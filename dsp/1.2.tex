@@ -1,0 +1,28 @@
+\subsection{离散系统的时域分析}
+\subsubsection{线性系统}
+\textbf{线性系统}\quad 系统输入输出满足\textit{线性}和\textit{叠加原理}的系统.
+
+满足叠加原理的线性系统, 零输入必然导致零输出.
+
+\textbf{增量线性系统}\quad 任意两个输入响应之差与两个输入之差满足叠加原理的系统.
+
+\subsubsection{时不变系统}
+\textbf{时不变系统}\quad 输入和输出作相同移位的系统.
+
+证明时, 仅自变量变化.
+
+\subsubsection{线性时不变系统的输入与输出}
+\textbf{零输入响应}\quad $y_{zi}$, 外加激励为零的响应.
+
+\textbf{零状态响应}\quad $y_{zs}$, 初始状态为零, 仅由输入序列引起的响应.
+
+线性时不变系统的输出等于输入序列与该系统单位脉冲响应的卷积:
+\begin{equation}
+    y[n]=x[n]*h[n].
+\end{equation}
+
+可以推出:
+\begin{itemize}
+    \item 多个 LSI 系统级联后的新系统, 其单位脉冲响应等于各个系统单位脉冲响应的卷积和;
+    \item 多个 LSI 系统并联后的新系统, 其单位脉冲响应等于各个系统单位脉冲响应的和.
+\end{itemize}
