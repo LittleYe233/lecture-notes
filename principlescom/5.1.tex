@@ -1,5 +1,5 @@
 \section{模拟调制系统}
-\subsection{幅度调制原理}
+\subsection{幅度调制与解调}
 载波以正弦波 $c(t)=A\cos(\omega_ct+\varphi)$ 为例.
 
 \textbf{幅度调制的一般模型}
@@ -56,3 +56,48 @@
     \end{aligned}
 \end{equation}
 其中 $\hat{m}(t)$ 是 $m(t)$ 的\textit{希尔伯特变换}, 前者是后者相移 $+\dfrac{\pi}{2}$ 的结果.
+
+\subsubsection{残留边带调制 (VSB)}
+介于 DSP 和 SSB 的折中方案, 保留不必要的另一边带的部分成分, 只需能调制 / 解调即可.
+
+现计算满足 VSB 条件的 $H(\omega)$. 从解调角度考虑, 若提供 $c(t)=2\cos\omega_ct$ 的相干解调信号:
+\begin{equation}
+    \begin{aligned}
+        S_p(\omega) & =S_{VSB}(\omega+\omega_c)+S_{VSB}(\omega-\omega_c)                                                                          \\
+                    & =\frac{1}{2}[M(\omega+2\omega_c)+M(\omega)]H(\omega+\omega_c)+\frac{1}{2}[M(\omega)+M(\omega-2\omega_c)]H(\omega-\omega_c).
+    \end{aligned}
+\end{equation}
+通过滤波器滤除高频段, 得到
+\begin{equation}
+    S_d(\omega)=\frac{1}{2}M(\omega)[H(\omega+\omega_c)+H(\omega-\omega_c)].
+\end{equation}
+希望无失真恢复 $m(t)$, VSB 传输函数需要满足
+\begin{equation}
+    H(\omega+\omega_c)+H(\omega-\omega_c)=\text{常数}.
+\end{equation}
+也即, 在载频处具有互补对称特性.
+
+\subsubsection{调幅信号的解调}
+\textbf{相干解调}
+
+调制信号与\textit{载频与相位相同}的同步信号相乘, 并低通滤波.
+\begin{itemize}
+    \item 适用于 AM, DSB, SSB, VSB;
+    \item 无门限效应.
+\end{itemize}
+
+\textbf{包络检波}\quad 例如, 二极管-RC 网络解调.
+\begin{itemize}
+    \item 适用于 AM;
+    \item 简单, 无需载波同步;
+    \item 直流偏置不低于调制信号幅度 (调制度).
+\end{itemize}
+
+\textbf{插入载波包络检波}
+
+调制信号与\textit{较大幅度}的同步信号相乘, 并包络检波.
+\begin{itemize}
+    \item 适用于 DSB, SSB, VSB;
+    \item 将信号插入恢复载波, 使之成为近似 AM 信号;
+    \item 同步信号幅度要很大.
+\end{itemize}

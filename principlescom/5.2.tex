@@ -1,0 +1,53 @@
+\subsection{线性调制系统的抗噪声性能}
+\subsubsection{含噪解调模型和性能指标}
+带限 AWGN 信道和解调模型如下
+\begin{equation*}
+    s_m(t)+n(t)\rightarrow BPF\rightarrow s_i(t), n_i(t)\rightarrow \text{解调器}\rightarrow m_o(t), n_o(t)
+\end{equation*}
+其中, $n(t)$ 是高斯白噪声, 经过 BPF (降低噪声带宽, 降低噪声频率) 后转为 $n_i(t)$ 窄带高斯噪声. 关于窄带随机过程的特性见 \ref{3.5}.
+
+\textbf{输出信噪比}
+\begin{equation}
+    \frac{S_o}{N_o}=\frac{\overline{m_o(t)^2}}{n_o(t)^2}.
+\end{equation}
+
+\textbf{信噪比增益}
+\begin{equation}
+    G=\frac{S_o/N_o}{S_i/N_i}.
+\end{equation}
+
+\subsubsection{DSB 相干解调系统的抗噪声性能}
+容易得到
+\begin{gather}
+    s_i(t)=m(t)\cos\omega_ct,\quad m_o(t)=\frac{1}{2}m(t); \\
+    S_i=\overline{s_i^2(t)}=\frac{1}{2}\overline{m^2(t)},\quad S_o=\overline{m_o^2(t)}=\frac{1}{4}\overline{m^2(t)}; \\
+    n_o(t)=\frac{1}{2}n_i(t).
+\end{gather}
+
+因此
+\begin{gather}
+    \frac{S_o}{N_o}=\frac{\overline{m^2(t)}}{n_0B}, \\
+    G_{DSB}=2.
+\end{gather}
+
+相干解调将噪声中的正交分量滤除, 使信噪比改善.
+
+\subsubsection{SSB 相干解调系统的抗噪声性能}
+同理
+\begin{gather}
+    \frac{S_o}{N_o}=\frac{\overline{m^2(t)}}{4n_0B}, \\
+    G_{SSB}=1.
+\end{gather}
+
+相干解调将噪声和调制信号的正交分量都有滤除.
+
+在相同的 $S_i$, $n_0$, $f_H$ ($B_{DSB}=2f_H$, $B_{SSB}=f_H$) 下, DSB 和 SSB 抗噪声性能相同.
+
+\subsubsection{AM 包络检波系统的抗噪声性能}
+信噪比很大时,
+\begin{gather}
+    S_o=\overline{m^2(t)}, \quad N_o=N_i=\overline{n(t)}; \\
+    G_{AM}=\frac{2\overline{m^2(t)}}{A_0^2+\overline{m^2(t)}}\leq\frac{2}{3}.
+\end{gather}
+
+信噪比很小时, 由于\textbf{门限效应}, 信号被扰乱成噪声, 输出信噪比急剧恶化.
