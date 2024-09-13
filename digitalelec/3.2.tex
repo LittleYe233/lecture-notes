@@ -179,3 +179,80 @@ MOS 管组成的 CMOS 电路, 必须采用保护电路. 二极管正向导通压
 
 \subsubsection{CMOS 反向器的动态特性}
 
+\subsubsection{其他类型的 CMOS 逻辑门}
+\textbf{CMOS 与非门}
+
+\textbf{CMOS 或非门}
+
+\underline{传统 CMOS 与非 (或非) 门的缺点}
+\begin{itemize}
+    \item 不同输入下内阻不同, 带负载能力 / 输出电压会变化;
+    \item 输入端开启电压不同.
+\end{itemize}
+
+\textbf{带缓冲级的门电路}
+
+在两个输入 $A,B$ 和 $Y$ 前后添加一级反相器作为缓冲级, 此时原先的或非 (与非) 门将转为与非 (或非) 门.
+
+\underline{优点}\quad 输出电阻, 输出高低电平, 电压传输特性均不受输入端状态影响.
+
+\textbf{漏级开路输出的门电路 (OD 门)}
+
+将输出的 MOS 管漏级直接连接输出端口. OD 输出与非门的内部逻辑电路为 CMOS 与非门和 CMOS 反相器, 后级输出接漏级开路的 NMOS 管单开关电路.
+
+因为后级输出为单开关电路, 故使用 OD 门时, 必须将输出端通过\textit{上拉电阻}接电源. 若使用与 CMOS 与非门不同的驱动电源, 此时可以改变输出的高电平 (电平转换).
+
+\underline{``线与''}\quad 直接用导线将两个 OD 门的输出端相连, 形成并联, 其输出是两个 OD 门输出的 ``与'' (AND).
+
+普通 CMOS 门也可以直连输出端实现相同的逻辑功能, 但是会导致电流过载, 故实际不可使用.
+
+因为
+\begin{equation}
+    Y=Y_1Y_2=(AB)'(CD)'=(AB+CD)',
+\end{equation}
+所以两个 OD 与非门的 ``线与'' 实现了与或非门.
+
+\underline{上拉电阻的计算}
+
+以 $n$ 个 OD 与非门 ``线与'' 驱动 $m$ 个\textit{二输入}负载门电路为例.
+
+当 OD 门输出高电平时, OD 门输出管截止, 漏电流 $I_{OH}$ 指向门内, 负载每个输入端高电平输入电流 $I_{IH}$ 指向门内. 要求输出高电平不能低于 $V_{OH}$, 则
+\begin{equation}
+    V_{DD}-R_L(nI_{OH}+mI_{IH})\geq V_{OH}.
+\end{equation}
+也即
+\begin{equation}
+    R_{L(max)}=\frac{V_{DD}-V_{OH}}{nI_{OH}+mI_{IH}}.
+\end{equation}
+
+当 OD 门输出低电平时, 若只有一个 OD 门导通, \textit{所有负载电流 $I_{IL}$ 流出门外, 且都会流入该管}. 要求流入 OD 门最大电流不超过 $I_{OL(max)}$, 则
+\begin{equation}
+    \frac{V_{DD}-V_{OL}}{R_L}+mI_{IL}\leq I_{OL(max)}.
+\end{equation}
+也即
+\begin{equation}
+    R_{L(min)}=\frac{V_{DD}-V_{OL}}{I_{OL(max)}-mI_{IL}}.
+\end{equation}
+
+\textbf{CMOS 传输门}
+
+由一个 NMOS 和 PMOS 互相连接对方的 Drain 和 Source 并引出一对输入输出端口而组成, 两者输入互补控制信号, 其中 PMOS \textit{低电平有效}. 此时信号可以\textit{双向传输}. 而当一端口接负载电阻接地后, 该端口为输出端口.
+
+\begin{itemize}
+    \item NMOS 输入低电平, PMOS 输出高电平, 一定范围内的输入下, 两管同时截止, 输出始终为零;
+    \item NMOS 输入高电平, PMOS 输出低电平, 一定范围内的输入下, 至少一管导通, 输入可以传输到输出.
+\end{itemize}
+
+呈现高阻态时, 可以隔离前后级电路.
+
+若希望传输门关闭呈现高阻态后, 输出电压仍有确定值, 可以将输出端连接上拉或下拉电阻.
+
+\textbf{三态输出的 CMOS 门电路}
+
+在 CMOS 反向器前级添加逻辑电路和 $EN'$ 输入引脚 (低电平有效), 使其不仅可以输出高低电平 (此时一管导通), 还可以保持\textit{高阻态} (两管都截止). 或, 当 $EN'=0$ 时, 反相器正常工作; 当 $EN'=1$ 时, 反相器被截止, 保持高阻态.
+
+\underline{应用}
+\begin{itemize}
+    \item 三态门可以 ``线与'', 即可以连接总线, 通过分时控制各个反相器的使能端将各个门的输出传输给总线;
+    \item 将使能端一个直接相连一个低 (高) 电平有效的三态门, 再连另一个高 (低) 电平有效的三态门, 三态门连接总线后, 调节使能端可以使数据在三态门 - 总线之间双向传输.
+\end{itemize}
