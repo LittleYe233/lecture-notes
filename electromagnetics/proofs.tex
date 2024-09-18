@@ -30,3 +30,26 @@
     \oint_C\bm{E}\cdot\mathrm{d}l=0.
 \end{equation}
 此为公式 (\ref{eq:2.1 rot int}).
+
+\subsection{电磁场能流密度与能量密度} \label{proofs: 2}
+认为 $f$ 即为洛伦兹力和库仑力的合力, 也即
+\begin{equation}
+    \begin{aligned}
+        \bm{f}\cdot\bm{v} & =\rho(\bm{E}+\bm{v}\times\bm{B})\cdot\bm{v}                                                                                  \\
+                          & =\bm{E}\cdot\rho\bm{v}                                                                                                       \\
+                          & =\bm{E}\cdot\bm{J}                                                                                                           \\
+                          & =\bm{E}\cdot\nabla\times\bm{H}-\bm{E}\cdot\frac{\partial\bm{D}}{\partial t}                                                  \\
+                          & =-\nabla\cdot(\bm{E}\times\bm{H})+\bm{H}\cdot\nabla\times\bm{E}-\bm{E}\cdot\frac{\partial\bm{D}}{\partial t}                 \\
+                          & =-\nabla\cdot(\bm{E}\times\bm{H})-\bm{H}\cdot\frac{\partial\bm{B}}{\partial t}-\bm{E}\cdot\frac{\partial\bm{D}}{\partial t}.
+    \end{aligned}
+\end{equation}
+
+代入式 (\ref{eq:2.8 S}), 可以对比得到
+\begin{gather}
+    \bm{S}=\bm{E}\times\bm{H}, \\
+    \frac{\partial w}{\partial t}=\bm{E}\cdot\frac{\partial\bm{D}}{\partial t}+\bm{H}\cdot\frac{\partial\bm{B}}{\partial t}.
+\end{gather}
+利用麦克斯韦方程组, 可以进一步推得
+\begin{equation}
+    w=\frac{1}{2}(\bm{E}\cdot\bm{D}+\bm{H}\cdot\bm{B}).
+\end{equation}

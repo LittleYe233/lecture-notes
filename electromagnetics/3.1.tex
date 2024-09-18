@@ -1,4 +1,20 @@
 \section{电磁场问题的求解} \label{3}
+本章考虑稳恒态电磁场问题, 也即电磁场分布与时间 $t$ 无关. 此时电磁场问题可以归纳为三类:
+\begin{itemize}
+    \item 静电场问题. 基本方程为
+          \begin{gather*}
+              \frac{\partial\rho}{\partial t}=0, \\
+              \bm{J}=0, \\
+              \nabla\times\bm{E}=0.
+          \end{gather*}
+    \item 导体恒电流问题, 也即直流电路. 基本方程为
+          \begin{gather*}
+              \nabla\cdot\bm{J}=-\frac{\partial\rho}{\partial t}=0, \\
+              \nabla\times\bm{E}=0.
+          \end{gather*}
+    \item 静磁场问题, 也即由 $\bm{J}$ 产生的磁场.
+\end{itemize}
+
 \subsection{静电场}
 \subsubsection{静电场的基本方程和边界条件}
 静电场问题的基本方程为
@@ -68,6 +84,7 @@
 
 由此, 得到静电场问题的边界条件 (无需考虑初始条件) 为式 (\ref{eq:3.1 basic 1}), (\ref{eq:3.1 basic 2}), (\ref{eq:3.1 basic 3}), (\ref{eq:3.1 basic 4}).
 
+\subsubsection{静电位的边界条件} \label{3.1.2}
 容易得到 (\ref{eq:3.1 1}) 可以化为
 \begin{equation} \label{eq:3.1 2}
     \bm{E}=-\nabla\varphi(\bm{r}). \qquad \text{(因为 $\nabla\times(\nabla u)\equiv 0$.)}
@@ -86,13 +103,19 @@
 \begin{equation} \label{eq:3.1 4}
     \nabla^2\varphi(\bm{r})=-\frac{\rho}{\epsilon}.
 \end{equation}
-上式 (\ref{eq:3.1 4}) 是一个关于电位 $\varphi(\bm{r})$ 的泊松方程. 给定边界条件之后, 即可得到唯一解. 若空间中无电荷, 则
+上式 (\ref{eq:3.1 4}) 是一个关于电位 $\varphi(\bm{r})$ 的泊松方程, 其中 $\rho$ 包含自由电荷 $\rho_f$ 和极化电荷 $\rho_P$, 且都为位矢 $\bm{r}$ 的标量函数. 给定边界条件之后, 即可得到唯一解. 若空间中无电荷, 则
 \begin{equation}
     \nabla^2\varphi(\bm{r})=0.
 \end{equation}
 这是一个拉普拉斯方程.
 
-\subsubsection{静电位的边界条件} \label{3.1.2}
+继续考虑式 (\ref{eq:3.1 4}), 可以得到
+\begin{equation}
+    \varphi(\bm{r})=-\frac{1}{4\pi\epsilon}\int\frac{\rho(\bm{r'})}{|\bm{r}-\bm{r'}|}\mathrm{d}r'.
+\end{equation}
+
+电位的参考点应当满足: 无穷远处或接地.
+
 \textbf{介质分界面}
 
 设 $P_1,P_2$ 是介质分界面两侧紧贴界面的相邻两点, 则
@@ -119,7 +142,20 @@
 
 由式 (\ref{eq:3.1 5}),
 \begin{equation}
-    \epsilon_1\frac{\partial\varphi_1}{\partial n}=-\rho_S. \qquad \text{\color{blue} (\question[为什么消去了 $\epsilon_2$?] \question[为什么 $\varphi_1$ 的偏微分不为零?])}
+    \epsilon_1\frac{\partial\varphi_1}{\partial n}=-\rho_S.
+\end{equation}
+
+\textbf{静电场问题的分析思路}
+\begin{itemize}
+    \item 分析电荷边界的对称性;
+    \item 已知应对一般问题的基本方程, 确定边界条件.
+\end{itemize}
+
+\textbf{静电能}
+
+可以证明
+\begin{equation}
+    W=\frac{1}{2}\int_V\varphi\rho\mathrm{d}V.
 \end{equation}
 
 \begin{exampleprob}

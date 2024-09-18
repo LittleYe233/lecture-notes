@@ -1,0 +1,26 @@
+\subsection{电磁场的能量}
+电磁场是一种物质, 可以内部转化能量, 也可以对外做功.
+
+\textbf{能量密度}\quad 被认为是时变的: $w(\bm{r},t)$.
+
+\textbf{总能量}\quad $W=\displaystyle\int w\mathrm{d}v$.
+
+\textbf{能流密度}\quad 用散度定义该物理量:
+\begin{equation} \label{eq:2.8 S}
+    \nabla\cdot\bm{S}+\bm{f}\cdot\bm{v}=-\frac{\partial w}{\partial t}.
+\end{equation}
+其中 $\bm{f}\cdot\bm{v}$ 表示单位体积电磁场的对外做功功率. 其积分形式为
+\begin{equation}
+    \oint_\Sigma\bm{S}\cdot\mathrm{d}\bm{\Sigma}+\int P\mathrm{d}V=-\frac{\mathrm{d}}{\mathrm{d}t}\int_Vw\mathrm{d}V.
+\end{equation}
+其中单位体积的功率表示为 $P=\bm{f}\cdot\bm{v}$, $V$ 表示体微元.
+
+可以证明 (见 \ref{proofs: 2} 小节),
+\begin{gather}
+    \bm{S}=\bm{E}\times\bm{H}, \\
+    w=\frac{1}{2}\bm{E}\cdot\bm{D}+\frac{1}{2}\bm{H}\cdot\bm{B}.
+\end{gather}
+在均匀同性介质中,
+\begin{equation}
+    w=\frac{1}{2}(\epsilon E^2+\mu H^2).
+\end{equation}
