@@ -1,2 +1,139 @@
 \subsection{TTL 门电路}
 \subsubsection{双极型三极管的开关特性}
+\textbf{三极管的输出特性}
+
+\underline{截止区}
+\begin{itemize}
+    \item $V_{BE}<V_{on}$;
+    \item $i_B=0$, $i_C\approx 0$.
+\end{itemize}
+
+\underline{饱和区}
+\begin{itemize}
+    \item $V_{BE}>V_{on}$, 发射结正偏;
+    \item $V_{CE}<V_{BE}$, 集电结正偏;
+    \item $i_C$ 趋向饱和.
+\end{itemize}
+
+\textbf{单开关三极管反向器}
+
+基极接基极电阻 $R_B$ 控制电流, 集电极接上拉电阻 $R_C$, 发射极接地.
+
+\begin{itemize}
+    \item $v_I=V_{IH}>V_{on}$ 为高电平, 且 $i_B>I_{BS}$ 饱和基极电流 (与器件有关, \textit{固定值}) 时, 三极管处于饱和导通状态, $v_o=V_{OL}=V_{CE(sat)}\approx 0$, 其中 $V_{CE(sat)}$ 为饱和导通压降 (此时集电极和发射极之间存在较小的内阻);
+    \item $v_I=V_{IL}<V_{on}$ 为低电平时, 三极管截止, $v_o=V_{OH}\approx V_{CC}$ 输出高电平.
+\end{itemize}
+
+\textbf{三极管的动态开关特性}\quad 类似于二极管的动态开关特性, 见 \ref{3.1.1} 小节.
+
+\subsubsection{TTL 反向器的电路结构和工作原理}
+\textbf{电路结构}
+
+TTL 反向器由输入级 (三极管和二极管), 倒相级 (三极管) 和推拉式输出级 (互补双三极管和二极管) 组成.
+
+\textbf{电压传输特性}
+
+TTL 反向器的电压传输特性也存在从高电平到低电平的转折, 但是比 CMOS 反向器要缓, 且存在一段线性变化区.
+
+\underline{截止区 (高电平输出)}
+
+此时 $v_I<0.6\ \text{V}$.
+
+T1 饱和导通, T2, T5 截止, T4 导通.
+
+实际输出电压是在 $V_{CC}$ 基础上, 除去三极管饱和压差和二极管饱和压差, 电阻压差忽略, 也即
+\begin{equation}
+    V_{OH}\approx V_{CC}-V_{BE4}-V_{D2}.
+\end{equation}
+
+\underline{线性衰减区}
+
+此时 $0.7\ \text{V}<v_I<1.3\ \text{V}$.
+
+T1 饱和导通, T2 导通且工作在放大区 (T2 集电极也即 T4 基极电压 $V_{C2}$ 降低, 不再等于 $V_{CC}$, 且\textit{相对于输入电压线性衰减}), T5 截止, T4 导通.
+
+\underline{转折区}
+
+此时 $v_I\approx 1.4\ \text{V}$, 即为阈值电压 $V_{TH}$.
+
+T1, T2, T5 饱和导通, T4 截止, 输出端 $v_o$ 经过 T5 直接接地, 约等于 0.
+
+\underline{饱和区 (低电平输出)}
+
+此时 $v_I>1.4\ \text{V}$.
+
+T1, T2, T5 导通, T4 截止 (基极和发射极分别通过 T2 和 T5 接地), 输出低电平且\textit{保持不变}.
+
+尽管 $v_I$ 可以继续增大, 但是因为二极管的\textit{钳位}效应, T5 经过 T2 导通之后, T1 集电极也即 T2 基极只有固定的压差 1.4 V, 不再继续增大. 且, 因为 T1 集电极电压低于发射极电压 $v_I$, T1 处于\textit{倒置}状态.
+
+\underline{二极管的作用}
+\begin{itemize}
+    \item T1 发射极接钳位二极管 D1, 保护 T1 发射极防止电流过载;
+    \item T4 发射极和 T5 集电极接二极管 D2, 保证 T5 导通时 T4 \textit{可靠}截止 (抬高截止电压).
+\end{itemize}
+
+\subsubsection{TTL 反向器的静态输入特性和输出特性}
+\textbf{输入特性}
+
+输入为低电平或高电平时, 将 T2, T5 的发射结等效为二极管, 后级其他管被等效忽略 (截止).
+
+当输入为低电平时, $v_I<0.2\ \text{V}$. 此时 TTL 反向器的输入电流与其\textit{输入短路电流}相近, 为
+\begin{equation}
+    I_{IS}=-\frac{V_{CC}-V_{BE1}-v_I}{R_1}\approx-1.075\ \text{mA}.
+\end{equation}
+其中负号表示电流实际从电路内流向输入端.
+
+当输入为高电平时, 只有很小反向电流 $I_{IH}\approx 40\ \mu\text{A}$.
+
+\textbf{输出特性}
+
+高电平输出时, T4 导通, T2, T5 截止, T1 作为前级被忽略.
+
+认为负载电流 $i_L$ 从输出端流向电路内为正 (实际方向\textit{相反}). 当 $|i_L|<5\ \text{mA}$ 时, T4 为射级输出状态, 输出电阻低, 输出电压 $v_o$ 几乎不变为 3.4 V.
+
+当 $|i_L|>5\ \text{mA}$ 时, R4 分压随电流增大, T4 进入饱和导通状态, 输出电压随负载电流几乎\textit{线性下降}.
+
+低电平输出时, T4 截止, T5 导通. 此时输出电压 $v_o$ 随输出电流 $i_L$ (保证其值\textit{较小}) 略微\textit{线性增加}.
+
+\textbf{扇出系数 (fan-out)}\quad 表示一个门电路驱动同类型门电路的能力, 定量标准为高电平和低电平下, 最大输出/输入电流之比.
+\begin{equation}
+    N=\min\left\{\frac{I_{OL(max)}}{I_{IL(max)}}, \frac{I_{OH(max)}}{I_{IH(max)}}\right\}.
+\end{equation}
+
+\textbf{输入端的负载特性}\quad 当输入端和地之间连接负载电阻 $R_P$ (其分压作为直接在输入端上给定的电压 $v_I$) 时的输入特性.
+
+$R_P$ 的压降可以表为
+\begin{equation}
+    v_I=\frac{R_P}{R_1+R_P}(V_{CC}-V_{BE1}).
+\end{equation}
+
+当输入低电平 ($v_I<0.6\ \text{V}$), 也即 $R_P<0.7\ \text{k}\Omega$ 时, 输入电压 $v_I$ 随 $R_P$ 线性增加.
+
+当电阻增大到一定值 ($R_P>1.5\ \text{k}\Omega$) 之后, $v_I$ 增大使 T2, T5 导通, 将其钳位到 1.4 V, 不会继续增大.
+
+当输入端引脚悬空 (等效极大的负载电阻), 此时等效高电平输入.
+
+\subsubsection{其他类型的 TTL 逻辑门}
+\textbf{TTL 与非门}
+
+T1 管采用\textit{双发射极}设计, 分别接两个输入端和钳位二极管. T1 管可以拆分成两个并联三极管 T1A 和 T1B, 其基极都接 $V_{CC}$, 集电极相连并连接后级电路.
+
+T1 两管组成的输入级, 构成 ``与'' 的结构.
+
+当两个输入端至少一个为低电平 0.2 V 时, 由于钳位作用, T1 集电极都为低电平 0.2 V.
+
+当两个输入端都为高电平 3.4 V 时, T1 倒置, 集电极为 1.4 V.
+
+\textbf{TTL 或非门}
+
+类似 TTL 或非门, 两路输入端接各自独立的输入级和倒相级, 其中 T1 两管基极都接 $V_{CC}$, T2 两管集电极都接 $V_{CC}$ 和 T4 基极, T2 发射极都接 T5 基极. 也即, T2 两管同时能控制 T4 和 T5, 也即都能对输出产生作用.
+
+倒相级两管组成\textit{对管结构}.
+
+\textbf{TTL 与或非门}
+
+将 TTL 或非门的输入级都替换为 TTL 与非门的输入级即可.
+
+\textbf{TTL 异或门}
+
+
