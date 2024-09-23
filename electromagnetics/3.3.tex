@@ -1,8 +1,55 @@
-\subsection{时变磁场}
-时变磁场条件下, 基本方程如下
+\subsection{恒电流产生的磁场 (稳磁场)}
+稳磁场问题的基本方程为
+\begin{equation}
+    \nabla\cdot\bm{B}=0.
+\end{equation}
+
+容易得到 $\bm{B}$ 可以表示为
+\begin{equation}
+    \bm{B}=\nabla\times\bm{A}.
+\end{equation}
+其中 $\bm{A}$ 是\textbf{磁矢位}.
+
+而
+\begin{equation}
+    \nabla\times\bm{H}=\frac{1}{\mu}[\nabla(\nabla\cdot\bm{A})-\nabla^2\bm{A}].
+\end{equation}
+令磁场满足\textbf{库仑规范}: $\nabla\cdot\bm{A}=0$, 则
+\begin{equation}
+    \nabla\times\bm{H}=-\frac{1}{\mu}\nabla^2\bm{A}=\bm{J}.
+\end{equation}
+
+因此
+\begin{equation}
+    \nabla^2\bm{A}=-\mu\bm{J}.
+\end{equation}
+
+这是三个方向上的泊松方程. 给定边界条件之后, 即可得到唯一解. 通解表为
+\begin{equation}
+    \bm{A}(\bm{r})=-\frac{\mu}{4\pi}\int\frac{\bm{J}(\bm{r'})}{|\bm{r}-\bm{r'}|}\mathrm{d}v'.
+\end{equation}
+边界条件表为
 \begin{equation}
     \begin{cases}
-        \nabla^2\varphi=\frac{1}{\mu\epsilon}\frac{\partial^2\varphi}{\partial t^2}-\frac{\rho}{\epsilon}; \\
-        \nabla^2\bm{A}=\frac{1}{\mu\epsilon}\frac{\partial^2 A}{\partial t^2}-\mu\bm{J}.
+        \bm{A_1}=\bm{A_2}, \\
+        \bm{e_n}\times\left(\frac{1}{\mu_1}\nabla\times\bm{A_1}-\frac{1}{\mu_2}\nabla\times\bm{A_2}\right)=\bm{J_S}.
     \end{cases}
+\end{equation}
+
+考虑柱坐标:
+\begin{equation}
+    \bm{A}=-\frac{\mu}{4\pi}\int_{0}^{2\pi}\frac{\bm{J}(\bm{r'})}{|\bm{r}-\bm{r'}|}a\mathrm{d}\varphi.
+\end{equation}
+其中
+\begin{gather*}
+    \bm{r}=\bm{e_r}r=\bm{e_x}r\sin\theta+\bm{e_z}r\cos\theta, \\
+    \bm{r'}=\bm{e_x}a\cos\varphi'+\bm{e_y}a\sin\varphi, \\
+    \bm{J}=i\mathrm{d}\bm{l}, \\
+    \mathrm{d}\bm{l}=\bm{e_{\varphi'}}a\mathrm{d}\varphi'=-\bm{e_x}\sin\varphi'+\bm{e_y}\cos\varphi', \\
+    |\bm{r}-\bm{r'}|=\sqrt{r^2+a^2-2ar\sin\theta\cos\varphi'}, \\
+    \frac{1}{|\bm{r}-\bm{r'}|}\approx\frac{1}{r}\left(1+\frac{d}{r}\sin\theta\cos\varphi'\right).
+\end{gather*}
+可以得到
+\begin{equation}
+    \bm{A}=\bm{e_y}\frac{\mu\pi ia^2}{4\pi r^2}\sin\theta. \qquad (\bm{e_y}=\bm{e_\varphi})
 \end{equation}

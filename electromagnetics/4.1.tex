@@ -1,0 +1,69 @@
+\section{静态场问题的求解}
+\subsection{静电场的唯一性定理}
+静电场问题有两个可能的基本方程:
+\begin{gather}
+    \nabla^2\varphi=-\frac{\rho}{\epsilon}, \\
+    \nabla^2\varphi=0.
+\end{gather}
+
+\textbf{边值问题 (边界条件)}
+\begin{itemize}
+    \item \underline{第一类边界条件}: 已知导体电位
+          \begin{equation}
+              \varphi_S=f_1(s);
+          \end{equation}
+    \item \underline{第二类边界条件}: 已知表面电荷
+          \begin{equation}
+              \left.\frac{\partial\varphi}{\partial n}\right|_S=f_2(s).
+          \end{equation}
+\end{itemize}
+
+\textbf{求解步骤}
+\begin{enumerate}[(1)]
+    \item 求通解;
+    \item 用边界求特解;
+    \item 讨论适定性 (存在性, 唯一性, 稳定性);
+    \item 实施方法 (解析法, 数值法).
+\end{enumerate}
+
+\textbf{静电场唯一性定理}\quad 已知确定的区域 $V$ 和边界 $S$, 给定电荷分布 $\rho(\bm{r})$ 与边界条件, 则静电场\textit{有解且唯一}.
+
+\begin{exampleprob}
+    考虑导体球 $Q$ 外有同心接地导体球壳, 有均匀贯穿球心的两个电介质 $\epsilon_1$ 和 $\epsilon_2$. 求电场分布.
+
+    \begin{solution}
+        可以认为导体上电场方向垂直于球面, 也即
+        \begin{equation*}
+            \bm{E}=E\bm{e_r}.
+        \end{equation*}
+
+        同样有
+        \begin{equation*}
+            \epsilon_1\bm{E_{1n}}=\epsilon_2\bm{E_{2n}}, \quad \bm{E_{1\tau}}=\bm{E_{2\tau}}.
+        \end{equation*}
+
+        假定所有半径上电场满足: 导体边界成立, 介质分界面成立, 则在分界面上的半径处,
+        \begin{equation*}
+            E_1\bm{e_r}=E_2\bm{e_r}.
+        \end{equation*}
+        也即介面处电场连续, 对于同一 $\bm{r}$, 电场相等. 所以可以认为
+        \begin{equation*}
+            \bm{E}=E(r)\bm{e_r}.
+        \end{equation*}
+
+        根据麦克斯韦方程组, 有
+        \begin{equation*}
+            \oint\bm{D}\cdot\mathrm{d}\bm{S}=Q.
+        \end{equation*}
+        所以
+        \begin{equation*}
+            \epsilon_1E(r)\cdot 2\pi r^2+\epsilon_2E(r)\cdot 2\pi r^2=Q,
+        \end{equation*}
+        也即
+        \begin{equation*}
+            \bm{E}=\bm{e_r}\frac{Q}{2\pi(\epsilon_1+\epsilon_2)r^2}.
+        \end{equation*}
+
+        经过验证, 该结果满足唯一性定理的条件.
+    \end{solution}
+\end{exampleprob}

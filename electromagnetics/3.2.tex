@@ -1,26 +1,23 @@
-\subsection{稳磁场}
-稳磁场问题的基本方程为
+\subsection{导体中的恒流场}
+第 \ref{3} 章开头提到了该条件下问题的基本方程. 此时的麦克斯韦方程组表为
 \begin{equation}
-    \nabla\cdot\bm{B}=0.
+    \begin{cases}
+        \nabla\times\bm{H}=\bm{J}, \\
+        \nabla\times\bm{E}=0,      \\
+        \nabla\cdot\bm{B}=0,       \\
+        \nabla\cdot\bm{D}=\rho.
+    \end{cases}
+\end{equation}
+在各向同性均匀介质中, 本构关系 (\ref{eq:2.6 D B J}) 仍成立.
+
+宏观欧姆定律 (\ref{eq:2.5 ohm}) 也成立
+\begin{equation}
+    R=\frac{U}{I}=\frac{\varphi_1-\varphi_2}{\displaystyle\int\bm{J}\cdot\mathrm{d}\bm{S}}.
 \end{equation}
 
-容易得到 $\bm{B}$ 可以表示为
+利用电场与电容的微分关系, 可以得到
 \begin{equation}
-    \bm{B}=\nabla\times\bm{A}.
+    \nabla^2\varphi=0.
 \end{equation}
 
-而
-\begin{equation}
-    \nabla\times\bm{H}=\frac{1}{\mu}[\nabla(\nabla\cdot\bm{A})-\nabla^2\bm{A}].
-\end{equation}
-令 $\nabla\cdot\bm{A}=0$ {\color{blue} (\question[为什么可以如此假设?])}, 则
-\begin{equation}
-    \nabla\times\bm{H}=-\frac{1}{\mu}\nabla^2\bm{A}=\bm{J}.
-\end{equation}
-
-因此
-\begin{equation}
-    \nabla^2\bm{A}=-\mu_0\bm{J}.
-\end{equation}
-
-这是三个方向上的泊松方程. 给定边界条件之后, 即可得到唯一解.
+计算时用\textit{电介质代换导体}, 也即 $\epsilon\rightarrow\sigma$, $C\rightarrow G=\dfrac{1}{R}$.
