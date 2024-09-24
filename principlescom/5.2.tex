@@ -47,7 +47,47 @@
 信噪比很大时,
 \begin{gather}
     S_o=\overline{m^2(t)}, \quad N_o=N_i=\overline{n(t)}; \\
-    G_{AM}=\frac{2\overline{m^2(t)}}{A_0^2+\overline{m^2(t)}}\leq\frac{2}{3}.
+    G_{AM}=\frac{2\overline{m^2(t)}}{A_0^2+\overline{m^2(t)}}\leq\frac{2}{3}. \label{eq:5.2 G AM}
 \end{gather}
 
 信噪比很小时, 由于\textbf{门限效应}, 信号被扰乱成噪声, 输出信噪比急剧恶化.
+
+\begin{exampleprob}
+    发射信号为 $s_m(t)=[A_0+m(t)]\cos(\omega_ct)$, 其中 $f_H=5\ \text{kHz}$, $\overline{m^2(t)}=500\ \text{W}$, $f_c=100\ \text{kHz}$, 载波功率为 1000 W, 噪声单边功率谱密度为 $10^{-10}\ \text{W/Hz}$, 信道衰减 70 dB, BPF 高为 1 宽为 $B$.
+    \begin{enumerate}[(1)]
+        \item 确定 BPF 中心频率 $f_0$ 和带宽 $B$;
+        \item 计算解调器输入信噪比;
+        \item 计算解调器输出信噪比和调制制度增益.
+    \end{enumerate}
+
+    \begin{solution}
+        显然这是 AM 调制.
+
+        \begin{enumerate}[(1)]
+            \item $f_0=f_c=100\ \text{kHz}$, $B=2f_H=10\ \text{kHz}$.
+            \item 实际发射信号功率为
+                  \begin{equation*}
+                      S_T=\frac{A_0^2}{2}+\frac{\overline{m^2(t)}}{2}=1000+250=1250\ \text{W}.
+                  \end{equation*}
+
+                  因为信道存在衰减, 实际接收信号功率为
+                  \begin{equation*}
+                      S_i=\frac{S_T}{70\ \text{dB}}=125\ \mu\text{W}.
+                  \end{equation*}
+
+                  噪声功率为
+                  \begin{equation*}
+                      N_i=n_0B=1\ \mu\text{W}.
+                  \end{equation*}
+
+                  所以
+                  \begin{equation*}
+                      SNR_i=125.
+                  \end{equation*}
+            \item 因为输入信噪比很大, 所以可以使用式 (\ref{eq:5.2 G AM}): $G_{AM}=0.4$. 所以输出信噪比为
+                  \begin{equation*}
+                      SNR_o=G_{AM}SNR_i=50.
+                  \end{equation*}
+        \end{enumerate}
+    \end{solution}
+\end{exampleprob}

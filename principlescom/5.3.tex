@@ -1,0 +1,69 @@
+\subsection{非线性调制 (角度调制) 原理}
+\subsubsection{角度调制的基本概念}
+角度调制信号表为
+\begin{equation}
+    s_m(t)=A\cos(\omega_ct+\varphi(t)).
+\end{equation}
+其中 $\varphi(t)$ 与调制信号的幅度 $m(t)$ 有关.
+
+称 $\varphi(t)$ 称为相对于 $\omega_ct$ 的\textbf{瞬时相位偏移}, $\dfrac{\mathrm{d}\varphi(t)}{\mathrm{d}t}$ 称为相对于 $\omega_c$ 的\textbf{瞬时角频偏}.
+
+对于调角波 (PM), 认为
+\begin{equation}
+    \varphi(t)=K_pm(t).
+\end{equation}
+对于调幅波 (FM), 则认为
+\begin{equation}
+    \frac{\mathrm{d}\varphi(t)}{\mathrm{d}t}=K_fm(t).
+\end{equation}
+
+FM 波调制器可以认为是\textit{积分器}和 PM 波调制器的串联.
+
+\subsubsection{FM 信号的频谱分析}
+以单音调频为例. 若 $m(t)=A_m\cos\omega_mt$, 可以得到
+\begin{equation}
+    s_{FM}(t)=A\cos[\omega_ct+m_f\sin\omega_mt].
+\end{equation}
+其中 $m_f=\dfrac{K_fA_m}{\omega_m}$ 被称为\textbf{调频指数}.
+
+\textbf{最大角频偏}\quad $\Delta\omega=m_f\omega_m=K_fA_m$.
+
+可以计算得到该 FM 信号的频谱为
+\begin{equation}
+    S_{FM}(\omega)=\pi A\sum_{n=-\infty}^{+\infty}{\color{blue} J_n(m_f)}[\delta(\omega-\omega_c-n\omega_m)+\delta(\omega+\omega_c+n\omega_m)].
+\end{equation}
+其中 $J_n(m_f)$ 为以调频指数为自变量的第一类 $n$ 阶贝塞尔函数, 随 $n$ 增大逐渐\textit{减小}.
+
+实际工程上, 一般保留上下边频分量共 $2(m_f+1)$ 个, 相邻边频间隔 $f_m$. 所以 FM 信号带宽近似于 (\textbf{卡森公式})
+\begin{equation}
+    B_{FM}=2(m_f+1)f_m\stackrel{def}{=}2(\Delta f+f_m).
+\end{equation}
+容易得到, 当调制指数很小时, $B_{FM}\approx2f_m$; 当调制指数很大时, $B_{FM}\approx2\Delta f$.
+
+对于多音或任意带限调制, 只需要令 $f_m$ 为调制信号的最高频率即可.
+
+\textbf{功率分配}\quad 调制为 FM 信号后, 总功率不变, 但各个频率分量的功率分配与 $m_f$ 有关.
+
+\subsubsection{FM 信号的产生与解调}
+\textbf{产生方式}
+\begin{itemize}
+    \item \underline{压控振荡器 (VCO)}: 调制电压线性控制振荡器频率;
+          \begin{itemize}
+              \item 可以获得较大频偏, 电路简单;
+              \item 频率稳定度不高.
+          \end{itemize}
+    \item \underline{间接法}: 积分器 -> 相位调制 (外加同步信号, 得到\textit{窄带信号}) -> 倍频器 (得到\textit{宽带信号});
+          \begin{itemize}
+              \item 频率稳定性好;
+              \item 电路复杂.
+          \end{itemize}
+\end{itemize}
+
+\textbf{解调方式}
+\begin{itemize}
+    \item \underline{非相干解调}: BPF 并限幅 -> \textbf{鉴频器} (微分器 -> 包络检波) -> LPF;
+          \begin{itemize}
+              \item 适用于窄带和宽带信号.
+          \end{itemize}
+    \item \underline{相干解调}
+\end{itemize}
