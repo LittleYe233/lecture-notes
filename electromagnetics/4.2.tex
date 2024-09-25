@@ -1,0 +1,56 @@
+\subsection{镜像电荷法}
+\textbf{对象}\quad 区域内有电荷, 边界规则.
+
+\textbf{思路}\quad 利用假设电荷, 代替边界, 使有边界问题变为无界均匀问题.
+
+\textbf{选取镜像电荷的原则}
+\begin{itemize}
+    \item 镜像电荷必须在所求区域之外;
+    \item 控制镜像电荷的位置, 大小, 数量, 使边界条件满足.
+\end{itemize}
+
+对于电场 $\bm{E}=0$, 此时电位 $\varphi$ 为常数; 对于电场 $\bm{E}$ 垂直于表面, 则 $\rho_S=-\epsilon\dfrac{\partial\varphi}{\partial n}$.
+
+\textbf{平面边界}
+
+对于无限大接地导体板边界问题, 其中一边点电荷 $q$ 的镜像电荷为位于距离相同的对侧的 $-q$. 使用镜像电荷后, 边界消失.
+
+对于直角形的接地导体板边界, 在两条直角边对侧分别设置点电荷 $q$ 的相反电荷 $-q$, 但同时需要在 $q$ 的斜对角处放置另一 $q$, 以保证满足边界.
+
+\textbf{球面边界}
+
+假设半径为 $a$ 的接地导体球壳外距离球心 $d$ 处有一点电荷 $q$, 其镜像电荷在球壳内, 距离球心 $d'$, 电荷量为 $q'$.
+
+延长 $q$ 和 $q'$ 之间的连线, 其交于球壳两点, 记 $q$ 与 $q'$ 之间的点为 1, $qq'$ 射线上的点为 2. 因为球壳接地, 故 $\varphi_1=\varphi_2=0$. 同时可以根据点电荷电位分布得到 $\varphi_1$ 和 $\varphi_2$ 的值.
+
+若球壳不接地, 只需再在球心处放置一个镜像电荷 $q''$ 即可.
+
+若有带厚度接地球壳 (有参数 $\sigma$), 内球面内有电介质 $\epsilon$, 有电荷 $q$. 注意\textit{此时内外球面都电位为零, 且只有内球面为边界}. 在外球面外取镜像电荷 $q'$ 即可.
+
+而在上一问题中, 若在外球面外再放置电荷 $q''$, 则对此电荷的镜像电荷位于两球面之间, 且\textit{边界为外球面}.
+
+即便导体球壳的内球面不同心也可以以此计算.
+
+\textbf{非均匀的平面边界}
+
+假设平面边界 (\textit{电位不为零}) 上下为不同电介质 $\epsilon_1$ 和 $\epsilon_2$, 在上半区域有 $q$. 由前述章节可知
+\begin{equation}
+    \frac{\bm{D_{1\tau}}}{\epsilon_1}=\frac{\bm{D_{2\tau}}}{\epsilon_2}, \quad \bm{D_{1n}}=\bm{D_{2n}}.
+\end{equation}
+
+边界上下表面各有束缚电荷 $\rho_{PS1}$ 和 $\rho_{PS2}$. 有
+\begin{equation}
+    \rho_{PS1}=-\bm{e_n}\cdot\bm{P_1}, \quad \rho_{PS2}=\bm{e_n}\cdot\bm{P_2}.
+\end{equation}
+其中 $\bm{e_n}$ 从边界指向上半区域.
+
+对于此情境, 需要上下区域分开考虑:
+\begin{itemize}
+    \item 将下半区域看作区域外, 设 $q$ 对侧有镜像电荷 $q'$ 位于 $d'$ 处 (代替了下半区域 $\epsilon_2$ 等参数), 因此边界消失, 整个区域变为 $\epsilon_1$ 的电介质 - 这样可以得到上半区域的电位分布 $\varphi_1$;
+    \item 将上半区域看作区域外, 设 $q$ \textit{同侧}有镜像电荷 $q''$ 位于 $d''$ 处 (\textit{与 $q$ 共同}代替了上半区域 $\epsilon_1$ 等参数), 因此边界消失, 整个区域变为 $\epsilon_2$ 的电介质 (\textit{注意此时下半区域没有任何电荷}) - 这样可以得到下半区域的电位分布 $\varphi_2$.
+\end{itemize}
+
+对于边界, 显然有
+\begin{equation}
+    \varphi_1=\varphi_2, \quad \epsilon_1\frac{\partial\varphi_1}{\partial z}=\epsilon_2\frac{\partial\varphi_2}{\partial z}.
+\end{equation}

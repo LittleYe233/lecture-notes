@@ -1,0 +1,42 @@
+\subsection{分离变量法}
+\textbf{边界规则}\quad 垂直于坐标轴.
+
+对于方程 $\nabla^2\varphi(x,y)=0$, 分离变量法基于假设
+\begin{equation}
+    \varphi(x,y)=\Phi(x)\Psi(y).
+\end{equation}
+
+代入原方程, 得到
+\begin{equation}
+    \Psi\frac{\mathrm{d}^2}{\mathrm{d}x^2}\Phi+\Phi\frac{\mathrm{d}^2}{\mathrm{d}y^2}\Psi=0.
+\end{equation}
+也即
+\begin{equation}
+    \frac{\Phi''}{\Phi}+\frac{\Psi''}{\Psi}=0.
+\end{equation}
+
+不放假设
+\begin{equation}
+    \frac{\Phi''}{\Phi}=-\frac{\Psi''}{\Psi}=-k^2.
+\end{equation}
+则
+\begin{equation}
+    \begin{cases}
+        \Phi=A\sin kx+B\cos kx, \\
+        \Psi=C\sinh ky+D\cosh ky.
+    \end{cases}
+\end{equation}
+其中, 待定系数有 $k,A,B,C,D$.
+
+考虑边界条件:
+\begin{gather}
+    \varphi(x,0)=(A\sin kx+B\cos kx)\Psi(0), \\
+    \varphi(0,y)=(C\sinh ky+D\cosh ky)\Phi(0), \\
+    \varphi(x,a)=(A\sin kx+B\cos kx)\Psi(a), \\
+    \varphi(x,b)=(C\sinh ky+D\cosh ky)\Phi(b).
+\end{gather}
+
+对于有限边界问题, $k$ 取离散的自然数值. 可以得到
+\begin{equation}
+    \varphi(x,y)=(A_0x+B_0)(C_0y+D_0)+\sum_{n=1}^{\infty}(A_n\sin k_nx+B_n\cos k_nx)(C_n\sinh k_ny+D_n\cosh k_ny).
+\end{equation}
