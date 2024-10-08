@@ -1,0 +1,72 @@
+\subsection{基带传输的常用码型}
+\subsubsection{码型的设计原则}
+\begin{itemize}
+    \item 无直流分量, 低频分量小, 高频分量小;
+    \item 定时信息丰富;
+    \item 不受信源统计特性的影响;
+    \item 有自检能力;
+    \item 编译码简单.
+\end{itemize}
+
+\subsubsection{常见的码型}
+\textbf{AMI 码}\quad 传号极性交替码.
+\begin{itemize}
+    \item 1: +1, -1 交替;
+    \item 0: 0.
+\end{itemize}
+
+\underline{特点}
+\begin{itemize}
+    \item 三电平, 宏观自检能力;
+    \item 信码有较长连续 0 串时, 难以获取定时信息.
+\end{itemize}
+
+\textbf{$\text{HDB}_3$ 码}\quad 3 阶高密度双极性码
+\begin{itemize}
+    \item 连续 0 串长度不超过 3: 遵循 AMI 码编码规则;
+    \item 连续 0 串长度超过 3: 将第 4 个 0 改为\textit{前一个非 0 脉冲}, 分别记为 $V_+$ 和 $V_-$ (称为\textbf{破坏脉冲});
+    \item 相邻 V 码需交替出现, 否则将后面的 V 码\textit{极性反转}, 并将第一个 0 改为和该 V 码\textit{极性相同}的 B 码 (\textbf{调节脉冲});
+    \item V 码之后非 0 脉冲极性也需要交替.
+\end{itemize}
+
+\underline{特点}\quad 有利于位定时信号提取.
+
+\textbf{曼彻斯特码}\quad 双相码.
+\begin{itemize}
+    \item 1: 10;
+    \item 0: 01.
+\end{itemize}
+
+\underline{特点}
+\begin{itemize}
+    \item 二电平;
+    \item 位定时信息丰富;
+    \item 连码个数不超过 2 个;
+    \item 带宽增大 1 倍.
+\end{itemize}
+
+\textbf{CMI 码}\quad 传号反转码.
+\begin{itemize}
+    \item 1: 11, 00 交替;
+    \item 0: 01.
+\end{itemize}
+
+\underline{特点}
+\begin{itemize}
+    \item 双极性二电平码;
+    \item 连码个数不超过 3 个.
+\end{itemize}
+
+\textbf{nBmB 码}\quad $(m>n)$
+
+用 m 位二进制码表示 n 位二进制码. 一般取 $m=n+1$.
+
+\underline{特点}
+\begin{itemize}
+    \item 可提供良好的同步和检错能力;
+    \item 带宽随 m 增加.
+\end{itemize}
+
+\textbf{nBmT 码}\quad $(m\leq n)$
+
+用 m 位三进制码表示 n 位二进制码.

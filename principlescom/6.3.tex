@@ -1,0 +1,80 @@
+\subsection{数字基带信号传输与码间串扰}
+\subsubsection{误码原因}
+\begin{itemize}
+    \item 信道噪声;
+    \item 码间串扰 (Inter Symbol Interference).
+\end{itemize}
+
+\subsubsection{定量分析}
+设脉冲序列 $\{a_n\}$ 对应基带信号为 $d(t)$, 发送滤波器, 传输信道, 接收滤波器的传输特性分别为 $G_T(\omega)$, $C(\omega)$, $G_R(\omega)$, 信道噪声 $n_R(t)$, 得到 $y(t)$.
+
+显然, 基带传输总特性为
+\begin{equation}
+    H(\omega)=G_T(\omega)C(\omega)G_R(\omega).
+\end{equation}
+时域特性为
+\begin{equation}
+    h(t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}H(\omega)e^{j\omega t}\mathrm{d}\omega.
+\end{equation}
+
+脉冲序列基带信号为
+\begin{equation}
+    d(t)=\sum_{-\infty}^{+\infty}a_n\delta(t-nT_B).
+\end{equation}
+
+接收滤波器输出信号为
+\begin{equation}
+    y(t)=d(t)*h(t)+n_R(t)=\sum_{-\infty}^{+\infty}a_nh(t-nT_B)+n_R(t).
+\end{equation}
+
+对第 $k$ 个码元, 抽样时刻设为 $t=kT_B+t_0$. 抽样值为
+\begin{equation}
+    y(t)=a_kh(t_0)+\sum_{n\neq k}a_nh((k-n)T_B+t_0)+n_R(kT_B+t_0).
+\end{equation}
+
+\textbf{无码间串扰的条件}
+
+我们只需要关注抽样时刻, 让系统传输特性的值为零即可. 也即
+\begin{equation}
+    h(kT_B)=\begin{cases}
+        1, & \quad k=0;                           \\
+        0, & \quad k\in\mathbb{N}\backslash\{0\}.
+    \end{cases}
+\end{equation}
+或
+\begin{equation}
+    \sum_{i}H\left(\omega+\frac{2\pi i}{T_B}\right)=T_B, \qquad |\omega|\leq\frac{\pi}{T_B}.
+\end{equation}
+这被称为\textbf{奈奎斯特第一准则}.
+
+\subsubsection{系统传输特性的设计}
+\textbf{理想低通特性}
+\begin{equation}
+    H(\omega)=\begin{cases}
+        T_B, & \quad |\omega|\leq\frac{\pi}{T_B}; \\
+        0,   & \quad |\omega|>\frac{\pi}{T_B}.
+    \end{cases}
+\end{equation}
+
+\underline{奈奎斯特带宽 (最窄带宽)}\quad $B=\dfrac{1}{2T_B}$.
+
+\underline{奈奎斯特速率 (无 ISI 的最高波特率)}\quad $R_B=\dfrac{1}{T_B}$.
+
+\underline{无 ISI 基带系统最高频带利用率}\quad $\eta=\dfrac{R_B}{B}=2$\ (Baud/Hz).
+
+\underline{缺点}
+\begin{itemize}
+    \item 特性陡峭不易实现;
+    \item 响应曲线尾部收敛慢, 对定时要求严格.
+\end{itemize}
+
+\textbf{余弦滚降}\quad 在理想低通特性 (幅值为 1) 基础上添加一个奇对称的滚降 (幅值为 0.5).
+
+\underline{滚降系数}\quad $\alpha=\dfrac{f_\Delta}{f_N}$.
+\begin{gather*}
+    B=(1+\alpha)f_N; \\
+    \eta=\frac{2}{1+\alpha}; \\
+    \eta_b=\frac{2}{1+\alpha}\log_2M.
+\end{gather*}
+
+$\alpha$ 越大, 时域拖尾衰减越快.
