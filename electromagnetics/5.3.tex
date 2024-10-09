@@ -1,0 +1,39 @@
+\subsection{时谐问题}
+\subsubsection{数学基础}
+考虑一个标量函数满足余弦函数的形式:
+\begin{equation}
+    U(\bm{r},t)=U_m(\bm{r})\cos(\omega t+\phi(\bm{r}))=\Re[\dot{U}_m(\bm{r})e^{j\omega t}].
+\end{equation}
+其中
+\begin{equation}
+    \dot{U}_m(\bm{r})=U_m(\bm{r})e^{j\phi(\bm{r})}.
+\end{equation}
+
+对矢量函数, 也有类似的形式
+\begin{equation}
+    \bm{F}(\bm{r},t)=\Re[\dot{\bm{F}}_m(\bm{r})e^{j\omega t}].
+\end{equation}
+
+可以推导得到如下的运算:
+\begin{gather}
+    \frac{\partial}{\partial t}\bm{F}(\bm{r},t)=\Re[\dot{\bm{F}}_m(\bm{r})j\omega e^{j\omega t}], \\
+    \nabla\times\bm{F}(\bm{r},t)=\Re[(\nabla\times\dot{\bm{F}}_m(\bm{r}))e^{j\omega t}], \\
+    \nabla\cdot\bm{F}(\bm{r},t)=\Re[(\nabla\cdot\dot{\bm{F}}_m(\bm{r}))e^{j\omega t}].
+\end{gather}
+
+重写麦克斯韦方程组为时谐函数的形式, 并假定虚部也对应相同 (去除 $\Re$ 前缀):
+\begin{gather}
+    \nabla\times\dot{\bm{H}}_m=\dot{\bm{J}}_m+j\omega\dot{\bm{D}}_m, \\
+    \nabla\times\dot{\bm{E}}_m=-j\omega\dot{\bm{B}}_m, \\
+    \nabla\times\dot{\bm{B}}_m=0, \\
+    \nabla\times\dot{\bm{D}}_m=\dot{\rho}_m.
+\end{gather}
+其中, 以上各式的函数均与 $\bm{r}$ 相关.
+
+\subsubsection{无源场问题}
+类比可得
+\begin{gather}
+    \nabla^2\dot{\bm{H}}_m+\omega^2\epsilon\mu\dot{\bm{H}}_m=0, \\
+    \nabla^2\dot{\bm{E}}_m+\omega^2\epsilon\mu\dot{\bm{E}}_m=0.
+\end{gather}
+这被称为\textbf{亥姆霍兹方程}.

@@ -1,0 +1,19 @@
+\section{时变电磁场问题的求解}
+\subsection{无源场问题}
+此时可以认为 $\bm{J}=0$, $\rho=0$. 则麦克斯韦方程组表为
+\begin{equation}
+    \begin{cases}
+        \nabla\times\bm{H}=\frac{\partial\bm{D}}{\partial t},  \\
+        \nabla\times\bm{E}=-\frac{\partial\bm{B}}{\partial t}, \\
+        \nabla\cdot\bm{B}=0,                                   \\
+        \nabla\cdot\bm{E}=0.
+    \end{cases}
+\end{equation}
+
+数学推导可得
+\begin{gather}
+    \nabla\times(\nabla\times\bm{H})=\nabla\times\frac{\partial\bm{D}}{\partial t}, \\
+    \nabla^2\bm{H}=\epsilon\mu\frac{\partial^2}{\partial t^2}\bm{H}, \label{eq:5.1 nabla 2 H} \\
+    \nabla^2\bm{E}=\epsilon\mu\frac{\partial^2}{\partial t^2}\bm{E}. \label{eq:5.1 nabla 2 E}
+\end{gather}
+可以认为式 (\ref{eq:5.1 nabla 2 H}) 和 (\ref{eq:5.1 nabla 2 E}) 满足波动方程的形式, 波速为 $\sqrt{\dfrac{1}{\epsilon\mu}}$.

@@ -1,0 +1,38 @@
+\subsection{有源场问题}
+此时麦克斯韦方程组无法被简化. 考虑磁矢位的表达式, 可以得到其通解为
+\begin{equation}
+    \bm{A}(\bm{r})=\frac{\mu}{4\pi}\int\frac{\bm{J}(\bm{r'})}{|\bm{r}-\bm{r'}|}\mathrm{d}v'.
+\end{equation}
+
+因为 $\nabla\times\bm{E}=-\dfrac{\partial\bm{B}}{\partial t}$, 可以得到
+\begin{equation}
+    \nabla\times\left(\bm{E}+\frac{\partial\bm{A}}{\partial t}\right)=0.
+\end{equation}
+所以电场表示为
+\begin{equation}
+    \bm{E}=-\nabla\varphi(\bm{r})-\frac{\partial\bm{A}}{\partial t}.
+\end{equation}
+
+因为 $\nabla\cdot\bm{D}=\rho$, 所以可以得到
+\begin{equation}
+    \nabla^2\varphi=-\frac{\rho}{\epsilon}.
+\end{equation}
+又因为 $\nabla\times\bm{H}=\bm{J}+\dfrac{\partial\bm{D}}{\partial t}$, 所以
+\begin{equation}
+    \nabla^2\bm{A}-\epsilon\mu\left(\frac{\partial}{\partial t}\nabla\varphi+\frac{\partial^2}{\partial t^2}\bm{A}\right)=-\mu\bm{J}.
+\end{equation}
+
+对于电位和磁矢位, 有\textbf{规范变换}, 可以得到同一的电场和磁场:
+\begin{equation}
+    \begin{cases}
+        \bm{A'}=\bm{A}+\nabla\psi, \\
+        \varphi'=\varphi-\frac{\partial\psi}{\partial t}.
+    \end{cases}
+\end{equation}
+
+整理上述式子, 可以得到
+\begin{gather}
+    \nabla^2\bm{A}-\epsilon\mu\frac{\partial^2}{\partial t^2}\bm{A}=-\mu\bm{J}, \\
+    \nabla^2\varphi-\epsilon\mu\frac{\partial^2}{\partial t^2}\varphi=-\frac{\rho}{\epsilon}.
+\end{gather}
+这是\textbf{达朗贝尔方程}. 这也是波动方程的形式.
